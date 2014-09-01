@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+	<head>
+		<title>Welcome to Kedfilms, you, html stalker...</title>
+                
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+               
+		{% load staticfiles %} 	
+		<script src="{% static "frontend/js/skel.min.js" %}"></script>
+                <script src="{% static "frontend/js/skel-panels.min.js" %}"></script> 
+		<script src="{% static "frontend/js/init.js" %}"></script>
+		
+                <link rel="stylesheet" href="{% static "frontend/css/skel-noscript.css" %}"/>
+                <link rel="stylesheet" href="{% static "frontend/css/style.css" %}"/>
+                <link rel="stylesheet" href="{% static "frontend/css/style-desktop.css" %}"/>
+
+	</head>
+	<body class="homepage">
+
+                <div id="header">
+                        <div id="nav-wrapper">
+                                <!-- Nav -->
+                                <nav id="nav">
+                                        <ul>
+                                                <li class="active"><a href="#">Home</a></li>
+                                                <li><a href="#">Awesome me</a></li>
+                                                <li><a href="#">Look here</a></li>
+                                                <li><a href="#">Secrets</a></li>
+                                        </ul>
+                                </nav>
+                        </div>
+                        <div class="container">
+
+                                <div id="logo">
+                                        <h1><a href="#">KEDFILMS</a></h1>
+                                        <span class="tag">By Vsevolod Ivanov a.k.a Seva</span>
+                                </div>
+                        </div>
+                </div>
+	
+
+		{% block content %}
+		{% endblock %}
+
+	<div id="footer">
+		<div class="container">
+			<section>
+				<header>
+					<h2>Contact</h2>
+					<span class="byline">Dark cornerns</span>
+				</header>
+				<ul class="contact">
+					<li><a href="#" class="fa fa-linux"></a></li>
+					<li><a href="http://github.com/sevaivanov/kedfilms" class="fa fa-github"></a></li>
+ 					<li><a href="#" class="fa fa-youtube"></a></li>
+ 					<li><a href="#" class="fa fa-flickr"></a></li>
+				</ul>
+			</section>
+		</div>
+		</br>
+		<div id="copyright">
+			<div class="container">
+				This is highly overrated.
+			</div>
+		</div>
+	</div>
+	
+	</body>
+</html>

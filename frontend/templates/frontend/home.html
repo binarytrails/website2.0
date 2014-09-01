@@ -1,0 +1,9 @@
+{% extends "frontend/base.html" %}
+
+{% block content %}
+	{{ hello }}
+	</br>
+	<b>Image HERE!</b></br>
+	{% load staticfiles %}
+	<img height=250; src="{% static "frontend/img/jaded.jpg" %}" alt="jaded"/>
+{% endblock %}

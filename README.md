@@ -1,2 +1,1 @@
-kedfilms
-========
+Django learning project

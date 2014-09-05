@@ -11,36 +11,38 @@
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
                	-->
 		{% load staticfiles %} 	
-		<script src="{% static "frontend/js/skel.min.js" %}"></script>
-                <script src="{% static "frontend/js/skel-panels.min.js" %}"></script> 
-		<script src="{% static "frontend/js/init.js" %}"></script>
+		<script src="{% static "frontend/js/linear/skel.min.js" %}"></script>
+                <script src="{% static "frontend/js/linear/skel-panels.min.js" %}"></script> 
+		<script src="{% static "frontend/js/linear/init.js" %}"></script>
+		
+		<link rel="stylesheet" href="{% static "frontend/css/linear/style.css" %}"/>
+                <link rel="stylesheet" href="{% static "frontend/css/linear/skel-noscript.css" %}"/>
+                <link rel="stylesheet" href="{% static "frontend/css/linear/style-desktop.css" %}"/>
 
-                <link rel="stylesheet" href="{% static "frontend/css/skel-noscript.css" %}"/>
-                <link rel="stylesheet" href="{% static "frontend/css/style.css" %}"/>
-                <link rel="stylesheet" href="{% static "frontend/css/style-desktop.css" %}"/>
 	</head>
-	<body class="homepage">
-                <div id="header">
-                        <div id="nav-wrapper">
-                                <!-- Nav -->
-                                <nav id="nav">
-                                        <ul>
-                                                <li><a href="/">Home</a></li>
-                                                <li><a href="/photos">Photos</a></li>
-                                                <li><a href="#">Look here</a></li>
-                                                <li><a href="#">Secrets</a></li>
-                                        </ul>
-                                </nav>
-                        </div>
-                        <div class="container">
 
-                                <div id="logo">
-                                        <h1><a href="#">KEDFILMS</a></h1>
-                                        <span class="tag">By Vsevolod Ivanov a.k.a Seva</span>
-                                </div>
-                        </div>
-                </div>
-	
+	<body onload="">	
+		<div id="header">
+			<div id="nav-wrapper">
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li><a href="/photos">Photos</a></li>
+						<li><a href="#">Look here</a></li>
+						<li><a href="#">Secrets</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container">
+
+				<div id="logo">
+					<h1><a href="#">KEDFILMS</a></h1>
+					<span class="tag">By Vsevolod Ivanov a.k.a Seva</span>
+				</div>
+			</div>
+		</div>
+
 		{% block content %}
 		{% endblock %}
 
@@ -62,8 +64,8 @@
 					<ul class="contact">
 						<li><a href="https://www.debian.org/intro/about" class="fa fa-linux"></a></li>
 						<li><a href="https://github.com/sevaivanov/kedfilms" class="fa fa-github"></a></li>
- 						<li><a href="https://www.youtube.com/user/fcotw24" class="fa fa-youtube"></a></li>
- 						<li><a href="https://flickr.com/photos/kedfilms" class="fa fa-flickr"></a></li>
+						<li><a href="https://www.youtube.com/user/fcotw24" class="fa fa-youtube"></a></li>
+						<li><a href="https://flickr.com/photos/kedfilms" class="fa fa-flickr"></a></li>
 					</ul>
 				</section>
 			</div>

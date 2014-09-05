@@ -1,7 +1,11 @@
+/*
+	Linear by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+*/
+
 skel.init({
-	{% load staticfiles %}
-	prefix: "{% static 'frontend/css/style' %}",
-	#prefix: 'frontend/css/style.css',
+	prefix: 'css/style',
 	resetCSS: true,
 	boxModel: 'border',
 	grid: {

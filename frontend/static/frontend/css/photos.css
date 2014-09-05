@@ -1,0 +1,18 @@
+#photos
+{
+}
+
+#photos ul 
+{
+}
+
+	#photos ul li 
+	{
+		display: inline;
+	}
+
+#photos img
+{
+	height: 250px;
+}
+

@@ -4,12 +4,12 @@ Utilities powered by the magnificent me.
 
 import os, glob
 
-def get_filenames(path, by_newest):
+def getFilenames(path, byNewest):
     	
 	files = filter(os.path.isfile, glob.glob(path + "*"))
     	files.sort(key=lambda x: os.path.getmtime(x))
     
-	if by_newest:
+	if byNewest:
         	files.reverse()
 	
 	names = []

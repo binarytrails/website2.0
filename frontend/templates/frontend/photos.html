@@ -1,0 +1,24 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+        {% load staticfiles %}
+	<link rel="stylesheet" href="{% static "frontend/css/swipebox/swipebox.css" %}">
+	<link rel="stylesheet" href="{% static "frontend/css/photos.css" %}">
+        
+        <script src="{% static "frontend/lib/swipebox/jquery-2.1.0.min.js" %}"></script>
+        <script src="{% static "frontend/js/swipebox/jquery.swipebox.js" %}"></script>
+	<script src="{% static "frontend/js/photos-swipebox.js" %}"></script>
+
+	<div id="featured"><div id="content" class="container"><div id="photos">
+        	<div class="wrap small-width">
+			<ul id="box-container">
+				{% for image in images %}
+					<li class="box">
+						<a class="swipebox" title="Title" href="{% static "frontend/img/photos/" %}{{ image }}">
+							<img src="{% static "frontend/img/photos/" %}{{ image }}" alt="image"/>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div></div></div>
+	</div>
+{% endblock %}

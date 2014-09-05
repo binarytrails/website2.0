@@ -1,16 +1,33 @@
 {% extends "frontend/base.html" %}
-{% block content %}
-        {% load staticfiles %}
-	<link rel="stylesheet" href="{% static "frontend/css/swipebox/swipebox.css" %}">
-	<link rel="stylesheet" href="{% static "frontend/css/photos.css" %}">
-        
-        <script src="{% static "frontend/lib/swipebox/jquery-2.1.0.min.js" %}"></script>
-        <script src="{% static "frontend/js/swipebox/jquery.swipebox.js" %}"></script>
-	<script src="{% static "frontend/js/photos-swipebox.js" %}"></script>
 
-	<div id="featured"><div id="content" class="container"><div id="photos">
-        	<div class="wrap small-width">
-			<ul id="box-container">
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "frontend/css/swipebox/swipebox.css" %}">
+<link rel="stylesheet" href="{% static "frontend/css/photos.css" %}">
+
+<script src="{% static "frontend/lib/swipebox/jquery-2.1.0.min.js" %}"></script>
+<script src="{% static "frontend/js/swipebox/jquery.swipebox.js" %}"></script>
+<script src="{% static "frontend/js/photos-swipebox.js" %}"></script>
+
+<div id="featured">
+	<div id="content" class="container">
+		<section>
+			<header>
+				<h2>
+					{{ title }}
+				</h2>
+				<p>
+					<ul>
+					{% for photo in photos %}
+						<li style="color:{% cycle 'grey' 'black' %}">{{ photo.title }}</li>		
+					{% endfor %}
+					</ul>
+				</p>
+			</header>
+		</section>
+		<div class="wrap small-width">	
+			<div id="photos">
+				<ul id="box-container">
 				{% for image in images %}
 					<li class="box">
 						<a class="swipebox" title="Title" href="{% static "frontend/img/photos/" %}{{ image }}">
@@ -18,7 +35,9 @@
 						</a>
 					</li>
 				{% endfor %}
-			</ul>
-		</div></div></div>
+				</ul>
+			</div>
+		</div>
 	</div>
+</div>
 {% endblock %}

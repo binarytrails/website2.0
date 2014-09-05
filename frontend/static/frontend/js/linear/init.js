@@ -5,7 +5,8 @@
 */
 
 skel.init({
-	prefix: 'css/style',
+	{% load staticfiles %}
+	prefix: "{% static 'frontend/css/linear/style' %}",
 	resetCSS: true,
 	boxModel: 'border',
 	grid: {

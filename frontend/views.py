@@ -14,5 +14,5 @@ def home(request):
 
 def photos(request):
 	if os.path.exists(imagesDir):
-		images = utils.getFilenames(imagesDir, True)
-		return render_to_response("frontend/photos.html", {"photos": Photo.objects.all(), "images": images, "title": "Photos"})
+		#images = utils.getFilenames(imagesDir, True)
+		return render_to_response("frontend/photos.html", {"title": "Photos", "subtitle": "Subtitle", "photos": Photo.objects.all()})

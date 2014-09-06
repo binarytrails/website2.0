@@ -17,21 +17,17 @@
 					{{ title }}
 				</h2>
 				<p>
-					<ul>
-					{% for photo in photos %}
-						<li style="color:{% cycle 'grey' 'black' %}">{{ photo.title }}</li>		
-					{% endfor %}
-					</ul>
+					{{ subtitle }}
 				</p>
 			</header>
 		</section>
 		<div class="wrap small-width">	
 			<div id="photos">
 				<ul id="box-container">
-				{% for image in images %}
+				{% for photo in photos %}
 					<li class="box">
-						<a class="swipebox" title="Title" href="{% static "frontend/img/photos/" %}{{ image }}">
-							<img src="{% static "frontend/img/photos/" %}{{ image }}" alt="image"/>
+						<a class="swipebox" title="{{ photo.title }}" href="{% static "frontend/img/photos/" %}{{ photo.filename }}">
+							<img src="{% static "frontend/img/photos/" %}{{ photo.filename }}" alt="image"/>
 						</a>
 					</li>
 				{% endfor %}

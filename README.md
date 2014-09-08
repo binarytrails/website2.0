@@ -9,20 +9,20 @@ Django html5 website
 		<th><b>Description</b></th>
 	</tr>
 	<tr>
-		<th>Linear</th>
-		<th>Base website template</th>
+		<th>linear</th>
+		<th>base website template</th>
 	</tr>
 	<tr>
-		<th>Swipebox</th>
+		<th>swipebox</th>
 		<th>jQuery lightbox</th>
 	</tr>
 	<tr>
-		<th>Django-debug-toolbar</th>
-		<th>Browser debug toolbar</th>
+		<th>django-debug-toolbar</th>
+		<th>browser debug toolbar</th>
 	</tr>
 	<tr>
-		<th>South</th>
-		<th>Database updater</th>
+		<th>south</th>
+		<th>database updater</th>
 	</tr>
 </table>
 	

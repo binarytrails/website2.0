@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     
 	url(r'^$', 'frontend.views.home', name='home'),
 	url(r'^photos/', 'frontend.views.photos', name='photos'),
+	url(r'^blog/', 'frontend.views.blog', name='blog')
     
     # url(r'^kedfilms/', include('kedfilms.foo.urls')),
 

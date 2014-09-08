@@ -1,6 +1,8 @@
 {% extends "frontend/base.html" %}
 
 {% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "frontend/css/home.css" %}">
 
 	<div id="featured">
         	<div id="content" class="container">
@@ -9,14 +11,52 @@
 					<h2>{{ title }}</h2>
 				</header>
 				<p>
-					pg
+					Awesome text</br>
+					Handsome me</br>
+					Amazing...</br>
 				</p>
-			</section>
-			<section>
-				<p>
-					pg again
-				</p>
-			</section>
+				<hr></hr>
+		</div>
+	</div>
+	<div id="main">
+		<div id="content" class="container">
+			<div class="row">
+				<section class="6u">
+					<div class="rolldown">
+						<header>
+							<h3>R & D</h3>
+						</header>
+						<p>
+							Awesome line<br/>
+							Awesome second line <br/>
+						</p>
+					</div>
+				</section>
+		              	<section class="6u">
+                                        <div class="rolldown">
+                                                <header>
+							<h3>ARTICLES</h3>
+						</header>
+                                        </div>
+                                </section>
+			</div>
+			<div class="row">
+		              	<section class="6u">
+                                        <div class="rolldown">
+                                                <header>
+							<h3>SHORT FILMS</h3>
+						</header>
+                                        </div>
+                                </section>
+		              	<section class="6u">
+                                        <div class="rolldown">
+                                                <header>
+							<h3>PHOTOGRAPHY</h3>
+						</header>
+                                        </div>
+                                </section>
+			</div>
+			</br></br></br></br></br></br>
 		</div>
 	</div>
 

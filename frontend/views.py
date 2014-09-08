@@ -16,3 +16,6 @@ def photos(request):
 	if os.path.exists(imagesDir):
 		#images = utils.getFilenames(imagesDir, True)
 		return render_to_response("frontend/photos.html", {"title": "Photos", "subtitle": "Subtitle", "photos": Photo.objects.all()})
+
+def blog(request):
+	return render_to_response("frontend/blog.html")

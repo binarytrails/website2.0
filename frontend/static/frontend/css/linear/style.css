@@ -85,8 +85,8 @@
 	{
 		border: 0;
 		border-top: solid 1px #ddd;
-		margin: 6em 0 0 0;
-		padding: 6em 0 0 0;
+		margin: 3em 0 0 0;
+		padding: 1em 0 0 0;
 	}
 	
 	blockquote
@@ -888,7 +888,7 @@
 	#main
 	{
 		position: relative;
-		background: #fff;
+		background: #F2F2F2;
 	}
 	
 	.homepage #content

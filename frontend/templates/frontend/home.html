@@ -1,19 +1,17 @@
 {% extends "frontend/base.html" %}
 
 {% block content %}
-{% load staticfiles %}
-<link rel="stylesheet" href="{% static "frontend/css/home.css" %}">
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "frontend/css/home.css" %}">
 
 	<div id="featured">
-        	<div id="content" class="container">
+			  <div id="content" class="container">
 			<section>
 				<header>
 					<h2>{{ title }}</h2>
 				</header>
 				<p>
-					Awesome text</br>
-					Handsome me</br>
-					Amazing...</br>
+					<h3>{{ subtitle }}</h3>
 				</p>
 				<hr></hr>
 		</div>
@@ -26,38 +24,56 @@
 						<header>
 							<h3>R & D</h3>
 						</header>
-						<p>
-							Awesome line<br/>
-							Awesome second line <br/>
-						</p>
+							{% for key, value	in cs_subcats.items %}
+								{{ value }}
+								<br/></br>
+									<ul class="skills-rating">
+										{% load filters %}
+										{% for skill in skills|in_subcategory:key %}
+											<li class="skills-rating">
+												<p class="left">
+													{{ skill.title }}
+												</p>
+												<p class="right">
+													{% load filters %}
+													{% for i in 5|times	%}
+														{% if i < skill.rating_on_five %}
+															<a href="" class="skills-rating fa fa-star"></a>
+														{% else %} 
+															<a href="" class="skills-rating fa fa-star-o"></a>
+														{% endif %}
+													{% endfor %}
+												</p>
+										  </li>
+									  {% endfor %}
+								  </ul>
+						{% endfor %}
 					</div>
 				</section>
-		              	<section class="6u">
-                                        <div class="rolldown">
-                                                <header>
+				<section class="6u">
+					<div class="rolldown">
+						<header>
 							<h3>ARTICLES</h3>
 						</header>
-                                        </div>
-                                </section>
+					</div>
+				</section>
 			</div>
 			<div class="row">
-		              	<section class="6u">
-                                        <div class="rolldown">
-                                                <header>
+				<section class="6u">
+					<div class="rolldown">
+						<header>
 							<h3>SHORT FILMS</h3>
 						</header>
-                                        </div>
-                                </section>
-		              	<section class="6u">
-                                        <div class="rolldown">
-                                                <header>
+					</div>
+				</section>
+				<section class="6u">
+					<div class="rolldown">
+						<header>
 							<h3>PHOTOGRAPHY</h3>
 						</header>
-                                        </div>
-                                </section>
+					</div>
+				</section>
 			</div>
-			</br></br></br></br></br></br>
 		</div>
 	</div>
-
 {% endblock %}

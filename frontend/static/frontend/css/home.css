@@ -1,0 +1,63 @@
+
+h3
+{
+	font-size: 30px;
+}
+
+h4
+{
+    font-size: 20px;
+}
+
+a.skills-rating
+{
+	color: #2C3539;
+	pointer-events: none;
+	cursor: default;
+}
+
+ul.skills-rating
+{
+	width: 570px;
+	height: 100px;
+}
+
+li.skills-rating
+{
+	display: inline;
+	width: 40%;
+	float: left;
+	margin: 10px 24px;
+}
+
+p.left
+{
+	float: left;
+}
+
+p.right
+{
+	float: right;
+}
+
+div.rolldown
+{
+	position: relative;
+	top: -100;
+	float: left;
+	width: 570px;
+	height: 65px;
+
+	background: #E5E4E2;
+	-webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
+	transition: height 2s;
+
+	text-align: center;
+	overflow: hidden;
+	border: 10px solid transparent;
+}
+
+div.rolldown:hover
+{
+	height: 400px;
+}

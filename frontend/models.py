@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.contrib import admin
 
 class Photo(models.Model):
 	filename = models.CharField(
@@ -63,14 +64,14 @@ class Skill(models.Model):
 		# Computer science
 		('MD', 'Methods of development'),
 		('OS', 'Operative systems'),
-					 ('F', 'Framework'),
+		('F', 'Framework'),
 		('RC', 'Revision control'),
-					 ('P', 'Programming'),
+		('P', 'Programming'),
 		('ML', 'Markup language'),
 		('DB', 'Database'),
-					 ('N', 'Network'),
+        ('N', 'Network'),
 		('S', 'Server'),
-					 ('H', 'Hardware'),
+	    ('H', 'Hardware'),
 		# Digital arts
 		('SE', 'Special effects'),
 		('IM', 'Image manipulation')

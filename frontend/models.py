@@ -45,10 +45,10 @@ class Video(models.Model):
 	author = models.CharField(
 		max_length = 50
 	)
-	film_director = models.CharField(
+	director = models.CharField(
 		max_length = 50 
 	)
-	sfx_supervisor = models.CharField(
+	sfx = models.CharField(
 		max_length = 50 
 	)
 	description = models.CharField(
@@ -70,8 +70,8 @@ class Skill(models.Model):
 		('ML', 'Markup language'),
 		('DB', 'Database'),
         ('N', 'Network'),
-		('S', 'Server'),
-	    ('H', 'Hardware'),
+        ('S', 'Server'),
+        ('H', 'Hardware'),
 		# Digital arts
 		('SE', 'Special effects'),
 		('IM', 'Image manipulation')

@@ -75,7 +75,7 @@ class Photo(models.Model):
             primary_key = True,
             max_length = 50
         )
-    title =    models.CharField(
+    title = models.CharField(
         max_length = 50,
         blank = False,
         unique = True

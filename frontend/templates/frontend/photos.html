@@ -11,25 +11,45 @@
 
 <div id="featured">
 	<div id="content" class="container">
-		<section>
-			<header>
-				<h2>{{ title }}</h2>
-				<p>{{ subtitle }}</p>
-			</header>
-		</section>
-		<div class="wrap small-width">	
-			<div id="photos">
-				<ul id="box-container">
-				{% for photo in photos %}
-					<li class="box">
-						<a class="swipebox" title="{{ photo.title }}" href="{% static "frontend/img/photos/" %}{{ photo.filename }}">
-							<img src="{% static "frontend/img/photos/" %}{{ photo.filename }}" alt="image"/>
-						</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		</div>
+        <header>
+            <h2>{{ title }}</h2>
+            <p>{{ subtitle }}</p>
+        </header>
+</div>
+<div id="main">
+    <div id="content" class="container">
+        <article>
+            <h3>{{ portfolioTitle }}</h3>
+            <div class="wrap small-width">	
+                <div id="photos">
+                    <ul id="box-container">
+                    {% for photo in portfolioImages %}
+                        <li class="box">
+                            <a class="swipebox" rel="" title="{{ photo.title }}" href="{% static "frontend/img/portfolio/" %}{{ photo.filename }}">
+                                <img src="{% static "frontend/img/portfolio/" %}{{ photo.filename }}" alt="image"/>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <article>
+            <h3>{{ generalTitle }}</h3>
+            <div class="wrap small-width">	
+                <div id="photos">
+                    <ul id="box-container">
+                    {% for photo in generalImages %}
+                        <li class="box">
+                            <a class="swipebox" rel="" title="{{ photo.title }}" href="{% static "frontend/img/general/" %}{{ photo.filename }}">
+                                <img src="{% static "frontend/img/general/" %}{{ photo.filename }}" alt="image"/>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div> 
+        </article>
 	</div>
 </div>
 {% endblock %}

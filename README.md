@@ -1,15 +1,36 @@
 # Kedfilms
-
 Django html5 website
+
 
 ## Coding style
 * Indent 4 spaces
 
-## Plugin :  Description
-* Linear : Base website template
-* Swipebox : jQuery lightbox
+
+## Virtualenv setup
+Create a local virtual environment with all the tools inside.
+
+    virtualenv DJANGO
+    source DJANGO/bin/activate
+    easy_install django==1.4.5 south django_debug_toolbar 
+    deactivate
+
+Remove installed dependencies
+    
+    easy_install -m [package]
+
+Then you can remove locally left PackageName.egg
+
+
+## Features
+
+### Plugins
 * Django-debug-toolbar : Browser debug toolbar
 * South : Database updater
+
+### Add-ons
+* Linear : Base website template
+* Swipebox : jQuery lightbox
+
 
 ## Database diagram : crow's foot notation
 

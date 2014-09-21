@@ -6,54 +6,54 @@ Django html5 website
 * Indent 4 spaces
 
 ## Plugin :  Description
-* Linear : Base website template</th>
-* Swipebox : jQuery lightbox</th>
-* Django-debug-toolbar : Browser debug toolbar</th>
-* South : Database updater</th>
+* Linear : Base website template
+* Swipebox : jQuery lightbox
+* Django-debug-toolbar : Browser debug toolbar
+* South : Database updater
 
 ## Database diagram : crow's foot notation
 
-                                +-----------+                        
-                                |    USER   |                                         
-                                +-----------+                        
-                            +-|<| NICK (PK1)|||-+                           
-                            |   | NAME      |   |                    
-                            |   | LASTNAME  |   |                    
-                            |   | EMAIL     |   |                     
-                            |   +-----------+   |                       
-    +-------------------+   |                   |   +-----------------+
-    |      ARTICLE      |   |                   |   |      PHOTO      |
-    +-------------------+   |                   |   +-----------------+
-    | ID (PK1)          |   |                   |   | FILENAME (PK1)  |
-    | TITLE (U1)        |   |                   |   | TITLE (U1)      |
-    | SUBTITLE          |   |                   |   | DESCRIPTION     |
-    | CATEGORY (U2)     |   |                   +-0<| OWNER (FK1,U1)  |
-    | SUBCATEGORY (U2)  |   |                   |   +-----------------+
-    | DATE_CREATED      |   |                   |
-    | DATE_MODIFIED     |   |                   |   +------------------+
-    | AUTHOR (FK1,U1,U2)|>0-+                   |   |     VIDEO        |
-    +-------------------+                       |   +------------------+
-     * set url manually                         |   | FILENAME (PK1)   |
-                                                |   | TITLE (U1)       |
-                                                |   | DESCRIPTION      |
-                                                |   | CATEGORY (U2)    |
-                                                |   | AUTHOR           |
-                                                |   | DIRECTOR         |
-                                                |   | SFX              |
-                                                +-0<| OWNER (FK1,U1,U2)|
-                                                |   +------------------+
-                                                |
-                                                |   +------------------+
-                                                |   |     SKILL        |
-                                                |   +------------------+
-                                                |   | ID (PK1)         |
-                                                |   | TITLE (U1)       |
-                                                |   | CATEGORY (U2)    |
-                                                |   | SUBCATEGORY (U2) |
-                                                |   | DESCRIPTION      |
-                                                |   | RATING_ON_FIVE   |
-                                                +-0<| OWNER (FK1,U1,U2)|
-                                                    +------------------+
+                                   +-----------+                        
+                                   |    USER   |                                                              
+                                   +-----------+                   
+                               +-|<| NICK (PK1)|||-+                                                      
+                               |   | NAME      |   |                    
+                               |   | LASTNAME  |   |   +-----------------+
+                               |   | EMAIL     |   |   |     PHOTO       |
+                               |   +-----------+   |   |-----------------| 
+    +----------------------+   |                   |   | FILENAME (PK1)  |
+    |      ARTICLE         |   |                   |   | TITLE (U1)      |
+    +----------------------+   |                   |   | DESCRIPTION     |
+    | ID (PK1)             |   |                   |   | CATEGORY (U1)   |
+    | TITLE (U1)           |   |                   |   | AUTHOR          |
+    | SUBTITLE             |   |                   |   | DATE_CREATED    |
+    | CATEGORY (U1)        |   |                   +-0<| OWNER (FK1,U1)  |
+    | SUBCATEGORY (U1)     |   |                   |   +-----------------+
+    | DATE_CREATED         |   |                   |
+    | DATE_MODIFIED        |   |                   |   +------------------+
+    | AUTHOR (FK1, U1)     |>0-+                   |   |     VIDEO        |
+    +----------------------+                       |   +------------------+
+     * set url manually                            |   | FILENAME (PK1)   |
+                                                   |   | TITLE (U1)       |
+                                                   |   | DESCRIPTION      |
+                                                   |   | CATEGORY (U1)    |
+                                                   |   | AUTHOR           |
+                                                   |   | DIRECTOR         |
+                                                   |   | SFX              |
+                                                   +-0<| OWNER (FK1,U1)   |
+                                                   |   +------------------+
+                                                   |
+                                                   |   +------------------+
+                                                   |   |     SKILL        |
+                                                   |   +------------------+
+                                                   |   | ID (PK1)         |
+                                                   |   | TITLE (U1)       |
+                                                   |   | DESCRIPTION      |
+                                                   |   | CATEGORY (U1)    |
+                                                   |   | SUBCATEGORY (U1) |
+                                                   |   | RATING_ON_FIVE   |
+                                                   +-0<| OWNER (FK1,U1)   |
+                                                       +------------------+
                                                                         
                                                                         
 

@@ -1,8 +1,7 @@
 # Controllers -> Views ("/templates/")
 
 import os
-from django.shortcuts import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import HttpResponse, render_to_response
 from kedfilms import utils
 from .models import Photo, Skill
 
@@ -13,8 +12,8 @@ def home(request):
 	# CS: Computer Science
 	cs_subcats = {}
 	filterargs = {
-      'category': 'CS',
-      'owner': 'VI'
+      "category": "CS",
+      "owner": "VI"
     }
 	for skill in Skill.objects.all().filter(**filterargs).distinct():
 		cs_subcats[str(skill.subcategory)] = skill.get_subcategory_display()
@@ -37,4 +36,12 @@ def photos(request):
                 "photos": Photo.objects.all()
             }
         )
+
+def articles(request):
+    return render_to_response(
+        "frontend/articles.html",{
+            "title": "Articles",
+            "subtitle": "Subtitle"
+        }
+    )
 

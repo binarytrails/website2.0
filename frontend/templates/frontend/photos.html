@@ -1,13 +1,21 @@
 {% extends "frontend/base.html" %}
 
 {% block content %}
+{% load static %}
+{% load filters %}
+{% load rpnMath %}
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static "frontend/css/swipebox/swipebox.css" %}">
-<link rel="stylesheet" href="{% static "frontend/css/photos.css" %}">
 
-<script src="{% static "frontend/lib/swipebox/jquery-2.1.0.min.js" %}"></script>
-<script src="{% static "frontend/js/swipebox/jquery.swipebox.js" %}"></script>
-<script src="{% static "frontend/js/photos-swipebox.js" %}"></script>
+{% get_static_prefix as STATIC %}
+{% with FRONTEND=STATIC|add:"frontend/" NEW_HEIGHT=250 PORTFOLIO_PATH="img/portfolio/" GENERAL_PATH="img/general/" %}
+
+<link rel="stylesheet" href="{{ FRONTEND }}css/swipebox/swipebox.css">
+<link rel="stylesheet" href="{{ FRONTEND }}css/photos.css">
+<link rel="stylesheet" href="{{ FRONTEND }}css/animated/box-shadow_below-image.css">
+
+<script src="{{ FRONTEND }}lib/swipebox/jquery-2.1.0.min.js"></script>
+<script src="{{ FRONTEND }}js/swipebox/jquery.swipebox.js"></script>
+<script src="{{ FRONTEND }}js/photos-swipebox.js"></script>
 
 <div id="featured">
 	<div id="content" class="container">
@@ -23,12 +31,22 @@
             <div class="wrap small-width">	
                 <div id="photos">
                     <ul id="box-container">
-                    {% for photo in portfolioImages %}
-                        <li class="box">
-                            <a class="swipebox" rel="" title="{{ photo.title }}" href="{% static "frontend/img/portfolio/" %}{{ photo.filename }}">
-                                <img src="{% static "frontend/img/portfolio/" %}{{ photo.filename }}" alt="image"/>
-                            </a>
-                        </li>
+                    {% for image in portfolioImages %}
+                    <li class="box">
+                        {% with imagePath=FRONTEND|add:PORTFOLIO_PATH|add:image.filename %}
+                        {% with width=imagePath|imageWidth height=imagePath|imageHeight %} 
+                        {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
+                        <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
+                            <div class="img-container-shadow">
+                                <a class="swipebox" rel="" title="{{ image.title }}" href="{{ FRONTEND }}{{ PORTFOLIO_PATH }}{{ image.filename }}">
+                                    <img src="{{ FRONTEND }}{{ PORTFOLIO_PATH }}{{ image.filename }}" height="{{ NEW_HEIGHT }}" alt="image"/>
+                                </a>
+                            </div>
+                        </div>
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                    </li>
                     {% endfor %}
                     </ul>
                 </div>
@@ -39,11 +57,21 @@
             <div class="wrap small-width">	
                 <div id="photos">
                     <ul id="box-container">
-                    {% for photo in generalImages %}
+                    {% for image in generalImages %}
                         <li class="box">
-                            <a class="swipebox" rel="" title="{{ photo.title }}" href="{% static "frontend/img/general/" %}{{ photo.filename }}">
-                                <img src="{% static "frontend/img/general/" %}{{ photo.filename }}" alt="image"/>
-                            </a>
+                        {% with imagePath=FRONTEND|add:GENERAL_PATH|add:image.filename %}
+                        {% with width=imagePath|imageWidth height=imagePath|imageHeight %} 
+                        {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
+                        <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
+                            <div class="img-container-shadow">
+                                <a class="swipebox" rel="" title="{{ image.title }}" href="{{ FRONTEND }}{{ GENERAL_PATH }}{{ image.filename }}">
+                                    <img src="{{ FRONTEND }}{{ GENERAL_PATH }}{{ image.filename }}" height="{{ NEW_HEIGHT }}" alt="image"/>
+                                </a>
+                            </div>
+                        </div>
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
                         </li>
                     {% endfor %}
                     </ul>
@@ -52,4 +80,5 @@
         </article>
 	</div>
 </div>
+{% endwith %}
 {% endblock %}

@@ -8,11 +8,6 @@
 
 	#photos ul li 
 	{
-		display: inline;
+		display: inline-block;
 	}
-
-#photos img
-{
-	height: 250px;
-}
 

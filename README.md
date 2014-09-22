@@ -4,22 +4,40 @@ Django html5 website
 
 ## Coding style
 * Indent 4 spaces
+* Priority to new line per bracket
+
+        function
+        {
+            # code here
+        }
+        
+* If not permited, one new line for last bracket i.e. views.py
+
+        function{
+            # code here
+        }
 
 
-## Setup
+## Virtualenv setup
 
 To complile install PIL library
     
     sudo apt-get install python2.7-dev
 
-Create a local virtual environment with all the tools inside.
+Create a local virtual environment with all the tools inside
 
     virtualenv DJANGO
+
+Activate virtualenv
+
     source DJANGO/bin/activate
+
+Install dependecies
+
     easy_install django==1.4.5 south django_debug_toolbar 
     pip install PIL --allow-external PIL --allow-unverified PIL
 
-To remove installed dependencies
+Remove installed dependencies
     
     easy_install -m [package]
 
@@ -35,6 +53,7 @@ To quit virtualenv
 ### Plugins
 * Django-debug-toolbar : Browser debug toolbar
 * South : Database updater
+* PIL : Python Image Library
 
 ### Add-ons
 * Linear : Base website template
@@ -107,7 +126,14 @@ To quit virtualenv
         description = "The Matrix (1999) by The Wachowski Brothers", 
         author = "The Wachowski Brothers")
 
+
 ### ShellScript
     
     ./manage shell < script.py
+
+
+## Code for thought
+
+* Remove PIL, only used in filters.py to give image size
+* Replace unneeded javascript by css3
 

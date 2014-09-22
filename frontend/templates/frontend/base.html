@@ -9,13 +9,14 @@
 		
 		{% load staticfiles %}	
 		<script src="{% static "frontend/js/linear/skel.min.js" %}"></script>
-					 <script src="{% static "frontend/js/linear/skel-panels.min.js" %}"></script> 
+		<script src="{% static "frontend/js/linear/skel-panels.min.js" %}"></script> 
 		<script src="{% static "frontend/js/linear/init.js" %}"></script>
 		
 		<link rel="stylesheet" href="{% static "frontend/css/linear/style.css" %}"/>
-					 <link rel="stylesheet" href="{% static "frontend/css/linear/skel-noscript.css" %}"/>
-					 <link rel="stylesheet" href="{% static "frontend/css/linear/style-desktop.css" %}"/>
-	</head>
+		<link rel="stylesheet" href="{% static "frontend/css/linear/skel-noscript.css" %}"/>
+		<link rel="stylesheet" href="{% static "frontend/css/linear/style-desktop.css" %}"/>
+	    <link rel="stylesheet" href="{% static "frontend/css/base.css" %}"/>
+    </head>
 
 	<body>	
 		<div id="header">
@@ -31,14 +32,13 @@
 				</nav>
 			</div>
 			<div class="container">
-
 				<div id="logo">
 					<h1><a href="#">KEDFILMS</a></h1>
 					<span class="tag">By Vsevolod Ivanov a.k.a Seva</span>
 				</div>
 			</div>
 		</div>
-
+        
 		{% block content %}
 		{% endblock %}
 

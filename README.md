@@ -6,19 +6,29 @@ Django html5 website
 * Indent 4 spaces
 
 
-## Virtualenv setup
+## Setup
+
+To complile install PIL library
+    
+    sudo apt-get install python2.7-dev
+
 Create a local virtual environment with all the tools inside.
 
     virtualenv DJANGO
     source DJANGO/bin/activate
     easy_install django==1.4.5 south django_debug_toolbar 
-    deactivate
+    pip install PIL --allow-external PIL --allow-unverified PIL
 
-Remove installed dependencies
+To remove installed dependencies
     
     easy_install -m [package]
 
 Then you can remove locally left PackageName.egg
+
+To quit virtualenv
+
+    deactivate
+
 
 ## Features
 

@@ -20,7 +20,6 @@ Remove installed dependencies
 
 Then you can remove locally left PackageName.egg
 
-
 ## Features
 
 ### Plugins
@@ -98,4 +97,7 @@ Then you can remove locally left PackageName.egg
         description = "The Matrix (1999) by The Wachowski Brothers", 
         author = "The Wachowski Brothers")
 
+### ShellScript
+    
+    ./manage shell < script.py
 

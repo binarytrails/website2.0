@@ -23,7 +23,7 @@
 						<header>
 							<h3 class="dropdown">{{ rd_section.title }}</h3>
 						</header>
-                        <h4>
+                        <h4 class="dropdown">
                             {% autoescape off %}
                             {{ rd_section.body }}
                             {% endautoescape %}
@@ -35,7 +35,7 @@
 						<header>
 							<h3 class="dropdown">{{ articles_section.title }}</h3>
 						</header>
-                        <h4>
+                        <h4 class="dropdown">
                             {% autoescape off %}
                             {{ articles_section.body }}
                             {% endautoescape %}
@@ -49,7 +49,7 @@
 						<header>
 							<h3 class="dropdown">{{ videos_section.title }}</h3>
 						</header>
-                        <h4>
+                        <h4 class="dropdown">
                             {% autoescape off %}
                             {{ videos_section.body }}
                             {% endautoescape %}
@@ -61,7 +61,7 @@
 						<header>
 							<h3 class="dropdown">{{ photos_section.title }}</h3>
 						</header>
-                        <h4>
+                        <h4 class="dropdown">
                             {% autoescape off %}
                             {{ photos_section.body }}
                             {% endautoescape %}
@@ -78,7 +78,7 @@
             </section>
             <section>
                 <header>
-                    <h2>
+                    <h2 class="title">
                         {{ skills_section.title }}
                     </h2>
                 </header>
@@ -104,9 +104,9 @@
                                 {% load filters %}
                                 {% for i in 5|times %}
                                     {% if i < skill.rating_on_five %}
-                                        X
+                                        ★
                                     {% else %}
-                                        O
+                                        ☆
                                     {% endif %}
                                 {% endfor %}
                             </div>

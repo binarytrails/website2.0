@@ -1,66 +1,83 @@
-h3.subtitle
-{
-    line-height: 1.5;
-}
+    h2.title
+    {
+        margin: 50px 0px 0px 0px;
+    }
+    h3.subtitle
+    {
+        line-height: 1.5;
+    }
+    h3.dropdown
+    {
+        font-size: 20pt;
+        font-weight: 300;
+        color: #494949;
+        font-family: sans-serif;
+        margin: 0px 0px 20px 0px;
+    }
+    h4.dropdown
+    {
+        font-size: 13pt;
+        color: #494949;
+    }
+    h4.skills_subcategory
+    {
+        font-size: 30px;
+        color: #787878;
+    }
 
+    div.rolldown
+    {
+        position: relative;
+        top: -100;
+        float: left;
+        width: 570px;
+        height: 50px;
 
-h3.dropdown
-{
-    color: #494949;
-    font-family: sans-serif;
-}
+        background: #CCCCCC;
+        -webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
+        transition: height 2s;
 
-div.rolldown
-{
-	position: relative;
-	top: -100;
-	float: left;
-	width: 570px;
-	height: 50px;
+        text-align: center;
+        overflow: hidden;
+        border: 10px solid transparent;
+    }
+    div.rolldown:hover
+    {
+        height: 400px;
+    }
 
-	background: #CCCCCC;
-	-webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
-	transition: height 2s;
+    a.skills-rating
+    {
+        color: #787878;
+        pointer-events: none;
+        cursor: default;
+    }
+    ul.skills-rating
+    {
+        width: auto;
+        height: 200px;
+    }
+    li.skill
+    {
+        font-size: 20pt;
+        display: inline;
+        float: left;
+        width: 40%;
+        margin: 10px 60px;
+        cursor: default;
+        transition: all 0.5s;
 
-	text-align: center;
-	overflow: hidden;
-	border: 10px solid transparent;
-}
-div.rolldown:hover
-{
-	height: 400px;
-}
+    }
+        li.skill:hover
+        {
+            text-shadow: 0 0 3px green;        
+        }
 
-h4.skills_subcategory
-{
-    font-size: 30px;
-    color: #787878;
-}
-
-a.skills-rating
-{
-	color: #787878;
-	pointer-events: none;
-	cursor: default;
-}
-ul.skills-rating
-{
-	width: auto;
-	height: 200px;
-}
-li.skill
-{
-	display: inline;
-	float: left;
-    width: 40%;
-	margin: 10px 60px;
-    font-size: 20px;
-}
-div.skill-title
-{
-	float: left;
-}
-div.skill-rating
-{
-	float: right;
-}
+    div.skill-title
+    {
+        float: left;
+    }
+    div.skill-rating
+    {
+        float: right;
+    }

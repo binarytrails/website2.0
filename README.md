@@ -6,11 +6,11 @@ Django html5 website
 * Indent 4 spaces
 * Global static variables
 
-    AWESOME_STATIC_VARIABLE
+        AWESOME_STATIC_VARIABLE
 
 * Function variable
 
-    awesome_function_variable
+        awesome_function_variable
 
 * Priority to new line per bracket
 
@@ -30,30 +30,30 @@ Django html5 website
 
 To complile install PIL library
     
-    sudo apt-get install python2.7-dev
+        sudo apt-get install python2.7-dev
 
 Create a local virtual environment with all the tools inside
 
-    virtualenv DJANGO
+        virtualenv DJANGO
 
 Activate virtualenv
 
-    source DJANGO/bin/activate
+        source DJANGO/bin/activate
 
 Install dependecies
 
-    easy_install django==1.4.5 south django_debug_toolbar 
-    pip install PIL --allow-external PIL --allow-unverified PIL
+        easy_install django==1.4.5 south django_debug_toolbar 
+        pip install PIL --allow-external PIL --allow-unverified PIL
 
 Remove installed dependencies
     
-    easy_install -m [package]
+        easy_install -m [package]
 
 Then you can remove locally left PackageName.egg
 
 To quit virtualenv
 
-    deactivate
+        deactivate
 
 
 ## Features
@@ -64,7 +64,7 @@ To quit virtualenv
 * PIL : Python Image Library
 
 ### Add-ons
-* Linear : Base website template
+* Reset CSS : Stylesheet to reduce browser inconsistencies
 * Swipebox : jQuery lightbox
 
 
@@ -118,26 +118,26 @@ To quit virtualenv
 
 ### South
 
-    ./manage.py schemamigration frontend --initial
-    ./manage.py migrate frontend
-    ./manage.py syncdb
+        ./manage.py schemamigration frontend --initial
+        ./manage.py migrate frontend
+        ./manage.py syncdb
 
-    ./manage.py schemamigration frontend --auto
-    ./manage.py migrate frontend
+        ./manage.py schemamigration frontend --auto
+        ./manage.py migrate frontend
 
 ### Database population
    
-    ./manage shell
-    from frontend.models import Photo
-    photo = Photo(title = "This is the world that you know.", 
-    filename = "world_that_you_know-the_matrix.png", 
-        description = "The Matrix (1999) by The Wachowski Brothers", 
-        author = "The Wachowski Brothers")
+        ./manage shell
+        from frontend.models import Photo
+        photo = Photo(title = "This is the world that you know.", 
+        filename = "world_that_you_know-the_matrix.png", 
+            description = "The Matrix (1999) by The Wachowski Brothers", 
+            author = "The Wachowski Brothers")
 
 
 ### ShellScript
     
-    ./manage shell < script.py
+        ./manage shell < script.py
 
 
 ## Code for thought

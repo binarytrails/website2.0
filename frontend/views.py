@@ -6,43 +6,41 @@ from kedfilms import utils
 from .models import User, Section, Subsection, Skill, Photo
 
 IMG_DIR = "frontend/static/frontend/img/"
-KEDFILMS_FOUNDER = User.objects.get(nick = "kedfilms-founder")
-HOME_SECTION = Section.objects.get(name = "Home")
 
 def home(request):
-	# CS: Computer Science
-	computerscience_skills_subcategories = {}
-	computerscience_filterargs = {
-      "category": "CS",
-      "owner": KEDFILMS_FOUNDER
+    home_section = Section.objects.get(name = "Home")
+    computerscience_skills_subcategories = {}
+    computerscience_filterargs = {
+        "category": "CS",
+        "owner": User.objects.get(nick = "kedfilms-founder")
     }
-	for skill in Skill.objects.all().filter(**computerscience_filterargs).distinct():
-		computerscience_skills_subcategories[str(skill.subcategory)] = skill.get_subcategory_display()
+    for skill in Skill.objects.all().filter(**computerscience_filterargs).distinct():
+    	computerscience_skills_subcategories[str(skill.subcategory)] = skill.get_subcategory_display()
 
-	return render_to_response(
+    return render_to_response(
         "frontend/home.html",{
-		    "title" : HOME_SECTION.title,
-		    "subtitle" : HOME_SECTION.subtitle,
+            "title" : home_section.title,
+            "subtitle" : home_section.subtitle,
             "rd_section": Subsection.objects.all().filter(
-                section = HOME_SECTION,
+                section = home_section,
                 name = "r&d"
             )[0],
             "articles_section": Subsection.objects.all().filter(
-                section = HOME_SECTION,
+                section = home_section,
                 name = "articles"
             )[0],
             "videos_section": Subsection.objects.all().filter(
-                section = HOME_SECTION,
+                section = home_section,
                 name = "videos"
             )[0],
             "photos_section": Subsection.objects.all().filter(
-                section = HOME_SECTION,
+                section = home_section,
                 name = "photos"
             )[0],
             "skills_section": "ABILITIES",
             "computerscience_skills_subcategories": computerscience_skills_subcategories,
-		    "computerscience_skills": Skill.objects.all().filter(**computerscience_filterargs)
-	    }
+            "computerscience_skills": Skill.objects.all().filter(**computerscience_filterargs)
+        }
     )
 
 def articles(request):

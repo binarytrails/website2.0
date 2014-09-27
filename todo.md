@@ -3,8 +3,7 @@ README.md
     Define tables
 
 CSS
-    Destroy linear & extract to simple files
-    Remove third parties logos
+    Reorganize
 
 Code
     Refactor code to coding style

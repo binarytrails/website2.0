@@ -16,7 +16,7 @@
 	{
 		margin: 0;
 		padding: 0;
-		background: #161616;
+		background: #1E1E1E;
 	}
 
 	body,input,textarea,select
@@ -41,8 +41,7 @@
 		h2
 		{
 			letter-spacing: -0.025em;
-		}
-	
+		}	
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 		{
 			color: inherit;
@@ -775,7 +774,7 @@
 	#header
 	{
 		position: relative;
-		background: url(../../img/cover.jpg) no-repeat bottom center;
+		background: url(../../img/wallpapers/head-banner.jpg) no-repeat bottom center;
 		background-attachment: fixed;
 		background-size: cover;
 		text-align: center;
@@ -902,7 +901,7 @@
 	#main
 	{
 		position: relative;
-		background: #F2F2F2;
+		background: #1E1E1E;
 	}
 	
 	.homepage #content
@@ -972,7 +971,7 @@
 	#featured
 	{
 		position: relative;
-		background: #f2f2f2;
+		background: #1E1E1E;
 		text-align: center;
 	}
 	
@@ -1000,7 +999,7 @@
 	{
 		position: relative;
 		text-align: center;
-		background: url(../../img/cover.jpg) no-repeat center center;
+		background: url(../../img/wallpapers/foot-banner.jpg) no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
 	}

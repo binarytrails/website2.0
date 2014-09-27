@@ -6,13 +6,13 @@
 
 	<div id="featured">
 		<div id="content" class="container">
-			<section>
-				<header>
-					<h2>{{ title }}</h2>
-				</header>
-				<h3>{{ subtitle }}</h3>
-				<hr></hr>
-            </section>
+            <header>
+                <h2>{{ title }}</h2>
+            </header>
+            {% autoescape off %}
+            <h3 class="subtitle">{{ subtitle }}</h3>
+            {% endautoescape %}
+            <hr></hr>
 		</div>
 	</div>
 	<div id="main">
@@ -21,63 +21,100 @@
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3>R & D</h3>
+							<h3 class="dropdown">{{ rd_section.title }}</h3>
 						</header>
-							{% for key, value in cs_subcats.items %}
-								<h4 class="skills_subcategory">
-                                    {{ value }}
-                                </h4> 
-								<br/></br>
-									<ul class="skills-rating">
-										{% load filters %}
-										{% for skill in skills|in_subcategory:key %}
-											<li class="skills-rating">
-												<p class="left">
-													{{ skill.title }}
-												</p>
-												<p class="right">
-													{% load filters %}
-													{% for i in 5|times	%}
-														{% if i < skill.rating_on_five %}
-															<a href="" class="skills-rating fa fa-star"></a>
-														{% else %} 
-															<a href="" class="skills-rating fa fa-star-o"></a>
-														{% endif %}
-													{% endfor %}
-												</p>
-										  </li>
-									  {% endfor %}
-								  </ul>
-						{% endfor %}
-					</div>
+                        <h4>
+                            {% autoescape off %}
+                            {{ rd_section.body }}
+                            {% endautoescape %}
+                        </h4>
+                    </div>
 				</section>
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3>ARTICLES</h3>
+							<h3 class="dropdown">{{ articles_section.title }}</h3>
 						</header>
-					</div>
+                        <h4>
+                            {% autoescape off %}
+                            {{ articles_section.body }}
+                            {% endautoescape %}
+                        </h4>
+                    </div>
 				</section>
 			</div>
 			<div class="row">
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3>SHORT FILMS</h3>
+							<h3 class="dropdown">{{ videos_section.title }}</h3>
 						</header>
+                        <h4>
+                            {% autoescape off %}
+                            {{ videos_section.body }}
+                            {% endautoescape %}
+                        </h4>
 					</div>
 				</section>
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3>PHOTOGRAPHY</h3>
+							<h3 class="dropdown">{{ photos_section.title }}</h3>
 						</header>
+                        <h4>
+                            {% autoescape off %}
+                            {{ photos_section.body }}
+                            {% endautoescape %}
+						</h4>
 					</div>
 				</section>
-			    <section>
-                    <hr></hr>
-                </section>
             </div>
 		</div>
 	</div>
+    <div id="featured">
+        <div id="content" class="container">
+            <section>
+                <hr></hr>
+            </section>
+            <section>
+                <header>
+                    <h2>
+                        {{ skills_section.title }}
+                    </h2>
+                </header>
+            </section>
+        </div>
+    </div>
+    <div id="main">
+        <div id="content" class="container">
+            {% for skill_subcategory_key, skill_subcategory_value in computerscience_skills_subcategories.items %}
+            <section>
+                <h4 class="skills_subcategory">
+                    {{ skill_subcategory_value }}
+                </h4>
+                </br></br>
+                <ul class="skills-rating">
+                    {% load filters %}
+                    {% for skill in computerscience_skills|in_subcategory:skill_subcategory_key %}
+                        <li class="skill">
+                            <div class="skill-title">
+                                {{ skill.title }}
+                            </div>
+                            <div class="skill-rating">
+                                {% load filters %}
+                                {% for i in 5|times %}
+                                    {% if i < skill.rating_on_five %}
+                                        <a href="" class="skills-rating fa fa-star"></a>
+                                    {% else %}
+                                        <a href="" class="skills-rating fa fa-star-o"></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                      </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,38 +1,13 @@
-h4.skills_subcategory
+h3.subtitle
 {
-    font-size: 18px;
-    color: #787878;
+    line-height: 1.5;
 }
 
-a.skills-rating
-{
-	color: #2C3539;
-	pointer-events: none;
-	cursor: default;
-}
 
-ul.skills-rating
+h3.dropdown
 {
-	width: 570px;
-	height: 100px;
-}
-
-li.skills-rating
-{
-	display: inline;
-	width: 40%;
-	float: left;
-	margin: 10px 24px;
-}
-
-p.left
-{
-	float: left;
-}
-
-p.right
-{
-	float: right;
+    color: #494949;
+    font-family: sans-serif;
 }
 
 div.rolldown
@@ -41,9 +16,9 @@ div.rolldown
 	top: -100;
 	float: left;
 	width: 570px;
-	height: 65px;
+	height: 50px;
 
-	background: #E5E4E2;
+	background: #CCCCCC;
 	-webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
 	transition: height 2s;
 
@@ -51,8 +26,41 @@ div.rolldown
 	overflow: hidden;
 	border: 10px solid transparent;
 }
-
 div.rolldown:hover
 {
 	height: 400px;
+}
+
+h4.skills_subcategory
+{
+    font-size: 30px;
+    color: #787878;
+}
+
+a.skills-rating
+{
+	color: #787878;
+	pointer-events: none;
+	cursor: default;
+}
+ul.skills-rating
+{
+	width: auto;
+	height: 200px;
+}
+li.skill
+{
+	display: inline;
+	float: left;
+    width: 40%;
+	margin: 10px 60px;
+    font-size: 20px;
+}
+div.skill-title
+{
+	float: left;
+}
+div.skill-rating
+{
+	float: right;
 }

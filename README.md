@@ -4,6 +4,14 @@ Django html5 website
 
 ## Coding style
 * Indent 4 spaces
+* Global static variables
+
+    AWESOME_STATIC_VARIABLE
+
+* Function variable
+
+    awesome_function_variable
+
 * Priority to new line per bracket
 
         function

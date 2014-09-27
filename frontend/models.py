@@ -23,6 +23,40 @@ class User(models.Model):
         blank = False
     )
 
+class Section(models.Model):
+    name = models.CharField(
+        primary_key = True,
+        max_length = 10
+    )
+    title = models.CharField(
+        max_length = 25
+    )
+    subtitle = models.CharField(
+        max_length = 250
+    )
+    owner = models.ForeignKey(
+        'User'
+    )
+
+class Subsection(models.Model):
+    name = models.CharField(
+        max_length = 10
+    )
+    title = models.CharField(
+        max_length = 25
+    )
+    body = models.CharField(
+        max_length = 25
+    )
+    section = models.ForeignKey(
+        'Section'
+    )
+
+    class Meta:
+        unique_together = (
+            ('name', 'section')
+        )
+
 class Article(models.Model):
     CATEGORIES = (
         ('LX', 'Linux world'),

@@ -26,12 +26,9 @@ Django html5 website
         }
 
 
-## Virtualenv setup
+## Getting started
 
-To complile install PIL library
-    
-        sudo apt-get install python2.7-dev
-
+### 1. Create your virtual environment
 Create a local virtual environment with all the tools inside
 
         virtualenv DJANGO
@@ -40,10 +37,25 @@ Activate virtualenv
 
         source DJANGO/bin/activate
 
-Install dependecies
+Install django and it tools inside
 
-        easy_install django==1.4.5 south django_debug_toolbar 
+        easy_install django==1.7 django_debug_toolbar 
+
+
+### 2. Install PIL
+It is used for image resizing in the photos section. To complile it you would need some tools
+
+        sudo apt-get install python2.7-dev
+
+Install it in the virtualenv
+
         pip install PIL --allow-external PIL --allow-unverified PIL
+
+### 3. Post-installation
+
+Launch the website
+
+        ./manage runserver
 
 Remove installed dependencies
     
@@ -51,7 +63,7 @@ Remove installed dependencies
 
 Then you can remove locally left PackageName.egg
 
-To quit virtualenv
+To quit the virtualenv
 
         deactivate
 
@@ -60,7 +72,6 @@ To quit virtualenv
 
 ### Plugins
 * Django-debug-toolbar : Browser debug toolbar
-* South : Database updater
 * PIL : Python Image Library
 
 ### Add-ons

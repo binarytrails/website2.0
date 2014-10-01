@@ -1,5 +1,5 @@
 # Kedfilms
-Django html5 website
+Django html5 website mainly focusing on avoiding scripts by implementing css3 functionalities.
 
 ## Coding style
 * Indent 4 spaces

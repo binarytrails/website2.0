@@ -1,6 +1,6 @@
     h2.title
     {
-        margin: 50px 0px 0px 0px;
+        margin-top: 1.5em;
     }
     h3.subtitle
     {
@@ -19,11 +19,14 @@
         font-size: 13pt;
         color: #494949;
     }
+    
     h4.skills_category
     {
         font-size: 30px;
         color: #787878;
+        cursor: default;
     }
+
 
     div.rolldown
     {
@@ -46,17 +49,18 @@
         height: 400px;
     }
 
-    a.skills-rating
+    a.skills
     {
         color: #787878;
         pointer-events: none;
         cursor: default;
     }
-    ul.skills-rating
+    ul.skills
     {
         width: auto;
         height: 200px;
     }
+
     li.skill
     {
         font-size: 20pt;
@@ -70,7 +74,7 @@
     }
         li.skill:hover
         {
-            text-shadow: 0 0 3px green;        
+            text-shadow: 0 0 10px green;        
         }
 
     div.skill-title

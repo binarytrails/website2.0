@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source scripts/bash/generic/makechoice
+source scripts/bash/makechoice
 makechoice "Do you accept the database and the migrations removal?"
 
 if [ $run == false ]; then
@@ -18,6 +18,13 @@ echo; echo "Creating database with South wrapper"; echo
 ./manage.py migrate
 ./manage.py shell < scripts/database/users.py
 ./manage.py shell < scripts/database/skills.py
-./manage.py shell < scripts/database/photos.py
+
+echo; echo "Should we create a moq for photos mapped in 'scripts/database/photos.py'? (yes, *):"; read create
+if [ "$create" == "yes" ]; then
+    ./manage.py shell < scripts/database/photos-moq.py
+else
+    ./manage.py shell < scripts/database/photos.py
+fi
+
 echo; echo "Everything is done! Launching the server..."; echo
 ./manage.py runserver

@@ -17,40 +17,57 @@
 		color: #777;
 	}
 
+	header
+	{
+		margin-bottom: 1.6em;
+	}
+	
+		header h2
+		{
+			font-size: 3.4em;
+		}
+
+		header .byline
+		{
+			font-size: 1.7em;
+		}
+
+
 	h1,h2,h3,h4,h5,h6
 	{
 		font-weight: 300;
 		color: #777;
-        transition: all 0.5s;
 	}
-    h1:hover
-    {
-        text-shadow: 0 0 5px #87AFC7;
-    }
-		h2
-		{
-			letter-spacing: -0.025em;
-		}	
-		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
-		{
-			color: inherit;
-			text-decoration: none;
+	
+    h2
+	{
+		letter-spacing: -0.025em;
+	}
+	
+	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+	{
+		color: inherit;
+		text-decoration: none;
+	}
+	a
+	{
+		text-decoration: none;
+		color: #777777;
+		transition: all 0.5s;
+	}
+		a:hover
+		{   
+			text-shadow: 0 0 15px white;
 		}
+	a img
+	{
+		border: 0px;
+	}
  		
 	em, i
 	{
 		font-style: italic;
 	}
-
-	
-	a:hover
-	{   
-		text-decoration: underline;
-	}
-    a img
-    {
-        border: 0px;
-    }
          
 	hr
 	{
@@ -66,25 +83,97 @@
 		padding: 1em 0 1em 2em;
 		font-style: italic;
 	}
-	
 
 	header
 	{
 		margin-bottom: 1.6em;
 	}
 	
-		header h2
-		{
-            font-size: 3.4em;
-		}
+	header h2
+	{
+        font-size: 3.4em;
+	}
 
-		header .byline
+	header .byline
+	{
+		display: block;
+		margin: 1.5em 0 0 0;
+		padding: 0 0 0.5em 0;
+	}
+
+	br.clear
+	{
+		clear: both;
+	}
+
+	.pennant
+	{
+		color: #bbb;
+	}
+
+	/* Lists */
+	ul.default
+	{
+		margin: 0;
+		padding: 0em 0em 1.5em 0em;
+		list-style: none;
+		text-align: left;
+	}
+	
+	ul.default li
+	{
+		padding: 0.60em 0em;
+		font-size: 0.95em;
+		border-top: 1px solid;
+		border-color: #777777;
+	}		
+
+		ul.default li:first-child
 		{
-			display: block;
-			margin: 1.5em 0 0 0;
-			padding: 0 0 0.5em 0;
+			padding-top: 0;
+			border-top: none;
 		}
-		
+	
+	ul.style li
+	{
+		margin: 0;
+		padding: 2em 0em 1.5em 0em;
+		border-top: 1px solid;
+		border-color: rgba(0,0,0,.1);
+	}
+	
+	ul.style li:first-child
+	{
+		padding-top: 0;
+		border-top: none;
+	}
+	
+	ul.style img
+	{
+		float: left;
+		margin-right: 20px;
+	}
+	
+	ul.style a
+	{
+		color: #434343;
+	}
+	
+	ul.style .posted
+	{
+		padding: 0em 0em 1em 0em;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-size: 8pt;
+		color: #A2A2A2;
+	}
+	
+	ul.style .first
+	{
+		padding-top: 0px;
+		border-top: none;
+	}
+
 	footer
 	{
 		margin-top: 1em;
@@ -114,6 +203,20 @@
             height: 100%;
             background: rgba(64,64,64,0.125);
         }
+
+    #header h1
+    {
+        font-size: 80pt;
+        cursor: default;
+        transition: all 2s;
+    }
+    
+        #header h1:hover
+        {
+            text-shadow: 0 0 5px white;
+        }
+
+
 
 /*********************************************************************************/
 /* Logo                                                                          */
@@ -147,11 +250,12 @@
 		{
 			font-size: 1.4em;
 			color: #FFF;
+            cursor: default;
 		    transition: all 0.5s;
         }
         #logo span:hover
         {
-            text-shadow: 0 0 5px green;
+            text-shadow: 0 0 5px white;
         }
 	
 /*********************************************************************************/
@@ -182,6 +286,39 @@
 		line-height: 2em;
 		font-size: 1.2em;
 	}
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+        position: relative;
+        background: #1E1E1E;
+        margin-left: 5em;
+        margin-right: 5em;
+        margin-bottom: 1.5em;
+	}
+
+	.homepage #content
+	{
+        text-align: center;
+	}
+
+	.homepage #content header h2
+	{
+	}
+
+	#sidebar h2
+	{
+        display: block;
+        padding-bottom: 0.50em;
+	}
+
+	#main p
+	{
+		margin: 2em 0 2em;
+	}	
 	
 /*********************************************************************************/
 /* Tweet                                                                         */
@@ -257,7 +394,7 @@
 		#nav > ul > li
 		{
 			display: inline-block;
-			border-right: 1px solid;
+			border: 1px solid;
 			border-color: rgba(255,255,255,.1);
 		}
 		

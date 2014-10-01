@@ -12,11 +12,11 @@ Django html5 website
 
     * Otherwise
 
-        awesome_variable
+            awesome_variable
     
     * Global static variables are uppercase
 
-        AWESOME_STATIC_VARIABLE
+            AWESOME_STATIC_VARIABLE
 
 * Priority to new line per bracket
 
@@ -95,49 +95,49 @@ To quit the virtualenv
 
     user/category/subcategory/article-base.html
 
-* Database is used to handle technical information on photos & videos as well as reducing templates code redundance & painfull maintenance via database scripts i.e. scripts/database/skills.py.
+* Database is used to store technical information used in templates
 
-    +-----------+                        
-    |    USER   |                                                              
-    +-----------+                   
-    | NICK (PK1)|||-+                                                      
-    | NAME      |   |                    
-    | LASTNAME  |   |   +-----------------+
-    | EMAIL     |   |   |     PHOTO       |
-    +-----------+   |   |-----------------| 
-                    |   | FILENAME (PK1)  |
-                    |   | TITLE (U1)      |
-                    |   | DESCRIPTION     |
-                    |   | CATEGORY (U1)   |
-                    |   | AUTHOR          |
-                    |   | DATE_CREATED    |
-                    +-0<| OWNER (FK1,U1)  |
-                    |   +-----------------+
-                    |
-                    |   +------------------+
-                    |   |     VIDEO        |
-                    |   +------------------+
-                    |   | FILENAME (PK1)   |
-                    |   | TITLE (U1)       |
-                    |   | DESCRIPTION      |
-                    |   | CATEGORY (U1)    |
-                    |   | AUTHOR           |
-                    |   | DIRECTOR         |
-                    |   | SFX              |
-                    +-0<| OWNER (FK1,U1)   |
-                    |   +------------------+
-                    |
-                    |   +------------------+
-                    |   |     SKILL        |
-                    |   +------------------+
-                    |   | ID (PK1)         |
-                    |   | TITLE (U1)       |
-                    |   | DESCRIPTION      |
-                    |   | CATEGORY (U1)    |
-                    |   | SUBCATEGORY (U1) |
-                    |   | RATING_ON_FIVE   |
-                    +-0<| OWNER (FK1,U1)   |
-                        +------------------+
+	    +-----------+
+	    |    USER   |
+	    +-----------+
+	    | NICK (PK1)|||-+ 
+	    | NAME      |   | 
+	    | LASTNAME  |   |   +-----------------+
+	    | EMAIL     |   |   |     PHOTO       |
+	    +-----------+   |   |-----------------| 
+		            |   | FILENAME (PK1)  |
+		            |   | TITLE (U1)      |
+		            |   | DESCRIPTION     |
+		            |   | CATEGORY (U1)   |
+		            |   | AUTHOR          |
+		            |   | DATE_CREATED    |
+		            +-0<| OWNER (FK1,U1)  |
+		            |   +-----------------+
+		            |
+		            |   +------------------+
+		            |   |     VIDEO        |
+		            |   +------------------+
+		            |   | FILENAME (PK1)   |
+		            |   | TITLE (U1)       |
+		            |   | DESCRIPTION      |
+		            |   | CATEGORY (U1)    |
+		            |   | AUTHOR           |
+		            |   | DIRECTOR         |
+		            |   | SFX              |
+		            +-0<| OWNER (FK1,U1)   |
+		            |   +------------------+
+		            |
+		            |   +------------------+
+		            |   |     SKILL        |
+		            |   +------------------+
+		            |   | ID (PK1)         |
+		            |   | TITLE (U1)       |
+		            |   | DESCRIPTION      |
+		            |   | CATEGORY (U1)    |
+		            |   | SUBCATEGORY (U1) |
+		            |   | RATING_ON_FIVE   |
+		            +-0<| OWNER (FK1,U1)   |
+		                +------------------+
                                                                         
                              
 

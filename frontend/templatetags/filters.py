@@ -17,8 +17,8 @@ def times(number):
     return range(number)
 
 @register.filter
-def in_subcategory(objects, subcategory):
-	return objects.filter(subcategory = subcategory)
+def in_category(objects, category):
+	return objects.filter(category = category)
 
 @register.filter
 def imageWidth(path):

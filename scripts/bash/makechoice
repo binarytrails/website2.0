@@ -1,0 +1,35 @@
+: "
+    function : makechoice
+
+        source path/to/script
+        makechoice 'Do you accept the database and the migrations removal?'
+
+        if [ $run == false ]; then
+            exit 0
+        fi
+        # your code here
+"
+
+run=false
+
+function makechoice
+{
+    local choicemade=false
+
+    while [ $choicemade == false ]
+    do
+        echo $1; echo -n "(yes, no): "; read answer
+     
+        if [ "$answer" == "yes" ]; then
+            choicemade=true
+            run=true
+
+        elif [ "$answer" == "no" ]; then
+            choicemade=true 
+            run=false
+
+        else
+            echo "Take your time..."
+        fi
+    done
+}

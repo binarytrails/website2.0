@@ -7,11 +7,13 @@
 	<div id="featured">
 		<div id="content" class="container">
             <header>
-                <h2>{{ title }}</h2>
+                <h2>Yours truly</h2>
             </header>
-            {% autoescape off %}
-            <h3 class="subtitle">{{ subtitle }}</h3>
-            {% endautoescape %}
+            <h3 class="subtitle">
+                I am a humanbeing, an amazing student & a freelancer.</br>
+                Art & minutiae are transparent in my projects.</br>
+                Opensource is a reality & Linux is a choice.</br>
+            </h3>
             <hr></hr>
 		</div>
 	</div>
@@ -21,24 +23,20 @@
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3 class="dropdown">{{ rd_section.title }}</h3>
+							<h3 class="dropdown">R & D</h3>
 						</header>
                         <h4 class="dropdown">
-                            {% autoescape off %}
-                            {{ rd_section.body }}
-                            {% endautoescape %}
+                            TEXT
                         </h4>
                     </div>
 				</section>
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3 class="dropdown">{{ articles_section.title }}</h3>
+							<h3 class="dropdown">Articles</h3>
 						</header>
                         <h4 class="dropdown">
-                            {% autoescape off %}
-                            {{ articles_section.body }}
-                            {% endautoescape %}
+                            TEXT
                         </h4>
                     </div>
 				</section>
@@ -47,24 +45,20 @@
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3 class="dropdown">{{ videos_section.title }}</h3>
+							<h3 class="dropdown">Videos</h3>
 						</header>
                         <h4 class="dropdown">
-                            {% autoescape off %}
-                            {{ videos_section.body }}
-                            {% endautoescape %}
+                            TEXT
                         </h4>
 					</div>
 				</section>
 				<section class="6u">
 					<div class="rolldown">
 						<header>
-							<h3 class="dropdown">{{ photos_section.title }}</h3>
+							<h3 class="dropdown">Photography</h3>
 						</header>
                         <h4 class="dropdown">
-                            {% autoescape off %}
-                            {{ photos_section.body }}
-                            {% endautoescape %}
+                            TEXT
 						</h4>
 					</div>
 				</section>
@@ -78,24 +72,22 @@
             </section>
             <section>
                 <header>
-                    <h2 class="title">
-                        {{ skills_section.title }}
-                    </h2>
+                    <h2 class="title">Abilities</h2>
                 </header>
             </section>
         </div>
     </div>
     <div id="main">
         <div id="content" class="container">
-            {% for skill_subcategory_key, skill_subcategory_value in computerscience_skills_subcategories.items %}
+            {% for category in skills_categories %}
             <section>
-                <h4 class="skills_subcategory">
-                    {{ skill_subcategory_value }}
+                <h4 class="skills_category">
+                    {{ category }}
                 </h4>
                 </br></br>
                 <ul class="skills-rating">
                     {% load filters %}
-                    {% for skill in computerscience_skills|in_subcategory:skill_subcategory_key %}
+                    {% for skill in skills|in_category:category %}
                         <li class="skill">
                             <div class="skill-title">
                                 {{ skill.title }}

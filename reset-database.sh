@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source scripts/bash/generic/makeChoice
-makeChoice "Do you accept the database and the migrations removal?"
+source scripts/bash/generic/makechoice
+makechoice "Do you accept the database and the migrations removal?"
 
-if [ $keepRunning == false ]; then
+if [ $run == false ]; then
     exit 0
 fi
 
@@ -16,9 +16,8 @@ echo; echo "Creating database with South wrapper"; echo
 ./manage.py makemigrations
 ./manage.py syncdb
 ./manage.py migrate
-./manage.py shell < scripts/manage/database/users.py
-./manage.py shell < scripts/manage/database/sections.py
-./manage.py shell < scripts/manage/database/skills.py
-./manage.py shell < scripts/manage/database/photos.py
+./manage.py shell < scripts/database/users.py
+./manage.py shell < scripts/database/skills.py
+./manage.py shell < scripts/database/photos.py
 echo; echo "Everything is done! Launching the server..."; echo
 ./manage.py runserver

@@ -23,87 +23,9 @@ class User(models.Model):
         blank = False
     )
 
-class Section(models.Model):
-    name = models.CharField(
-        primary_key = True,
-        max_length = 10
-    )
-    title = models.CharField(
-        max_length = 25
-    )
-    subtitle = models.CharField(
-        max_length = 250
-    )
-    owner = models.ForeignKey(
-        'User'
-    )
-
-class Subsection(models.Model):
-    name = models.CharField(
-        max_length = 10
-    )
-    title = models.CharField(
-        max_length = 25
-    )
-    body = models.CharField(
-        max_length = 25
-    )
-    section = models.ForeignKey(
-        'Section'
-    )
-
-    class Meta:
-        unique_together = (
-            ('name', 'section')
-        )
-
-class Article(models.Model):
-    CATEGORIES = (
-        ('LX', 'Linux world'),
-    )
-    SUBCATEGORIES = (
-        # Linux World
-        ('TM', 'Terminal'),
-        ('HW', 'Hardware'),
-    )
-
-    title = models.CharField(
-        max_length = 50,
-        blank = False
-    )
-    subtitle = models.CharField(
-        max_length = 50
-    )
-    category = models.CharField(
-        max_length = 50,
-        choices = CATEGORIES,
-        blank = False   
-    )
-    subcategory = models.CharField(
-        max_length = 50,
-        choices = SUBCATEGORIES,
-        blank = False
-    )
-    date_created = models.DateField(
-        default = date.today
-    )
-    date_modified = models.DateField(
-        default = date.today
-    )
-    author = models.ForeignKey(
-        'User'
-    )
-
-    class Meta:
-        unique_together = (
-            ('author', 'title', 'category', 'subcategory')
-        )
-
 class Photo(models.Model):
-    CATEGORIES = (
-        ('GN', 'General'),
-        ('PF', 'Portfolio'),
-    )
+    GN = 'General'
+    PF = 'Portfolio'
  
     filename = models.CharField(
             primary_key = True,
@@ -119,8 +41,8 @@ class Photo(models.Model):
     )
     category = models.CharField(
         max_length = 2,
-        choices = CATEGORIES,
-        blank = False 
+        blank = False,
+        default = GN
     )
     author = models.CharField(
             max_length = 50,
@@ -139,11 +61,9 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    CATEGORIES = (
-        ('I', 'Intro'),
-        ('C', 'Complete'),
-        ('U', 'Unofficial'),
-    )
+    IN = 'Intro'
+    CM = 'Complete'
+    UN = 'Unofficial'
 
     filename = models.CharField(
         primary_key = True,
@@ -159,8 +79,8 @@ class Video(models.Model):
     )
     category = models.CharField(
         max_length = 2,
-        choices = CATEGORIES,
-        blank = False 
+        blank = False,
+        default = UN
     )
     author = models.CharField(
         max_length = 50,
@@ -182,26 +102,19 @@ class Video(models.Model):
         )
 
 class Skill(models.Model):
-    CATEGORIES = (
-        ('CS', 'Computer science'),
-        ('DA', 'Digital arts'),
-    )
-    SUBCATEGORIES = (
-        # Computer science
-        ('MD', 'Methods of development'),
-        ('OS', 'Operative systems'),
-        ('F', 'Framework'),
-        ('RC', 'Revision control'),
-        ('P', 'Programming'),
-        ('ML', 'Markup language'),
-        ('DB', 'Database'),
-        ('N', 'Network'),
-        ('S', 'Server'),
-        ('H', 'Hardware'),
-        # Digital arts
-        ('SE', 'Special effects'),
-        ('IM', 'Image manipulation'),
-    )
+    GN = "General"
+    MD = 'Methods of development'
+    OS = 'Operative systems'
+    FR = 'Framework'
+    RC = 'Revision control'
+    PR = 'Programming'
+    ML = 'Markup language'
+    DB = 'Database'
+    NW = 'Network'
+    SR = 'Server'
+    HW = 'Hardware'
+    SE = 'Special effects'
+    IM = 'Image manipulation'
 
     title = models.CharField(
         max_length = 10,
@@ -213,12 +126,7 @@ class Skill(models.Model):
     category = models.CharField(
         max_length = 2,
         blank = False,
-        choices = CATEGORIES
-    )
-    subcategory = models.CharField(
-        max_length = 2,
-        blank = False,
-        choices = SUBCATEGORIES
+        default = GN
     )
     rating_on_five = models.DecimalField(
         max_digits = 1,
@@ -230,6 +138,6 @@ class Skill(models.Model):
     
     class Meta:
         unique_together = (
-            ('owner', 'title', 'category', 'subcategory')
+            ('owner', 'title', 'category')
         )
 

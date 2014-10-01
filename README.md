@@ -1,16 +1,22 @@
 # Kedfilms
 Django html5 website
 
-
 ## Coding style
 * Indent 4 spaces
-* Global static variables
+
+* Functions & variables
+
+    * If you can read it make it simple
+
+            makechoice
+
+    * Otherwise
+
+        awesome_variable
+    
+    * Global static variables are uppercase
 
         AWESOME_STATIC_VARIABLE
-
-* Function variable
-
-        awesome_function_variable
 
 * Priority to new line per bracket
 
@@ -25,6 +31,10 @@ Django html5 website
             # code here
         }
 
+* Create database tables only if necessary
+
+    * To reduce code redundance
+    * To stock object related information
 
 ## Getting started
 
@@ -81,75 +91,61 @@ To quit the virtualenv
 
 ## Database diagram : crow's foot notation
 
-                                   +-----------+                        
-                                   |    USER   |                                                              
-                                   +-----------+                   
-                               +-|<| NICK (PK1)|||-+                                                      
-                               |   | NAME      |   |                    
-                               |   | LASTNAME  |   |   +-----------------+
-                               |   | EMAIL     |   |   |     PHOTO       |
-                               |   +-----------+   |   |-----------------| 
-    +----------------------+   |                   |   | FILENAME (PK1)  |
-    |      ARTICLE         |   |                   |   | TITLE (U1)      |
-    +----------------------+   |                   |   | DESCRIPTION     |
-    | ID (PK1)             |   |                   |   | CATEGORY (U1)   |
-    | TITLE (U1)           |   |                   |   | AUTHOR          |
-    | SUBTITLE             |   |                   |   | DATE_CREATED    |
-    | CATEGORY (U1)        |   |                   +-0<| OWNER (FK1,U1)  |
-    | SUBCATEGORY (U1)     |   |                   |   +-----------------+
-    | DATE_CREATED         |   |                   |
-    | DATE_MODIFIED        |   |                   |   +------------------+
-    | AUTHOR (FK1, U1)     |>0-+                   |   |     VIDEO        |
-    +----------------------+                       |   +------------------+
-     * set url manually                            |   | FILENAME (PK1)   |
-                                                   |   | TITLE (U1)       |
-                                                   |   | DESCRIPTION      |
-                                                   |   | CATEGORY (U1)    |
-                                                   |   | AUTHOR           |
-                                                   |   | DIRECTOR         |
-                                                   |   | SFX              |
-                                                   +-0<| OWNER (FK1,U1)   |
-                                                   |   +------------------+
-                                                   |
-                                                   |   +------------------+
-                                                   |   |     SKILL        |
-                                                   |   +------------------+
-                                                   |   | ID (PK1)         |
-                                                   |   | TITLE (U1)       |
-                                                   |   | DESCRIPTION      |
-                                                   |   | CATEGORY (U1)    |
-                                                   |   | SUBCATEGORY (U1) |
-                                                   |   | RATING_ON_FIVE   |
-                                                   +-0<| OWNER (FK1,U1)   |
-                                                       +------------------+
+* Articles works on behalf of a folder structure
+
+    user/category/subcategory/article-base.html
+
+* Database is used to handle technical information on photos & videos as well as reducing templates code redundance & painfull maintenance via database scripts i.e. scripts/database/skills.py.
+
+    +-----------+                        
+    |    USER   |                                                              
+    +-----------+                   
+    | NICK (PK1)|||-+                                                      
+    | NAME      |   |                    
+    | LASTNAME  |   |   +-----------------+
+    | EMAIL     |   |   |     PHOTO       |
+    +-----------+   |   |-----------------| 
+                    |   | FILENAME (PK1)  |
+                    |   | TITLE (U1)      |
+                    |   | DESCRIPTION     |
+                    |   | CATEGORY (U1)   |
+                    |   | AUTHOR          |
+                    |   | DATE_CREATED    |
+                    +-0<| OWNER (FK1,U1)  |
+                    |   +-----------------+
+                    |
+                    |   +------------------+
+                    |   |     VIDEO        |
+                    |   +------------------+
+                    |   | FILENAME (PK1)   |
+                    |   | TITLE (U1)       |
+                    |   | DESCRIPTION      |
+                    |   | CATEGORY (U1)    |
+                    |   | AUTHOR           |
+                    |   | DIRECTOR         |
+                    |   | SFX              |
+                    +-0<| OWNER (FK1,U1)   |
+                    |   +------------------+
+                    |
+                    |   +------------------+
+                    |   |     SKILL        |
+                    |   +------------------+
+                    |   | ID (PK1)         |
+                    |   | TITLE (U1)       |
+                    |   | DESCRIPTION      |
+                    |   | CATEGORY (U1)    |
+                    |   | SUBCATEGORY (U1) |
+                    |   | RATING_ON_FIVE   |
+                    +-0<| OWNER (FK1,U1)   |
+                        +------------------+
                                                                         
-                                                                        
+                             
 
 ## Tutorial
 
-### South
-
-        ./manage.py schemamigration frontend --initial
-        ./manage.py migrate frontend
-        ./manage.py syncdb
-
-        ./manage.py schemamigration frontend --auto
-        ./manage.py migrate frontend
-
-### Database population
-   
-        ./manage shell
-        from frontend.models import Photo
-        photo = Photo(title = "This is the world that you know.", 
-        filename = "world_that_you_know-the_matrix.png", 
-            description = "The Matrix (1999) by The Wachowski Brothers", 
-            author = "The Wachowski Brothers")
-
-
-### ShellScript
+### Database script
     
         ./manage shell < script.py
-
 
 ## Code for thought
 

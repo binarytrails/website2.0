@@ -105,39 +105,39 @@ To quit the virtualenv
 	    | LASTNAME  |   |   +-----------------+
 	    | EMAIL     |   |   |     PHOTO       |
 	    +-----------+   |   |-----------------| 
-		            |   | FILENAME (PK1)  |
-		            |   | TITLE (U1)      |
-		            |   | DESCRIPTION     |
-		            |   | CATEGORY (U1)   |
-		            |   | AUTHOR          |
-		            |   | DATE_CREATED    |
-		            +-0<| OWNER (FK1,U1)  |
-		            |   +-----------------+
-		            |
-		            |   +------------------+
-		            |   |     VIDEO        |
-		            |   +------------------+
-		            |   | FILENAME (PK1)   |
-		            |   | TITLE (U1)       |
-		            |   | DESCRIPTION      |
-		            |   | CATEGORY (U1)    |
-		            |   | AUTHOR           |
-		            |   | DIRECTOR         |
-		            |   | SFX              |
-		            +-0<| OWNER (FK1,U1)   |
-		            |   +------------------+
-		            |
-		            |   +------------------+
-		            |   |     SKILL        |
-		            |   +------------------+
-		            |   | ID (PK1)         |
-		            |   | TITLE (U1)       |
-		            |   | DESCRIPTION      |
-		            |   | CATEGORY (U1)    |
-		            |   | SUBCATEGORY (U1) |
-		            |   | RATING_ON_FIVE   |
-		            +-0<| OWNER (FK1,U1)   |
-		                +------------------+
+	                    |   | FILENAME (PK1)  |
+	                    |   | TITLE (U1)      |
+	                    |   | DESCRIPTION     |
+	                    |   | CATEGORY (U1)   |
+	                    |   | AUTHOR          |
+	                    |   | DATE_CREATED    |
+	                    +-0<| OWNER (FK1,U1)  |
+	                    |   +-----------------+
+	                    |
+	                    |   +------------------+
+	                    |   |     VIDEO        |
+	                    |   +------------------+
+	                    |   | FILENAME (PK1)   |
+	                    |   | TITLE (U1)       |
+	                    |   | DESCRIPTION      |
+	                    |   | CATEGORY (U1)    |
+	                    |   | AUTHOR           |
+	                    |   | DIRECTOR         |
+	                    |   | SFX              |
+	                    +-0<| OWNER (FK1,U1)   |
+	                    |   +------------------+
+	                    |
+	                    |   +------------------+
+	                    |   |     SKILL        |
+	                    |   +------------------+
+	                    |   | ID (PK1)         |
+	                    |   | TITLE (U1)       |
+	                    |   | DESCRIPTION      |
+	                    |   | CATEGORY (U1)    |
+	                    |   | SUBCATEGORY (U1) |
+	                    |   | RATING_ON_FIVE   |
+	                    +-0<| OWNER (FK1,U1)   |
+	                        +------------------+
                                                                         
                              
 

@@ -25,8 +25,8 @@
         font-size: 30px;
         color: #787878;
         cursor: default;
+        text-shadow: 0 0 10px red;
     }
-
 
     div.rolldown
     {
@@ -34,7 +34,7 @@
         top: -100;
         float: left;
         width: 570px;
-        height: 50px;
+        height: 60px;
 
         background: #CCCCCC;
         -webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
@@ -42,11 +42,18 @@
 
         text-align: center;
         overflow: hidden;
-        border: 10px solid transparent;
+        padding: 1em; 
     }
-    div.rolldown:hover
+        div.rolldown:hover
+        {
+            height: 550px;
+        }
+
+    div.rolldown p
     {
-        height: 400px;
+        text-align: justify;
+        padding: 0px 1.5em 0;
+        line-height: 1.5em; 
     }
 
     a.skills

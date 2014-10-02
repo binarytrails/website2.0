@@ -104,17 +104,16 @@ class Video(models.Model):
 class Skill(models.Model):
     GN = "General"
     MD = 'Methods of development'
-    OS = 'Operative systems'
+    OS = 'Operative system'
     FR = 'Framework'
     RC = 'Revision control'
     PR = 'Programming'
     ML = 'Markup language'
     DB = 'Database'
-    NW = 'Network'
     SR = 'Server'
+    SW = 'Sofrware'
     HW = 'Hardware'
-    SE = 'Special effects'
-    IM = 'Image manipulation'
+    VA = 'Visual art'
 
     title = models.CharField(
         max_length = 10,

@@ -59,6 +59,11 @@
 		{   
 			text-shadow: 0 0 15px white;
 		}
+        a:focus
+        {
+            outline: 0;
+        }    
+    
 	a img
 	{
 		border: 0px;
@@ -440,7 +445,11 @@
     {
         position: relative;
         text-align: center;
-        margin-top: 1.5em;
+    }
+    
+    #footer section
+    {
+        margin-bottom: 4em;
     }
 
     #footer header h2
@@ -457,9 +466,9 @@
 
     #footer img.logo
     {
-        height: 50px;
-        width: 50px;
-        border-radius: 25px;
+        height: 70px;
+        width: 70px;
+        border-radius: 50px;
         transition: all 0.5s;
     }
         #footer img.logo:hover

@@ -6,8 +6,37 @@
 	{
 		position: relative;
 		background: #1E1E1E;
+        color: #787878;
 		margin: 1.5em 15em;
 	}
+		#main section
+		{
+			height: auto;
+			width: 100%;
+		    margin: 4em 0;
+		    padding: 1em 0;  
+		}
+			#main section > header
+			{
+        		font-size: 4em;
+				color: purple;
+				text-align: center;
+			}
+
+		#main #left-half
+		{
+			height: 10em;
+			width: 48%;
+			float: left;
+			background: red;
+		}
+		#main #right-half
+		{
+			height: 10em;
+			width: 48%;
+			float: right;
+			background: green;
+		}
 
 /*********************************************************************************/
 /* Basic                                                                         */
@@ -24,25 +53,6 @@
 		
 		margin: 0em;
 	}
-		div.section
-		{
-			height: 20em;
-			width: 100%;
-		    	margin: 2.5em 0em;    
-		}
-			div.left-half
-			{
-				float: left;
-				height: 100%;
-				width: 48%;
-				background: red;
-			}
-			div.right-half
-			{
-				float: right;
-				width: 48%;
-				background: green;
-			}
 
 	h1, h2, h3, h4, h5
 	{

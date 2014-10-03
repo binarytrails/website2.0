@@ -20,8 +20,8 @@
 	</div>
 
 	<div id="main">
-		<div class="section">
-			<div class="left-half">
+		<div id="section">
+<!-- 			<div id="left-half">
 				<div class="rolldown">
 					<h4>Developper</h4>
 					<p>
@@ -39,9 +39,9 @@
 					<p>
 						I am always highly motivated to get aboard a new ship departing into the unknown!
 					</p>
-            			</div>
-			</div>
-			<div class="right-half">
+            	</div>
+			</div> -->
+<!-- 			<div id="right-half">
 				<div class="rolldown">
 					<h4>Articles</h4>
 					<p>
@@ -59,7 +59,7 @@
 						This having been said, you should not hesitate to write to me to help me understand mine.
 					</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!--
 		<section>
@@ -103,41 +103,46 @@
 			</div>
 		</section>
 		-->
-	</div>
 
-	<div id="main">
 	    <section>
-		<h3 class="rolldown">Abilities</h3>
-	    </section>
+			<header>
+				Abilities
+			</header>
+		</section>
 	    {% for category in skills_categories %}
-	    <section class="skills">
-		    <div class="hide-skills">
-			<h4 class="skills_category">
-			    {{ category }}
-			</h4>
-			<ul class="skills">
-			    {% load filters %}
-			    {% for skill in skills|in_category:category %}
-				<li class="skill">
-				    <div class="skill-title">
-					{{ skill.title }}
-				    </div>
-				    <div class="skill-rating">
-					{% load filters %}
-					{% for i in 5|times %}
-					    {% if i < skill.rating_on_five %}
-					        ★
-					    {% else %}
-					        ☆
-					    {% endif %}
+	    <section>
+	    	<div id="abilities">
+				<header>
+				    {{ category }}
+				</header>
+				<ul>
+				    {% load filters %}
+				    {% for skill in skills|in_category:category %}
+				    	{% if forloop.counter|divisibleby:2 %}
+							<li style="float: left;">
+				    	{% else %}
+				    		<li style="float: right;">
+				    	{% endif %}
+						    <header>
+								{{ skill.title }}
+						    </header>
+						    <p>
+								{% load filters %}
+								{% for i in 5|times %}
+								    {% if i < skill.rating_on_five %}
+								        ★
+								    {% else %}
+								        ☆
+								    {% endif %}
+								{% endfor %}
+							</p>
+						</li>
 					{% endfor %}
-				    </div>
-			      </li>
-			    {% endfor %}
-			</ul>
-		    </div>
+				</ul>
+			</div>
 	    </section>
 	    {% endfor %}
+
 	</div>
 
 {% endblock %}

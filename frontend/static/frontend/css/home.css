@@ -32,43 +32,85 @@
     
     div.rolldown
     {
-	position: relative;
 
-	height: 500px;
-        background: #CCCCCC;
+        height: 20em;
+        //background: #CCCCCC;
 
         text-align: center;
         overflow: hidden;
-	margin: 2.5em 0;
 
         transition: height 2s;
     }
         div.rolldown:hover
         {
-            height: 550px;
+            height: 30em;
         }
 
     div.rolldown p
     {
         text-align: justify;
-        padding: 0px 1.5em 0;
-        line-height: 1.5em; 
+/*        padding: 0px 1.5em 0;
+        line-height: 1.5em;*/ 
     }
 
 /*********************************************************************************/
-/* Skills                                                                        */
+/* Abilities                                                                     */
 /*********************************************************************************/
 
-    h4.skills_category
+    #abilities
     {
-        font-size: 150%;
-        color: #787878;
-        text-align: left;
-        margin: 0.3em;
-        cursor: default;
-        text-shadow: 0 0 10px red;
-    }
 
+    }
+    
+        #abilities header
+        {
+            font-size: 2em;
+            text-align: left;
+            text-shadow: 0 0 10px red;
+
+            margin: 0.3em;
+            cursor: default;
+        }
+
+        #abilities ul
+        {
+            width: auto;
+            height: 200px;
+        }
+
+            #abilities ul li
+            {
+                font-size: 0.7em;
+                display: inline;
+                width: 40%;
+                margin: 1.5em 1.5em;
+                cursor: default;
+                transition: all 0.5s;
+            }
+                #abilities ul li:hover
+                {
+                    text-shadow: 0 0 10px green;        
+                }
+
+                #abilities ul li header
+                {
+                    float: left;
+                }
+
+                #abilities ul li p
+                {
+                    float: right;
+                }
+
+    #abilities a
+    {
+        color: #787878;
+        pointer-events: none;
+        cursor: default;
+    }
+    
+
+/*
     #main section.skills
     {
         margin: 1em 0 0;
@@ -84,41 +126,6 @@
         div.hide-skills:hover
         {
             height: 250px;
-        }
+        }*/
 
-    a.skills
-    {
-        color: #787878;
-        pointer-events: none;
-        cursor: default;
-    }
-    ul.skills
-    {
-        width: auto;
-        height: 200px;
-    }
 
-    li.skill
-    {
-        font-size: 130%;
-        display: inline;
-        float: left;
-        width: 40%;
-        margin: 10px 60px;
-        cursor: default;
-        transition: all 0.5s;
-
-    }
-        li.skill:hover
-        {
-            text-shadow: 0 0 10px green;        
-        }
-
-    div.skill-title
-    {
-        float: left;
-    }
-    div.skill-rating
-    {
-        float: right;
-    }

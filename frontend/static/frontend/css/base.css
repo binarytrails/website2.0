@@ -1,52 +1,81 @@
 /*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+		position: relative;
+		background: #1E1E1E;
+		margin: 1.5em 15em;
+	}
+
+/*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
 	body
 	{
-		margin: 0;
-		padding: 0;
 		background: #1E1E1E;
-	}
 
-	body,input,textarea,select
-	{
 		font-family: sans-serif;
+		color: white;
+		font-size: 12pt;
+		font-weight: lighter;
 		line-height: 1.75em;
-		color: #777;
+		
+		margin: 0em;
 	}
-
-	header
-	{
-		margin-bottom: 1.6em;
-	}
-	
-		header h2
+		div.section
 		{
-			font-size: 3.4em;
+			height: 20em;
+			width: 100%;
+		    	margin: 2.5em 0em;    
 		}
+			div.left-half
+			{
+				float: left;
+				height: 100%;
+				width: 48%;
+				background: red;
+			}
+			div.right-half
+			{
+				float: right;
+				width: 48%;
+				background: green;
+			}
 
-		header .byline
-		{
-			font-size: 1.7em;
-		}
+	h1, h2, h3, h4, h5
+	{
+		font-weight: lighter;
+		color: white;
+	}
 
+	h1
+	{
+        	font-size: 8em;
+	}
+	h2
+	{
+        	font-size: 6em;
+	}
+	h3
+	{
+        	font-size: 4em;
+	}
+	h4
+	{
+        	font-size: 2em;
+	}
+	h5
+	{
+        	font-size: 1.5em;
+	}
 
-	h1,h2,h3,h4,h5,h6
+	p
 	{
-		font-weight: 300;
-		color: #777;
+		line-height: 1.2em;	
 	}
-	
-    h2
-	{
-		letter-spacing: -0.025em;
-	}
-	
-	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
-	{
-		color: inherit;
-		text-decoration: none;
-	}
+
 	a
 	{
 		text-decoration: none;
@@ -57,20 +86,10 @@
 		{   
 			text-shadow: 0 0 15px white;
 		}
-        a:focus
-        {
-            outline: 0;
-        }    
-    
-	a img
-	{
-		border: 0px;
-	}
- 		
-	em, i
-	{
-		font-style: italic;
-	}
+		a:focus
+		{
+			outline: 0;
+		}
          
 	hr
 	{
@@ -85,33 +104,6 @@
 		border-left: solid 0.5em #ddd;
 		padding: 1em 0 1em 2em;
 		font-style: italic;
-	}
-
-	header
-	{
-		margin-bottom: 1.6em;
-	}
-	
-	header h2
-	{
-        font-size: 3.4em;
-	}
-
-	header .byline
-	{
-		display: block;
-		margin: 1.5em 0 0 0;
-		padding: 0 0 0.5em 0;
-	}
-
-	br.clear
-	{
-		clear: both;
-	}
-
-	.pennant
-	{
-		color: #bbb;
 	}
 
 	/* Lists */
@@ -182,34 +174,80 @@
 		margin-top: 1em;
 	}
 
+
 /*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
 
-    #header
-    {
-        padding: 10em 0 6em 0;
-        position: relative;
-        background: url(../img/wallpapers/head-banner.jpg) no-repeat bottom center;
-        background-attachment: fixed;
-        background-size: cover;
-        text-align: center;
-    }
-    
-        #header:before
-        {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(64,64,64,0.125);
-        }
+	#header
+	{
+		position: relative;
+		background: url(../img/wallpapers/head-banner.jpg) no-repeat bottom center;
+		background-attachment: fixed;
+		background-size: cover;
+		text-align: center;
+		padding: 10em 0 6em 0;
+		margin: 0em 0em 2.5em 0em;
+		width: 100%;
+	}
+
+		#header:before
+		{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: red;
+		}
+
+
+	/* Menu */
+	#header #menu
+	{
+		background: rgba(0,0,0,.1);
+		position: absolute;
+		top: 0em;
+		width: 100%;
+	}
+
+		#header #menu ul
+		{
+			margin: 0;
+			text-align: center;
+		}
+
+		#header #menu ul li
+		{
+			display: inline-block;
+			border: 1px solid;
+			border-color: rgba(255,255,255,.1);
+		}
+		
+			#header #menu ul li:last-child
+			{
+				border-right: none;
+			}
+
+		#header #menu ul li a
+		{
+			display: inline-block;
+			padding: 1.5em 1.5em;
+			letter-spacing: 0.06em;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-size: 1.1em;
+			outline: 0;
+			color: #FFF;
+			transition: all 0.5s;
+		}
+			#header #menu ul li a:hover
+			{
+				text-shadow: 0px 0px 5px White;
+			}
+
+
 
     #header h1
     {
-        font-size: 80pt;
         cursor: default;
         transition: all 2s;
     }
@@ -218,6 +256,7 @@
         {
             text-shadow: 0 0 5px white;
         }
+
 
 
 
@@ -230,11 +269,6 @@
 		position: relative;
 		z-index: 1;
 	}
-	
-		#logo h1
-		{
-			color: #FFF;
-		}
         
 	
 		#logo a
@@ -270,72 +304,23 @@
 		position: relative;
 		background: #1E1E1E;
 		text-align: center;
-		padding: 6em 0em;
-	}
-	
-	#featured h3
-	{
-		padding: 1.5em 0em;
-		font-size: 1.6em;
-	}
+		line-height: 3em;
+		margin: 1.5em 15em;
+    	}
 
-	#featured header
-	{
-		margin-bottom: 3em;
-	}
-	
-	#featured p
-	{
-		line-height: 2em;
-		font-size: 1.2em;
-	}
-
-/*********************************************************************************/
-/* Main                                                                          */
-/*********************************************************************************/
-
-	#main
-	{
-        position: relative;
-        background: #1E1E1E;
-        margin-left: 5em;
-        margin-right: 5em;
-        margin-bottom: 1.5em;
-	}
-
-	.homepage #content
-	{
-        text-align: center;
-	}
-
-	.homepage #content header h2
-	{
-	}
-
-	#sidebar h2
-	{
-        display: block;
-        padding-bottom: 0.50em;
-	}
-
-	#main p
-	{
-		margin: 2em 0 2em;
-	}	
 	
 /*********************************************************************************/
 /* Tweet                                                                         */
 /*********************************************************************************/
 	
-    #tweet
+    	#tweet
 	{
 		position: relative;
 		text-align: center;
 		background: url(../img/wallpapers/foot-banner.jpg) no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
-        padding: 6em 0em;
-
+        margin: 1.5em 0;
 	}
 	
 		#tweet:before
@@ -348,14 +333,14 @@
 			height: 100%;
 			background: rgba(64,64,64,0.5);
 		}
-	
+/*	
 		#tweet section
 		{
 			border-top: 1px solid;
 			border-bottom: 1px solid;
 			border-color: rgba(255,255,255,.1);
 		}
-
+*/
 		#tweet blockquote
 		{
 			position: relative;
@@ -369,72 +354,6 @@
             font-size: 1.8em;
 		}
 
-
-/*********************************************************************************/
-/* Nav                                                                           */
-/*********************************************************************************/
-
-	#nav
-	{
-	}
-
-		#nav-wrapper
-		{
-			background: rgba(0,0,0,.1);
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-		}
-		
-		#nav > ul
-		{
-			margin: 0;
-			padding: 0;
-			text-align: center;
-		}
-
-		#nav > ul > li
-		{
-			display: inline-block;
-			border: 1px solid;
-			border-color: rgba(255,255,255,.1);
-		}
-		
-			#nav > ul > li:last-child
-			{
-				padding-right: 0;
-				border-right: none;
-			}
-
-			#nav > ul > li > a,
-			#nav > ul > li > span
-			{
-				display: inline-block;
-				padding: 1.5em 1.5em;
-				letter-spacing: 0.06em;
-				text-decoration: none;
-				text-transform: uppercase;
-				font-size: 1.1em;
-				outline: 0;
-				color: #FFF;
-                transition: all 0.5s;
-			}
-
-			#nav li.active a
-			{
-				color: #FFF;
-			}
-
-			#nav > ul > li > ul
-			{
-				display: none;
-			}
-            #nav > ul > li > a:hover
-            {
-                text-shadow: 0px 0px 5px White;
-            }
-
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
@@ -443,13 +362,14 @@
     {
         position: relative;
         text-align: center;
+        margin: 1.5em 15em;
     }
-    
+   /* 
     #footer section
     {
         margin-bottom: 4em;
     }
-
+*/
     #footer header h2
     {
         color: #FFF !important;
@@ -484,7 +404,7 @@
         text-align: center;
         color: #774535;
     }
-
+/*
     #copyright .container
     {
         padding: 3em 0em;
@@ -492,7 +412,7 @@
         border-color: rgba(255,255,255,.05);
         color:  rgba(255,255,255,.1);
     }
-
+*/
     #copyright a
     {
         text-decoration: none;

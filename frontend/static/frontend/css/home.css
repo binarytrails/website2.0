@@ -1,17 +1,4 @@
 /*********************************************************************************/
-/* Basic                                                                         */
-/*********************************************************************************/
-
-    h2.title
-    {
-        margin-top: 1.5em;
-    }
-    h3.subtitle
-    {
-        line-height: 1.5;
-    }
-
-/*********************************************************************************/
 /* Rolldown sections                                                             */
 /*********************************************************************************/
 
@@ -19,14 +6,14 @@
     {
         font-size: 20pt;
         font-weight: 300;
-        color: #494949;
+        color: red;
         font-family: sans-serif;
         margin: 0px 0px 20px 0px;
     }
     h4.dropdown
     {
         font-size: 13pt;
-        color: #494949;
+        color: red;
     }
 
     a.rolldown
@@ -45,19 +32,16 @@
     
     div.rolldown
     {
-        position: relative;
-        top: -100;
-        float: left;
-        width: 570px;
-        height: 60px;
+	position: relative;
 
+	height: 500px;
         background: #CCCCCC;
-        -webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
-        transition: height 2s;
 
         text-align: center;
         overflow: hidden;
-        padding: 1em; 
+	margin: 2.5em 0;
+
+        transition: height 2s;
     }
         div.rolldown:hover
         {

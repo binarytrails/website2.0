@@ -152,3 +152,4 @@ To quit the virtualenv
 * Remove PIL, only used in filters.py to give image size
 * Replace unneeded javascript by css3
 
+

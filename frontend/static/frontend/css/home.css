@@ -1,3 +1,7 @@
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
     h2.title
     {
         margin-top: 1.5em;
@@ -6,6 +10,11 @@
     {
         line-height: 1.5;
     }
+
+/*********************************************************************************/
+/* Rolldown sections                                                             */
+/*********************************************************************************/
+
     h3.dropdown
     {
         font-size: 20pt;
@@ -19,15 +28,21 @@
         font-size: 13pt;
         color: #494949;
     }
-    
-    h4.skills_category
-    {
-        font-size: 30px;
-        color: #787878;
-        cursor: default;
-        text-shadow: 0 0 10px red;
-    }
 
+    a.rolldown
+    {
+        text-decoration: none;
+        color: #777777;
+    }
+        a.rolldown:hover
+        {
+            color: red;
+        }
+        a.rolldown:focus
+        {
+            outline: 0;
+        }
+    
     div.rolldown
     {
         position: relative;
@@ -56,6 +71,37 @@
         line-height: 1.5em; 
     }
 
+/*********************************************************************************/
+/* Skills                                                                        */
+/*********************************************************************************/
+
+    h4.skills_category
+    {
+        font-size: 150%;
+        color: #787878;
+        text-align: left;
+        margin: 0.3em;
+        cursor: default;
+        text-shadow: 0 0 10px red;
+    }
+
+    #main section.skills
+    {
+        margin: 1em 0 0;
+    }
+
+    div.hide-skills
+    {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+        /transition: all 1s;
+    }
+        div.hide-skills:hover
+        {
+            height: 250px;
+        }
+
     a.skills
     {
         color: #787878;
@@ -70,7 +116,7 @@
 
     li.skill
     {
-        font-size: 20pt;
+        font-size: 130%;
         display: inline;
         float: left;
         width: 40%;

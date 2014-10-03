@@ -196,13 +196,6 @@ skill = Skill(
         rating_on_five = 4,
         description = ""
 )
-skill = Skill(
-        title = "CrunchBang",
-        category = Skill.OS,
-        owner = kedfilmsFounder,
-        rating_on_five = 3,
-        description = ""
-)
 skill.save()
 skill = Skill(
         title = "Arch Linux",

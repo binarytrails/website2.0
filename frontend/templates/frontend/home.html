@@ -118,15 +118,18 @@
 				<ul>
 				    {% load filters %}
 				    {% for skill in skills|in_category:category %}
+
+						<!-- separator by margin of 5% -->
 				    	{% if forloop.counter|divisibleby:2 %}
-							<li style="float: left;">
-				    	{% else %}
-				    		<li style="float: right;">
+							<li style="margin: 1.5em 1.5em 1.5em 5%">
+				    	{% else %} <!-- first -->
+							<li style="margin: 1.5em 5% 1.5em 1.5em">
 				    	{% endif %}
-						    <header>
+							
+						    <div id="left">
 								{{ skill.title }}
-						    </header>
-						    <p>
+						    </div>
+						    <div id="right">
 								{% load filters %}
 								{% for i in 5|times %}
 								    {% if i < skill.rating_on_five %}
@@ -135,12 +138,12 @@
 								        ☆
 								    {% endif %}
 								{% endfor %}
-							</p>
+							</div>
 						</li>
 					{% endfor %}
 				</ul>
 			</div>
-	    </section>
+		</section>
 	    {% endfor %}
 
 	</div>

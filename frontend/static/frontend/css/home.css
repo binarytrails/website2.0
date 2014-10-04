@@ -75,15 +75,18 @@
         #abilities ul
         {
             width: auto;
-            height: 200px;
+            height: 100px;
         }
 
             #abilities ul li
             {
                 font-size: 0.7em;
+
                 display: inline;
+                float: left;
                 width: 40%;
-                margin: 1.5em 1.5em;
+                margin: 1.5em;
+
                 cursor: default;
                 transition: all 0.5s;
             }
@@ -92,12 +95,14 @@
                     text-shadow: 0 0 10px green;        
                 }
 
-                #abilities ul li header
+                #abilities ul li #left
                 {
                     float: left;
                 }
 
-                #abilities ul li p
+                /*the separator is defined by l/r margin of 5% in if condition of template*/
+
+                #abilities ul li #right
                 {
                     float: right;
                 }
@@ -108,24 +113,3 @@
         pointer-events: none;
         cursor: default;
     }
-    
-
-/*
-    #main section.skills
-    {
-        margin: 1em 0 0;
-    }
-
-    div.hide-skills
-    {
-        position: relative;
-        height: 250px;
-        overflow: hidden;
-        /transition: all 1s;
-    }
-        div.hide-skills:hover
-        {
-            height: 250px;
-        }*/
-
-

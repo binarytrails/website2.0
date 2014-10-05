@@ -15,29 +15,30 @@
 				Art & minutiae are transparent in my projects.</br>
 				Opensource is a reality & Linux is a choice.</br>
 			</h5>
-		<hr></hr>
 		</div>
 	</div>
 
 	<div id="main">
+		<hr></hr>
 		<section>
 			<div id="sections-row">
-				<div id="left">
+				<div id="left-section">
 		 			<h4>Developper</h4>
 				</div>
-				<div id="right">
+				<div id="right-section">
 					<h4>Articles</h4>
 				</div>
 			</div>
 			<div id="sections-row">
-				<div id="left">
+				<div id="left-section">
 					<h4>Short Films</h4>
 				</div>
-				<div id="right">
+				<div id="right-section">
 					<h4>Photography</h4>
 				</div>
 			</div>
 		</section>
+		<hr></hr>		
 
 	    <section>
 			<header>
@@ -51,15 +52,16 @@
 				<header>
 				    {{ category }}
 				</header>
-				<ul>
+				<div id="abilities-row">
 				    {% load filters %}
 				    {% for skill in skills|in_category:category %}
 
-						<!-- separator by margin of 5% -->
 				    	{% if forloop.counter|divisibleby:2 %}
-							<li style="margin: 1.5em 0em 1.5em 5%">
+						<div id="right-ability">
+
 				    	{% else %} <!-- first -->
-							<li style="margin: 1.5em 5% 1.5em 0em">
+						<div id="left-ability">
+
 				    	{% endif %}
 							
 						    <div id="title">
@@ -75,9 +77,9 @@
 								    {% endif %}
 								{% endfor %}
 							</div>
-						</li>
+						</div>
 					{% endfor %}
-				</ul>
+				</div>
 			</div>
 		</section>
 	    {% endfor %}

@@ -21,22 +21,22 @@
 
 	<div id="main">
 		<section>
-			<ul class="sections-row">
-				<li class="left">
+			<div id="sections-row">
+				<div id="left">
 		 			<h4>Developper</h4>
-				</li>
-				<li class="right">
+				</div>
+				<div id="right">
 					<h4>Articles</h4>
-				</li>
-			</ul>
-			<ul class="sections-row">
-				<li class="left">
+				</div>
+			</div>
+			<div id="sections-row">
+				<div id="left">
 					<h4>Short Films</h4>
-				</li>
-				<li class="right">
+				</div>
+				<div id="right">
 					<h4>Photography</h4>
-				</li>
-			</ul>
+				</div>
+			</div>
 		</section>
 
 	    <section>
@@ -62,10 +62,10 @@
 							<li style="margin: 1.5em 5% 1.5em 0em">
 				    	{% endif %}
 							
-						    <div id="left">
+						    <div id="title">
 								{{ skill.title }}
 						    </div>
-						    <div id="right">
+						    <div id="rating">
 								{% load filters %}
 								{% for i in 5|times %}
 								    {% if i < skill.rating_on_five %}

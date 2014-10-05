@@ -1,22 +1,48 @@
 /*********************************************************************************/
-/* Rolldown sections                                                             */
+/* Sections                                                                      */
 /*********************************************************************************/
 
-    h3.dropdown
+    #main section > #sections-row
     {
-        font-size: 20pt;
-        font-weight: 300;
-        color: red;
-        font-family: sans-serif;
-        margin: 0px 0px 20px 0px;
-    }
-    h4.dropdown
-    {
-        font-size: 13pt;
-        color: red;
-    }
+        display: relative;
+        width: 100%;
+        padding: 0em;
+        overflow: hidden;
 
-    a.rolldown
+    }
+        #main section > #sections-row > #left, #right
+        {
+            height: 4em;
+            min-width: 48%;
+
+            text-align: center;
+            margin: 1.5em 0em;
+
+            transition: height 2s;
+            background: #CCCCCC;
+        }
+
+            #main section #sections-row > #left
+            {
+                float: left;
+            }
+            #main section #sections-row > #right
+            {
+                float: right;
+            }
+
+                #main section #sections-row > #left:hover, #right:hover
+                {
+                    height: 30em;
+                }
+
+            #main section #sections-row > #left h4, #right h4
+            {
+                color: #777777;
+                margin: .5em 0em;
+            }
+
+/*    a.rolldown
     {
         text-decoration: none;
         color: #777777;
@@ -28,30 +54,7 @@
         a.rolldown:focus
         {
             outline: 0;
-        }
-    
-    div.rolldown
-    {
-
-        height: 20em;
-        //background: #CCCCCC;
-
-        text-align: center;
-        overflow: hidden;
-
-        transition: height 2s;
-    }
-        div.rolldown:hover
-        {
-            height: 30em;
-        }
-
-    div.rolldown p
-    {
-        text-align: justify;
-/*        padding: 0px 1.5em 0;
-        line-height: 1.5em;*/ 
-    }
+        }*/
 
 /*********************************************************************************/
 /* Abilities                                                                     */
@@ -95,14 +98,14 @@
                     text-shadow: 0 0 10px green;   
                 }
 
-                #abilities ul li #left
+                #abilities ul li > #title
                 {
                     float: left;
                 }
 
                 /*the separator is defined by l/r margin of 5% in if condition of template*/
 
-                #abilities ul li #right
+                #abilities ul li > #rating
                 {
                     float: right;
                 }

@@ -98,11 +98,6 @@
             overflow: hidden; / no-sense
         }
 
-        #abilities-row > #section
-        {
-            margin:; 0.5em 0em;
-        }
-
             #left-ability, #right-ability
             {
                 font-size: 0.7em;

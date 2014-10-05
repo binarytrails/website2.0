@@ -1,63 +1,32 @@
 {% extends "frontend/base.html" %}
 
 {% block content %}
-	<div id="featured">
-        <div id="content" class="container">
-            <header>
-                <h2>{{ title }}</h2>
-                <h3>{{ subtitle }}</h3>
-            </header>
-            <hr></hr>
-        </div>
-    </div>
-    <div id="main">
-        <div id="container">
-            <div class="row">
-                
-                <div id="content"  class="8u skel-cell-important">
-                    <section>
-                        <header>
-                            <h2>Rabbit story</h2>
-                            <span class="byline">For the special ones</span>
-                        </header>
-                        <p>
-                            Once upon a time there was rabbit with wide long ears.
-                        </p>
-                        <p>
-                            End of this magnificent story.
-                        </p>
-                    </section>
-                </div>
-                <div id="sidebar" class="4u">
-                    <section>
-                        <header>
-                            <h2>Section</h2>
-                        </header>
 
-                        <div class="row">
-                            <section class="6u">
-                                <ul class="default">
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                </ul>
-                            </section>
-                            <section class="6u">
-                                <ul class="default">
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                    <li><a href="#">Awesome article about monkeys</a></li>
-                                </ul>
-                            </section>
-                        </div>
-                    <section>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/articles.css" %}">
+
+    <div class="main">
+        <section class="articles">
+                <div id="article">
+                    <h2>Rabbit story</h2>
+                    <h3>For the special ones</h3>
+                    <p>
+                        Once upon a time there was rabbit with wide long ears.
+                    </p>
+                    <p>
+                        End of this magnificent story.
+                    </p>
                 </div>
-            
+                <div id="listing">
+                    <h4>Section</h4>
+                    <h5>link1</h5>
+                </div>
+                <div id="listing">
+                    <h4>Section</h4>
+                    <h5>link1</h5>
+                </div>
             </div>
-        </div>
-	</div>
+        </section>
+    </div>
+
 {% endblock %}

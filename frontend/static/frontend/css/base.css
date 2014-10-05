@@ -1,26 +1,4 @@
 /*********************************************************************************/
-/* Main                                                                          */
-/*********************************************************************************/
-
-	#main
-	{
-		background: #1E1E1E;
-        color: #787878;
-		margin: 1.5em 15em;
-	}
-		#main section
-		{
-			height: auto;
-			width: auto;
-		    margin: 4em 0em; 
-		}
-			#main section > header
-			{
-        		font-size: 4em;
-				text-align: center;
-			}
-
-/*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
 	body
@@ -44,23 +22,23 @@
 
 	h1
 	{
-        	font-size: 8em;
+		font-size: 8em;
 	}
 	h2
 	{
-        	font-size: 6em;
+		font-size: 6em;
 	}
 	h3
 	{
-        	font-size: 4em;
+		font-size: 4em;
 	}
 	h4
 	{
-        	font-size: 2em;
+		font-size: 2em;
 	}
 	h5
 	{
-        	font-size: 1.5em;
+		font-size: 1.5em;
 	}
 
 	p
@@ -82,7 +60,7 @@
 		{
 			outline: 0;
 		}
-         
+
 	hr
 	{
 		border: 0;
@@ -191,6 +169,17 @@
 		width: 100%;
 	}
 
+		#header h1
+		{
+		cursor: default;
+		transition: all 2s;
+		}
+
+			#header h1:hover
+			{
+				text-shadow: 0 0 5px white;
+			}
+
 		#header #menu ul
 		{
 			margin: 0;
@@ -232,17 +221,6 @@
 				text-shadow: 0px 0px 5px White;
 			}
 
-    #header h1
-    {
-        cursor: default;
-        transition: all 2s;
-    }
-    
-        #header h1:hover
-        {
-            text-shadow: 0 0 5px white;
-        }
-
 /*********************************************************************************/
 /* Logo                                                                          */
 /*********************************************************************************/
@@ -252,8 +230,7 @@
 		position: relative;
 		z-index: 1;
 	}
-        
-	
+
 		#logo a
 		{
 			display: block;
@@ -270,14 +247,15 @@
 		{
 			font-size: 1.4em;
 			color: #FFF;
-            cursor: default;
-		    transition: all 0.5s;
-        }
-        #logo span:hover
-        {
-            text-shadow: 0 0 5px white;
-        }
-	
+			cursor: default;
+			transition: all 0.5s;
+		}
+
+		#logo span:hover
+		{
+			text-shadow: 0 0 5px white;
+		}
+
 /*********************************************************************************/
 /* Featured                                                                      */
 /*********************************************************************************/
@@ -288,22 +266,46 @@
 		background: #1E1E1E;
 		text-align: center;
 		line-height: 3em;
-		margin: 1.5em 15em;
-    	}
+		margin: 8em 15em;
+	}
 
-	
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+		background: #1E1E1E;
+		color: #787878;
+		margin: 1.5em 15em;
+	}
+		#main section
+		{
+			height: auto;
+			width: auto;
+		    margin: 4em 0em; 
+		}
+			#main section > header
+			{
+				font-size: 4em;
+				text-align: center;
+				margin-top: 3em;
+				margin-bottom: 1.5em;
+			}
+
 /*********************************************************************************/
 /* Tweet                                                                         */
 /*********************************************************************************/
 	
-    	#tweet
+	#tweet
 	{
 		position: relative;
 		text-align: center;
 		background: url(../img/wallpapers/foot-banner.jpg) no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
-        margin: 1.5em 0;
+		margin: 10em 0em 5em;
+		padding: 6em 0em;
 	}
 	
 		#tweet:before
@@ -316,89 +318,88 @@
 			height: 100%;
 			background: rgba(64,64,64,0.5);
 		}
-/*	
+	
 		#tweet section
 		{
 			border-top: 1px solid;
 			border-bottom: 1px solid;
-			border-color: rgba(255,255,255,.1);
+			border-color: rgba(255,255,255,.3);
 		}
-*/
+
 		#tweet blockquote
 		{
 			position: relative;
-			border: none;
+			border: medium none;
 			margin: 0;
 			font-weight: 300;
 			color: rgba(255,255,255,.6);
-            margin: 0;
-            padding: 1em 4em;
-            line-height: 1.5em;
-            font-size: 1.8em;
+			margin: 0;
+			padding: 1em 4em;
+			line-height: 1.5em;
+			font-size: 1.8em;
 		}
 
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
 
-    #footer
-    {
-        position: relative;
-        text-align: center;
-        margin: 1.5em 15em;
-    }
-   /* 
-    #footer section
-    {
-        margin-bottom: 4em;
-    }
-*/
-    #footer header h2
-    {
-        color: #FFF !important;
-        margin-top: 1.5em;
-    }
+	#footer
+	{
+		position: relative;
+		text-align: center;
+		margin: 10em 15em 0em;
+	}
 
-    #footer header .byline
-    {
-        color: rgba(255,255,255,.2);
-        margin: 1.5em;
-    }
+	#footer section
+	{
+		margin-bottom: 4em;
+	}
 
-    #footer img.logo
-    {
-        height: 70px;
-        width: 70px;
-        border-radius: 50px;
-        transition: all 0.5s;
-    }
-        #footer img.logo:hover
-        {
-            box-shadow: 0 0 3px white;
-        }
+	#footer header h2
+	{
+		color: #FFF !important;
+		margin-top: 1em;
+	}
+
+	#footer header .byline
+	{
+		color: rgba(255,255,255,.2);
+		margin: 1.5em;
+	}
+
+	#footer img.logo
+	{
+		height: 70px;
+		width: 70px;
+		border-radius: 50px;
+		transition: all 0.5s;
+	}
+		#footer img.logo:hover
+		{
+			box-shadow: 0 0 3px white;
+		}
 
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
 
-    #copyright
-    {
-        position: relative;
-        text-align: center;
-        color: #774535;
-    }
-/*
-    #copyright .container
-    {
-        padding: 3em 0em;
-        border-top: 1px solid;
-        border-color: rgba(255,255,255,.05);
-        color:  rgba(255,255,255,.1);
-    }
-*/
-    #copyright a
-    {
-        text-decoration: none;
-        color:  rgba(255,255,255,.2);
-    }
+	#copyright
+	{
+		position: relative;
+		text-align: center;
+		color: #774535;
+		padding: 3em 0em;
+		border-top: 1px solid;
+		border-color: rgba(255,255,255,.05);
+		color:  rgba(255,255,255,.1);
+	}
 
+	#copyright a
+	{
+		text-decoration: none;
+		color: rgba(255,255,255,.2);
+	}
+		#copyright a:hover
+		{
+			color: white;
+		}

@@ -20,95 +20,31 @@
 	</div>
 
 	<div id="main">
-		<div id="section">
-<!-- 			<div id="left-half">
-				<div class="rolldown">
-					<h4>Developper</h4>
-					<p>
-						As I am writing this section, I am building my website to elevate my understanding of the web driving technologies.
-					</p>
-					<p>
-						I decided to publish all my projects with an Open Source documented code on 
-						<a class="dropdown" href="https://www.github.com/sevaivanov" >GitHub</a> to profit the community.
-					</p>
-					<p>
-						I adore building projects from scratch. I have always had the perseverance to achieve my ambitions.
-						There are always after hours of mine that I invest to make my skills sharper. 
-						I have built several projects for individual, educational and professional purposes.
-					</p>
-					<p>
-						I am always highly motivated to get aboard a new ship departing into the unknown!
-					</p>
-            	</div>
-			</div> -->
-<!-- 			<div id="right-half">
-				<div class="rolldown">
-					<h4>Articles</h4>
-					<p>
-						I have often faced issues that I often have resolved.
-						The search for solutions is as fascinating as playing the last Grand Theft Auto video game
-							in an Away From the Keyboard world of unlimited possibilities.
-						It can get hard, it is true, but the feeling of having succeeded is greater than all of the obstacles.
-					</p>
-					<p>
-						This will be a great place to share the papers of my researches to the world wide web.
-						I will present them to you as simple articles with a lightweight presentation.
-					</p>
-					<p>
-						Evolving as a human being is accepting to learn from mistakes.
-						This having been said, you should not hesitate to write to me to help me understand mine.
-					</p>
-				</div>
-			</div> -->
-		</div>
-		<!--
 		<section>
-			<div class="left-half">
-				<div class="rolldown">
-					<h4>Short movies</h4>
-					<p>
-						Back in High School, I started searching different ways to express myself through animated arts.
-						I read a lot about Adobe After Effect and I spent a lifetime mastering it.
-						I loved taking time after school trying to create something new.
-					</p>
-					<p>
-						During the last High School year, I made my first short film with a friend of mine. I managed to create awesome special effects.
-						It was such a great experience! It gave me drive to create video montages freely for the community to encourage its growth.
-					</p>
-					<p>
-						I always love to take some of my time to sit down after work on an inspiration warm evening. 
-						I try to let my feelings guide me in the creation of new short movies. 
-					</p>
-				</div>
-			</div>
-			<div class="right-half">
-				<div class="rolldown">
+			<ul class="sections-row">
+				<li class="left">
+		 			<h4>Developper</h4>
+				</li>
+				<li class="right">
+					<h4>Articles</h4>
+				</li>
+			</ul>
+			<ul class="sections-row">
+				<li class="left">
+					<h4>Short Films</h4>
+				</li>
+				<li class="right">
 					<h4>Photography</h4>
-					<p>
-						It started at the same time that my passion for animated arts was making its roots.
-						I wasn't very good with Adobe Photoshop and had mastered Adobe After Effect.
-					</p>
-					<p>
-						People always get surprised when learning about my use of AE as an image editing software.
-						An advantage of its use is to be able to turn the image editing project to an animated project in a light strike.  
-					</p>
-					<p>
-						After I moved to Linux, I started searching for open source alternatives.
-						I found GIMP and I loved it. It lacks a few features but it has a hudge potential in achieving as much as the Adobe suite. 
-					</p>
-					<p>
-						I am using my abilities on a daily life basis to integrate artistic designing into my projects.   
-					</p>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</section>
-		-->
 
 	    <section>
 			<header>
 				Abilities
 			</header>
 		</section>
+
 	    {% for category in skills_categories %}
 	    <section>
 	    	<div id="abilities">
@@ -121,9 +57,9 @@
 
 						<!-- separator by margin of 5% -->
 				    	{% if forloop.counter|divisibleby:2 %}
-							<li style="margin: 1.5em 1.5em 1.5em 5%">
+							<li style="margin: 1.5em 0em 1.5em 5%">
 				    	{% else %} <!-- first -->
-							<li style="margin: 1.5em 5% 1.5em 1.5em">
+							<li style="margin: 1.5em 5% 1.5em 0em">
 				    	{% endif %}
 							
 						    <div id="left">

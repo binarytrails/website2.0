@@ -20,3 +20,15 @@ def getFilenames(path, byNewest):
 
     return names
 
+def getMostFileRecursively(rootfolder, extension=""):
+
+    files = []
+
+    for dirname, dirnames, filenames in os.walk(rootfolder):
+        for filename in filenames:
+            if filename.endswith(extension):
+                st_mtime = os.stat(os.path.join(dirname, filename)).st_mtime
+                files.append((st_mtime, os.path.join(dirname, filename)))
+
+    files.sort(key=lambda files: files[0])
+    return max(files)[1]

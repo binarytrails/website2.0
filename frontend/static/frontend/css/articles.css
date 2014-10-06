@@ -14,8 +14,7 @@
 
 		section.articles > #article, #listing
 		{
-			background: purple;
-
+			background: #282828;
 			text-align: left;
 		}
 
@@ -27,23 +26,75 @@
 			float: left;
 			margin-right: 2.5%;
 
-			overflow: auto-scroll;
+			overflow: auto;
 		}
+
+			#article header
+			{
+				font-size: 3em;
+				margin: 1em 1.2em 0em;
+			}
+
+			#article span
+			{
+				font-size: 1.5em;
+				color: #777777;
+				margin: 0em 2.6em;
+				line-height: 5em;
+			}
+
+			#article p
+			{
+				font-size: 1em;
+				margin: 1.2em 4em;
+			}
 
 		section.articles > #listing
 		{
 			width: 25%;
-			
 			float: right;
-
-			margin-left: 2.5%;
+			margin-right: 0.8%;
 			margin-bottom: 2em;
 		}
 
-			section.articles h2, section.menu h3,
-			section.articles h4, section.menu h4,
-			section.menu h5, section.articles p, section.menu p
+			ul.default
 			{
-				color: #777777;
-				margin: 0.5em em;
+				padding-bottom: 0em;
 			}
+				li.default
+				{
+					transition: box-shadow 1.5s;
+				}
+
+					li.default:first-child:hover
+					{
+						box-shadow: none;
+					}
+
+					li.default:hover
+					{
+						box-shadow: 0 0 10px white;
+					}
+
+			#listing header
+			{
+				font-size: 1.4em;
+				margin: 0.8em 0.9em 0.5em;
+			}
+
+			#listing a
+			{
+				display: block;
+				width: 100%;
+				height: 100%;
+				
+				font-size: 0.8em;
+				color: #B6B6B4;
+
+				margin: 0em 1.4em;
+			}
+
+				#listing a:hover
+				{
+					text-shadow: none;
+				}

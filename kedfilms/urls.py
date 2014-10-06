@@ -1,13 +1,25 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
-admin.autodiscover()
+from django.views.generic import TemplateView
+
+#from django.contrib import admin
+#admin.autodiscover()
 
 urlpatterns = patterns('',
     
+    # sections
     url(r'^$', 'frontend.views.home', name='home'),
     url(r'^photos/', 'frontend.views.photos', name='photos'),
     url(r'^articles/', 'frontend.views.articles', name='articles'),
     
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    # admin
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^admin/', include(admin.site.urls)),
+
+    # articles
+    url(r'^artciles/rabbit-story$',TemplateView.as_view(
+    	template_name='frontend/articles/stories/rabbit-story.html'
+    )),
+    url(r'^artciles/mrpurple-story$',TemplateView.as_view(
+    	template_name='frontend/articles/stories/mrpurple-story.html'
+    )),
 )

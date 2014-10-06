@@ -6,7 +6,7 @@ Django html5 website mainly focusing on avoiding scripts by implementing css3 fu
 
 * Functions & variables
 
-    * If you can read it make it simple
+    * If you can read it, make it simple
 
             makechoice
 
@@ -25,7 +25,7 @@ Django html5 website mainly focusing on avoiding scripts by implementing css3 fu
             # code here
         }
         
-* If not permited, one new line for last bracket i.e. views.py
+* If not permitted, one new line for last bracket i.e. views.py
 
         function{
             # code here
@@ -47,7 +47,7 @@ Activate virtualenv
 
         source DJANGO/bin/activate
 
-Install django and it tools inside
+Install django and its tools inside
 
         easy_install django==1.7 django_debug_toolbar 
 
@@ -151,5 +151,3 @@ To quit the virtualenv
 
 * Remove PIL, only used in filters.py to give image size
 * Replace unneeded javascript by css3
-
-

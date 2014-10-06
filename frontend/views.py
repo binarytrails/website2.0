@@ -13,7 +13,7 @@ def home(request):
         skills_categories.append(item['category'])
 
     return render_to_response(
-        "frontend/home.html",{
+        "frontend/sections/home.html",{
             "skills_categories": skills_categories,
             "skills": Skill.objects.all().filter(owner='kedfilms-founder')
         }
@@ -21,7 +21,7 @@ def home(request):
 
 def articles(request):
     return render_to_response(
-        "frontend/articles.html",{
+        "frontend/sections/articles.html",{
             "title": "Articles",
             "subtitle": "Subtitle"
         }
@@ -31,7 +31,7 @@ def articles(request):
 def photos(request):
     if os.path.exists(IMG_DIR):
         return render_to_response(
-            "frontend/photos.html",{
+            "frontend/sections/photos.html",{
                 "title": "Photos",
                 "subtitle": "Take a closer look...",
                 "portfolio_title": "Porfolio",

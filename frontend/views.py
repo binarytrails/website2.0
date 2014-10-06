@@ -20,15 +20,19 @@ def home(request):
 
 def articles(request):
 
-    last_edited = utils.getMostFileRecursively(
-        "frontend/templates/frontend/articles/",
-        ".html"
-    )
-    # drops 'frontend/templates/'
-    last_edited = last_edited[last_edited.rfind('frontend'):]
+    try:
+        last_edited = utils.getMostRecentFileRecursively(
+            "frontend/templates/frontend/articles/",
+            ".html"
+        )
+        # drops 'frontend/templates/'
+        template = last_edited[last_edited.rfind('frontend'):]
+
+    except ValueError:
+        template = "frontend/sections/articles.html"    
 
     return render_to_response(
-        last_edited, {
+        template, {
             "title": "Articles",
             "subtitle": "Subtitle"
         }

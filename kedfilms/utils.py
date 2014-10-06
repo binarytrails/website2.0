@@ -20,10 +20,9 @@ def getFilenames(path, byNewest):
 
     return names
 
-def getMostFileRecursively(rootfolder, extension=""):
+def getMostRecentFileRecursively(rootfolder, extension=""):
 
     files = []
-
     for dirname, dirnames, filenames in os.walk(rootfolder):
         for filename in filenames:
             if filename.endswith(extension):
@@ -32,3 +31,4 @@ def getMostFileRecursively(rootfolder, extension=""):
 
     files.sort(key=lambda files: files[0])
     return max(files)[1]
+ 

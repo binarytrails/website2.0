@@ -294,6 +294,49 @@
 			}
 
 /*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+	#footer
+	{
+		position: relative;
+		text-align: center;
+		background: #1E1E1E;
+		width: 100%;
+		padding: 10em 0 6em 0;
+		margin: 0em;
+	}
+
+	#footer section
+	{
+		margin-bottom: 4em;
+	}
+
+	#footer header h2
+	{
+		color: #FFF !important;
+		margin-top: 1em;
+	}
+
+	#footer header .byline
+	{
+		color: rgba(255,255,255,.2);
+		margin: 1.5em;
+	}
+
+	#footer img.logo
+	{
+		height: 70px;
+		width: 70px;
+		border-radius: 50px;
+		transition: all 0.5s;
+	}
+		#footer img.logo:hover
+		{
+			box-shadow: 0 0 3px white;
+		}
+
+/*********************************************************************************/
 /* Tweet                                                                         */
 /*********************************************************************************/
 	
@@ -304,7 +347,7 @@
 		background: url(../img/wallpapers/foot-banner.jpg) no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
-		margin: 10em 0em 5em;
+		margin: 10em 0em 0em;
 		padding: 6em 0em;
 	}
 	
@@ -337,46 +380,6 @@
 			padding: 1em 4em;
 			line-height: 1.5em;
 			font-size: 1.8em;
-		}
-
-/*********************************************************************************/
-/* Footer                                                                        */
-/*********************************************************************************/
-
-	#footer
-	{
-		position: relative;
-		text-align: center;
-		margin: 10em 15em 0em;
-	}
-
-	#footer section
-	{
-		margin-bottom: 4em;
-	}
-
-	#footer header h2
-	{
-		color: #FFF !important;
-		margin-top: 1em;
-	}
-
-	#footer header .byline
-	{
-		color: rgba(255,255,255,.2);
-		margin: 1.5em;
-	}
-
-	#footer img.logo
-	{
-		height: 70px;
-		width: 70px;
-		border-radius: 50px;
-		transition: all 0.5s;
-	}
-		#footer img.logo:hover
-		{
-			box-shadow: 0 0 3px white;
 		}
 
 /*********************************************************************************/

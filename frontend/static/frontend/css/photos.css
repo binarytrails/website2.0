@@ -1,13 +1,45 @@
-#photos
-{
-}
-
-#photos ul 
-{
-}
-
-	#photos ul li 
+	body
 	{
-		display: inline-block;
+		height: 100%;
+		background: #E8E8E6;
 	}
 
+	#header
+	{
+		margin-bottom: 0em;
+	}
+
+		#photos
+		{
+			background: #E8E8E6;
+		}
+
+			#photos section
+			{
+				margin: 2em 0em;
+			}
+			
+				#photos section > header
+				{
+					margin: 0.5em 0em;
+				}
+
+				#photos section > hr
+				{
+					border-top: solid 1px #777777;
+				}
+
+			#photos #box-container
+			{
+				margin: 0em;
+			}
+
+			#photos ul 
+			{
+				text-align: center;
+			}
+
+				#photos ul > li 
+				{
+					display: inline-block;
+				}

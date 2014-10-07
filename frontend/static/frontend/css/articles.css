@@ -24,10 +24,16 @@
 			width: 70%;
 
 			float: left;
-			margin-right: 2.5%;
+			margin: 1em 1.5% 0em 0.5%;
 
 			overflow: auto;
+			transition: box-shadow 1.5s;
 		}
+
+			section.articles > #article:hover
+			{
+				box-shadow: 0 0 10px white;
+			}
 
 			#article header
 			{
@@ -53,8 +59,7 @@
 		{
 			width: 25%;
 			float: right;
-			margin-right: 0.8%;
-			margin-bottom: 2em;
+			margin: 1em 0.8% 2em 0em;
 		}
 
 			ul.default

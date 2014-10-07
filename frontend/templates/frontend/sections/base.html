@@ -7,8 +7,16 @@
 		<title>Kedfilms</title>
 		
 		{% load staticfiles %}	
-		<link rel="stylesheet" href="{% static "frontend/css/base.css" %}"/>
-
+		<link rel="stylesheet" href="{% static "frontend/css/sections/base.css" %}"/>
+		<style type="text/css">
+			#header, #tweet
+			{
+				background: url({% static "frontend/img/wallpapers/head-banner.jpg" %}) 
+					no-repeat bottom center;
+				background-attachment: fixed;
+				background-size: cover;
+			}
+		</style>
 	</head>
 
 	<body>	

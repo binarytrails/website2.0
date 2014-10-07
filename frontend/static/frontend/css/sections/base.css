@@ -152,9 +152,6 @@
 	#header
 	{
 		position: relative;
-		background: url(../img/wallpapers/head-banner.jpg) no-repeat bottom center;
-		background-attachment: fixed;
-		background-size: cover;
 		text-align: center;
 		padding: 10em 0 6em 0;
 		margin: 0em 0em 2.5em 0em;
@@ -344,9 +341,6 @@
 	{
 		position: relative;
 		text-align: center;
-		background: url(../img/wallpapers/foot-banner.jpg) no-repeat center center;
-		background-attachment: fixed;
-		background-size: cover;
 		margin: 10em 0em 0em;
 		padding: 6em 0em;
 	}

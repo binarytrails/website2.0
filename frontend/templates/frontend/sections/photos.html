@@ -11,13 +11,13 @@
 
     {% with FRONTEND=STATIC|add:"frontend/" NEW_HEIGHT=250 PORTFOLIO_PATH="img/portfolio/" GENERAL_PATH="img/general/" %}
 
-        <link rel="stylesheet" href="{{ FRONTEND }}css/swipebox/swipebox.css">
-        <link rel="stylesheet" href="{{ FRONTEND }}css/photos.css">
+        <link rel="stylesheet" href="{{ FRONTEND }}css/js-swipebox/swipebox.css">
+        <link rel="stylesheet" href="{{ FRONTEND }}css/sections/photos.css">
         <link rel="stylesheet" href="{{ FRONTEND }}css/animated/box-shadow_below-image.css">
 
-        <script src="{{ FRONTEND }}lib/swipebox/jquery-2.1.0.min.js"></script>
-        <script src="{{ FRONTEND }}js/swipebox/jquery.swipebox.js"></script>
-        <script src="{{ FRONTEND }}js/photos-swipebox.js"></script>
+        <script src="{{ FRONTEND }}lib/js-swipebox/jquery-2.1.0.min.js"></script>
+        <script src="{{ FRONTEND }}js/js-swipebox/jquery.swipebox.js"></script>
+        <script src="{{ FRONTEND }}js/js-swipebox/photos.js"></script>
 
         <div id="main">
             <div id="photos">
@@ -81,6 +81,7 @@
                 </section>
             </div>
         </div>
+S
     {% endwith %}
 
 {% endblock %}

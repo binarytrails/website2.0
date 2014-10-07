@@ -73,6 +73,7 @@
     {
         height: auto;
         width: auto;
+        margin-left: 3em;
     }
     
         #abilities > header
@@ -81,7 +82,7 @@
 
             font-size: 1.2em;
             text-align: left;
-            text-shadow: 0 0 10px red;
+            color: #FDEEF4;
 
             cursor: default;
             margin-bottom: 1.5em
@@ -103,6 +104,7 @@
                 font-size: 0.7em;
 
                 width: 40%;
+                color: #B9AFA8;
 
                 cursor: default;
                 transition: all 0.5s;
@@ -123,7 +125,7 @@
 
                 #left-ability:hover, #right-ability:hover
                 {
-                    text-shadow: 0 0 4px green;   
+                    text-shadow: 0 0 10px white;   
                 }
 
             #title

@@ -8,8 +8,9 @@ urlpatterns = patterns('',
     
     # sections
     url(r'^$', 'frontend.views.home', name='home'),
-    url(r'^photos/', 'frontend.views.photos', name='photos'),
     url(r'^articles/', 'frontend.views.articles', name='articles'),
+    url(r'^photos/', 'frontend.views.photos', name='photos'),
+    url(r'^videos/', 'frontend.views.videos', name='videos'),
     
     # admin
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

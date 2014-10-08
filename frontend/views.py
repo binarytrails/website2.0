@@ -4,6 +4,7 @@ from .models import User, Skill, Photo
 from kedfilms import utils
 
 IMG_DIR = "frontend/static/frontend/img/"
+VID_DIR = "frontend/static/frontend/vid/"
 
 def home(request):
 
@@ -44,11 +45,27 @@ def photos(request):
     if os.path.exists(IMG_DIR):
         return render_to_response(
             "frontend/sections/photos.html",{
-                "title": "Photos",
-                "subtitle": "Take a closer look...",
+                "title": "Photography",
+                "subtitle": "Capture the moment in time",
                 "portfolio_title": "Porfolio",
                 "portfolio_images": Photo.objects.all().filter(category = Photo.PF),
                 "general_title": "General",
                 "general_images": Photo.objects.all().filter(category = Photo.GN)
+        }
+    )
+
+# tmp: load from photos
+def videos(request):
+
+    if os.path.exists(VID_DIR):
+        return render_to_response(
+            "frontend/sections/videos.html",{
+                "title": "Short Films",
+                "intro_title": "Brief introductory passage",
+                "intro_videos": "",
+                "complete_title": "The affair is over, ended, finished",
+                "complete_videos": "",
+                "unofficial_title": "An incomplete flower",
+                "unofficial_videos": ""
         }
     )

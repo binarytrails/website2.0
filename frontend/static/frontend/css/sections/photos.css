@@ -9,37 +9,32 @@
 		margin-bottom: 0em;
 	}
 
-		#photos
+	#photos
+	{
+		background: #E8E8E6;
+	}
+
+		#photos section
 		{
-			background: #E8E8E6;
+			margin: 2em 0em;
+		}
+		
+			#photos section > header
+			{
+				margin: 0.5em 0em;
+			}
+
+			#photos section > hr
+			{
+				border-top: solid 1px #777777;
+			}
+
+		#photos ul 
+		{
+			text-align: center;
 		}
 
-			#photos section
+			#photos ul > li 
 			{
-				margin: 2em 0em;
+				display: inline-block;
 			}
-			
-				#photos section > header
-				{
-					margin: 0.5em 0em;
-				}
-
-				#photos section > hr
-				{
-					border-top: solid 1px #777777;
-				}
-
-			#photos #box-container
-			{
-				margin: 0em;
-			}
-
-			#photos ul 
-			{
-				text-align: center;
-			}
-
-				#photos ul > li 
-				{
-					display: inline-block;
-				}

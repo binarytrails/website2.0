@@ -1,0 +1,54 @@
+	body
+	{
+		height: 100%;
+		background: #E8E8E6;
+	}
+
+		#header, #tweet, #main
+		{
+			margin: 0em;
+		}
+
+		#main
+		{
+			width: auto;
+			background: white;
+		}
+
+			#videos
+			{
+				height: auto;
+				width: auto;
+			}
+
+				#videos section
+				{
+					height: 30em;
+					width: 100%;
+
+					background: #282828;
+					border-top: solid 1px #ddd;
+					text-align: left;
+
+					margin: 0em;
+					padding: 3em 0em;
+				}
+
+
+					#videos section > header
+					{
+						font-size: 2.5em;
+						margin-top: 0em;
+
+						width: 75%;
+						margin-left: 12.5%;
+					}
+
+					#videos section > hr
+					{
+						border-top: solid 1px #777777;
+						
+						width: 50%;
+						margin-left: 25%;
+
+ 					}

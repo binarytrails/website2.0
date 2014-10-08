@@ -1,0 +1,33 @@
+{% extends "frontend/sections/base.html" %}
+
+{% block content %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "frontend/css/sections/videos.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/css/css-slideshow/layout.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/css/css-slideshow/slideshow.css" %}">
+
+    <div id="main">
+        <div id="videos">
+            <section style="background: {% cycle '#E5E4E2' '#92C7C7' '#64E986' as bgcolors %};">
+                <header style="color: {% cycle '#787878' 'white' as textcolors %};">
+                    {{ intro_title }}
+                </header>
+                <hr></hr>
+            </section>
+            <section style="background: {% cycle bgcolors %};">
+                <header style="color: {% cycle textcolors %};">
+                    {{ complete_title }}
+                </header>
+                <hr style="border-top: 1px solid {{ textcolors }};"></hr>
+            </section>
+            <section style="background: {% cycle bgcolors %};">
+                <header style="color: {{ textcolors }};">
+                    {{ unofficial_title }}
+                </header>
+                <hr style="border-top: 1px solid {{ textcolors }};"></hr>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

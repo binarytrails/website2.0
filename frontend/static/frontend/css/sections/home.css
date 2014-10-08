@@ -75,64 +75,82 @@
         width: auto;
         margin-left: 3em;
     }
-    
-        #abilities > header
+
+        #main section > header
         {
             width: 100%;
-
-            font-size: 1.2em;
-            text-align: left;
-            color: #FDEEF4;
-
-            cursor: default;
-            margin-bottom: 1.5em
+            margin: 1em 0em 1em;
         }
 
-        #abilities-row
+        #main section > hr.head
         {
-            height: auto;
-            width: auto;
-
-            font-size: 1.5em;
-
-            margin-left: 1.5em;
-            overflow: hidden; /no-sense
+            margin-top: 15em;
+            padding-top: 0em;
         }
 
-            #left-ability, #right-ability
-            {
-                font-size: 0.7em;
+        #main section > hr.tail
+        {
+            margin-top: 0em;
+            padding-top: 0em;
+        }
 
-                width: 40%;
-                color: #B9AFA8;
+            #abilities > header
+            {
+                width: 100%;
+
+                font-size: 1.2em;
+                text-align: left;
+                color: #FDEEF4;
 
                 cursor: default;
-                transition: all 0.5s;
-
+                margin-bottom: 1.5em
             }
 
-            #left-ability
+            #abilities-row
             {
-                float: left;
-                margin-right: 5%;
-            }
-            
-            #right-ability
-            {
-                float: left;
-                margin-left: 5%;
+                height: auto;
+                width: auto;
+
+                font-size: 1.5em;
+
+                margin-left: 1.5em;
+                overflow: hidden; /no-sense
             }
 
-                #left-ability:hover, #right-ability:hover
+                #left-ability, #right-ability
                 {
-                    text-shadow: 0 0 10px white;   
+                    font-size: 0.7em;
+
+                    width: 40%;
+                    color: #B9AFA8;
+
+                    cursor: default;
+                    transition: all 0.5s;
+
                 }
 
-            #title
-            {
-                float: left;
-            }
-            #rating
-            {
-                float: right;
-            }
+                #left-ability
+                {
+                    float: left;
+                    margin-right: 5%;
+                }
+                
+                #right-ability
+                {
+                    float: left;
+                    margin-left: 5%;
+                }
+
+                    #left-ability:hover, #right-ability:hover
+                    {
+                        text-shadow: 0 0 10px white;   
+                    }
+
+                #title
+                {
+                    float: left;
+                }
+                #rating
+                {
+                    float: right;
+                }

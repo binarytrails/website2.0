@@ -69,3 +69,33 @@ def videos(request):
                 "unofficial_videos": ""
         }
     )
+
+def slideshow(request, filestype=None, category=None):
+
+    files = None
+
+    if filestype == "photo":
+        if category == "portfolio":
+            pass
+
+        elif category == "general":
+            pass
+
+    elif filestype == "video":
+        if category == "intro":
+            pass
+
+        elif category == "complete":
+            pass
+
+        elif category == "unofficial":
+            pass
+
+    files = 1
+
+    if files:
+        return render_to_response(
+            "frontend/sections/slideshow.html",{
+                "filetype": filestype,
+                "files": files
+        })

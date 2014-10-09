@@ -76,10 +76,12 @@ def slideshow(request, filestype=None, category=None):
 
     if filestype == "photo":
         if category == "portfolio":
-            pass
+            category = Photo.PF
 
         elif category == "general":
-            pass
+            category = Photo.GN
+
+        files = Photo.objects.all().filter(category = category)
 
     elif filestype == "video":
         if category == "intro":
@@ -91,11 +93,11 @@ def slideshow(request, filestype=None, category=None):
         elif category == "unofficial":
             pass
 
-    files = 1
+        files = 1
 
     if files:
         return render_to_response(
             "frontend/sections/slideshow.html",{
-                "filetype": filestype,
+                "filestype": filestype,
                 "files": files
         })

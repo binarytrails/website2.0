@@ -12,7 +12,7 @@ Photo.objects.all().delete()
 PF Portfolio
 """
 photo = Photo(
-    filename = "skyline-moq.jpg",
+    staticfilepath = "img/portfolio/skyline-moq.jpg",
     title = "Skyline demonstration image",
     description = "Demonstration image",
     category = Photo.PF,
@@ -22,7 +22,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "stars-moq.jpg",
+    staticfilepath = "img/portfolio/stars-moq.jpg",
     title = "Stars demonstration image",
     description = "Demonstration image",
     category = Photo.PF,
@@ -35,7 +35,7 @@ photo.save()
 GN General
 """
 photo = Photo(
-    filename = "jaded-moq.jpg",
+    staticfilepath = "img/general/jaded-moq.jpg",
     title = "Jaded - demonstration image",
     description = "Demonstration image",
     category = Photo.GN,

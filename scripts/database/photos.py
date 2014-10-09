@@ -12,7 +12,7 @@ Photo.objects.all().delete()
 PF Portfolio
 """
 photo = Photo(
-    filename = "russian_standard.jpg",
+    staticfilepath = "img/portfolio/russian_standard.jpg",
     title = "Russian standard",
     description = "Camera: Canon EOS REBEL T3i",
     category = Photo.PF,
@@ -22,7 +22,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "mindseption.jpg",
+    staticfilepath = "img/portfolio/mindseption.jpg",
     title = "Mindseption",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -32,7 +32,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "electric_teeth.jpg",
+    staticfilepath = "img/portfolio/electric_teeth.jpg",
     title = "Electric teeth",
     description = "Camera: Canon EOS REBEL T3i;",
     category = Photo.PF,
@@ -42,7 +42,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "dj.jpg",
+    staticfilepath = "img/portfolio/dj.jpg",
     title = "Street vibes",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -52,7 +52,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "barman.jpg",
+    staticfilepath = "img/portfolio/barman.jpg",
     title = "Absinthe elegance",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -62,7 +62,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "gandalf.jpg",
+    staticfilepath = "img/portfolio/gandalf.jpg",
     title = "Gandalf",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -72,7 +72,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "infected.jpg",
+    staticfilepath = "img/portfolio/infected.jpg",
     title = "Infected",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -82,7 +82,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "melo_two_faces.jpg",
+    staticfilepath = "img/portfolio/melo_two_faces.jpg",
     title = "How you feel",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -92,7 +92,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "zoomout.jpg",
+    staticfilepath = "img/portfolio/zoomout.jpg",
     title = "If I... enter the void.",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -102,7 +102,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "fake_fisheye.jpg",
+    staticfilepath = "img/portfolio/fake_fisheye.jpg",
     title = "Wide look",
     description = "Camera: Canon EOS REBEL T3i; SFX: After Effect CS6",
     category = Photo.PF,
@@ -116,7 +116,7 @@ photo.save()
 GN General
 """
 photo = Photo(
-    filename = "beate.jpg",
+    staticfilepath = "img/general/beate.jpg",
     title = "Béate",
     description = "Camera: Canon EOS REBEL T3i",
     category = Photo.GN,

@@ -9,12 +9,75 @@
 		{% load staticfiles %}	
 		<link rel="stylesheet" href="{% static "frontend/css/css-slideshow/slideshow.css" %}"/>
 		<link rel="stylesheet" href="{% static "frontend/css/css-slideshow/layout.css" %}"/>
+
+		{% load static %}
+		{% get_static_prefix as STATIC %}
+
 		<style type="text/css">
+
+			{% if filestype == "photo" %}
+				{% for photo in files %}
+
+					/* show slide n */
+					span#slide{{ forloop.counter }}:target ~ ul.slider li.slides .g{{ forloop.counter }}
+					{
+						opacity:1;
+
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1);
+						-webkit-transform: scale(1);
+						transform: scale(1);
+					}
+
+					/* hide slide n */
+					span#slide{{ forloop.counter }}:target ~ ul.slider li.slides .g0
+					{
+						opacity:0;
+
+						-moz-transform: scale(0);
+						-ms-transform: scale(0);
+						-o-transform: scale(0);
+						-webkit-transform: scale(0);
+						transform: scale(0);
+					}
+
+				{% endfor %}
+			{% endif %}
 
 		</style>
 	</head>
 
 	<body>
-		Slideshow
+		<div id="container">
+
+			{% if filestype == "photo" %}
+				{% for photo in files %}
+					<span id="slide{{ forloop.counter }}" class="cap"></span>
+				{% endfor %}
+			{% endif %}
+
+			<ul class="slider">
+
+				<li class="slides">
+					{% if filestype == "photo" %}
+						{% for photo in files %}
+							{% autoescape off %}
+								<img class="g{{ forloop.counter }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
+							{% endautoescape %}
+						{% endfor %}
+					{% endif %}
+				</li>
+
+				<li class="track">
+					{% if filestype == "photo" %}
+						{% for photo in files %}
+							<a href="#slide{{ forloop.counter }}" class="tr{{ forloop.counter }}"></a>
+						{% endfor %}
+					{% endif %}
+				</li>
+			</ul>
+
+		</div>
 	</body>
 </html>

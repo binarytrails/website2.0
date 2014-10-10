@@ -14,56 +14,44 @@
 		{% get_static_prefix as STATIC %}
 
 		<style type="text/css">
-
 			{% if filestype == "photo" %}
 				{% for photo in files %}
+					/*
+						':target' specifies where to open the linked document
+						'~' attribute select all elements that is preceded by the former selector.
 
-					/* show slide n */
-					span#slide{{ forloop.counter }}:target ~ ul.slider li.slides .g{{ forloop.counter }}
+						sets the <img> related <a> target attribute to show the image on the related '#' in the url.
+					*/
+					a#{{ photo.fragment_identifier }}:target ~ ul.slider li.slides img#{{ photo.fragment_identifier }}
 					{
-						opacity:1;
-
-						-moz-transform: scale(1);
-						-ms-transform: scale(1);
-						-o-transform: scale(1);
-						-webkit-transform: scale(1);
-						transform: scale(1);
+						opacity: 1;
 					}
 
-					/* hide slide n */
-					span#slide{{ forloop.counter }}:target ~ ul.slider li.slides .g0
+					/* attribute selector for the <img> */
+					img#{{ photo.fragment_identifier }}
 					{
-						opacity:0;
-
-						-moz-transform: scale(0);
-						-ms-transform: scale(0);
-						-o-transform: scale(0);
-						-webkit-transform: scale(0);
-						transform: scale(0);
+						max-height: 100%;
+						max-width: 100%;
 					}
-
 				{% endfor %}
 			{% endif %}
-
 		</style>
 	</head>
 
 	<body>
-		<div id="container">
-
+		<div id="slideshow">
 			{% if filestype == "photo" %}
 				{% for photo in files %}
-					<span id="slide{{ forloop.counter }}" class="cap"></span>
+					<a id="{{ photo.fragment_identifier }}" class="cap"></a>
 				{% endfor %}
 			{% endif %}
 
 			<ul class="slider">
-
 				<li class="slides">
 					{% if filestype == "photo" %}
 						{% for photo in files %}
 							{% autoescape off %}
-								<img class="g{{ forloop.counter }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
+								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
 							{% endautoescape %}
 						{% endfor %}
 					{% endif %}
@@ -72,7 +60,7 @@
 				<li class="track">
 					{% if filestype == "photo" %}
 						{% for photo in files %}
-							<a href="#slide{{ forloop.counter }}" class="tr{{ forloop.counter }}"></a>
+							<a href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
 						{% endfor %}
 					{% endif %}
 				</li>

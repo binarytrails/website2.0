@@ -13,6 +13,7 @@ PF Portfolio
 """
 photo = Photo(
     staticfilepath = "img/portfolio/skyline-moq.jpg",
+    fragment_identifier = "skyline",
     title = "Skyline demonstration image",
     description = "Demonstration image",
     category = Photo.PF,
@@ -23,6 +24,7 @@ photo = Photo(
 photo.save()
 photo = Photo(
     staticfilepath = "img/portfolio/stars-moq.jpg",
+    fragment_identifier = "stars",
     title = "Stars demonstration image",
     description = "Demonstration image",
     category = Photo.PF,
@@ -36,6 +38,7 @@ GN General
 """
 photo = Photo(
     staticfilepath = "img/general/jaded-moq.jpg",
+    fragment_identifier = "jaded",
     title = "Jaded - demonstration image",
     description = "Demonstration image",
     category = Photo.GN,

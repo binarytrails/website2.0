@@ -1,3 +1,14 @@
+    #slideshow
+    {
+        position:  relative;
+
+        height: 100%;
+        width: 100%;
+
+        overflow:  hidden;
+        background: purple;
+    }
+
     ul.slider
     {
         list-style: none;
@@ -34,7 +45,6 @@
 
         transition: 1s;
     }
-
 
     ul.slider li.track
     {

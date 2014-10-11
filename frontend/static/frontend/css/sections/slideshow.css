@@ -17,14 +17,17 @@
 
         #details
         {
+            position: absolute;
             height: 100%;
             width: 0.5%;
 
-            color: white;
-            box-shadow: 0 0 15px white;
+            left: 0;
+            z-index: 20;
 
-            float: left;
+            color: white;
+            box-shadow: 0 0 10px white;
             background: #0A0A0A;
+
             overflow: hidden;
 
             transition: all 1.5s;
@@ -32,27 +35,54 @@
 
             #details:hover
             {
-                width: 19%;
+                width: 20%;
+                box-shadow: 0 0 20px white;
+            }
+
+        #return
+        {
+            position: absolute;
+
+            width: 4em;
+            height: 4em;
+            border-radius: 5em;
+
+            top: 0;
+            right: 0;
+            z-index: 20;
+
+            margin: 0.4em;
+            overflow: hidden;
+
+            box-shadow: 0 0 1px white;
+            transition: all 1s;
+        }
+
+            #return:hover
+            {
+                 background: rgba(255, 255, 255, 0.5);
+            }
+
+            #return img
+            {
+                height: 100%;
+                width: 100%;
+                
+                border-radius: 4em;
+
+                transition: all 1s;
             }
 
         #slideshow
         {
             position: relative;
             height: 100%;
-            width: 80%;
+            width: 100%;
 
             float: right;
 
             overflow:  hidden;
-            background: #282828;
-
-            transition: all 1.5s;
         }
-
-            #slideshow:hover
-            {
-                width: 98.5%;
-            }
 
             ul.slider
             {
@@ -74,7 +104,7 @@
                     margin: 0em;
                     padding: 0em;
 
-                    /border: 1px solid #888888;
+                    /border: 1px solid #0A0A0A;
 
                     background: black;
                 }

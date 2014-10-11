@@ -11,16 +11,12 @@
 
     {% with NEW_HEIGHT=250 FRONTEND=STATIC|add:"frontend/" %}
 
-        <link rel="stylesheet" href="{{ STATIC }}css/js-swipebox/swipebox.css">
         <link rel="stylesheet" href="{{ FRONTEND }}css/sections/photos.css">
         <link rel="stylesheet" href="{{ FRONTEND }}css/animated/box-shadow_below-image.css">
-
-        <script src="{{ FRONTEND }}lib/js-swipebox/jquery-2.1.0.min.js"></script>
-        <script src="{{ FRONTEND }}js/js-swipebox/jquery.swipebox.js"></script>
-        <script src="{{ FRONTEND }}js/js-swipebox/photos.js"></script>
-
         <div id="main">
             <div id="photos">
+
+                <a name="portfolio"></a>
                 <section>
                     <hr></hr>
                     <header>
@@ -28,16 +24,17 @@
                     </header>
                     <hr></hr>
                 </section>
+
                 <section>
-                        <ul id="box-container">
-                        {% for image in portfolio_images %}
+                    <ul id="box-container">
+                    {% for image in portfolio_images %}
                         <li class="box">
                             {% with image_path=FRONTEND|add:image.staticfilepath %}
                             {% with width=image_path|imageWidth height=image_path|imageHeight %} 
                             {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
                             <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
                                 <div class="img-container-shadow">
-                                    <a class="swipebox" rel="" title="{{ image.title }}" href="{{ FRONTEND }}{{ image.staticfilepath }}">
+                                    <a class="swipebox" rel="" title="{{ image.title }}" href="/slideshow/photo/portfolio/#{{ image.fragment_identifier }}">
                                         <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
                                     </a>
                                 </div>
@@ -46,9 +43,11 @@
                             {% endwith %}
                             {% endwith %}
                         </li>
-                        {% endfor %}
-                        </ul>
+                    {% endfor %}
+                    </ul>
                 </section>
+
+                <a name="general"></a>
                 <section>
                     <hr></hr>
                     <header>
@@ -56,28 +55,27 @@
                     </header>
                     <hr></hr>
                 </section>
+
                 <section>
-                    <div class="wrap small-width">
-                        <ul id="box-container">
-                        {% for image in general_images %}
-                            <li class="box">
-                            {% with image_path=FRONTEND|add:image.staticfilepath %}
-                            {% with width=image_path|imageWidth height=image_path|imageHeight %} 
-                            {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
-                            <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
-                                <div class="img-container-shadow">
-                                    <a class="swipebox" rel="" title="{{ image.title }}" href="{{ FRONTEND }}{{ image.staticfilepath }}">
-                                        <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
-                                    </a>
-                                </div>
+                    <ul id="box-container">
+                    {% for image in general_images %}
+                        <li class="box">
+                        {% with image_path=FRONTEND|add:image.staticfilepath %}
+                        {% with width=image_path|imageWidth height=image_path|imageHeight %} 
+                        {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
+                        <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
+                            <div class="img-container-shadow">
+                                <a class="swipebox" rel="" title="{{ image.title }}" href="/slideshow/photo/general/#{{ image.fragment_identifier }}">
+                                    <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
+                                </a>
                             </div>
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    </div> 
+                        </div>
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        </li>
+                    {% endfor %}
+                    </ul>
                 </section>
             </div>
         </div>

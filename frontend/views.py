@@ -75,11 +75,15 @@ def slideshow(request, filestype=None, category=None):
     files = None
 
     if filestype == "photo":
+        previous_location = "/photos/"
+
         if category == "portfolio":
             category = Photo.PF
+            previous_location += "#portfolio"
 
         elif category == "general":
             category = Photo.GN
+            previous_location += "#general"
 
         files = Photo.objects.all().filter(category = category)
 
@@ -93,11 +97,12 @@ def slideshow(request, filestype=None, category=None):
         elif category == "unofficial":
             pass
 
-        files = 1
+        files = 0
 
     if files:
         return render_to_response(
             "frontend/sections/slideshow.html",{
+                "previous_location": previous_location,
                 "filestype": filestype,
                 "files": files
         })

@@ -17,14 +17,14 @@
 				{% for photo in files %}
 					/*
 						':target' specifies where to open the linked document
-						'+' select adjacent element
+						'+' selects adjacent element
 
 						sets the <a> adjacent <img> attributes on call of '#framgment_identifier' in the url.
 					*/
 					a#{{ photo.fragment_identifier }}:target + img#{{ photo.fragment_identifier }}
 					{
 						opacity: 1;
-						z-index: 20;
+						z-index: 1;
 					}
 
 					img#{{ photo.fragment_identifier }}

@@ -1,5 +1,5 @@
 # Kedfilms
-Django html5 website mainly focusing on avoiding scripts by implementing css3 functionalities.
+Avoiding scripts by implementing CSS stylish functionalities.
 
 ## Coding style
 * Indent 4 spaces
@@ -150,4 +150,3 @@ To quit the virtualenv
 ## Code for thought
 
 * Remove PIL, only used in filters.py to give image size
-* Replace unneeded javascript by css3

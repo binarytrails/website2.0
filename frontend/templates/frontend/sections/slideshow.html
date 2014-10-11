@@ -17,16 +17,16 @@
 				{% for photo in files %}
 					/*
 						':target' specifies where to open the linked document
-						'~' attribute select all elements that is preceded by the former selector.
+						'+' select adjacent element
 
-						sets the <img> related <a> target attribute to show the image on the related '#' in the url.
+						sets the <a> adjacent <img> attributes on call of '#framgment_identifier' in the url.
 					*/
-					a#{{ photo.fragment_identifier }}:target ~ ul.slider li.slides img#{{ photo.fragment_identifier }}
+					a#{{ photo.fragment_identifier }}:target + img#{{ photo.fragment_identifier }}
 					{
 						opacity: 1;
+						z-index: 20;
 					}
 
-					/* attribute selector for the <img> */
 					img#{{ photo.fragment_identifier }}
 					{
 						max-height: 100%;
@@ -42,16 +42,12 @@
 			
 		</div>
 		<div id="slideshow">
-			{% if filestype == "photo" %}
-				{% for photo in files %}
-					<a id="{{ photo.fragment_identifier }}" class="cap"></a>
-				{% endfor %}
-			{% endif %}
 
 			<ul class="slider">
 				<li class="slides" >
 					{% if filestype == "photo" %}
 						{% for photo in files %}
+							<a id="{{ photo.fragment_identifier }}" class="cap"></a>
 							<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
 						{% endfor %}
 					{% endif %}

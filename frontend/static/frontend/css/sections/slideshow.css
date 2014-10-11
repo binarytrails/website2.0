@@ -39,6 +39,12 @@
                 box-shadow: 0 0 20px white;
             }
 
+            #details ul
+            {
+                list-style: none;
+            }
+
+
         #return
         {
             position: absolute;
@@ -73,15 +79,17 @@
                 transition: all 1s;
             }
 
+
         #slideshow
         {
-            position: relative;
+            position: absolute;
             height: 100%;
             width: 100%;
 
             float: right;
 
             overflow:  hidden;
+            background: #282828;
         }
 
             ul.slider
@@ -104,28 +112,32 @@
                     margin: 0em;
                     padding: 0em;
 
-                    /border: 1px solid #0A0A0A;
-
-                    background: black;
+                    background: #0A0A0A;
                 }
 
-                    /* hidding images behind */
-                    ul.slider li.slides > img
+                    div[id*="container"]
                     {
-                        position: absolute;
-                        display: block;
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
 
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        margin: auto;
+                        float: left;
+                        overflow:  hidden;
+                        display: none;
 
-                        opacity: 0;
-
-                        transition: 1s;
+                        transition: all 2s;
                     }
 
+                        /* hidding divs behind */
+                        div[id*="slide-"]
+                        {
+                            float: right;
+                            height: 100%;
+                            width: 100%;
+
+                            transition: 2s;
+                            background: #0A0A0A;
+                        }
 
             ul.slider li.track
             {
@@ -160,4 +172,3 @@
                     {
                         box-shadow: 0 0 5px white;
                     }
-

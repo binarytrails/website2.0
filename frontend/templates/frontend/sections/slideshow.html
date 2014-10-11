@@ -38,6 +38,9 @@
 	</head>
 
 	<body>
+		<div id="details">
+			
+		</div>
 		<div id="slideshow">
 			{% if filestype == "photo" %}
 				{% for photo in files %}
@@ -46,12 +49,10 @@
 			{% endif %}
 
 			<ul class="slider">
-				<li class="slides">
+				<li class="slides" >
 					{% if filestype == "photo" %}
 						{% for photo in files %}
-							{% autoescape off %}
-								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
-							{% endautoescape %}
+							<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
 						{% endfor %}
 					{% endif %}
 				</li>

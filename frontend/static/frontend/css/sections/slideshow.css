@@ -1,82 +1,133 @@
-    #slideshow
+    html, body
     {
-        position:  relative;
-
         height: 100%;
-        width: 100%;
+        width: auto;
+
+        margin: 0px;
+        padding: 0px;
 
         overflow:  hidden;
-        background: purple;
-    }
-
-    ul.slider
-    {
-        list-style: none;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    ul.slider li
-    {
-        float:left;
-
-        transition: 1s;
-    }
-
-    ul.slider li.slides
-    {
-        position: relative;
-
-        height: 33em;
-        width: 80em;
-
-        overflow: hidden;
-        border: 1px solid #888888;
-
         background: black;
     }
 
-    /* hidding images behind */
-    ul.slider li.slides > img
+    a:focus
     {
-        display: block;
-        opacity: 0; 
-        position: absolute;
-
-        transition: 1s;
+        outline: 0;
     }
 
-    ul.slider li.track
-    {
-        background-color: red;
-
-        clear: left;
-
-        height: auto;
-        width: 100%;
-
-        position: relative;
-        text-align: center;
-        z-index: 20;
-    }
-
-    ul.slider li.track a
-    {
-        display:inline-block;
-        height: 15px;
-        width: 15px;
-        border-radius: 10px;
-
-        background-color: #fff;
-
-
-        margin: 0.5em;
-
-        box-shadow: 2px 1px 1px #000000;
-
-    }
-
-        ul.slider li.track a:hover
+        #details
         {
-            background-color: #0f0;
+            height: 100%;
+            width: 0.5%;
+
+            color: white;
+            box-shadow: 0 0 15px white;
+
+            float: left;
+            background: #0A0A0A;
+            overflow: hidden;
+
+            transition: all 1.5s;
         }
+
+            #details:hover
+            {
+                width: 19%;
+            }
+
+        #slideshow
+        {
+            position: relative;
+            height: 100%;
+            width: 80%;
+
+            float: right;
+
+            overflow:  hidden;
+            background: #282828;
+
+            transition: all 1.5s;
+        }
+
+            #slideshow:hover
+            {
+                width: 98.5%;
+            }
+
+            ul.slider
+            {
+                height: 100%;
+                width: auto;
+
+                list-style: none;
+
+                margin: 0em;
+                padding: 0px;
+            }
+
+                ul.slider li.slides
+                {
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+
+                    margin: 0em;
+                    padding: 0em;
+
+                    /border: 1px solid #888888;
+
+                    background: black;
+                }
+
+                    /* hidding images behind */
+                    ul.slider li.slides > img
+                    {
+                        position: absolute;
+                        display: block;
+
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+
+                        opacity: 0;
+
+                        transition: 1s;
+                    }
+
+
+            ul.slider li.track
+            {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                height: auto;
+                width: 100%;
+                left: 1px;
+                bottom: 0;
+                z-index: 20;
+
+                text-align: center;
+            }
+
+                ul.slider li.track a
+                {
+                    display:inline-block;
+                    height: 1em;
+                    width: 1em;
+                    border-radius: 1em;
+
+                    background-color: black;
+                    box-shadow: 0 0 1px white;
+                    text-decoration: none;
+
+                    margin: 0.5em;
+                    transition: box-shadow 1s;
+                }
+
+                    ul.slider li.track a:hover
+                    {
+                        box-shadow: 0 0 5px white;
+                    }
+

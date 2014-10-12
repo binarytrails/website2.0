@@ -5,12 +5,12 @@
 
 	<head>
 		<title>Kedfilms slideshow</title>
-		
-		{% load staticfiles %}	
-		<link rel="stylesheet" href="{% static "frontend/css/sections/slideshow.css" %}"/>
 
 		{% load static %}
 		{% get_static_prefix as STATIC %}
+
+		{% load staticfiles %}	
+		<link rel="stylesheet" href="{{ STATIC }}frontend/css/sections/slideshow.css"/>
 
 		<style type="text/css">
 			{% if filestype == "photo" %}
@@ -20,6 +20,13 @@
 					{
 						display: block; # shows the container
 					}
+
+					a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }} > div#slide-{{ photo.fragment_identifier }} > img#{{ photo.fragment_identifier }}
+					{
+						opacity: 1;
+						transform: scale(1);
+					}
+
 
 				{% endfor %}
 			{% endif %}

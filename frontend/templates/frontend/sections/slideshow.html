@@ -15,32 +15,10 @@
 		<style type="text/css">
 			{% if filestype == "photo" %}
 				{% for photo in files %}
-					/*
-						':target' specifies where to open the linked document
-						'~' attribute select all elements that is preceded by the former selector.
 
-						sets the <img> related <a> target attribute to show the image on the related '#' in the url.
-					*/
 					a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }}
 					{
-						/opacity: 1;
-						display: block;
-					}
-
-					/* attribute selector for the <img> */
-					img#{{ photo.fragment_identifier }}
-					{
-						position: relative;
-						display: block;
-
-						top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        margin: auto;
-
-						max-height: 100%;
-						max-width: 100%;
+						display: block; # shows the container
 					}
 
 				{% endfor %}
@@ -56,6 +34,7 @@
 					{% if filestype == "photo" %}
 						{% for photo in files %}
 							<a id="{{ photo.fragment_identifier }}" class="cap"></a>
+
 							<div id="container-{{ photo.fragment_identifier }}">
 
 								<div id="slide-{{ photo.fragment_identifier }}">
@@ -64,13 +43,24 @@
 
 								<div id="details">
 									<ul>
-										<li>Title: {{ photo.title }}</li>
-										<li>Author: {{ photo.author }}</li>
-										<li>Category: {{ photo.category }}</li>
-										<li>Description: {{ photo.description }}</li>
-										<li>Date: {{ photo.date_created }}</li>
+										<li>
+											Title: {{ photo.title }}
+										</li>
+										<li>
+											Author: {{ photo.author }}
+										</li>
+										<li>
+											Category: {{ photo.category }}
+										</li>
+										<li>
+											Description: {{ photo.description }}
+										</li>
+										<li>
+											Date: {{ photo.date_created }}
+										</li>
 									</ul>
 								</div>
+
 							</div>
 						{% endfor %}
 					{% endif %}

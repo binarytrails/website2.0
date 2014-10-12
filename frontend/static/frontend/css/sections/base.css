@@ -168,10 +168,9 @@
 
 		#header h1
 		{
-		cursor: default;
-		transition: all 2s;
+			cursor: default;
+			transition: all 2s;
 		}
-
 			#header h1:hover
 			{
 				text-shadow: 0 0 5px white;
@@ -189,12 +188,10 @@
 			border: 1px solid;
 			border-color: rgba(255,255,255,.1);
 		}
-		
 			#header #menu ul li:first-child
 			{
 				border-left: none;
 			}
-
 			#header #menu ul li:last-child
 			{
 				border-right: none;
@@ -212,7 +209,6 @@
 			color: #FFFFFF;
 			transition: all 0.5s;
 		}
-
 			#header #menu ul li a:hover
 			{
 				text-shadow: 0px 0px 5px White;

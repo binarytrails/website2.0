@@ -32,7 +32,6 @@
 
             transition: all 1.5s;
         }
-
             #details:hover
             {
                 width: 20%;
@@ -42,8 +41,21 @@
             #details ul
             {
                 list-style: none;
+                margin-top: 2em;
             }
 
+                #details ul > li
+                {
+                    min-width: 13em;
+                    max-width: 85%;
+                    margin: 1em 0em;
+
+                    transition: text-shadow 0.5s;
+                }
+                    #details ul > li:hover
+                    {
+                        text-shadow: 0 0 8px white;
+                    }
 
         #return
         {
@@ -63,7 +75,6 @@
             box-shadow: 0 0 1px white;
             transition: all 1s;
         }
-
             #return:hover
             {
                  background: rgba(255, 255, 255, 0.5);
@@ -122,13 +133,12 @@
                         width: 100%;
 
                         float: left;
-                        overflow:  hidden;
+                        overflow: hidden;
                         display: none;
 
                         transition: all 2s;
                     }
 
-                        /* hidding divs behind */
                         div[id*="slide-"]
                         {
                             float: right;
@@ -138,6 +148,21 @@
                             transition: 2s;
                             background: #0A0A0A;
                         }
+
+                             div[id*="slide-"] > img
+                            {
+                                position: relative;
+                                display: block;
+
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                margin: auto;
+
+                                max-height: 100%;
+                                max-width: 100%;
+                            }
 
             ul.slider li.track
             {
@@ -167,7 +192,6 @@
                     margin: 0.5em;
                     transition: box-shadow 1s;
                 }
-
                     ul.slider li.track a:hover
                     {
                         box-shadow: 0 0 5px white;

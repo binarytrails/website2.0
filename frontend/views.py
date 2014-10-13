@@ -86,6 +86,6 @@ def videos(request):
                 "complete_title": "The affair is over, ended, finished",
                 "complete_videos": Video.objects.all().filter(category = Video.CM),
                 "unofficial_title": "An incomplete flower",
-                "unofficial_videos": ""
+                "unofficial_videos": None
         }
     )

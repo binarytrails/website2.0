@@ -76,7 +76,7 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/complete/spring_recap.mov" ,
+	staticfilepath = "vid/complete/spring_recap.ogv" ,
 	title = "Spring",
 	director = "Seva Ivanov",
 	description = "Pictures in motion",

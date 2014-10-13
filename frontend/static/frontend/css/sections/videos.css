@@ -58,7 +58,8 @@
  						margin: 4em 2% 4em 4%;
  					}
  						/*tmp*/
-						#videos section #container > video{
+						#videos section #container > video
+						{
 							height: 20em;
 							width: 30%;
 							margin: 1% 1%;
@@ -66,10 +67,10 @@
 
 						#videos section #container > #wrapper
 						{
+							display: inline-block;
 							height: 20em;
 							width: 30%;
 							margin: 1% 1%;
-							overflow: hidden;
 							background: white;
 						}
 
@@ -79,18 +80,16 @@
 								height: 20em;
 								width: 28.2%;
 								z-index: 1;
-								margin: 0;
 							}
 
 							#videos section #container #wrapper > #details
 							{
 								position: absolute;
-								height: 1em;
+								height: 1.8em;
 								width: 28.2%;
-
-								margin: 0;
 								z-index: 2;
-								opacity: 0.2;
+
+								opacity: 0.5;
 								overflow: hidden;
 
 								background: black;
@@ -100,7 +99,22 @@
 							}
 								#videos section #container #wrapper > #details:hover
 								{
-									height: 14em;
-									opacity: 0.9;
+									height: 20em;
+									opacity: 0.93;
 									box-shadow: 0 0 10px;
 								}
+
+								#details > header
+								{
+									text-align: center;
+									text-shadow: 0 0 0.3px white;
+								}
+
+								#details ul > li
+								{
+				                    transition: text-shadow 0.5s;
+								}
+									#details ul > li:hover
+									{
+										text-shadow: 0 0 8px white;
+									}

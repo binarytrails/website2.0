@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import HttpResponse, render_to_response
-from .models import User, Skill, Photo
+from .models import User, Skill, Photo, Video
 from kedfilms import utils
 
 IMG_DIR = "frontend/static/frontend/img/"
@@ -37,7 +37,7 @@ def articles(request):
         }
     )
 
-# categories: ((GN,General), (PF,Portfolio))
+# categories: ((GN, General), (PF, Portfolio))
 def photos(request):
     if os.path.exists(IMG_DIR):
         return render_to_response(
@@ -75,16 +75,16 @@ def photos_slideshow(request, category=None):
                 "photos": photos
         })
 
-# tmp: load from photos
+# categories: ((IN, Intro), (CM, Complete))
 def videos(request):
     if os.path.exists(VID_DIR):
         return render_to_response(
             "frontend/sections/videos.html",{
                 "title": "Short Films",
                 "intro_title": "Brief introductory passage",
-                "intro_videos": "",
+                "intro_videos": Video.objects.all().filter(category = Video.IN),
                 "complete_title": "The affair is over, ended, finished",
-                "complete_videos": "",
+                "complete_videos": Video.objects.all().filter(category = Video.CM),
                 "unofficial_title": "An incomplete flower",
                 "unofficial_videos": ""
         }

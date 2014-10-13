@@ -33,8 +33,8 @@ Avoiding scripts by implementing CSS stylish functionalities.
 
 * Create database tables only if necessary
 
-    * To reduce code redundance
-    * To stock object related information
+	    * To reduce code redundance
+	    * To stock object related information
 
 ## Getting started
 
@@ -49,7 +49,7 @@ Activate virtualenv
 
 Install django and its tools inside
 
-        easy_install django==1.7 django_debug_toolbar 
+        easy_install django==1.7 
 
 
 ### 2. Install PIL
@@ -81,8 +81,13 @@ To quit the virtualenv
 ## Features
 
 ### Plugins
-* Django-debug-toolbar : Browser debug toolbar
+#### Active
 * PIL : Python Image Library
+
+#### Recommended
+* Django-debug-toolbar : Browser debug toolbar
+
+		easy_install django_debug_toolbar
 
 ### Add-ons
 * Reset CSS : Stylesheet to reduce browser inconsistencies
@@ -93,7 +98,7 @@ To quit the virtualenv
 
 * Articles works on behalf of a folder structure
 
-    user/category/subcategory/article-base.html
+		user/category/subcategory/article-base.html
 
 * Database is used to store technical information used in templates
 

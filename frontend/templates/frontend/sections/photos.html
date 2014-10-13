@@ -34,7 +34,7 @@
                             {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
                             <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
                                 <div class="img-container-shadow">
-                                    <a class="swipebox" rel="" title="{{ image.title }}" href="/slideshow/photo/portfolio/#{{ image.fragment_identifier }}">
+                                    <a class="swipebox" rel="" title="{{ image.title }}" href="slideshow/portfolio/#{{ image.fragment_identifier }}">
                                         <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
                                     </a>
                                 </div>
@@ -60,19 +60,19 @@
                     <ul id="box-container">
                     {% for image in general_images %}
                         <li class="box">
-                        {% with image_path=FRONTEND|add:image.staticfilepath %}
-                        {% with width=image_path|imageWidth height=image_path|imageHeight %} 
-                        {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
-                        <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
-                            <div class="img-container-shadow">
-                                <a class="swipebox" rel="" title="{{ image.title }}" href="/slideshow/photo/general/#{{ image.fragment_identifier }}">
-                                    <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
-                                </a>
+                            {% with image_path=FRONTEND|add:image.staticfilepath %}
+                            {% with width=image_path|imageWidth height=image_path|imageHeight %} 
+                            {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
+                            <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
+                                <div class="img-container-shadow">
+                                    <a class="swipebox" rel="" title="{{ image.title }}" href="slideshow/general/#{{ image.fragment_identifier }}">
+                                        <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
                         </li>
                     {% endfor %}
                     </ul>

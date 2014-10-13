@@ -8,12 +8,14 @@ urlpatterns = patterns('',
     
     # sections
     url(r'^$', 'frontend.views.home', name='home'),
+
     url(r'^articles/', 'frontend.views.articles', name='articles'),
-    url(r'^photos/', 'frontend.views.photos', name='photos'),
+
+    url(r'^photos/$', 'frontend.views.photos', name='photos'),
+    url(r'^photos/slideshow/(?P<category>\w{1,10})/$', 'frontend.views.photos_slideshow', name='photos_slideshow'),
+
     url(r'^videos/', 'frontend.views.videos', name='videos'),
-    url(r'^slideshow/(?P<filestype>\w{5})/(?P<category>\w{1,10})/$',
-        'frontend.views.slideshow', name='slideshow'),
-    
+
     # admin
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # url(r'^admin/', include(admin.site.urls)),

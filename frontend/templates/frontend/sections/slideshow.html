@@ -13,75 +13,66 @@
 		<link rel="stylesheet" href="{{ STATIC }}frontend/css/sections/slideshow.css"/>
 
 		<style type="text/css">
-			{% if filestype == "photo" %}
-				{% for photo in files %}
+			{% for photo in photos %}
 
-					a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }}
-					{
-						display: block; # shows the container
-					}
+				a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }}
+				{
+					display: block; # shows the container
+				}
 
-					a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }} > div#slide-{{ photo.fragment_identifier }} > img#{{ photo.fragment_identifier }}
-					{
-						opacity: 1;
-						transform: scale(1);
-					}
+				a#{{ photo.fragment_identifier }}:target + div#container-{{ photo.fragment_identifier }} > div#slide-{{ photo.fragment_identifier }} > img#{{ photo.fragment_identifier }}
+				{
+					opacity: 1;
+					transform: scale(1);
+				}
 
-
-				{% endfor %}
-			{% endif %}
+			{% endfor %}
 		</style>
 	</head>
 
 	<body>
 		<div id="slideshow">
-
 			<ul class="slider">
 				<li class="slides" >
-					{% if filestype == "photo" %}
-						{% for photo in files %}
-							<a id="{{ photo.fragment_identifier }}" class="cap"></a>
+					{% for photo in photos %}
+						<a id="{{ photo.fragment_identifier }}" class="cap"></a>
 
-							<div id="container-{{ photo.fragment_identifier }}">
+						<div id="container-{{ photo.fragment_identifier }}">
 
-								<div id="slide-{{ photo.fragment_identifier }}">
-									<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
-								</div>
-
-								<div id="details">
-									<ul>
-										<li>
-											Title: {{ photo.title }}
-										</li>
-										<li>
-											Author: {{ photo.author }}
-										</li>
-										<li>
-											Category: {{ photo.category }}
-										</li>
-										<li>
-											Description: {{ photo.description }}
-										</li>
-										<li>
-											Date: {{ photo.date_created }}
-										</li>
-									</ul>
-								</div>
-
+							<div id="slide-{{ photo.fragment_identifier }}">
+								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ photo.staticfilepath }}" alt=""/>
 							</div>
-						{% endfor %}
-					{% endif %}
+
+							<div id="details">
+								<ul>
+									<li>
+										Title: {{ photo.title }}
+									</li>
+									<li>
+										Author: {{ photo.author }}
+									</li>
+									<li>
+										Category: {{ photo.category }}
+									</li>
+									<li>
+										Description: {{ photo.description }}
+									</li>
+									<li>
+										Date: {{ photo.date_created }}
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					{% endfor %}
 				</li>
 
 				<li class="track">
-					{% if filestype == "photo" %}
-						{% for photo in files %}
-							<a href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
-						{% endfor %}
-					{% endif %}
+					{% for photo in photos %}
+						<a href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
+					{% endfor %}
 				</li>
 			</ul>
-
 		</div>
 
 		<div id="return">

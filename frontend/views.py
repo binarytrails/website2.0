@@ -7,7 +7,6 @@ IMG_DIR = "frontend/static/frontend/img/"
 VID_DIR = "frontend/static/frontend/vid/"
 
 def home(request):
-
     skills_categories = []
     for item in Skill.objects.all().filter(owner='kedfilms-founder').order_by('category').values('category').distinct():
         skills_categories.append(item['category'])
@@ -20,7 +19,6 @@ def home(request):
     )
 
 def articles(request):
-
     try:
         last_edited = utils.getMostRecentFileRecursively(
             "frontend/templates/frontend/articles/",
@@ -41,7 +39,6 @@ def articles(request):
 
 # categories: ((GN,General), (PF,Portfolio))
 def photos(request):
-
     if os.path.exists(IMG_DIR):
         return render_to_response(
             "frontend/sections/photos.html",{
@@ -54,9 +51,32 @@ def photos(request):
         }
     )
 
+def photos_slideshow(request, category=None):
+    photos = None
+    previous_location = "/photos/"
+
+    if category == "portfolio":
+        category = Photo.PF
+        previous_location += "#portfolio"
+
+    elif category == "general":
+        category = Photo.GN
+        previous_location += "#general"
+
+    else:
+        return HttpResponse(status=404)
+
+    photos = Photo.objects.all().filter(category = category)
+
+    if photos:
+        return render_to_response(
+            "frontend/sections/slideshow.html",{
+                "previous_location": previous_location,
+                "photos": photos
+        })
+
 # tmp: load from photos
 def videos(request):
-
     if os.path.exists(VID_DIR):
         return render_to_response(
             "frontend/sections/videos.html",{
@@ -69,40 +89,3 @@ def videos(request):
                 "unofficial_videos": ""
         }
     )
-
-def slideshow(request, filestype=None, category=None):
-
-    files = None
-
-    if filestype == "photo":
-        previous_location = "/photos/"
-
-        if category == "portfolio":
-            category = Photo.PF
-            previous_location += "#portfolio"
-
-        elif category == "general":
-            category = Photo.GN
-            previous_location += "#general"
-
-        files = Photo.objects.all().filter(category = category)
-
-    elif filestype == "video":
-        if category == "intro":
-            pass
-
-        elif category == "complete":
-            pass
-
-        elif category == "unofficial":
-            pass
-
-        files = 0
-
-    if files:
-        return render_to_response(
-            "frontend/sections/slideshow.html",{
-                "previous_location": previous_location,
-                "filestype": filestype,
-                "files": files
-        })

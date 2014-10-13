@@ -23,7 +23,7 @@
 
 				#videos section
 				{
-					height: 30em;
+					height: auto;
 					width: 100%;
 
 					background: #282828;
@@ -52,3 +52,55 @@
 						margin-left: 25%;
 
  					}
+
+ 					#videos section > #container
+ 					{
+ 						margin: 4em 2% 4em 4%;
+ 					}
+ 						/*tmp*/
+						#videos section #container > video{
+							height: 20em;
+							width: 30%;
+							margin: 1% 1%;
+						}
+
+						#videos section #container > #wrapper
+						{
+							height: 20em;
+							width: 30%;
+							margin: 1% 1%;
+							overflow: hidden;
+							background: white;
+						}
+
+							#videos section #container #wrapper > video
+							{
+								position: absolute;
+								height: 20em;
+								width: 28.2%;
+								z-index: 1;
+								margin: 0;
+							}
+
+							#videos section #container #wrapper > #details
+							{
+								position: absolute;
+								height: 1em;
+								width: 28.2%;
+
+								margin: 0;
+								z-index: 2;
+								opacity: 0.2;
+								overflow: hidden;
+
+								background: black;
+								box-shadow: 0 0 10px black;
+
+								transition: all 1.5s;
+							}
+								#videos section #container #wrapper > #details:hover
+								{
+									height: 14em;
+									opacity: 0.9;
+									box-shadow: 0 0 10px;
+								}

@@ -40,20 +40,26 @@ class Photo(models.Model):
         blank = False,
         unique = True
     )
-    description = models.CharField(
-        max_length = 250
+    author = models.CharField(
+        max_length = 50,
+        blank = False
     )
     category = models.CharField(
         max_length = 2,
         blank = False,
         default = GN
     )
-    author = models.CharField(
-            max_length = 50,
-            blank = False
-        )
+    hardware = models.CharField(
+        max_length = 50,
+        blank = False
+    )
+    application = models.CharField(
+        max_length = 50,
+        blank = False
+    )
     date_created = models.DateField(
-        default = date.today
+        default = date.today,
+        blank = False
     )    
     owner = models.ForeignKey(
         'User'
@@ -78,23 +84,28 @@ class Video(models.Model):
         blank = False,
         unique = True 
     )
+    director = models.CharField(
+        max_length = 50 
+    )
     description = models.CharField(
-        max_length = 250 
+        max_length = 50 
     )
     category = models.CharField(
         max_length = 2,
         blank = False,
         default = UN
     )
-    author = models.CharField(
+    hardware = models.CharField(
         max_length = 50,
         blank = False
     )
-    director = models.CharField(
-        max_length = 50 
+    application = models.CharField(
+        max_length = 50,
+        blank = False
     )
-    sfx = models.CharField(
-        max_length = 50 
+    date_created = models.DateField(
+        default = date.today,
+        blank = False
     )
     owner = models.ForeignKey(
         'User'

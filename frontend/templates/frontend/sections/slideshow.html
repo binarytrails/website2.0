@@ -54,9 +54,16 @@
 									<li>
 										Category: {{ photo.category }}
 									</li>
-									<li>
-										Description: {{ photo.description }}
-									</li>
+                                    {% if photo.hardware %}
+                                        <li>
+                                            Hardware:</br>{{ photo.hardware }}
+                                        </li>
+                                    {% endif %}
+                                    {% if photo.application %}
+                                        <li>
+                                            Software:</br>{{ photo.application }}
+                                        </li>
+                                    {% endif %}
 									<li>
 										Date: {{ photo.date_created }}
 									</li>

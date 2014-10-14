@@ -32,18 +32,24 @@
                                 <li>
                                     Director: {{ video.director }}
                                 </li>
-                                <li>
-                                    Description: {{ video.description }}
-                                </li>
+                                {% if video.description %}
+                                    <li>
+                                        Description: {{ video.description }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Category: {{ video.category }}
                                 </li>
-                                <li>
-                                    Hardware: {{ video.hardware }}
-                                </li>
-                                <li>
-                                    Application: {{ video.application }}
-                                </li>
+                                {% if video.hardware %}
+                                    <li>
+                                        Hardware: {{ video.hardware }}
+                                    </li>
+                                {% endif %}
+                                {% if video.application %}
+                                    <li>
+                                        Software: {{ video.application }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Date created: {{ video.date_created }}
                                 </li>
@@ -76,18 +82,24 @@
                                 <li>
                                     Director: {{ video.director }}
                                 </li>
-                                <li>
-                                    Description: {{ video.description }}
-                                </li>
+                                {% if video.description %}
+                                    <li>
+                                        Description: {{ video.description }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Category: {{ video.category }}
                                 </li>
-                                <li>
-                                    Hardware: {{ video.hardware }}
-                                </li>
-                                <li>
-                                    Application: {{ video.application }}
-                                </li>
+                                {% if video.hardware %}
+                                    <li>
+                                        Hardware: {{ video.hardware }}
+                                    </li>
+                                {% endif %}
+                                {% if video.application %}
+                                    <li>
+                                        Software: {{ video.application }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Date created: {{ video.date_created }}
                                 </li>
@@ -120,18 +132,24 @@
                                 <li>
                                     Director: {{ video.director }}
                                 </li>
-                                <li>
-                                    Description: {{ video.description }}
-                                </li>
+                                {% if video.description %}
+                                    <li>
+                                        Description: {{ video.description }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Category: {{ video.category }}
                                 </li>
-                                <li>
-                                    Hardware: {{ video.hardware }}
-                                </li>
-                                <li>
-                                    Application: {{ video.application }}
-                                </li>
+                                {% if video.hardware %}
+                                    <li>
+                                        Hardware: {{ video.hardware }}
+                                    </li>
+                                {% endif %}
+                                {% if video.application %}
+                                    <li>
+                                        Software: {{ video.application }}
+                                    </li>
+                                {% endif %}
                                 <li>
                                     Date created: {{ video.date_created }}
                                 </li>

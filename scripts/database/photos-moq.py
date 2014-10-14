@@ -17,8 +17,8 @@ photo = Photo(
     title = "Skyline demonstration image",
     author = "Internet",
     category = Photo.PF,
-    hardware = "Camera: Canon EOS REBEL T3i",
-    application = "SFX: Adobe After Effect",
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
     date_created = date(2099, 9, 06),
     owner = KEDFILMS_FOUNDER
 )
@@ -29,8 +29,8 @@ photo = Photo(
     title = "Stars demonstration image",
     author = "Internet",
     category = Photo.PF,
-    hardware = "Camera: Canon EOS REBEL T3i",
-    application = "SFX: Adobe After Effect",
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
     date_created = date(2099, 9, 06),
     owner = KEDFILMS_FOUNDER
 )
@@ -44,8 +44,8 @@ photo = Photo(
     title = "Jaded - demonstration image",
     author = "Internet",
     category = Photo.GN,
-    hardware = "Camera: Canon EOS REBEL T3i",
-    application = "SFX: Adobe After Effect",
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
     date_created = date(2099, 9, 06),
     owner = KEDFILMS_FOUNDER
 )

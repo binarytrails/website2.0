@@ -50,12 +50,10 @@ class Photo(models.Model):
         default = GN
     )
     hardware = models.CharField(
-        max_length = 50,
-        blank = False
+        max_length = 50
     )
     application = models.CharField(
-        max_length = 50,
-        blank = False
+        max_length = 50
     )
     date_created = models.DateField(
         default = date.today,
@@ -71,7 +69,7 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    IN = 'Intro'
+    IN = 'Introduction'
     CM = 'Complete'
     UN = 'Unofficial'
 
@@ -85,7 +83,8 @@ class Video(models.Model):
         unique = True 
     )
     director = models.CharField(
-        max_length = 50 
+        max_length = 50, 
+        blank = False
     )
     description = models.CharField(
         max_length = 50 
@@ -96,12 +95,10 @@ class Video(models.Model):
         default = UN
     )
     hardware = models.CharField(
-        max_length = 50,
-        blank = False
+        max_length = 50
     )
     application = models.CharField(
-        max_length = 50,
-        blank = False
+        max_length = 50
     )
     date_created = models.DateField(
         default = date.today,

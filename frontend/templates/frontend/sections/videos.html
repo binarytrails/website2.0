@@ -19,7 +19,7 @@
                 <div id="container">
                     {% for video in intro_videos %}
                     <div id="wrapper">
-                        <video name="{{ video.title }}" controls="controls"
+                        <video name="{{ video.title }}" preload="none" controls="controls"
                             src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
                             poster="">
                             The browser does not support the html5 video element for ogv format.
@@ -69,7 +69,7 @@
                 <div id="container">
                     {% for video in complete_videos %}
                     <div id="wrapper">
-                        <video name="{{ video.title }}" controls="controls"
+                        <video name="{{ video.title }}" preload="none" controls="controls"
                             src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
                             poster="">
                             The browser does not support the html5 video element for ogv format.
@@ -119,7 +119,7 @@
                 <div id="container">
                     {% for video in unofficial_videos %}
                     <div id="wrapper">
-                        <video name="{{ video.title }}" controls="controls"
+                        <video name="{{ video.title }}" preload="none" controls="controls"
                             src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
                             poster="">
                             The browser does not support the html5 video element for ogv format.

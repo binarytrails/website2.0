@@ -10,7 +10,8 @@
 
     <div id="main">
         <div id="videos">
-            <section style="background: {% cycle '#E5E4E2' '#92C7C7' '#64E986' as bgcolors %};">
+            {% load cycle from future %}
+            <section style="background: {% cycle '#E5E4E2' '#92C7C7' '#64E986' as bgcolors %};"
                 <header style="color: {% cycle '#787878' 'white' as textcolors %};">
                     {{ intro_title }}
                 </header>

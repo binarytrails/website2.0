@@ -3,8 +3,9 @@ from django.shortcuts import HttpResponse, render
 from .models import User, Skill, Photo, Video
 from kedfilms import utils
 
-IMG_DIR = "frontend/static/frontend/img/"
-VID_DIR = "frontend/static/frontend/vid/"
+DIR = os.path.abspath(os.path.dirname(__file__))
+IMG_DIR = os.path.join(DIR, "static/frontend/img/")
+VID_DIR = os.path.join(DIR, "static/frontend/vid/")
 
 def home(request):
     skills_categories = []
@@ -86,3 +87,4 @@ def videos(request):
             "unofficial_videos": Video.objects.all().filter(category = Video.UN)
         })
 
+print DIR

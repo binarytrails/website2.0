@@ -1,41 +1,6 @@
 # Kedfilms
 Avoiding scripts by implementing CSS stylish functionalities.
 
-## Coding style
-* Indent 4 spaces
-
-* Functions & variables
-
-    * If you can read it, make it simple
-
-            makechoice
-
-    * Otherwise
-
-            awesome_variable
-    
-    * Global static variables are uppercase
-
-            AWESOME_STATIC_VARIABLE
-
-* Priority to new line per bracket
-
-        function
-        {
-            # code here
-        }
-        
-* If not permitted, one new line for last bracket i.e. views.py
-
-        function{
-            # code here
-        }
-
-* Create database tables only if necessary
-
-	    * To reduce code redundance
-	    * To stock object related information
-
 ## Getting started
 
 ### 1. Create your virtual environment
@@ -52,16 +17,12 @@ Install django and its tools inside
         easy_install django==1.7 
 
 
-### 2. Install PIL
+### 2. Install ImageMagick
 It is used for image resizing in the photos section. To complile it you would need some tools
 
-        sudo apt-get install python2.7-dev
+        sudo apt-get install imagemagick
 
-Install it in the virtualenv
-
-        pip install PIL --allow-external PIL --allow-unverified PIL
-
-### 3. Post-installation
+### Post-installation
 
 Launch the website
 
@@ -82,7 +43,7 @@ To quit the virtualenv
 
 ### Plugins
 #### Active
-* PIL : Python Image Library
+* ImageMagick : Convert, Edit, and Compose Images
 
 #### Recommended
 * Django-debug-toolbar : Browser debug toolbar
@@ -152,6 +113,38 @@ To quit the virtualenv
     
         ./manage shell < script.py
 
-## Code for thought
+## Coding style
+* Indent 4 spaces
 
-* Remove PIL, only used in filters.py to give image size
+* Functions & variables
+
+    * If you can read it, make it simple
+
+            makechoice
+
+    * Otherwise
+
+            awesome_variable
+    
+    * Global static variables are uppercase
+
+            AWESOME_STATIC_VARIABLE
+
+* Priority to new line per bracket
+
+        function
+        {
+            # code here
+        }
+        
+* If not permitted, one new line for last bracket i.e. views.py
+
+        function{
+            # code here
+        }
+
+* Create database tables only if necessary
+
+	    * To reduce code redundance
+	    * To stock object related information
+

@@ -1,13 +1,13 @@
 """
 Issues:
     Can't return a tuple to template
-    Can't use os.path.join() in imageWidth & imageHeight
-    Can't return multiple values. rpnMath.
+        Solution: imageWidth & ImageHeight
+    Can't return multiple values
+        Solution: rpnMath
 """
-
 import os
 from django import template
-from PIL import Image
+from kedfilms import utils
 
 DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 register = template.Library()
@@ -22,9 +22,9 @@ def in_category(objects, category):
 
 @register.filter
 def imageWidth(path):
-    return Image.open(DIR + str(path)).size[0]
+    return utils.getImageSize(DIR + path)[0]
 
 @register.filter
 def imageHeight(path):
-    return Image.open(DIR + str(path)).size[1]
+    return utils.getImageSize(DIR + path)[1]
 

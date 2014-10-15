@@ -69,9 +69,10 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
+    FV = 'Favorite'
     IN = 'Introduction'
-    CM = 'Complete'
-    UN = 'Unofficial'
+    EV = 'Event'
+    DN = 'Dancer'
 
     staticfilepath = models.CharField(
         primary_key = True,

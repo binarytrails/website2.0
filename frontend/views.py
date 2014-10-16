@@ -47,10 +47,12 @@ def photos(request):
             "subtitle": "Capture the moment in time",
 
             "portfolio_title": "Porfolio",
-            "portfolio_images": Photo.objects.all().filter(category = Photo.PF),
+            "portfolio_images": Photo.objects.all().filter(
+                category = Photo.PF).order_by('-date_created'),
 
             "general_title": "General",
-            "general_images": Photo.objects.all().filter(category = Photo.GN)
+            "general_images": Photo.objects.all().filter(
+                category = Photo.GN).order_by('-date_created')
         })
 
 def photos_slideshow(request, category=None):

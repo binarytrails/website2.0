@@ -29,7 +29,7 @@ class Photo(models.Model):
  
     staticfilepath = models.CharField(
         primary_key = True,
-        max_length = 50
+        max_length = 250
     )
     fragment_identifier = models.CharField(
         max_length = 20,
@@ -76,7 +76,10 @@ class Video(models.Model):
 
     staticfilepath = models.CharField(
         primary_key = True,
-        max_length = 50 
+        max_length = 250 
+    )
+    staticposterpath = models.CharField(
+        max_length = 250 
     )
     title = models.CharField(
         max_length = 50,

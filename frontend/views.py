@@ -9,7 +9,10 @@ VID_DIR = os.path.join(DIR, "static/frontend/vid/")
 
 def home(request):
     skills_categories = []
-    for item in Skill.objects.all().filter(owner='kedfilms-founder').order_by('category').values('category').distinct():
+    for item in Skill.objects.all().filter(
+        owner='kedfilms-founder'
+    ).order_by('category').values('category').distinct():
+
         skills_categories.append(item['category'])
 
     return render(request, "frontend/sections/home.html",
@@ -36,15 +39,16 @@ def articles(request):
         "subtitle": "Subtitle"
     })
 
-# categories: ((GN, General), (PF, Portfolio))
 def photos(request):
     if os.path.exists(IMG_DIR):
         return render(request, "frontend/sections/photos.html",
         {
             "title": "Photography",
             "subtitle": "Capture the moment in time",
+
             "portfolio_title": "Porfolio",
             "portfolio_images": Photo.objects.all().filter(category = Photo.PF),
+
             "general_title": "General",
             "general_images": Photo.objects.all().filter(category = Photo.GN)
         })
@@ -73,18 +77,23 @@ def photos_slideshow(request, category=None):
             "photos": photos
         })
 
-# categories: ((IN, Intro), (CM, Complete))
 def videos(request):
     if os.path.exists(VID_DIR):
         return render(request, "frontend/sections/videos.html",
         {
-            "title": "Short Films",
             "intro_title": "Brief introductory passage",
-            "intro_videos": Video.objects.all().filter(category = Video.IN),
-            "complete_title": "The affair is over, ended, finished",
-            "complete_videos": Video.objects.all().filter(category = Video.CM),
-            "unofficial_title": "An incomplete flower",
-            "unofficial_videos": Video.objects.all().filter(category = Video.UN)
-        })
+            "intro_videos": Video.objects.all().filter(
+                category = Video.IN).order_by('-date_created'),
 
-print DIR
+            "favorite_title": "Personal Favorites",
+            "favorite_videos": Video.objects.all().filter(
+                category = Video.FV).order_by('-date_created'),
+
+            "event_title": "A Gathering Of People",
+            "event_videos": Video.objects.all().filter(
+                category = Video.EV).order_by('-date_created'),
+
+            "dancer_title": "Physical Expression",
+            "dancer_videos": Video.objects.all().filter(
+                category = Video.DN).order_by('-date_created')
+        })

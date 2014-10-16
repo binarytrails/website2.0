@@ -69,8 +69,8 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    FV = 'Favorite'
     IN = 'Introduction'
+    FV = 'Favorite'
     EV = 'Event'
     DN = 'Dancer'
 
@@ -92,8 +92,7 @@ class Video(models.Model):
     )
     category = models.CharField(
         max_length = 2,
-        blank = False,
-        default = UN
+        blank = False
     )
     hardware = models.CharField(
         max_length = 50

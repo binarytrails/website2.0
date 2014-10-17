@@ -68,43 +68,45 @@ To quit the virtualenv
 	    +-----------+
 	    | NICK (PK1)|||-+ 
 	    | NAME      |   | 
-	    | LASTNAME  |   |   +-----------------+
-	    | EMAIL     |   |   |     PHOTO       |
-	    +-----------+   |   |-----------------| 
-	                    |   | FILENAME (PK1)  |
-	                    |   | TITLE (U1)      |
-	                    |   | DESCRIPTION     |
-	                    |   | CATEGORY (U1)   |
-	                    |   | AUTHOR          |
-	                    |   | DATE_CREATED    |
-	                    +-0<| OWNER (FK1,U1)  |
-	                    |   +-----------------+
-	                    |
-	                    |   +------------------+
-	                    |   |     VIDEO        |
-	                    |   +------------------+
-	                    |   | FILENAME (PK1)   |
-	                    |   | TITLE (U1)       |
-	                    |   | DESCRIPTION      |
-	                    |   | CATEGORY (U1)    |
-	                    |   | AUTHOR           |
-	                    |   | DIRECTOR         |
-	                    |   | SFX              |
-	                    +-0<| OWNER (FK1,U1)   |
-	                    |   +------------------+
-	                    |
-	                    |   +------------------+
-	                    |   |     SKILL        |
-	                    |   +------------------+
-	                    |   | ID (PK1)         |
-	                    |   | TITLE (U1)       |
-	                    |   | DESCRIPTION      |
-	                    |   | CATEGORY (U1)    |
-	                    |   | SUBCATEGORY (U1) |
-	                    |   | RATING_ON_FIVE   |
-	                    +-0<| OWNER (FK1,U1)   |
-	                        +------------------+
-                                                                        
+	    | LASTNAME  |   |   +-------------------------+
+	    | EMAIL     |   |   |          PHOTO          |
+	    +-----------+   |   +-------------------------+
+	                    |   | STATICFILEPATH (PK1)    |
+	                    |   | FRAGMENT_IDENTIFIER (U1)|
+	                    |   | TITLE                   |
+	                    |   | AUTHOR                  |
+	                    |   | CATEGORY (U2)           |
+	                    |   | HARDWARE                |
+	                    |   | APPLICATION             |
+	                    |   | DATE_CREATED            |
+	                    |-0<| OWNER (FK1, U2)         |
+	                    |   +-------------------------+
+	                    |                        
+	                    |   +-------------------------+
+	                    |   |          VIDEO          |
+	                    |   +-------------------------+    
+	                    |   | STATICFILEPATH (PK1)    | 
+	                    |   | STATICPOSTERPATH (U1)   |
+	                    |   | TITLE                   |
+	                    |   | DIRECTOR                |
+	                    |   | DESCRIPTION             |
+	                    |   | CATEGORY (U2)           |
+	                    |   | HARDWARE                |
+	                    |   | APPLICATION             |
+	                    |   | DATE_CREATED            |
+	                    |-0<| OWNER (FK1, U2)         |
+	                    |   +-------------------------+
+	                    |                        
+	                    |   +-------------------------+
+	                    |   |          SKILL          |
+	                    |   +-------------------------+
+	                    |   | ID (PK1)                |
+	                    |   | TITLE (U2)              |
+	                    |   | DESCRIPTION             |
+	                    |   | CATEGORY (U1, U2)       |
+                        |   | RATING_ON_FIVE          |
+                        +-0<| OWNER (FK1, U1, U2)     |
+                            +-------------------------+                 
                              
 
 ## Tutorial

@@ -37,8 +37,7 @@ class Photo(models.Model):
     )
     title = models.CharField(
         max_length = 50,
-        blank = False,
-        unique = True
+        blank = False
     )
     author = models.CharField(
         max_length = 50,
@@ -65,7 +64,7 @@ class Photo(models.Model):
 
     class Meta:
         unique_together = (
-            ('owner', 'title', 'category')
+            ('owner', 'category')
         )
 
 class Video(models.Model):
@@ -83,8 +82,7 @@ class Video(models.Model):
     )
     title = models.CharField(
         max_length = 50,
-        blank = False,
-        unique = True 
+        blank = False 
     )
     director = models.CharField(
         max_length = 50, 
@@ -113,7 +111,7 @@ class Video(models.Model):
 
     class Meta:
         unique_together = (
-            ('owner', 'title', 'category')
+            ('owner', 'category')
         )
 
 class Skill(models.Model):
@@ -152,6 +150,7 @@ class Skill(models.Model):
     
     class Meta:
         unique_together = (
-            ('owner', 'title', 'category')
+            ('owner', 'category'),
+            ('owner' , 'category', 'title')
         )
 

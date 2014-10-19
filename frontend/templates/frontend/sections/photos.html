@@ -9,7 +9,7 @@
 
     {% get_static_prefix as STATIC %}
 
-    {% with NEW_HEIGHT=250 FRONTEND=STATIC|add:"frontend/" %}
+    {% with NEW_HEIGHT=200 FRONTEND=STATIC|add:"frontend/" %}
 
         <link rel="stylesheet" href="{{ FRONTEND }}css/sections/photos.css">
         <link rel="stylesheet" href="{{ FRONTEND }}css/animated/box-shadow_below-image.css">
@@ -34,7 +34,7 @@
                             {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
                             <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
                                 <div class="img-container-shadow">
-                                    <a class="swipebox" rel="" title="{{ image.title }}" href="slideshow/portfolio/#{{ image.fragment_identifier }}">
+                                    <a class="swipebox" rel="" href="slideshow/portfolio/#{{ image.fragment_identifier }}">
                                         <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
                                     </a>
                                 </div>
@@ -65,7 +65,7 @@
                             {% with newWidth=getNewWidth|stnew|stpush:width|stpush:NEW_HEIGHT|stmult|stpush:height|stdiv|stget %}
                             <div class="img-container" style="height:{{ NEW_HEIGHT }}px; width:{{ newWidth }}px;">
                                 <div class="img-container-shadow">
-                                    <a class="swipebox" rel="" title="{{ image.title }}" href="slideshow/general/#{{ image.fragment_identifier }}">
+                                    <a class="swipebox" rel="" href="slideshow/general/#{{ image.fragment_identifier }}">
                                         <img src="{{ FRONTEND }}{{ image.staticfilepath }}" height="{{ NEW_HEIGHT }}" alt="image"/>
                                     </a>
                                 </div>

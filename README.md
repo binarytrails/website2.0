@@ -14,7 +14,7 @@ Activate virtualenv
 
 Install django and its tools inside
 
-        easy_install django==1.7 
+        easy_install django==1.7 markdown2==2.3.0 
 
 
 ### 2. Install ImageMagick
@@ -54,6 +54,7 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 ## Features
 ### Plugins
 #### Active
+* Markdown2 : Markdown text to Html
 * ImageMagick : Convert, Edit, and Compose Images
 
 #### Recommended

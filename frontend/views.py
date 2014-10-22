@@ -4,8 +4,10 @@ from .models import User, Skill, Photo, Video
 from kedfilms import utils
 
 DIR = os.path.abspath(os.path.dirname(__file__))
-IMG_DIR = os.path.join(DIR, "static/frontend/img/")
-VID_DIR = os.path.join(DIR, "static/frontend/vid/")
+STATIC = "static/frontend"
+
+IMG_DIR = os.path.join(DIR, STATIC, "img/")
+VID_DIR = os.path.join(DIR, STATIC, "vid/")
 
 def home(request):
     skills_categories = []
@@ -21,23 +23,27 @@ def home(request):
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
     })
 
-def articles(request):
-    try:
-        last_edited = utils.getMostRecentFileRecursively(
-            "frontend/templates/frontend/articles/",
-            ".html"
-        )
-        # drops 'frontend/templates/'
-        template = last_edited[last_edited.rfind('frontend'):]
+def articles(request, section=None, article=None):
+    if article and section: 
+        article += ".md"
+        if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
+            return HttpResponse(status=404)
 
-    except ValueError:
-        template = "frontend/sections/articles.html"    
+        try:
+            last_edited = utils.getMostRecentFileRecursively(
+                os.path.join(DIR, STATIC, "md/"),
+                ".md"
+            )
 
-    return render(request, template,
-    {
-        "title": "Articles",
-        "subtitle": "Subtitle"
-    })
+        except ValueError:
+            return render(request, "frontend/sections/articles.html")
+        
+        html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
+
+        return render(request, "frontend/sections/article.html",
+        {
+            "html": html
+        })
 
 def photos(request):
     if os.path.exists(IMG_DIR):

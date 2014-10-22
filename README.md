@@ -24,23 +24,34 @@ It is used for image resizing in the photos section. To complile it you would ne
 
 ### Post-installation
 
-Launch the website
+* Launch the website
 
         ./manage runserver
 
-Remove installed dependencies
+* Remove installed dependencies
     
         easy_install -m [package]
 
 Then you can remove locally left PackageName.egg
 
-To quit the virtualenv
+* Create the database while drinking a coffee
+
+        ./reset-database.sh
+
+* Populate it by hand
+
+        ./manage shell < script.py
+
+* Quit the virtualenv
 
         deactivate
 
+WARNING: If you move your project after creating your virtualenv it won't work anymore.
+
+        vim DJANGO/bin/activate
+        # find VIRTUAL_ENV='old/path/DJANGO' and change the old path
 
 ## Features
-
 ### Plugins
 #### Active
 * ImageMagick : Convert, Edit, and Compose Images
@@ -108,12 +119,6 @@ To quit the virtualenv
                         +-0<| OWNER (FK1, U1, U2)     |
                             +-------------------------+                 
                              
-
-## Tutorial
-
-### Database script
-    
-        ./manage shell < script.py
 
 ## Coding style
 * Indent 4 spaces

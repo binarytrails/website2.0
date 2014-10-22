@@ -2,11 +2,10 @@
 Utilities powered by the magnificent me.
 """
 
-import os, glob, re, subprocess
+import os, glob, re, subprocess, markdown2
 
-def getFilenames(path, byNewest):
-        
-    files = filter(os.path.isfile, glob.glob(path + "*"))
+def getFilenames(folderpath, byNewest):
+    files = filter(os.path.isfile, glob.glob(folderpath + "*"))
     files.sort(key=lambda x: os.path.getmtime(x))
     
     if byNewest:
@@ -21,7 +20,6 @@ def getFilenames(path, byNewest):
     return names
 
 def getMostRecentFileRecursively(rootfolder, extension=""):
-
     files = []
     for dirname, dirnames, filenames in os.walk(rootfolder):
         for filename in filenames:
@@ -37,4 +35,10 @@ def getImageSize(path):
     if path:
         image_size_as_string = subprocess.Popen(["identify","-format","\"%w,%h\"",path], stdout=subprocess.PIPE).communicate()[0]
         return [ int(x) for x in re.sub('[\t\r\n"]', '', image_size_as_string).split(',') ]
+
+def markdownToHtml(filepath):
+    with open(filepath, "r") as mdfile:
+        text = mdfile.read()
+
+    return markdown2.markdown(text)
 

@@ -23,20 +23,25 @@ def home(request):
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
     })
 
-def articles(request, section=None, article=None):
+def articles(request):
+    try:
+        last_edited = utils.getMostRecentFileRecursively(
+            os.path.join(DIR, STATIC, "md/"),
+            ".md"
+        )
+    except ValueError:
+        return render(request, "frontend/sections/articles.html")
+
+    return render(request, "frontend/sections/article.html",
+    {
+        "html": utils.markdownToHtml(last_edited)
+    })
+
+def article(request, section=None, article=None):
     if article and section: 
         article += ".md"
         if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
             return HttpResponse(status=404)
-
-        try:
-            last_edited = utils.getMostRecentFileRecursively(
-                os.path.join(DIR, STATIC, "md/"),
-                ".md"
-            )
-
-        except ValueError:
-            return render(request, "frontend/sections/articles.html")
         
         html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
 

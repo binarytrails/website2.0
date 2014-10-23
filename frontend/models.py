@@ -64,7 +64,7 @@ class Photo(models.Model):
 
     class Meta:
         unique_together = (
-            ('owner', 'category')
+            ('owner', 'category', 'title')
         )
 
 class Video(models.Model):
@@ -111,7 +111,7 @@ class Video(models.Model):
 
     class Meta:
         unique_together = (
-            ('owner', 'category')
+            ('owner', 'category', 'title')
         )
 
 class Skill(models.Model):
@@ -150,7 +150,6 @@ class Skill(models.Model):
     
     class Meta:
         unique_together = (
-            ('owner', 'category'),
             ('owner' , 'category', 'title')
         )
 

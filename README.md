@@ -85,7 +85,7 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 	    +-----------+   |   +-------------------------+
 	                    |   | STATICFILEPATH (PK1)    |
 	                    |   | FRAGMENT_IDENTIFIER (U1)|
-	                    |   | TITLE                   |
+	                    |   | TITLE (U2)              |
 	                    |   | AUTHOR                  |
 	                    |   | CATEGORY (U2)           |
 	                    |   | HARDWARE                |
@@ -99,7 +99,7 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 	                    |   +-------------------------+    
 	                    |   | STATICFILEPATH (PK1)    | 
 	                    |   | STATICPOSTERPATH (U1)   |
-	                    |   | TITLE                   |
+	                    |   | TITLE (U2)              |
 	                    |   | DIRECTOR                |
 	                    |   | DESCRIPTION             |
 	                    |   | CATEGORY (U2)           |
@@ -113,11 +113,11 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 	                    |   |          SKILL          |
 	                    |   +-------------------------+
 	                    |   | ID (PK1)                |
-	                    |   | TITLE (U2)              |
+	                    |   | TITLE (U1)              |
 	                    |   | DESCRIPTION             |
-	                    |   | CATEGORY (U1, U2)       |
+	                    |   | CATEGORY (U1)           |
                         |   | RATING_ON_FIVE          |
-                        +-0<| OWNER (FK1, U1, U2)     |
+                        +-0<| OWNER (FK1, U1)         |
                             +-------------------------+                 
                              
 

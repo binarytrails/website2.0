@@ -1,5 +1,7 @@
 # Mr. Purple
-## Welcome to my world
+<div markdown="1">
+	<p class="subtitle">Welcome to my world</p>
+</div>
 
 When you are Mr. Purple, it is difficult to manage clothings...
 

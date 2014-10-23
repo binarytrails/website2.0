@@ -1,5 +1,7 @@
 #Rabbit story
-##For the special ones
+<div markdown="1">
+	<p class="subtitle">For the special ones</p>
+</div>
 
 Once upon a time there was rabbit with wide long ears.
 

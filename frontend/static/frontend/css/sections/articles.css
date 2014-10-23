@@ -31,13 +31,27 @@
 				box-shadow: 0 0 10px white;
 			}
 
-			#article h1
-			{
-				font-size: 3em;
-				margin: 1em 1.2em 0em;
+			h1.header 
+			{ 
+				margin-top: 1em;
 			}
 
-			#article p.subtitle
+			h1, h2, h3, h4, h5, h6, ol
+			{
+				margin: 2em 5% 1em;
+			}
+
+			h1 { font-size: 3em; }
+
+			h2 { font-size: 2em; }
+
+			p 
+			{
+				font-size: 1em;
+				margin: 1.2em 5%;
+			}
+
+			p.subtitle
 			{
 				font-size: 1.5em;
 				color: #777777;
@@ -45,10 +59,28 @@
 				line-height: 5em;
 			}
 
-			#article p
+			p.footer
 			{
-				font-size: 1em;
-				margin: 1.2em 4em;
+				margin: 6em 2.6em 3em; 
+			}
+
+			pre
+			{
+				padding: 1em;
+				overflow: auto;
+				background: #565051;
+				box-shadow: 0 0 4px white;
+				margin: 0em 2.5em;
+			}
+
+				pre > code
+				{
+					margin: 0em 1em 0em;
+				}
+
+			ol li > p, ol li > pre
+			{
+				margin: 1.5em 0em;
 			}
 
 		section.articles > #listing

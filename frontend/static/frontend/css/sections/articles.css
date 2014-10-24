@@ -37,6 +37,19 @@
 				margin: 1em 5% 0em;
 			}
 
+			p.subtitle
+			{
+				font-size: 1.5em;
+				line-height: 5em;
+				color: #777777;
+				margin: 0em 2em 0;
+			}
+
+			p.footer
+			{
+				margin: 6em 2.6em 3em; 
+			}
+
 			h2, h3, h4, h5, h6, ol
 			{
 				margin: 2em 5% 1em;
@@ -47,20 +60,7 @@
 			p 
 			{
 				font-size: 1em;
-				margin: 1.2em 5%;
-			}
-
-			p.subtitle
-			{
-				font-size: 1.5em;
-				color: #777777;
-				margin: 0em 2em;
-				line-height: 5em;
-			}
-
-			p.footer
-			{
-				margin: 6em 2.6em 3em; 
+				margin: 1.5em 5%;
 			}
 
 			pre
@@ -96,7 +96,7 @@
 
 				li.default
 				{
-					transition: box-shadow 1.5s;
+					transition: box-shadow 1s;
 				}
 
 					li.default:first-child:hover
@@ -123,11 +123,7 @@
 				
 				font-size: 1em;
 				color: #B6B6B4;
+				text-shadow: none;
 
 				margin: 0em 1.4em;
 			}
-
-				#listing a:hover
-				{
-					text-shadow: none;
-				}

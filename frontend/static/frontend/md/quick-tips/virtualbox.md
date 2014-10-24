@@ -53,4 +53,4 @@ You must boot virtualbox as root to have access to sdX or play with priviledges
 
 	vboxmanage setextradata "roger-vm" "CustomVideoMode1" "1366x768x32"
 
-<p class="footer">The happy end</p>
+<p class="footer">The happiest ending</p>

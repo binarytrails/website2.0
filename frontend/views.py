@@ -38,7 +38,7 @@ def articles(request):
     })
 
 def article(request, section=None, article=None):
-    if article and section: 
+    if article and section:
         article += ".md"
         if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
             return HttpResponse(status=404)

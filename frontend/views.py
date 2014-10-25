@@ -56,14 +56,14 @@ def gallery(request, section):
         if section == "portfolio":
             title = "Portfolio"
             category = Photo.PF
-            previous = "general/#head"
-            next = "portfolio/#head"
+            previous = "portfolio/#head"
+            next = "general/#head"
 
         elif section == "general":
             title = "General"
             category = Photo.GN
-            previous = "general/#head"
-            next = "portfolio/#head"
+            previous = "portfolio/#head"
+            next = "general/#head"
 
         else:
             return HttpResponse(status = 404)

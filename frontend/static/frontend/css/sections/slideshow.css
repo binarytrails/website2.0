@@ -57,40 +57,6 @@
                         text-shadow: 0 0 8px white;
                     }
 
-        #return
-        {
-            position: absolute;
-
-            width: 4em;
-            height: 4em;
-            border-radius: 5em;
-
-            top: 0;
-            right: 0;
-            z-index: 20;
-
-            margin: 0.4em;
-            overflow: hidden;
-
-            box-shadow: 0 0 1px white;
-            transition: all 1s;
-        }
-            #return:hover
-            {
-                 background: rgba(255, 255, 255, 0.5);
-            }
-
-            #return img
-            {
-                height: 100%;
-                width: 100%;
-                
-                border-radius: 4em;
-
-                transition: all 1s;
-            }
-
-
         #slideshow
         {
             position: absolute;
@@ -195,3 +161,32 @@
                     {
                         box-shadow: 0 0 5px white;
                     }
+
+        #return
+        {
+            position: absolute;
+
+            width: 4em;
+            height: 4em;
+            border-radius: 5em;
+
+            top: 0;
+            right: 0;
+            z-index: 20;
+
+            margin: 0.4em;
+            overflow: hidden;
+
+            box-shadow: 0 0 1px white;
+            transition: all 1s;
+        }
+
+            #return img
+            {
+                height: 100%;
+                width: 100%;
+                
+                border-radius: 4em;
+
+                transition: all 1s;
+            }

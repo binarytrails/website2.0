@@ -50,36 +50,48 @@ def article(request, section=None, article=None):
             "html": html
         })
 
-def photos(request):
-    if os.path.exists(IMG_DIR):
-        return render(request, "frontend/sections/photos.html",
+def gallery(request, section):
+    if section and os.path.exists(IMG_DIR):
+
+        if section == "portfolio":
+            title = "Portfolio"
+            category = Photo.PF
+            previous = "general/#head"
+            next = "portfolio/#head"
+
+        elif section == "general":
+            title = "General"
+            category = Photo.GN
+            previous = "general/#head"
+            next = "portfolio/#head"
+
+        else:
+            return HttpResponse(status = 404)
+
+        return render(request, "frontend/sections/gallery.html",
         {
-            "title": "Photography",
-            "subtitle": "Capture the moment in time",
-
-            "portfolio_title": "Porfolio",
-            "portfolio_images": Photo.objects.all().filter(
-                category = Photo.PF).order_by('-date_created'),
-
-            "general_title": "General",
-            "general_images": Photo.objects.all().filter(
-                category = Photo.GN).order_by('-date_created')
+            "section": section,
+            "title": title,
+            "images": Photo.objects.all().filter(
+                category = category).order_by('-date_created'),
+            "previous": previous,
+            "next": next
         })
 
-def photos_slideshow(request, category=None):
+def slideshow(request, category=None):
     photos = None
-    previous_location = "/photos/"
+    previous_location = "/photos/gallery/"
 
     if category == "portfolio":
         category = Photo.PF
-        previous_location += "#portfolio"
+        previous_location += "portfolio/#head"
 
     elif category == "general":
         category = Photo.GN
-        previous_location += "#general"
+        previous_location += "general/#head"
 
     else:
-        return HttpResponse(status=404)
+        return HttpResponse(status = 404)
 
     photos = Photo.objects.all().filter(category = category)
 

@@ -42,12 +42,12 @@
 				font-size: 1.5em;
 				line-height: 5em;
 				color: #777777;
-				margin: 0em 2em 0;
+				margin: 0em 2em 0em;
 			}
 
 			p.footer
 			{
-				margin: 6em 2.6em 3em; 
+				margin: 6em 6% 3em; 
 			}
 
 			h2, h3, h4, h5, h6, ol
@@ -60,7 +60,7 @@
 			p 
 			{
 				font-size: 1em;
-				margin: 1.5em 5%;
+				margin: 1.5em 6%;
 			}
 
 			pre
@@ -69,7 +69,7 @@
 				overflow: auto;
 				background: #565051;
 				box-shadow: 0 0 4px white;
-				margin: 0em 2.5em;
+				margin: 0em 5%;
 			}
 
 				pre > code

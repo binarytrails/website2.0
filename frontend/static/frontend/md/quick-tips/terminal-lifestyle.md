@@ -1,10 +1,9 @@
 <h1 class="header">Terminal Lifestyle</h1>
-<p class="subtitle">Ascii, wine & cheeze</p>
+<p class="subtitle">Ascii, wine & a keyboard</p>
 
 ## Music on Console
 
-		apt-get install moc
-		  mocp -T green_theme
+		apt-get install moc && mocp -T green_theme
 
 
 ## Command line dictionnary

@@ -45,6 +45,6 @@ mount
 
 umount
 
-		  fusermount -u mountpoint
+		fusermount -u mountpoint
 
 <p class="footer">The happiest ending</p>

@@ -1,0 +1,17 @@
+Run it in the parent directory and remember I am awesome.
+
+src="original/"; dest="x200/"; height=200; \
+for image in $src*; do \
+    image=$(basename "$image"); \
+    hasThumb=False; \
+    for thumb in $dest*; do \
+        thumb=$(basename "$thumb"); \
+        if [[ "$image" == "$thumb" ]]; then \
+            hasThumb=True; \
+        fi; \
+    done; \
+    if [[ $hasThumb == False ]]; then \
+        printf "converting:"$src$image" -> "$dest$image"\n"; \
+        convert $src$image -resize x$height $dest$image; \
+    fi; \
+done

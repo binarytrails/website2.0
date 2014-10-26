@@ -87,12 +87,12 @@ def slideshow(request, category=None):
 
     if category == "portfolio":
         category = Photo.PF
-        original_src = "img/portfolio/original/"
+        source = "img/portfolio/"
         previous_location += "portfolio/#head"
 
     elif category == "general":
         category = Photo.GN
-        original_src = "img/general/original/"
+        source = "img/general/"
         previous_location += "general/#head"
 
     else:
@@ -104,7 +104,7 @@ def slideshow(request, category=None):
         return render(request, "frontend/sections/slideshow.html",
         {
             "photos": photos,
-            "original_src": original_src,
+            "source": source,
             "previous_location": previous_location,
         })
 

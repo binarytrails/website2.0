@@ -36,6 +36,14 @@
 				<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white.png"/>
 			</a>
 		</div>
+		
+<!-- 		{% for photo in photos %}
+			<div id="download-{{ photo.fragment_identifier }}">
+				<a href="{{ STATIC }}frontend/{{ source }}original/{{ photo.filename }}">
+					<img  src="{{ STATIC }}frontend/img/logo/320x320/filled-square/download-button-white.png"/>
+				</a>
+			</div>
+		{% endfor %} -->
 
 		<div id="slideshow">
 			<ul class="slider">
@@ -46,7 +54,13 @@
 						<div id="container-{{ photo.fragment_identifier }}">
 
 							<div id="slide-{{ photo.fragment_identifier }}">
-								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ original_src }}{{ photo.filename }}" alt=""/>
+								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ source }}x800/{{ photo.filename }}" alt=""/>
+							</div>
+
+							<div id="download">
+								<a href="{{ STATIC }}frontend/{{ source }}original/{{ photo.filename }}">
+									<img  src="{{ STATIC }}frontend/img/logo/320x320/filled-square/download-button-white.png"/>
+								</a>
 							</div>
 
 							<div id="details">
@@ -60,16 +74,16 @@
 									<li>
 										Category: {{ photo.category }}
 									</li>
-                                    {% if photo.hardware %}
-                                        <li>
-                                            Hardware:</br>{{ photo.hardware }}
-                                        </li>
-                                    {% endif %}
-                                    {% if photo.application %}
-                                        <li>
-                                            Software:</br>{{ photo.application }}
-                                        </li>
-                                    {% endif %}
+									{% if photo.hardware %}
+										<li>
+											Hardware:</br>{{ photo.hardware }}
+										</li>
+									{% endif %}
+									{% if photo.application %}
+										<li>
+											Software:</br>{{ photo.application }}
+										</li>
+									{% endif %}
 									<li>
 										Date: {{ photo.date_created }}
 									</li>

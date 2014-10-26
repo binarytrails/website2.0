@@ -9,6 +9,53 @@
         overflow:  hidden;
         background: black;
     }
+        #return, #download
+        {
+            position: absolute;
+
+            width: 4em;
+            height: 4em;
+
+            right: 0.5%;
+            z-index: 20;
+
+            margin: 0.4em;
+            overflow: hidden;
+        }
+
+            #return img, #download img
+            {
+                height: 100%;
+                width: 100%;
+            }
+
+        #return
+        {
+            top: 1%;
+            border-radius: 5em;
+            box-shadow: 0 0 1px white;
+        }
+
+            #return img
+            {
+                height: 100%;
+                width: 100%;
+                
+                border-radius: 4em;
+
+                transition: all 1s;
+            }
+
+        #download
+        {
+            bottom: 8%;
+            border-radius: 6px;
+            transition: all 1s;
+        }
+            #download:hover
+            {
+                box-shadow: 0 0 10px white;
+            }
 
     a:focus
     {
@@ -161,32 +208,3 @@
                     {
                         box-shadow: 0 0 5px white;
                     }
-
-        #return
-        {
-            position: absolute;
-
-            width: 4em;
-            height: 4em;
-            border-radius: 5em;
-
-            top: 0;
-            right: 0;
-            z-index: 20;
-
-            margin: 0.4em;
-            overflow: hidden;
-
-            box-shadow: 0 0 1px white;
-            transition: all 1s;
-        }
-
-            #return img
-            {
-                height: 100%;
-                width: 100%;
-                
-                border-radius: 4em;
-
-                transition: all 1s;
-            }

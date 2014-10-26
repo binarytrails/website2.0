@@ -30,12 +30,6 @@ def getMostRecentFileRecursively(rootfolder, extension=""):
     files.sort(key=lambda files: files[0])
     return max(files)[1]
 
-# returns [width, height]
-def getImageSize(path):
-    if path:
-        image_size_as_string = subprocess.Popen(["identify","-format","\"%w,%h\"",path], stdout=subprocess.PIPE).communicate()[0]
-        return [ int(x) for x in re.sub('[\t\r\n"]', '', image_size_as_string).split(',') ]
-
 def markdownToHtml(filepath):
     with open(filepath, "r") as mdfile:
         text = mdfile.read()

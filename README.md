@@ -3,7 +3,7 @@ Avoiding scripts by implementing CSS stylish functionalities.
 
 ## Getting started
 
-### 1. Create your virtual environment
+### Create your virtual environment
 Create a local virtual environment with all the tools inside
 
         virtualenv DJANGO
@@ -17,8 +17,8 @@ Install django and its tools inside
         easy_install django==1.7 markdown2==2.3.0 
 
 
-### 2. Install ImageMagick
-It is used for image resizing in the photos section. To complile it you would need some tools
+### Optional: Install ImageMagick
+Used for creating thumbnails -> scripts/bash/makethumbnails
 
         sudo apt-get install imagemagick
 
@@ -55,9 +55,9 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 ### Plugins
 #### Active
 * Markdown2 : Markdown text to Html
-* ImageMagick : Convert, Edit, and Compose Images
 
-#### Recommended
+#### Optional
+* ImageMagick : Convert, Edit, and Compose Images
 * Django-debug-toolbar : Browser debug toolbar
 
 		easy_install django_debug_toolbar
@@ -83,7 +83,7 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 	    | LASTNAME  |   |   +-------------------------+
 	    | EMAIL     |   |   |          PHOTO          |
 	    +-----------+   |   +-------------------------+
-	                    |   | STATICFILEPATH (PK1)    |
+	                    |   | FILENAME (PK1)          |
 	                    |   | FRAGMENT_IDENTIFIER (U1)|
 	                    |   | TITLE (U2)              |
 	                    |   | AUTHOR                  |
@@ -97,8 +97,8 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 	                    |   +-------------------------+
 	                    |   |          VIDEO          |
 	                    |   +-------------------------+    
-	                    |   | STATICFILEPATH (PK1)    | 
-	                    |   | STATICPOSTERPATH (U1)   |
+	                    |   | FILENAME (PK1)          | 
+	                    |   | POSTERFILE (U1)         |
 	                    |   | TITLE (U2)              |
 	                    |   | DIRECTOR                |
 	                    |   | DESCRIPTION             |

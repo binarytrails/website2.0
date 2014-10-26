@@ -12,69 +12,9 @@ Photo.objects.all().delete()
 PF Portfolio
 """
 photo = Photo(
-    staticfilepath = "img/portfolio/absinthe.jpg",
+    filename = "absinthe.jpg",
     fragment_identifier = "absinthe",
     title = "Absinthe",
-    author = "Seva Ivanov",
-    category = Photo.PF,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2012, 03, 14),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
-    staticfilepath = "img/portfolio/alien_on_road.jpg",
-    fragment_identifier = "alien_on_road",
-    title = "Welcome, space being.",
-    author = "Seva Ivanov",
-    category = Photo.PF,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2011, 9, 19),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
-    staticfilepath = "img/portfolio/autumn.jpg",
-    fragment_identifier = "autumn",
-    title = "Autumn",
-    author = "Seva Ivanov",
-    category = Photo.PF,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2013, 10, 15),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
-    staticfilepath = "img/portfolio/barman.jpg",
-    fragment_identifier = "absinthe_elegance",
-    title = "Absinthe elegance",
-    author = "Seva Ivanov",
-    category = Photo.PF,
-    hardware = "Canon EOS REBEL T3i",
-    application = "Adobe After Effect",
-    date_created = date(2012, 3, 15),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
-    staticfilepath = "img/portfolio/beate.jpg",
-    fragment_identifier = "beate",
-    title = "Béate",
-    author = "Seva Ivanov",
-    category = Photo.PF,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2014, 8, 15),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
-    staticfilepath = "img/portfolio/dj.jpg",
-    fragment_identifier = "street_vibes",
-    title = "Street vibes",
     author = "Seva Ivanov",
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
@@ -84,7 +24,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/fake_fisheye.jpg",
+    filename = "fake_fisheye.jpg",
     fragment_identifier = "wide_look",
     title = "Wide look",
     author = "Seva Ivanov",
@@ -96,7 +36,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/flying_me.jpg",
+    filename = "flying_me.jpg",
     fragment_identifier = "flying_me",
     title = "Flying is a reality",
     author = "Seva Ivanov",
@@ -108,7 +48,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/gandalf.jpg",
+    filename = "gandalf.jpg",
     fragment_identifier = "gandalf",
     title = "Gandalf",
     author = "Seva Ivanov",
@@ -120,7 +60,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/hidden_nature.jpg",
+    filename = "hidden_nature.jpg",
     fragment_identifier = "hidden_nature",
     title = "Hidden Nature",
     author = "Seva Ivanov",
@@ -132,7 +72,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/infected.jpg",
+    filename = "infected.jpg",
     fragment_identifier = "infected",
     title = "Infected",
     author = "Seva Ivanov",
@@ -144,7 +84,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/led_jump.jpg",
+    filename = "led_jump.jpg",
     fragment_identifier = "night_jump",
     title = "Night Jump",
     author = "Seva Ivanov",
@@ -156,7 +96,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/led_kitchen.jpg",
+    filename = "led_kitchen.jpg",
     fragment_identifier = "mage_kitchen",
     title = "Mage Kitchen",
     author = "Seva Ivanov",
@@ -168,7 +108,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/leg_on_fire.jpg",
+    filename = "leg_on_fire.jpg",
     fragment_identifier = "crawling_fire",
     title = "Crawling Fire",
     author = "Seva Ivanov",
@@ -180,7 +120,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/long_shoot.jpg",
+    filename = "long_shoot.jpg",
     fragment_identifier = "frames_evolution",
     title = "Frames Evolution",
     author = "Seva Ivanov",
@@ -192,7 +132,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/long_shoot_workspace.jpg",
+    filename = "long_shoot_workspace.jpg",
     fragment_identifier = "virtualisation_creativity",
     title = "Virtualisation Creativity",
     author = "Seva Ivanov",
@@ -204,7 +144,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/melo_two_faces.jpg",
+    filename = "melo_two_faces.jpg",
     fragment_identifier = "how_you_feel",
     title = "How you feel",
     author = "Seva Ivanov",
@@ -216,7 +156,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/mindception.jpg",
+    filename = "mindception.jpg",
     fragment_identifier = "mindception",
     title = "Mindception",
     author = "Seva Ivanov",
@@ -228,7 +168,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/purple_night.jpg",
+    filename = "purple_night.jpg",
     fragment_identifier = "purple_night",
     title = "Purple Night",
     author = "Seva Ivanov",
@@ -240,7 +180,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/russian_standard.jpg",
+    filename = "russian_standard.jpg",
     fragment_identifier = "russian_standard",
     title = "Russian standard",
     author = "Seva Ivanov",
@@ -252,7 +192,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/sand_winter.jpg",
+    filename = "sand_winter.jpg",
     fragment_identifier = "sandwinter",
     title = "Sandwinter",
     author = "Seva Ivanov",
@@ -264,7 +204,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/smoke_simulation.jpg",
+    filename = "smoke_simulation.jpg",
     fragment_identifier = "smoke_simulation",
     title = "Smoke Simulation",
     author = "Seva Ivanov",
@@ -276,7 +216,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/spirit_driver.jpg",
+    filename = "spirit_driver.jpg",
     fragment_identifier = "spirit_driver",
     title = "Spirit Driver",
     author = "Seva Ivanov",
@@ -288,7 +228,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/tv-inception.jpg",
+    filename = "tv-inception.jpg",
     fragment_identifier = "tv-inception",
     title = "Television Inception",
     author = "Seva Ivanov",
@@ -300,7 +240,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/wall_painting.jpg",
+    filename = "wall_painting.jpg",
     fragment_identifier = "painting",
     title = "The Painting",
     author = "Seva Ivanov",
@@ -312,7 +252,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/window_design.jpg",
+    filename = "window_design.jpg",
     fragment_identifier = "window_design",
     title = "Window Design",
     author = "Seva Ivanov",
@@ -324,7 +264,7 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    staticfilepath = "img/portfolio/zoomout.jpg",
+    filename = "zoomout.jpg",
     fragment_identifier = "enter_the_void",
     title = "If I... enter the void.",
     author = "Seva Ivanov",
@@ -340,7 +280,7 @@ photo.save()
 GN General
 """
 photo = Photo(
-    staticfilepath = "img/general/electric_teeth.jpg",
+    filename = "electric_teeth.jpg",
     fragment_identifier = "electric_teeth",
     title = "Electric teeth",
     author = "Seva Ivanov",

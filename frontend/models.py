@@ -27,7 +27,7 @@ class Photo(models.Model):
     GN = 'General'
     PF = 'Portfolio'
  
-    staticfilepath = models.CharField(
+    filename = models.CharField(
         primary_key = True,
         max_length = 250
     )
@@ -73,11 +73,11 @@ class Video(models.Model):
     EV = 'Event'
     DN = 'Dancer'
 
-    staticfilepath = models.CharField(
+    filename = models.CharField(
         primary_key = True,
         max_length = 250 
     )
-    staticposterpath = models.CharField(
+    posterfile = models.CharField(
         max_length = 250 
     )
     title = models.CharField(

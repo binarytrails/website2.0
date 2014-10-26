@@ -12,8 +12,8 @@ Video.objects.all().delete()
 I Intro
 """
 video = Video(
-	staticfilepath = "vid/intro/camera_intro.ogv",
-	staticposterpath = "img/video-poster/camera_intro.jpg",
+	filename = "camera_intro.ogv",
+	posterfile = "camera_intro.jpg",
 	title = "Preparations",
 	director = "Seva Ivanov",
 	description = "",
@@ -25,8 +25,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/intro/industrial.ogv",
-	staticposterpath = "img/video-poster/industrial.jpg",
+	filename = "industrial.ogv",
+	posterfile = "industrial.jpg",
 	title = "Montréal",
 	director = "Seva Ivanov",
 	description = "Unique picture animation",
@@ -37,8 +37,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/intro/qc_timelapse.ogv",
-	staticposterpath = "img/video-poster/qc_timelapse.jpg",
+	filename = "qc_timelapse.ogv",
+	posterfile = "qc_timelapse.jpg",
 	title = "Quebec city",
 	director = "Seva Ivanov",
 	description = "Timelapse",
@@ -50,8 +50,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/intro/kedproduction.ogv",
-	staticposterpath = "img/video-poster/kedproduction.jpg",
+	filename = "kedproduction.ogv",
+	posterfile = "kedproduction.jpg",
 	title = "Ked production",
 	director = "Seva Ivanov",
 	description = "Pure animation",
@@ -67,8 +67,8 @@ video.save()
 FV Favorite
 """
 video = Video(
-	staticfilepath = "vid/favorite/flying_car.ogv",
-	staticposterpath = "img/video-poster/flying_car.jpg",
+	filename = "flying_car.ogv",
+	posterfile = "flying_car.jpg",
 	title = "Back in the forest",
 	director = "Seva Ivanov",
 	description = "",
@@ -80,8 +80,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/gta5.ogv",
-	staticposterpath = "img/video-poster/gta5.jpg",
+	filename = "gta5.ogv",
+	posterfile = "gta5.jpg",
 	title = "Gta V - Away from the keyboard",
 	director = "Seva Ivanov",
 	description = "Three hours of improvisation.",
@@ -93,8 +93,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/spring_recap.ogv",
-	staticposterpath = "img/video-poster/spring_recap.jpg",
+	filename = "spring_recap.ogv",
+	posterfile = "spring_recap.jpg",
 	title = "Spring",
 	director = "Seva Ivanov",
 	description = "Pictures in motion",
@@ -106,8 +106,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/daveland.ogv",
-	staticposterpath = "img/video-poster/daveland.jpg",
+	filename = "daveland.ogv",
+	posterfile = "daveland.jpg",
 	title = "Daveland",
 	director = "Seva Ivanov & Guillaume Bonneau",
 	description = "High school project",
@@ -119,8 +119,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/tv_flowmo.ogv",
-	staticposterpath = "img/video-poster/tv_flowmo.jpg",
+	filename = "tv_flowmo.ogv",
+	posterfile = "tv_flowmo.jpg",
 	title = "Television",
 	director = "Seva Ivanov",
 	description = "AE Flowmo effect",
@@ -132,8 +132,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/beard_on_fire.ogv",
-	staticposterpath = "img/video-poster/beard_on_fire.jpg",
+	filename = "beard_on_fire.ogv",
+	posterfile = "beard_on_fire.jpg",
 	title = "Beard On Fire",
 	director = "Seva Ivanov",
 	description = "Short episode",
@@ -145,8 +145,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/favorite/gta_intro_clothing.ogv",
-	staticposterpath = "img/video-poster/gta_intro_clothing.jpg",
+	filename = "gta_intro_clothing.ogv",
+	posterfile = "gta_intro_clothing.jpg",
 	title = "GTA Like Wardrobe",
 	director = "Seva Ivanov",
 	description = "Masking challenge",
@@ -162,8 +162,8 @@ video.save()
 EV Event
 """
 video = Video(
-	staticfilepath = "vid/event/afternoon-jam.ogv",
-	staticposterpath = "img/video-poster/afternoon-jam.jpg",
+	filename = "afternoon-jam.ogv",
+	posterfile = "afternoon-jam.jpg",
 	title = "Afternoon Birthday Jam",
 	director = "Seva Ivanov",
 	description = "Bboying, Hip-Hop culture",
@@ -175,8 +175,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/event/braggin-rites-8.ogv",
-	staticposterpath = "img/video-poster/braggin-rites-8.jpg",
+	filename = "braggin-rites-8.ogv",
+	posterfile = "braggin-rites-8.jpg",
 	title = "Braggin' Rites 8",
 	director = "Seva Ivanov",
 	description = "Bboying, Hip-Hop culture",
@@ -188,8 +188,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/event/old_to_the_new.ogv",
-	staticposterpath = "img/video-poster/old_to_the_new.jpg",
+	filename = "old_to_the_new.ogv",
+	posterfile = "old_to_the_new.jpg",
 	title = "Old to the new",
 	director = "Seva Ivanov",
 	description = "Bboying, Hip-Hop culture",
@@ -201,8 +201,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/event/openwood.ogv",
-	staticposterpath = "img/video-poster/openwood.jpg",
+	filename = "openwood.ogv",
+	posterfile = "openwood.jpg",
 	title = "Open Wood",
 	director = "Seva Ivanov",
 	description = "Quebec forest rave",
@@ -214,8 +214,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/event/qcroc.ogv",
-	staticposterpath = "img/video-poster/qcroc.jpg",
+	filename = "qcroc.ogv",
+	posterfile = "qcroc.jpg",
 	title = "Qc Roc 15th Anniversary",
 	director = "Seva Ivanov",
 	description = "Powemoves battle",
@@ -231,8 +231,8 @@ video.save()
 DN Dancer
 """
 video = Video(
-	staticfilepath = "vid/dancer/bboyseva.ogv",
-	staticposterpath = "img/video-poster/bboyseva.jpg",
+	filename = "bboyseva.ogv",
+	posterfile = "bboyseva.jpg",
 	title = "Bboy Seva",
 	director = "Seva Ivanov",
 	description = "",
@@ -244,8 +244,8 @@ video = Video(
 )
 video.save()
 video = Video(
-	staticfilepath = "vid/dancer/spike.ogv",
-	staticposterpath = "img/video-poster/spike.jpg",
+	filename = "spike.ogv",
+	posterfile = "spike.jpg",
 	title = "Spike on the roof",
 	director = "Seva Ivanov",
 	description = "Old Quebec city",

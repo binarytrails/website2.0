@@ -56,12 +56,14 @@ def gallery(request, section):
         if section == "portfolio":
             title = "Portfolio"
             category = Photo.PF
+            thumbs_src = "img/portfolio/x200/"
             previous = "portfolio/#head"
             next = "general/#head"
 
         elif section == "general":
             title = "General"
             category = Photo.GN
+            thumbs_src = "img/general/x200/"
             previous = "portfolio/#head"
             next = "general/#head"
 
@@ -74,6 +76,7 @@ def gallery(request, section):
             "title": title,
             "images": Photo.objects.all().filter(
                 category = category).order_by('-date_created'),
+            "thumbs_src": thumbs_src,
             "previous": previous,
             "next": next
         })
@@ -84,10 +87,12 @@ def slideshow(request, category=None):
 
     if category == "portfolio":
         category = Photo.PF
+        original_src = "img/portfolio/original/"
         previous_location += "portfolio/#head"
 
     elif category == "general":
         category = Photo.GN
+        original_src = "img/general/original/"
         previous_location += "general/#head"
 
     else:
@@ -98,27 +103,34 @@ def slideshow(request, category=None):
     if photos:
         return render(request, "frontend/sections/slideshow.html",
         {
+            "photos": photos,
+            "original_src": original_src,
             "previous_location": previous_location,
-            "photos": photos
         })
 
 def videos(request):
     if os.path.exists(VID_DIR):
         return render(request, "frontend/sections/videos.html",
         {
+            "posters_src": "img/video-poster/",
+
             "intro_title": "Brief introductory passage",
             "intro_videos": Video.objects.all().filter(
                 category = Video.IN).order_by('-date_created'),
+            "intro_videos_src": "vid/intro/",
 
             "favorite_title": "Personal Favorites",
             "favorite_videos": Video.objects.all().filter(
                 category = Video.FV).order_by('-date_created'),
+            "favorite_videos_src": "vid/favorite/",
 
             "event_title": "A Gathering Of People",
             "event_videos": Video.objects.all().filter(
                 category = Video.EV).order_by('-date_created'),
+            "event_videos_src": "vid/event/",
 
             "dancer_title": "Physical Expression",
             "dancer_videos": Video.objects.all().filter(
-                category = Video.DN).order_by('-date_created')
+                category = Video.DN).order_by('-date_created'),
+            "dancer_videos_src": "vid/dancer/"
         })

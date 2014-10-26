@@ -20,8 +20,8 @@
                     {% for video in intro_videos %}
                     <div id="wrapper">
                         <video name="{{ video.title }}" preload="none" controls="controls"
-                            src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
-                            poster="{{ STATIC }}frontend/{{ video.staticposterpath }}">
+                            src="{{ STATIC }}frontend/{{ intro_videos_src }}{{ video.filename }}"
+                            poster="{{ STATIC }}frontend/{{ posters_src }}{{ video.posterfile }}">
                             The browser does not support the html5 video element for ogv format.
                         </video>
                         <div id="details">
@@ -70,8 +70,8 @@
                     {% for video in favorite_videos %}
                     <div id="wrapper">
                         <video name="{{ video.title }}" preload="none" controls="controls"
-                            src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
-                            poster="{{ STATIC }}frontend/{{ video.staticposterpath }}">
+                            src="{{ STATIC }}frontend/{{ favorite_videos_src }}{{ video.filename }}"
+                            poster="{{ STATIC }}frontend/{{ posters_src }}{{ video.posterfile }}">
                             The browser does not support the html5 video element for ogv format.
                         </video>
                         <div id="details">
@@ -121,8 +121,8 @@
                     {% for video in event_videos %}
                     <div id="wrapper">
                         <video name="{{ video.title }}" preload="none" controls="controls"
-                            src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
-                            poster="{{ STATIC }}frontend/{{ video.staticposterpath }}">
+                            src="{{ STATIC }}frontend/{{ event_videos_src }}{{ video.filename }}"
+                            poster="{{ STATIC }}frontend/{{ posters_src }}{{ video.posterfile }}">
                             The browser does not support the html5 video element for ogv format.
                         </video>
                         <div id="details">
@@ -172,8 +172,8 @@
                     {% for video in dancer_videos %}
                     <div id="wrapper">
                         <video name="{{ video.title }}" preload="none" controls="controls"
-                            src="{{ STATIC }}frontend/{{ video.staticfilepath }}"
-                            poster="{{ STATIC }}frontend/{{ video.staticposterpath }}">
+                            src="{{ STATIC }}frontend/{{ dancer_videos_src }}{{ video.filename }}"
+                            poster="{{ STATIC }}frontend/{{ posters_src }}{{ video.posterfile }}">
                             The browser does not support the html5 video element for ogv format.
                         </video>
                         <div id="details">

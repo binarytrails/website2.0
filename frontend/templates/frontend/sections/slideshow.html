@@ -36,14 +36,6 @@
 				<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white.png"/>
 			</a>
 		</div>
-		
-<!-- 		{% for photo in photos %}
-			<div id="download-{{ photo.fragment_identifier }}">
-				<a href="{{ STATIC }}frontend/{{ source }}original/{{ photo.filename }}">
-					<img  src="{{ STATIC }}frontend/img/logo/320x320/filled-square/download-button-white.png"/>
-				</a>
-			</div>
-		{% endfor %} -->
 
 		<div id="slideshow">
 			<ul class="slider">
@@ -57,9 +49,9 @@
 								<img id="{{ photo.fragment_identifier }}" src="{{ STATIC }}frontend/{{ source }}x800/{{ photo.filename }}" alt=""/>
 							</div>
 
-							<div id="download">
+							<div id="loop">
 								<a href="{{ STATIC }}frontend/{{ source }}original/{{ photo.filename }}">
-									<img  src="{{ STATIC }}frontend/img/logo/320x320/filled-square/download-button-white.png"/>
+									<img  src="{{ STATIC }}frontend/img/logo/512x512/symbol/loop-white-left.png"/>
 								</a>
 							</div>
 

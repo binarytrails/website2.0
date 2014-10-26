@@ -9,7 +9,7 @@
         overflow:  hidden;
         background: black;
     }
-        #return, #download
+        #return, #loop
         {
             position: absolute;
 
@@ -23,7 +23,7 @@
             overflow: hidden;
         }
 
-            #return img, #download img
+            #return img, #loop img
             {
                 height: 100%;
                 width: 100%;
@@ -46,16 +46,11 @@
                 transition: all 1s;
             }
 
-        #download
+        #loop
         {
             bottom: 8%;
             border-radius: 6px;
-            transition: all 1s;
         }
-            #download:hover
-            {
-                box-shadow: 0 0 10px white;
-            }
 
     a:focus
     {

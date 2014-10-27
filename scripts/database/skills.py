@@ -125,7 +125,7 @@ skill = Skill(
         title = "Git Hub",
         category = Skill.RC,
         owner = kedfilmsFounder,
-        rating_on_five = 5,
+        rating_on_five = 4,
         description = ""
 )
 skill.save()
@@ -133,7 +133,7 @@ skill = Skill(
         title = "SVN",
         category = Skill.RC,
         owner = kedfilmsFounder,
-        rating_on_five = 4,
+        rating_on_five = 3,
         description = ""
 )
 skill.save()
@@ -170,10 +170,18 @@ skill = Skill(
 )
 skill.save()
 skill = Skill(
-        title = "IIS",
+        title = "Nginx",
         category = Skill.SR,
         owner = kedfilmsFounder,
         rating_on_five = 4,
+        description = ""
+)
+skill.save()
+skill = Skill(
+        title = "IIS",
+        category = Skill.SR,
+        owner = kedfilmsFounder,
+        rating_on_five = 3,
         description = ""
 )
 skill.save()
@@ -229,7 +237,7 @@ skill = Skill(
         title = "GIMP",
         category = Skill.VA,
         owner = kedfilmsFounder,
-        rating_on_five = 4,
+        rating_on_five = 3,
         description = ""
 )
 skill.save()

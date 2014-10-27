@@ -432,18 +432,6 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
-    filename = "theoule_sur_mer.jpg",
-    fragment_identifier = "theoule_sur_mer",
-    title = "Theoul Sur Mer",
-    author = "Seva Ivanov",
-    category = Photo.GN,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2014, 8, 15),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-photo = Photo(
     filename = "the_virus.jpg",
     fragment_identifier = "night_virus",
     title = "Night Virus",

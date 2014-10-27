@@ -6,7 +6,7 @@ KEDFILMS_FOUNDER = User.objects.get(nick = "kedfilms-founder")
 """
 Delete all records
 """
-Photo.objects.all().delete()
+Photo.objects.filter(category = Photo.PF).delete()
 
 """
 PF Portfolio
@@ -19,7 +19,67 @@ photo = Photo(
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
     application = "Adobe After Effect",
-    date_created = date(2013, 9, 13),
+    date_created = date(2012, 03, 14),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
+    filename = "alien_on_road.jpg",
+    fragment_identifier = "alien_on_road",
+    title = "Alien On Road",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "",
+    date_created = date(2011, 9, 19),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
+    filename = "autumn.jpg",
+    fragment_identifier = "autumn",
+    title = "Autumn",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
+    date_created = date(2013, 9, 15),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
+    filename = "barman.jpg",
+    fragment_identifier = "barman",
+    title = "Barman",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
+    date_created = date(2012, 3, 15),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
+    filename = "beate.jpg",
+    fragment_identifier = "beate",
+    title = "Béate",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "",
+    date_created = date(2014, 8, 15),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
+    filename = "dj.jpg",
+    fragment_identifier = "dj_vibes",
+    title = "Dj Vibes",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "Adobe After Effect",
+    date_created = date(2012, 9, 13),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()
@@ -91,7 +151,7 @@ photo = Photo(
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
     application = "",
-    date_created = date(2011, 9, 27),
+    date_created = date(2011, 8, 27),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()
@@ -103,7 +163,7 @@ photo = Photo(
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
     application = "",
-    date_created = date(2011, 9, 27),
+    date_created = date(2011, 8, 27),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()
@@ -115,7 +175,7 @@ photo = Photo(
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
     application = "",
-    date_created = date(2011, 9, 27),
+    date_created = date(2011, 8, 27),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()
@@ -228,6 +288,18 @@ photo = Photo(
 )
 photo.save()
 photo = Photo(
+    filename = "theoule_sur_mer.jpg",
+    fragment_identifier = "theoule_sur_mer",
+    title = "Theoul Sur Mer",
+    author = "Seva Ivanov",
+    category = Photo.PF,
+    hardware = "Canon EOS REBEL T3i",
+    application = "",
+    date_created = date(2014, 8, 15),
+    owner = KEDFILMS_FOUNDER
+)
+photo.save()
+photo = Photo(
     filename = "tv-inception.jpg",
     fragment_identifier = "tv-inception",
     title = "Television Inception",
@@ -259,7 +331,7 @@ photo = Photo(
     category = Photo.PF,
     hardware = "Canon EOS REBEL T3i",
     application = "",
-    date_created = date(2011, 10, 19),
+    date_created = date(2011, 9, 19),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()
@@ -272,22 +344,6 @@ photo = Photo(
     hardware = "Canon EOS REBEL T3i",
     application = "",
     date_created = date(2013, 9, 22),
-    owner = KEDFILMS_FOUNDER
-)
-photo.save()
-
-"""
-GN General
-"""
-photo = Photo(
-    filename = "electric_teeth.jpg",
-    fragment_identifier = "electric_teeth",
-    title = "Electric teeth",
-    author = "Seva Ivanov",
-    category = Photo.GN,
-    hardware = "Canon EOS REBEL T3i",
-    application = "",
-    date_created = date(2014, 8, 15),
     owner = KEDFILMS_FOUNDER
 )
 photo.save()

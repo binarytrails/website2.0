@@ -20,11 +20,12 @@ echo; echo "Creating database with South wrapper"; echo
 ./manage.py shell < scripts/database/skills.py
 ./manage.py shell < scripts/database/videos.py
 
-echo; echo "Should we create a moq for photos mapped in 'scripts/database/photos.py'? (yes, no):"; read moqphotos
-if [ "$moqphotos" == "yes" ]; then
+echo; echo "Do you have the original photos (not in github)? (yes, no):"; read hasphotos
+if [ "$hasphotos" == "no" ]; then
     ./manage.py shell < scripts/database/photos-moq.py
 else
-    ./manage.py shell < scripts/database/photos.py
+    ./manage.py shell < scripts/database/photos-porfolio.py
+    ./manage.py shell < scripts/database/photos-general.py
 fi
 
 echo; echo "Everything is done! Launching the server..."; echo

@@ -1,8 +1,8 @@
 /*********************************************************************************/
-/* Articles                                                                      */
+/* Basic                                                                         */
 /*********************************************************************************/
 
-	section.articles
+	section
 	{
 		height: auto;
 		width: auto;
@@ -12,13 +12,17 @@
 		overflow: hidden;
 	}
 
-		section.articles > #article, #listing
+		section > #article, #listing
 		{
 			background: #282828;
 			text-align: left;
 		}
 
-		section.articles > #article
+/*********************************************************************************/
+/* Articles                                                                      */
+/*********************************************************************************/
+
+		section > #article
 		{
 			height: 100em;
 			width: 70%;
@@ -29,45 +33,46 @@
 			overflow: auto;
 			transition: box-shadow 1.5s;
 		}
-			section.articles > #article:hover
+			section > #article:hover
 			{
 				box-shadow: 0 0 10px white;
 			}
 
-			h1.header 
+			#article > h1.header 
 			{
 				font-size: 3em;
 				margin: 1em 5% 0em;
 			}
 
-			p.subtitle
+			#article > p.subtitle
 			{
 				font-size: 1.5em;
 				line-height: 5em;
 				color: #777777;
-				margin: 0em 2em 0em;
+				margin: 0em 5% 0em;
 			}
 
-			p.footer
+			#article > p.footer
 			{
 				margin: 6em 6% 3em; 
 			}
 
-			h2, h3, h4, h5, h6, ol
+			#article > h2, #article > h3, #article > h4,
+			#article > h5, #article > h6, #article > ol
 			{
 				margin: 2em 5% 1em;
 			}
 
-			h2 { font-size: 2em; }
+			#article > h2 { font-size: 2em; }
 
-			p 
+			#article > p 
 			{
 				font-size: 1em;
 				text-align: justify;
 				margin: 1.5em 5.3%;
 			}
 
-			pre
+			#article > pre
 			{
 				padding: 1em;
 				overflow: auto;
@@ -76,12 +81,13 @@
 				margin: 0em 5%;
 			}
 
-				pre > code
+				#article > pre > code
 				{
 					margin: 0em 1em 0em;
 				}
 
-			ol li > p, ol li > pre
+			#article > ol li > p,
+			#article > ol li > pre
 			{
 				margin: 1.5em 0em;
 			}
@@ -90,29 +96,27 @@
 /* Listing                                                                       */
 /*********************************************************************************/
 
-		section.articles > #listing
+		section > #listing
 		{
 			width: 25%;
 			float: right;
 			margin: 1em 0.8% 2em 0em;
 		}
 
-			ul.default
+			#listing > ul.default
 			{
 				padding-bottom: 0em;
 			}
 
-				li.default
+				#listing > ul.default > li.default
 				{
 					transition: box-shadow 1s;
 				}
-
-					li.default:first-child:hover
+					#listing > ul.default > li.default:first-child:hover
 					{
 						box-shadow: none;
 					}
-
-					li.default:hover
+					#listing > ul.default > li.default:hover
 					{
 						box-shadow: 0 0 10px white;
 					}

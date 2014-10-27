@@ -1,6 +1,8 @@
 <h1 class="header">Server tools</h1>
 <p class="subtitle">Basic utilities for monitoring</p>
 
+<i>27 October 2014</i>
+
 ## Run-level a.k.a. boot manager
 
 		sysv-rc-conf
@@ -8,7 +10,7 @@
 
 ## What is going on?
 
-top is a great tool but a little fade on colors and interactivity...
+[top] is a great tool but a little fade on colors and interactivity...
 
 		htop
 
@@ -39,11 +41,11 @@ Network statistics of upload & download rates
 
 ## Mount ssh directory
 
-mount
+[mount]
 
 		sshfs roger@ipaddr:/home/toto /mnt/roger/
 
-umount
+[umount]
 
 		fusermount -u mountpoint
 

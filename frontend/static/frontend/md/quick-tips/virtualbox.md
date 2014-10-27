@@ -2,7 +2,9 @@
 
 [www.virtualbox.org](https://www.virtualbox.org/)
 
-I am assuming you know what are the magnificent sudo powers.
+<i>27 October 2014</i>
+
+ I am assuming you know what are the magnificient [sudo] powers.
 
 ## Install Guest Additions via terminal
 
@@ -24,9 +26,9 @@ I am assuming you know what are the magnificent sudo powers.
 
 ## Boot from usb
 
-You must boot virtualbox as root to have access to sdX or play with priviledges
+You must boot virtualbox as root to have access to sdX or play with privileges.
 
-	VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
+		VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
 
 
 ## Debian Guess Additions image location

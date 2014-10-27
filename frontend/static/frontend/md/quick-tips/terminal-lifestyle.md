@@ -1,6 +1,8 @@
 <h1 class="header">Terminal Lifestyle</h1>
 <p class="subtitle">Ascii, wine & a keyboard</p>
 
+<i>27 October 2014</i>
+
 ## Music on Console
 
 		apt-get install moc && mocp -T green_theme
@@ -24,7 +26,7 @@ Text base file navigator
 
 ## Dynamic Virtual Terminal Manager
 
-Vim output can get messy but hey, give it a try!
+[vim] output can get messy but hey, give it a try!
 
 		dvtm
 

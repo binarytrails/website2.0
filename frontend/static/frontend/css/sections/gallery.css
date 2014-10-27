@@ -1,3 +1,7 @@
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
 	body
 	{
 		height: 100%;
@@ -9,41 +13,50 @@
 		margin: 1.5em 0em;
 	}
 
-		#header
+	#header
+	{
+		margin-bottom: 0em;
+	}
+
+/*********************************************************************************/
+/* Photos                                                                        */
+/*********************************************************************************/
+
+	#photos
+	{
+		background: #E8E8E6;
+	}
+
+		#photos section
 		{
-			margin-bottom: 0em;
+			margin: 4em 0em;
 		}
-
-		#photos
-		{
-			background: #E8E8E6;
-		}
-
-			#photos section
+		
+			#photos section > header
 			{
-				margin: 4em 0em;
-			}
-			
-				#photos section > header
-				{
-					margin: 0.5em 0em 0.8em 0em;
-				}
-
-				#photos section > hr
-				{
-					border-top: solid 1px #777777;
-					margin: 0em 15em;
-				}
-
-			#photos ul 
-			{
-				text-align: center;
+				margin: 0.5em 0em 0.8em 0em;
 			}
 
-				#photos ul > li 
-				{
-					display: inline-block;
-				}
+			#photos section > hr
+			{
+				border-top: solid 1px #777777;
+				margin: 0em 15em;
+			}
+
+		#photos ul 
+		{
+			text-align: center;
+		}
+
+			#photos ul > li 
+			{
+				display: inline-block;
+			}
+
+/*********************************************************************************/
+/* Return                                                                        */
+/*********************************************************************************/
+
 	#return
 	{
 		position: absolute;

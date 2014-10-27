@@ -1,119 +1,131 @@
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
 	body
 	{
 		height: 100%;
 		background: #E8E8E6;
 	}
 
-		#header, #tweet, #main
-		{
-			margin: 0em;
-		}
+	#header, #tweet, #main
+	{
+		margin: 0em;
+	}
 
-		#main
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+		width: auto;
+		background: white;
+	}
+
+		#videos
 		{
+			height: auto;
 			width: auto;
-			background: white;
 		}
 
-			#videos
+			#videos section
 			{
 				height: auto;
-				width: auto;
+				width: 100%;
+
+				background: #282828;
+				border-top: solid 1px #ddd;
+				text-align: left;
+
+				margin: 0em;
+				padding: 3em 0em;
 			}
 
-				#videos section
+
+				#videos section > header
 				{
-					height: auto;
-					width: 100%;
+					font-size: 2.5em;
+					margin-top: 0em;
 
-					background: #282828;
-					border-top: solid 1px #ddd;
-					text-align: left;
-
-					margin: 0em;
-					padding: 3em 0em;
+					width: 75%;
+					margin-left: 12.5%;
 				}
 
+				#videos section > hr
+				{
+					border-top: solid 1px #777777;
+					
+					width: 50%;
+					margin-left: 25%;
 
-					#videos section > header
-					{
-						font-size: 2.5em;
-						margin-top: 0em;
-
-						width: 75%;
-						margin-left: 12.5%;
 					}
 
-					#videos section > hr
+					#container
 					{
-						border-top: solid 1px #777777;
-						
-						width: 50%;
-						margin-left: 25%;
+						text-align: center;
+						margin: 4em auto;
+					}
 
- 					}
+					#wrapper
+					{
+						display: inline-block;
+						height: 20em;
+						width: 30%;
+						margin: 1% 1%;
+						background: white;
+					}
 
- 					#container
- 					{
- 						text-align: center;
- 						margin: 4em auto;
- 					}
-
-						#wrapper
+						#wrapper > video
 						{
-							display: inline-block;
+							position: absolute;
 							height: 20em;
 							width: 30%;
-							margin: 1% 1%;
-							background: white;
+							margin-left: -15%;
+							z-index: 1;
 						}
 
-							#wrapper > video
-							{
-								position: absolute;
-								height: 20em;
-								width: 30%;
-								margin-left: -15%;
-								z-index: 1;
-							}
+/*********************************************************************************/
+/* Details                                                                       */
+/*********************************************************************************/
 
-							#details
-							{
-								position: absolute;
-								height: 1.8em;
-								width: 30%;
-								z-index: 2;
+	#details
+	{
+		position: absolute;
+		height: 1.8em;
+		width: 30%;
+		z-index: 2;
 
-								opacity: 0.5;
-								overflow: hidden;
+		opacity: 0.5;
+		overflow: hidden;
 
-								background: black;
-								box-shadow: 0 0 10px black;
+		background: black;
+		box-shadow: 0 0 10px black;
 
-								transition: all 1.5s;
-							}
-								#details:hover
-								{
-									height: 20em;
-									opacity: 0.93;
-								}
+		transition: all 1.5s;
+	}
+		#details:hover
+		{
+			height: 20em;
+			opacity: 0.93;
+		}
 
-								#details > header
-								{
-									text-align: center;
-									text-shadow: 0 0 0.3px white;
-								}
+		#details > header
+		{
+			text-align: center;
+			text-shadow: 0 0 0.3px white;
+		}
 
-								#details ul
-								{
-									text-align: left;
-								}
+		#details ul
+		{
+			text-align: left;
+		}
 
-									#details ul > li
-									{
-										transition: text-shadow 0.5s;
-									}
-										#details ul > li:hover
-										{
-											text-shadow: 0 0 8px white;
-										}
+			#details ul > li
+			{
+				transition: text-shadow 0.5s;
+			}
+				#details ul > li:hover
+				{
+					text-shadow: 0 0 8px white;
+				}

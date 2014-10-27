@@ -1,3 +1,7 @@
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
     html, body
     {
         height: 100%;
@@ -9,6 +13,15 @@
         overflow:  hidden;
         background: black;
     }
+
+    a:focus
+    {
+        outline: 0;
+    }
+
+/*********************************************************************************/
+/* Return & Loop                                                                 */
+/*********************************************************************************/
         #return, #loop
         {
             position: absolute;
@@ -52,154 +65,161 @@
             border-radius: 6px;
         }
 
-    a:focus
+/*********************************************************************************/
+/* Details                                                                       */
+/*********************************************************************************/
+
+    #details
     {
-        outline: 0;
+        position: absolute;
+        height: 100%;
+        width: 0.5%;
+
+        left: 0;
+        z-index: 20;
+
+        color: white;
+        box-shadow: 0 0 10px white;
+        background: #0A0A0A;
+
+        overflow: hidden;
+
+        transition: all 1.5s;
+    }
+        #details:hover
+        {
+            width: 20%;
+            box-shadow: 0 0 20px white;
+        }
+
+        #details ul
+        {
+            list-style: none;
+            margin-top: 2em;
+        }
+
+            #details ul > li
+            {
+                min-width: 13em;
+                max-width: 85%;
+                margin: 1em 0em;
+
+                transition: text-shadow 0.5s;
+            }
+                #details ul > li:hover
+                {
+                    text-shadow: 0 0 8px white;
+                }
+
+/*********************************************************************************/
+/* Slideshow                                                                     */
+/*********************************************************************************/
+
+    #slideshow
+    {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+
+        float: right;
+
+        overflow:  hidden;
+        background: #282828;
     }
 
-        #details
+        ul.slider
         {
-            position: absolute;
             height: 100%;
-            width: 0.5%;
+            width: auto;
 
-            left: 0;
-            z-index: 20;
+            list-style: none;
 
-            color: white;
-            box-shadow: 0 0 10px white;
-            background: #0A0A0A;
-
-            overflow: hidden;
-
-            transition: all 1.5s;
-        }
-            #details:hover
-            {
-                width: 20%;
-                box-shadow: 0 0 20px white;
-            }
-
-            #details ul
-            {
-                list-style: none;
-                margin-top: 2em;
-            }
-
-                #details ul > li
-                {
-                    min-width: 13em;
-                    max-width: 85%;
-                    margin: 1em 0em;
-
-                    transition: text-shadow 0.5s;
-                }
-                    #details ul > li:hover
-                    {
-                        text-shadow: 0 0 8px white;
-                    }
-
-        #slideshow
-        {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-
-            float: right;
-
-            overflow:  hidden;
-            background: #282828;
+            margin: 0em;
+            padding: 0px;
         }
 
-            ul.slider
+            ul.slider li.slides
             {
+                position: relative;
                 height: 100%;
-                width: auto;
-
-                list-style: none;
+                width: 100%;
 
                 margin: 0em;
-                padding: 0px;
+                padding: 0em;
+
+                background: #0A0A0A;
             }
 
-                ul.slider li.slides
+                div[id*="container"]
                 {
                     position: relative;
                     height: 100%;
                     width: 100%;
 
-                    margin: 0em;
-                    padding: 0em;
-
-                    background: #0A0A0A;
+                    float: left;
+                    overflow: hidden;
+                    display: none;
                 }
 
-                    div[id*="container"]
+                    div[id*="slide-"]
                     {
-                        position: relative;
-                        height: 100%;
-                        width: 100%;
-
-                        float: left;
-                        overflow: hidden;
-                        display: none;
+                        float: right;
+                        background: #0A0A0A;
                     }
 
-                        div[id*="slide-"]
+                        div[id*="slide-"] > img
                         {
-                            float: right;
-                            background: #0A0A0A;
+                            position: absolute;
+                            display: block;
+
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            margin: auto;
+
+                            max-height: 100%;
+                            max-width: 100%;
+
+                            opacity: 0;
+                            transform: scale(0.5);
+                            
+                            transition: all 1s;
                         }
 
-                            div[id*="slide-"] > img
-                            {
-                                position: absolute;
-                                display: block;
+/*********************************************************************************/
+/*  Slider                                                                       */
+/*********************************************************************************/
 
-                                top: 0;
-                                left: 0;
-                                right: 0;
-                                bottom: 0;
-                                margin: auto;
+    ul.slider li.track
+    {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
 
-                                max-height: 100%;
-                                max-width: 100%;
+        height: auto;
+        width: 100%;
+        left: 1px;
+        bottom: 0;
+        z-index: 20;
 
-                                opacity: 0;
-                                transform: scale(0.5);
-                                
-                                transition: all 1s;
-                            }
+        text-align: center;
+    }
 
-            ul.slider li.track
+        ul.slider li.track a
+        {
+            display:inline-block;
+            height: 1em;
+            width: 1em;
+            border-radius: 1em;
+
+            background-color: black;
+            box-shadow: 0 0 1px white;
+            text-decoration: none;
+
+            margin: 0.5em;
+            transition: box-shadow 1s;
+        }
+            ul.slider li.track a:hover
             {
-                position: absolute;
-                background-color: rgba(0, 0, 0, 0.5);
-
-                height: auto;
-                width: 100%;
-                left: 1px;
-                bottom: 0;
-                z-index: 20;
-
-                text-align: center;
+                box-shadow: 0 0 5px white;
             }
-
-                ul.slider li.track a
-                {
-                    display:inline-block;
-                    height: 1em;
-                    width: 1em;
-                    border-radius: 1em;
-
-                    background-color: black;
-                    box-shadow: 0 0 1px white;
-                    text-decoration: none;
-
-                    margin: 0.5em;
-                    transition: box-shadow 1s;
-                }
-                    ul.slider li.track a:hover
-                    {
-                        box-shadow: 0 0 5px white;
-                    }

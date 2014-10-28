@@ -18,7 +18,7 @@
             margin: 1.5em 0em;
             overflow: hidden;
 
-            transition: height 2s;
+            transition: height 1.8s;
             background: #CCCCCC;
         }
 
@@ -33,7 +33,7 @@
 
                 #left-section:hover, #right-section:hover
                 {
-                    height: 33em;
+                    height: 28em;
                 }
 
             #left-section h4, #right-section h4

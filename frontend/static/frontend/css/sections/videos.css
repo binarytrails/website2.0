@@ -13,76 +13,74 @@
 		margin: 0em;
 	}
 
-/*********************************************************************************/
-/* Main                                                                          */
-/*********************************************************************************/
-
 	#main
 	{
 		width: auto;
 		background: white;
 	}
 
-		#videos
+/*********************************************************************************/
+/* Videos                                                                        */
+/*********************************************************************************/
+
+	#videos
+	{
+		height: auto;
+		width: auto;
+	}
+
+		#videos section
 		{
 			height: auto;
-			width: auto;
+			width: 100%;
+
+			background: #282828;
+			border-top: solid 1px #ddd;
+			text-align: left;
+
+			margin: 0em;
+			padding: 3em 0em;
 		}
 
-			#videos section
+			#videos section > header
 			{
-				height: auto;
-				width: 100%;
-
-				background: #282828;
-				border-top: solid 1px #ddd;
-				text-align: left;
-
-				margin: 0em;
-				padding: 3em 0em;
+				margin-top: 1em;
+				width: 75%;
+				margin-left: 12.5%;
 			}
 
+			#videos section > hr
+			{
+				border-top: solid 1px #777777;
+				
+				width: 50%;
+				margin-left: 25%;
 
-				#videos section > header
+			}
+
+			#container
+			{
+				text-align: center;
+				margin: 4em auto;
+			}
+
+			#wrapper
+			{
+				display: inline-block;
+				height: 20em;
+				width: 30%;
+				margin: 1% 1%;
+				background: white;
+			}
+
+				#wrapper > video
 				{
-					margin-top: 1em;
-
-					width: 75%;
-					margin-left: 12.5%;
+					position: absolute;
+					height: 20em;
+					width: 30%;
+					margin-left: -15%;
+					z-index: 1;
 				}
-
-				#videos section > hr
-				{
-					border-top: solid 1px #777777;
-					
-					width: 50%;
-					margin-left: 25%;
-
-					}
-
-					#container
-					{
-						text-align: center;
-						margin: 4em auto;
-					}
-
-					#wrapper
-					{
-						display: inline-block;
-						height: 20em;
-						width: 30%;
-						margin: 1% 1%;
-						background: white;
-					}
-
-						#wrapper > video
-						{
-							position: absolute;
-							height: 20em;
-							width: 30%;
-							margin-left: -15%;
-							z-index: 1;
-						}
 
 /*********************************************************************************/
 /* Details                                                                       */

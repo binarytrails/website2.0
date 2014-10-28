@@ -9,8 +9,13 @@ STATIC = "static/frontend"
 IMG_DIR = os.path.join(DIR, STATIC, "img/")
 VID_DIR = os.path.join(DIR, STATIC, "vid/")
 
+def handle_http_user_agent(agent):
+    pass
+
 def home(request):
+    #handle_http_user_agent(request.META['HTTP_USER_AGENT'])
     skills_categories = []
+
     for item in Skill.objects.all().filter(
         owner='kedfilms-founder'
     ).order_by('category').values('category').distinct():

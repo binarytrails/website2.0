@@ -30,10 +30,9 @@
             {
                 float: right;
             }
-
                 #left-section:hover, #right-section:hover
                 {
-                    height: 28em;
+                    height: 33em;
                 }
 
             #left-section h4, #right-section h4

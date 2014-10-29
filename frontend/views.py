@@ -12,6 +12,9 @@ VID_DIR = os.path.join(DIR, STATIC, "vid/")
 def handle_http_user_agent(agent):
     pass
 
+def error404(request):
+    return render(request, "frontend/errors/404.html")
+
 def home(request):
     #handle_http_user_agent(request.META['HTTP_USER_AGENT'])
     skills_categories = []
@@ -35,7 +38,7 @@ def articles(request):
             ".md"
         )
     except ValueError:
-        return render(request, "frontend/sections/articles.html")
+        raise Http404
 
     return render(request, "frontend/sections/article.html",
     {
@@ -46,7 +49,7 @@ def article(request, section=None, article=None):
     if article and section:
         article += ".md"
         if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
-            return HttpResponse(status=404)
+            raise Http404
         
         html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
 
@@ -54,6 +57,9 @@ def article(request, section=None, article=None):
         {
             "html": html
         })
+
+    else:
+        raise Http404
 
 def gallery(request, section):
     if section and os.path.exists(IMG_DIR):
@@ -73,7 +79,7 @@ def gallery(request, section):
             next = "general/#head"
 
         else:
-            return HttpResponse(status = 404)
+            raise Http404
 
         return render(request, "frontend/sections/gallery.html",
         {
@@ -85,6 +91,8 @@ def gallery(request, section):
             "previous": previous,
             "next": next
         })
+    else:
+        raise Http404
 
 def slideshow(request, category=None):
     photos = None
@@ -101,7 +109,7 @@ def slideshow(request, category=None):
         previous_location += "general/#head"
 
     else:
-        return HttpResponse(status = 404)
+        raise Http404
 
     photos = Photo.objects.all().filter(category = category)
 
@@ -112,6 +120,8 @@ def slideshow(request, category=None):
             "source": source,
             "previous_location": previous_location,
         })
+    else:
+        raise Http404
 
 def videos(request):
     if os.path.exists(VID_DIR):
@@ -139,3 +149,5 @@ def videos(request):
                 category = Video.DN).order_by('-date_created'),
             "dancer_videos_src": "vid/dancer/"
         })
+    else:
+        raise Http404

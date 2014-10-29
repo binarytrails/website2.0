@@ -1,9 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
-#from django.contrib import admin
-#admin.autodiscover()
-
 urlpatterns = patterns('',
     
     url(r'^$', 'frontend.views.home', name='home'),
@@ -16,6 +13,6 @@ urlpatterns = patterns('',
 
     url(r'^videos/$', 'frontend.views.videos', name='videos'),
 
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    # url(r'^admin/', include(admin.site.urls)),
 )
+
+handler404 = 'frontend.views.error404'

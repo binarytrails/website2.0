@@ -11,6 +11,21 @@
 		left: 0;
 	}
 
+		#main header
+		{
+			position: absolute;
+			text-align: center;
+
+			font-size: 5em;
+			color: black;
+			text-shadow: 0 0 15px white;
+
+			left:0;
+			right:0;
+			margin-left:auto;
+			margin-right:auto;
+		}
+
 		#main a > img
 		{
 			width: 100%;

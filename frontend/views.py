@@ -13,7 +13,10 @@ def handle_http_user_agent(agent):
     pass
 
 def error404(request):
-    return render(request, "frontend/errors/404.html")
+    return render(request, "frontend/sections/error.html",
+    {
+        "status": "404 NOT FOUND"
+    })
 
 def home(request):
     #handle_http_user_agent(request.META['HTTP_USER_AGENT'])

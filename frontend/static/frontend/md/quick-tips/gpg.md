@@ -4,7 +4,7 @@
 
 <i>27 October 2014</i>
 
-Driving your car is a privilege not your privacy
+Driving your car is a privilege not your privacy.
 
 Almost every email client i.e. Icedove & Thunderbird supports [gpg].
 This can make it very transparent in a daily based routine with some per-recipient rules.

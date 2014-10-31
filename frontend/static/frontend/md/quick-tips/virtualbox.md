@@ -2,7 +2,7 @@
 
 [www.virtualbox.org](https://www.virtualbox.org/)
 
-<i>27 October 2014</i>
+*27 October 2014*
 
  I am assuming you know what are the magnificient [sudo] powers.
 

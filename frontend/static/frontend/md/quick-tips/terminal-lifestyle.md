@@ -1,7 +1,8 @@
 <h1 class="header">Terminal Lifestyle</h1>
-<p class="subtitle">Ascii, wine & a keyboard</p>
 
-<i>27 October 2014</i>
+Ascii, wine & a keyboard
+
+*27 October 2014*
 
 ## Music on Console
 

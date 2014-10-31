@@ -1,7 +1,8 @@
 <h1 class="header">Server tools</h1>
-<p class="subtitle">Basic utilities for monitoring</p>
 
-<i>27 October 2014</i>
+Basic utilities for monitoring
+
+*27 October 2014*
 
 ## Run-level a.k.a. boot manager
 

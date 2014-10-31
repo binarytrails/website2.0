@@ -2,7 +2,7 @@
 
 [Public-key cryptography](http://en.wikipedia.org/wiki/Public-key_cryptography)
 
-<i>27 October 2014</i>
+*27 October 2014*
 
 Driving your car is a privilege not your privacy.
 

@@ -44,26 +44,32 @@
 				margin: 1em 5% 0em;
 			}
 
-			#article > p.subtitle
-			{
-				font-size: 1.5em;
-				line-height: 5em;
-				color: #777777;
-				margin: 0em 5% 0em;
-			}
-
 			#article > p.footer
 			{
 				margin: 6em 6% 3em; 
 			}
 
-			#article > h2, #article > h3, #article > h4,
-			#article > h5, #article > h6, ol
+			#article > h1, #article > h2, #article > h3,
+			#article > h4, #article > h5, #article > h6, ol
 			{
 				margin: 2em 5% 1em;
 			}
 
-			#article > h2 { font-size: 2em; }
+			#article > h1 { font-size: 2.6em; }
+			#article > h2 { font-size: 2.2em; }
+			#article > h3 { font-size: 2em; }
+
+			a
+			{
+				color: #98AFC7;
+				transition: text-shadow 0.3s;
+			}
+				a:hover
+				{
+					text-shadow: 0 0 10px;
+				}
+
+			strong, em { color: #E18B6B; }
 
 			p 
 			{

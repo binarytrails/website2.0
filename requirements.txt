@@ -1,4 +1,0 @@
-Django==1.7
-argparse==1.2.1
-markdown2==2.3.0
-wsgiref==0.1.2

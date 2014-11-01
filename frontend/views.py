@@ -9,17 +9,20 @@ STATIC = "static/frontend"
 IMG_DIR = os.path.join(DIR, STATIC, "img/")
 VID_DIR = os.path.join(DIR, STATIC, "vid/")
 
-def handle_http_user_agent(agent):
-    pass
+def detect_mobile(initial_view):
+    def wrapped_view(request, *args, **kwargs):
+        if request.mobile:
+            return render(request, "frontend/sections/error.html",
+            {
+                "return_to": "",
+                "status": "We are deeply sorry, the mobile version is not available.",
+                "image_path": "frontend/img/wallpapers/cellphone-bg.jpg"
+            })
+        return initial_view(request, *args, **kwargs)
+    return wrapped_view
 
-def error404(request):
-    return render(request, "frontend/sections/error.html",
-    {
-        "status": "404 NOT FOUND"
-    })
-
+@detect_mobile
 def home(request):
-    #handle_http_user_agent(request.META['HTTP_USER_AGENT'])
     skills_categories = []
 
     for item in Skill.objects.all().filter(
@@ -34,6 +37,7 @@ def home(request):
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
     })
 
+@detect_mobile
 def articles(request):
     try:
         last_edited = utils.getMostRecentFileRecursively(
@@ -48,6 +52,7 @@ def articles(request):
         "html": utils.markdownToHtml(last_edited)
     })
 
+@detect_mobile
 def article(request, section=None, article=None):
     if article and section:
         article += ".md"
@@ -64,6 +69,7 @@ def article(request, section=None, article=None):
     else:
         raise Http404
 
+@detect_mobile
 def gallery(request, section):
     if section and os.path.exists(IMG_DIR):
 
@@ -97,6 +103,7 @@ def gallery(request, section):
     else:
         raise Http404
 
+@detect_mobile
 def slideshow(request, category=None):
     photos = None
     previous_location = "/photos/gallery/"
@@ -126,6 +133,7 @@ def slideshow(request, category=None):
     else:
         raise Http404
 
+@detect_mobile
 def videos(request):
     if os.path.exists(VID_DIR):
         return render(request, "frontend/sections/videos.html",
@@ -154,3 +162,11 @@ def videos(request):
         })
     else:
         raise Http404
+
+def error404(request):
+    return render(request, "frontend/sections/error.html",
+    {
+        "return_to": "/",
+        "status": "404 NOT FOUND",
+        "image_path": "frontend/img/gif/cats-night-ride.gif"
+    })

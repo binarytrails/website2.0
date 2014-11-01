@@ -16,7 +16,7 @@ def detect_mobile(initial_view):
             {
                 "return_to": "",
                 "status": "We are deeply sorry, the mobile version is not available.",
-                "image_path": "frontend/img/wallpapers/cellphone-bg.jpg"
+                "image_path": "frontend/img/wallpapers/cellphone-ancien-slot.jpg"
             })
         return initial_view(request, *args, **kwargs)
     return wrapped_view

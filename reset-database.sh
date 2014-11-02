@@ -16,14 +16,12 @@ echo; echo "Creating database with South wrapper"; echo
 ./manage.py makemigrations
 ./manage.py syncdb
 ./manage.py migrate
-./manage.py shell < scripts/database/users.py
-./manage.py shell < scripts/database/skills.py
-./manage.py shell < scripts/database/videos.py
 
-echo; echo "Do you have the original photos (not in github)? (yes, no):"; read hasphotos
-if [ "$hasphotos" == "no" ]; then
-    ./manage.py shell < scripts/database/photos-moq.py
-else
+echo; echo "Do you have database population scripts? (yes, no):"; read has_db_scripts
+if [ "$has_db_scripts" == "yes" ]; then
+    ./manage.py shell < scripts/database/users.py
+    ./manage.py shell < scripts/database/skills.py
+    ./manage.py shell < scripts/database/videos.py
     ./manage.py shell < scripts/database/photos-porfolio.py
     ./manage.py shell < scripts/database/photos-general.py
 fi

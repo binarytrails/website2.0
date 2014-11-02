@@ -17,7 +17,8 @@ echo; echo "Creating database with South wrapper"; echo
 ./manage.py syncdb
 ./manage.py migrate
 
-echo; echo "Do you have database population scripts? (yes, no):"; read has_db_scripts
+echo; echo "Are you in possession of the database population scripts
+     that are NOT present in the github repository? (yes, no):"; read has_db_scripts
 if [ "$has_db_scripts" == "yes" ]; then
     ./manage.py shell < scripts/database/users.py
     ./manage.py shell < scripts/database/skills.py

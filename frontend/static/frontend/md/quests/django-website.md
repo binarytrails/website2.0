@@ -68,9 +68,13 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 		default
 		  ├── requirements.txt
 		  ├── wsgi.py
+		  ├── static ──> myproject/myapp/static
 		  ├── myproject
 		  │   ├── myapp
+		  │   │   ├──static
+		  │   │   
 		  │   ├── manage.py
+		  │   │   
 		  │   ├── myproject
 		  │   │   ├── __init__.py
 		  │   │   ├── settings.py
@@ -87,10 +91,36 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 		  from django.core.wsgi import get_wsgi_application
 		  application = get_wsgi_application()
 
+	To avoid messing with your project structure and let the Gandi Apache collect your static files, add a symbolic link in your *default/* to your static folder.
+
+			ln -s myproject/myapp/static static
+
 	</br>
 	[Domain-as-website](http://wiki.gandi.net/en/domains/management/domain-as-website)
 
-	It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest you the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads in the World Wide Web. It's a great occasion to take a cup of tea and read a book!
+	It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest you the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads to the World Wide Web.
 
+	Why should I use the Domain-as-website?
+
+	>Gandi web forwarding server is serving a robots.txt file that you probably don't want.
+
+	Hence, my website wasn't indexed by google crawlers.
+
+	Go to your gandi admin pannel under *Simple Hosting > Your Instance > Websites Section* and add your addresses to the vhosts & check the **DNS modification** box.
+
+	Websites Section example:
+
+		Address (vhost) (2/2)
+		  ---------------------
+		  webiste.com
+		  www.website.com
+
+	You have to insert into *myproject/settings.py*
+
+		ALLOWED_HOSTS = ['website.com', 'www.website.com']
+
+	Otherwise you will get the **Internal Server Error**.
+
+	There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea and read a book!
 
 <p class="footer">Everything else is explained very clearly in the Gandi.net documentation.</p>

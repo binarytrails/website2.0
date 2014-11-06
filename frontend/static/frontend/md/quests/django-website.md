@@ -1,6 +1,6 @@
 <h1 class="header">Host Django Website</h1>
 </br>
-*31 October 2014*
+*31 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/django-website.md)
 
 # Cloud hosting
 

@@ -2,7 +2,7 @@
 
 [Public-key cryptography](http://en.wikipedia.org/wiki/Public-key_cryptography)
 
-*27 October 2014*
+*27 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/gpg.md)
 
 Driving your car is a privilege not your privacy.
 

@@ -2,7 +2,7 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
-	section
+	section.main
 	{
 		height: auto;
 		width: auto;
@@ -12,7 +12,7 @@
 		overflow: hidden;
 	}
 
-		section > #article, #side-menu
+		section.main > #article, #side-menu
 		{
 			background: #282828;
 			text-align: left;
@@ -22,7 +22,7 @@
 /* Articles                                                                      */
 /*********************************************************************************/
 
-		section > #article
+		section.main > #article
 		{
 			height: 100em;
 			width: 70%;
@@ -33,7 +33,7 @@
 			overflow: auto;
 			transition: box-shadow 1.5s;
 		}
-			section > #article:hover
+			section.main > #article:hover
 			{
 				box-shadow: 0 0 10px white;
 			}
@@ -102,7 +102,7 @@
 /* side-menu                                                                          */
 /*********************************************************************************/
 
-		section > #side-menu
+		section.main > #side-menu
 		{
 			width: 25%;
 			float: right;

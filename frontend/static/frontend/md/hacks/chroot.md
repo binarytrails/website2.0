@@ -1,6 +1,6 @@
 <h1 class="header">Chroot Escaping</h1>
 </br>
-*09 November 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hack-the-planet/chroot-escape.md)
+*09 November 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/chroot.md)
 
 FD:
 

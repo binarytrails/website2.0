@@ -12,7 +12,7 @@
 		overflow: hidden;
 	}
 
-		section > #article, #menu
+		section > #article, #side-menu
 		{
 			background: #282828;
 			text-align: left;
@@ -99,47 +99,47 @@
 			}
 
 /*********************************************************************************/
-/* Menu                                                                          */
+/* side-menu                                                                          */
 /*********************************************************************************/
 
-		section > #menu
+		section > #side-menu
 		{
 			width: 25%;
 			float: right;
 			margin: 1em 0.8% 2em 0em;
 		}
 
-			#menu > ul.default
+			#side-menu > ul.default
 			{
 				padding-bottom: 0em;
 			}
 
-				#menu > ul.default > li.default
+				#side-menu > ul.default > li.default
 				{
 					padding: 0.5em 1.5em;
 					transition: box-shadow 1s;
 				}
-					#menu > ul.default > li.default:hover
+					#side-menu > ul.default > li.default:hover
 					{
 						box-shadow: 0 0 10px white;
 					}
 
-				#menu > ul.default > li.default:first-child
+				#side-menu > ul.default > li.default:first-child
 				{
 					height: 1.8em;
 					padding: 1em 1.5em;
 				}
-					#menu > ul.default > li.default:first-child:hover
+					#side-menu > ul.default > li.default:first-child:hover
 					{
 						box-shadow: none;
 					}
 
-			#menu header
+			#side-menu header
 			{
 				font-size: 1.4em;
 			}
 
-			#menu a
+			#side-menu a
 			{
 				display: block;
 				width: 100%;

@@ -13,9 +13,9 @@
                     {% endblock article %}
                 </div>
                 <!-- Quests -->
-                <div id="listing">
+                <div id="menu">
                     <ul class="default">
-                        <li class="default">
+                        <li class="default" style="color: {% cycle '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
                             <header>Quests</header>
                         </li>
                         <li class="default">
@@ -25,10 +25,23 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Quick Tips -->
-                <div id="listing">
+                <!-- Hack The Planet -->
+                <div id="menu">
                     <ul class="default">
+                        <li class="default" style="color: {% cycle bgcolors %};">
+                            <header>Hack The Planet</header>
+                        </li>
                         <li class="default">
+                            <a href="/artcile/hacks/chroot#head">
+                                Chroot Escaping
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Quick Tips -->
+                <div id="menu">
+                    <ul class="default">
+                        <li class="default" style="color: {% cycle bgcolors %};">
                             <header>Quick Tips</header>
                         </li>
                         <li class="default">

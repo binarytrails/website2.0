@@ -12,7 +12,7 @@
 		overflow: hidden;
 	}
 
-		section > #article, #listing
+		section > #article, #menu
 		{
 			background: #282828;
 			text-align: left;
@@ -99,41 +99,47 @@
 			}
 
 /*********************************************************************************/
-/* Listing                                                                       */
+/* Menu                                                                          */
 /*********************************************************************************/
 
-		section > #listing
+		section > #menu
 		{
 			width: 25%;
 			float: right;
 			margin: 1em 0.8% 2em 0em;
 		}
 
-			#listing > ul.default
+			#menu > ul.default
 			{
 				padding-bottom: 0em;
 			}
 
-				#listing > ul.default > li.default
+				#menu > ul.default > li.default
 				{
+					padding: 0.5em 1.5em;
 					transition: box-shadow 1s;
 				}
-					#listing > ul.default > li.default:first-child:hover
-					{
-						box-shadow: none;
-					}
-					#listing > ul.default > li.default:hover
+					#menu > ul.default > li.default:hover
 					{
 						box-shadow: 0 0 10px white;
 					}
 
-			#listing header
+				#menu > ul.default > li.default:first-child
+				{
+					height: 1.8em;
+					padding: 1em 1.5em;
+				}
+					#menu > ul.default > li.default:first-child:hover
+					{
+						box-shadow: none;
+					}
+
+			#menu header
 			{
 				font-size: 1.4em;
-				margin: 0.8em 0.9em 0.5em;
 			}
 
-			#listing a
+			#menu a
 			{
 				display: block;
 				width: 100%;
@@ -142,6 +148,4 @@
 				font-size: 1em;
 				color: #B6B6B4;
 				text-shadow: none;
-
-				margin: 0em 1.4em;
 			}

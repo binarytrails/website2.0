@@ -12,7 +12,7 @@ VID_DIR = os.path.join(DIR, STATIC, "vid/")
 def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile:
-            return render(request, "frontend/sections/error.html",
+            return render(request, "frontend/errors/generic.html",
             {
                 "return_to": "",
                 "status": "We are deeply sorry, the mobile version is not available.",
@@ -135,7 +135,10 @@ def slideshow(request, category=None):
 
 @detect_mobile
 def videos(request):
-    if os.path.exists(VID_DIR):
+    if "MSIE" in request.META['HTTP_USER_AGENT']:
+        return render(request, "frontend/errors/old-browser.html")
+
+    elif os.path.exists(VID_DIR):
         return render(request, "frontend/sections/videos.html",
         {
             "posters_src": "img/video-poster/",
@@ -164,7 +167,7 @@ def videos(request):
         raise Http404
 
 def error404(request):
-    return render(request, "frontend/sections/error.html",
+    return render(request, "frontend/errors/generic.html",
     {
         "return_to": "/",
         "status": "404 NOT FOUND",

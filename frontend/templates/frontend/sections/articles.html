@@ -12,10 +12,23 @@
                     {% block article %}
                     {% endblock article %}
                 </div>
+                <!-- Research -->
+                <div id="side-menu">
+                    <ul class="default">
+                        <li class="default" style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
+                            <header>Research</header>
+                        </li>
+                        <li class="default">
+                            <a href="/static/frontend/pdf/freenet-fr.pdf">
+                                PDF: Freenet (French)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!-- Quests -->
                 <div id="side-menu">
                     <ul class="default">
-                        <li class="default" style="color: {% cycle '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
+                        <li class="default" style="color: {% cycle bgcolors %};">
                             <header>Quests</header>
                         </li>
                         <li class="default">

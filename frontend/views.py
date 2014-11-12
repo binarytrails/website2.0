@@ -135,7 +135,7 @@ def slideshow(request, category=None):
 
 @detect_mobile
 def videos(request):
-    if "MSIE" in request.META['HTTP_USER_AGENT']:
+    if ("MSIE" or "Trident") in request.META['HTTP_USER_AGENT']:
         return render(request, "frontend/errors/old-browser.html")
 
     elif os.path.exists(VID_DIR):

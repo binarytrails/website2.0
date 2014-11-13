@@ -29,7 +29,7 @@ def home(request):
 
         skills_categories.append(item['category'])
 
-    return render(request, "frontend/sections/home.html",
+    return render(request, "frontend/desktop/home.html",
     {
         "skills_categories": skills_categories,
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
@@ -45,7 +45,7 @@ def articles(request):
     except ValueError:
         raise Http404
 
-    return render(request, "frontend/sections/article.html",
+    return render(request, "frontend/desktop/article.html",
     {
         "html": utils.markdownToHtml(last_edited)
     })
@@ -59,7 +59,7 @@ def article(request, section=None, article=None):
         
         html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
 
-        return render(request, "frontend/sections/article.html",
+        return render(request, "frontend/desktop/article.html",
         {
             "html": html
         })
@@ -88,7 +88,7 @@ def gallery(request, section):
         else:
             raise Http404
 
-        return render(request, "frontend/sections/gallery.html",
+        return render(request, "frontend/desktop/gallery.html",
         {
             "section": section,
             "title": title,
@@ -122,7 +122,7 @@ def slideshow(request, category=None):
     photos = Photo.objects.all().filter(category = category)
 
     if photos:
-        return render(request, "frontend/sections/slideshow.html",
+        return render(request, "frontend/desktop/slideshow.html",
         {
             "photos": photos,
             "source": source,
@@ -137,7 +137,7 @@ def videos(request):
         return render(request, "frontend/errors/old-browser.html")
 
     elif os.path.exists(VID_DIR):
-        return render(request, "frontend/sections/videos.html",
+        return render(request, "frontend/desktop/videos.html",
         {
             "posters_src": "img/video-poster/",
 

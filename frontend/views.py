@@ -14,12 +14,8 @@ ie_useragent_tags = ["MSIE", "Trident"]
 def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile:
-            return render(request, "frontend/errors/generic.html",
-            {
-                "return_to": "",
-                "status": "We are deeply sorry, the mobile version is not available.",
-                "image_path": "frontend/img/mobile/mobile-warm-mountains.jpg"
-            })
+            return render(request, "frontend/errors/unsupported-mobile.html")
+
         return initial_view(request, *args, **kwargs)
     return wrapped_view
 
@@ -169,7 +165,7 @@ def videos(request):
         raise Http404
 
 def error404(request):
-    return render(request, "frontend/errors/generic.html",
+    return render(request, "frontend/errors/generic-bg-image.html",
     {
         "return_to": "/",
         "status": "404 NOT FOUND",

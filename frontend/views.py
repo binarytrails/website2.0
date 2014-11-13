@@ -21,6 +21,9 @@ def detect_mobile(initial_view):
 
 @detect_mobile
 def home(request):
+    # if request.mobile:
+    #     return render(request, "frontend/mobile/home.html")
+
     skills_categories = []
 
     for item in Skill.objects.all().filter(

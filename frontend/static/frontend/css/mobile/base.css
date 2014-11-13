@@ -1,0 +1,67 @@
+/*********************************************************************************/
+/* Fonts                                                                         */
+/*********************************************************************************/
+	@font-face {
+		font-family: 'WebFont';
+
+		/* IE9 Compat Modes */
+		src: url('../../font/fontawesome-webfont.eot');
+		
+		/* IE6-IE8 */
+		src: url('../../font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+
+		/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		url('../../font/fontawesome-webfont.woff') format('woff'),
+
+		/* Android, iOS, Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+		url('../../font/fontawesome-webfont.ttf')  format('truetype'),
+
+		/* Legacy iOS */
+		url('../../font/fontawesome-webfont.svg#svgFontName') format('svg');
+	}
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+	body
+	{
+		font-family: 'WebFont', sans-serif;
+		font-size: 1em;
+		font-weight: lighter;
+		
+		color: white;
+		background: #1E1E1E;
+	}
+
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+	#header
+	{
+		position: absolute;
+		width: 100%;
+		height: 10%;
+		
+		top: 0;
+		right: 0;
+		left: 0;
+
+		font-size: 2em;
+		background: #0C090A;
+	}
+
+		#header > #container
+		{
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+			display: table;
+		}
+
+		#header > #container > header
+		{
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}

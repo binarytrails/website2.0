@@ -46,7 +46,6 @@
 		right: 0;
 		left: 0;
 
-		font-size: 2em;
 		background: #0C090A;
 	}
 
@@ -57,11 +56,19 @@
 			height: 100%;
 
 			display: table;
+			font-size: 100%;
 		}
 
 		#header > #container > header
 		{
+
 			display: table-cell;
 			vertical-align: middle;
 			text-align: center;
+		}
+
+		#header > #container > a.menu
+		{
+			position: absolute;
+			right: +1%;
 		}

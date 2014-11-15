@@ -22,21 +22,19 @@
 /*********************************************************************************/
 /* Return & Loop                                                                 */
 /*********************************************************************************/
-        #return, #loop
+        #return, div[id*="loop-"]
         {
             position: absolute;
 
-            width: 4em;
-            height: 4em;
-
+            width: 6em;
+            height: 6em;
             right: 0.5%;
-            z-index: 20;
 
             margin: 0.4em;
             overflow: hidden;
         }
 
-            #return img, #loop img
+            #return img, div[id*="loop-"] img
             {
                 height: 100%;
                 width: 100%;
@@ -59,46 +57,60 @@
                 transition: all 1s;
             }
 
-        #loop
+        div[id*="loop-"]
         {
             bottom: 8%;
-            border-radius: 6px;
+            border-radius: 6px;                            
+
+            opacity: 0;
+            z-index: 0;
+
+            -moz-transition: all 0.8s ease-in-out;
+            -webkit-transition: all 0.8s ease-in-out;
+            transition: all 0.8s ease-in-out;
+            -o-transition: all 0.8s ease-in-out;
+            -ms-transition: all 0.8s ease-in-out;
         }
 
 /*********************************************************************************/
 /* Details                                                                       */
 /*********************************************************************************/
 
-    #details
+    div[id*="details-"]
     {
         position: absolute;
         height: 100%;
         width: 0.5%;
 
         left: 0;
-        z-index: 20;
-
-        color: white;
-        box-shadow: 0 0 10px white;
-        background: #0A0A0A;
-
         overflow: hidden;
 
-        transition: all 1.5s;
+        color: white;
+        box-shadow: 0 0 15px white;
+        background: #0A0A0A;
+
+        opacity: 0;
+        z-index: 0;
+
+        -moz-transition: all 0.8s ease-in-out;
+        -webkit-transition: all 0.8s ease-in-out;
+        transition: all 0.8s ease-in-out;
+        -o-transition: all 0.8s ease-in-out;
+        -ms-transition: all 0.8s ease-in-out;
     }
-        #details:hover
+        div[id*="details-"]:hover
         {
             width: 20%;
             box-shadow: 0 0 20px white;
         }
 
-        #details ul
+        div[id*="details-"] ul
         {
             list-style: none;
             margin-top: 2em;
         }
 
-            #details ul > li
+            div[id*="details-"] ul > li
             {
                 min-width: 13em;
                 max-width: 85%;
@@ -106,7 +118,7 @@
 
                 transition: text-shadow 0.5s;
             }
-                #details ul > li:hover
+                div[id*="details-"] ul > li:hover
                 {
                     text-shadow: 0 0 8px white;
                 }
@@ -150,42 +162,34 @@
                 background: #0A0A0A;
             }
 
-                div[id*="container"]
+                div[id*="slide-"]
                 {
-                    position: relative;
-                    height: 100%;
-                    width: 100%;
-
-                    float: left;
-                    overflow: hidden;
-                    display: none;
+                    float: right;
+                    background: #0A0A0A;
                 }
 
-                    div[id*="slide-"]
+                    div[id*="slide-"] > img
                     {
-                        float: right;
-                        background: #0A0A0A;
+                        display: block;
+                        position: absolute;
+
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+
+                        max-height: 100%;
+                        max-width: 100%;
+
+                        opacity: 0;
+
+                        -moz-transition: all 0.8s ease-in-out;
+                        -webkit-transition: all 0.8s ease-in-out;
+                        transition: all 0.8s ease-in-out;
+                        -o-transition: all 0.8s ease-in-out;
+                        -ms-transition: all 0.8s ease-in-out;
                     }
-
-                        div[id*="slide-"] > img
-                        {
-                            position: absolute;
-                            display: block;
-
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            margin: auto;
-
-                            max-height: 100%;
-                            max-width: 100%;
-
-                            opacity: 0;
-                            transform: scale(0.5);
-                            
-                            transition: all 1s;
-                        }
 
 /*********************************************************************************/
 /*  Slider                                                                       */

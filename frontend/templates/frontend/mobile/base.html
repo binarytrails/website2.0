@@ -14,11 +14,48 @@
 	</head>
 	
 	<body>
-
 		<div id="header">
-			<div id="container">
+			<div id="menu">
 				<header>KEDFILMS</header>
-				<a class="menu">⌘</a>
+
+				<!--
+					a.menu calls #submenu div witch on its :target
+					changes the #submenu display to table.
+				-->
+				<a class="menu" href="#submenu">⌘</a>
+
+			</div>
+			<div id="submenu">
+				<div id="sections">
+					<table>
+						<td>
+							<a href="#home">
+								<img src="{% static "frontend/img/logo/512x512/symbol/house-white.png" %}">
+							</a>
+						</td>
+						<td>
+							<a href="#articles">
+								<img src="{% static "frontend/img/logo/512x512/symbol/book-white.png" %}">
+							</a>
+						</td>
+						<td>
+							<a href="#photos">
+								<img src="{% static "frontend/img/logo/256x256/symbol/camera-white.png" %}">
+							</a>
+						</td>
+						<td>
+							<a href="#videos">
+								<img src="{% static "frontend/img/logo/512x512/symbol/video-camera-white.png" %}">
+							</a>
+						</td>
+					</table>
+				</div>
+
+				<!--
+					a.submenu calls #menu div witch on its :target
+					changes the #submenu display to none.
+				-->
+				<a href="#menu">✕</a>
 			</div>
 		</div>
 

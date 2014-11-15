@@ -207,7 +207,7 @@
 
         ul.slider li.track a
         {
-            display:inline-block;
+            display: inline-block;
             height: 1em;
             width: 1em;
             border-radius: 1em;

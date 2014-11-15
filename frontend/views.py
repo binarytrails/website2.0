@@ -19,10 +19,10 @@ def detect_mobile(initial_view):
         return initial_view(request, *args, **kwargs)
     return wrapped_view
 
-
+@detect_mobile
 def home(request):
-    if request.mobile:
-        return render(request, "frontend/mobile/home.html")
+    # if request.mobile:
+    #     return render(request, "frontend/mobile/home.html")
 
     skills_categories = []
 

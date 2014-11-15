@@ -17,13 +17,12 @@
 		<div id="header">
 			<div id="menu">
 				<header>KEDFILMS</header>
-
 				<!--
-					a.menu calls #submenu div witch on its :target
-					changes the #submenu display to table.
+					a calls the div#menu:target that
+					calls its adjacent (+) the div#submenu
+					to send the new proprieties to the div.
 				-->
-				<a class="menu" href="#submenu">⌘</a>
-
+				<a class="menu" href="#menu">⌘</a>
 			</div>
 			<div id="submenu">
 				<div id="sections">
@@ -51,11 +50,7 @@
 					</table>
 				</div>
 
-				<!--
-					a.submenu calls #menu div witch on its :target
-					changes the #submenu display to none.
-				-->
-				<a href="#menu">✕</a>
+				<a href="#">✕</a>
 			</div>
 		</div>
 

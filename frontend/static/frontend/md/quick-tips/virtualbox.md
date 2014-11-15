@@ -4,7 +4,7 @@
 
 *27 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/virtualbox.md)
 
- I am assuming you know what are the magnificient [sudo] powers.
+ I am assuming you know what are the magnificent [sudo] powers.
 
 ## Install Guest Additions via terminal
 

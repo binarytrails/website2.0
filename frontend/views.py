@@ -40,17 +40,9 @@ def home(request):
 
 @detect_mobile
 def articles(request):
-    try:
-        last_edited = utils.getMostRecentFileRecursively(
-            os.path.join(DIR, STATIC, "md/"),
-            ".md"
-        )
-    except ValueError:
-        raise Http404
-
     return render(request, "frontend/desktop/article.html",
     {
-        "html": utils.markdownToHtml(last_edited)
+        "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
     })
 
 @detect_mobile

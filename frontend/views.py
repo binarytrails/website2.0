@@ -19,24 +19,25 @@ def detect_mobile(initial_view):
         return initial_view(request, *args, **kwargs)
     return wrapped_view
 
-@detect_mobile
+#@detect_mobile
 def home(request):
-    # if request.mobile:
-    #     return render(request, "frontend/mobile/home.html")
+    return render(request, "frontend/mobile/home.html")
+    # # if request.mobile:
+    # #     return render(request, "frontend/mobile/home.html")
 
-    skills_categories = []
+    # skills_categories = []
 
-    for item in Skill.objects.all().filter(
-        owner='kedfilms-founder'
-    ).order_by('category').values('category').distinct():
+    # for item in Skill.objects.all().filter(
+    #     owner='kedfilms-founder'
+    # ).order_by('category').values('category').distinct():
 
-        skills_categories.append(item['category'])
+    #     skills_categories.append(item['category'])
 
-    return render(request, "frontend/desktop/home.html",
-    {
-        "skills_categories": skills_categories,
-        "skills": Skill.objects.all().filter(owner='kedfilms-founder')
-    })
+    # return render(request, "frontend/desktop/home.html",
+    # {
+    #     "skills_categories": skills_categories,
+    #     "skills": Skill.objects.all().filter(owner='kedfilms-founder')
+    # })
 
 @detect_mobile
 def articles(request):
@@ -102,25 +103,26 @@ def slideshow(request, category=None):
     previous_location = "/photos/gallery/"
 
     if category == "portfolio":
-        category = Photo.PF
+        category_key = Photo.PF
         source = "img/portfolio/"
         previous_location += "portfolio/#head"
 
     elif category == "general":
-        category = Photo.GN
+        category_key = Photo.GN
         source = "img/general/"
         previous_location += "general/#head"
 
     else:
         raise Http404
 
-    photos = Photo.objects.all().filter(category = category)
+    photos = Photo.objects.all().filter(category = category_key)
 
     if photos:
         return render(request, "frontend/desktop/slideshow.html",
         {
             "photos": photos,
             "source": source,
+            "category": category,
             "previous_location": previous_location,
         })
     else:

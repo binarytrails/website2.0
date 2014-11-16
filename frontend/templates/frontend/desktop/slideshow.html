@@ -15,6 +15,51 @@
 		<style type="text/css">
 			{% for photo in photos %}
 
+				/* image preview style */
+
+				#preview-{{ photo.fragment_identifier }}
+				{
+					position: absolute;
+					
+                    left: 0;
+                    right: 0;
+                    bottom: 3em;
+                    margin: auto;
+
+					z-index: 3;
+					opacity: 0;
+
+					background-image: url({{ STATIC }}frontend/img/{{ category }}/x200/{{ photo.filename }});
+					box-shadow: 0 0 5px white;
+
+					height: 200px;
+
+					/* Get image width from file on page load */
+					{% load filters %}
+					{% with image_path="static/frontend/img/"|add:category|add:"/x200/"|add:photo.filename %}
+					{% with width=image_path|imageWidth height=image_path|imageHeight %}
+					width: {{ width }}px;
+					{% endwith %}
+					{% endwith %}
+
+					-moz-transition: all 0.5s ease-in-out;
+					-webkit-transition: all 0.5s ease-in-out;
+					transition: all 0.5s ease-in-out;
+					-o-transition: all 0.5s ease-in-out;
+					-ms-transition: all 0.5s ease-in-out;
+				}
+
+				/* on rounded image link mouse over (:hover) */
+
+				a#track-{{ photo.fragment_identifier }}:hover + 
+				div#preview-{{ photo.fragment_identifier }}
+				{
+					opacity: 0.9;
+					z-index: 2;
+				}
+
+				/* on rounded image link click (:target) */
+
 				a#{{ photo.fragment_identifier }}:target + 
 				div#slide-{{ photo.fragment_identifier }} img
 				{
@@ -94,7 +139,9 @@
 
 				<li class="track">
 					{% for photo in photos %}
-						<a href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
+						<a id="track-{{ photo.fragment_identifier }}" title="{{ photo.title }}" href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
+
+						<div id="preview-{{ photo.fragment_identifier }}"></div>
 					{% endfor %}
 				</li>
 			</ul>

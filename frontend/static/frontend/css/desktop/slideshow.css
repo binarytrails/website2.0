@@ -222,8 +222,13 @@
             box-shadow: 0 0 1px white;
             text-decoration: none;
 
-            margin: 0.5em;
-            transition: box-shadow 1s;
+            margin: 0.5em 0.2em 0.5em;
+
+            -moz-transition: all 0.8s ease-in-out;
+            -webkit-transition: all 0.8s ease-in-out;
+            transition: all 0.8s ease-in-out;
+            -o-transition: all 0.8s ease-in-out;
+            -ms-transition: all 0.8s ease-in-out;
         }
             ul.slider li.track a:hover
             {

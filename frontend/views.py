@@ -112,7 +112,8 @@ def slideshow(request, category=None):
     else:
         raise Http404
 
-    photos = Photo.objects.all().filter(category = category_key)
+    photos = Photo.objects.all().filter(
+        category = category_key).order_by('-date_created')
 
     if photos:
         return render(request, "frontend/desktop/slideshow.html",

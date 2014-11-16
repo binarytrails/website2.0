@@ -19,25 +19,22 @@ def detect_mobile(initial_view):
         return initial_view(request, *args, **kwargs)
     return wrapped_view
 
-#@detect_mobile
+@detect_mobile
 def home(request):
-    return render(request, "frontend/mobile/home.html")
-    # # if request.mobile:
-    # #     return render(request, "frontend/mobile/home.html")
+    #return render(request, "frontend/mobile/home.html")
+    skills_categories = []
 
-    # skills_categories = []
+    for item in Skill.objects.all().filter(
+        owner='kedfilms-founder'
+    ).order_by('category').values('category').distinct():
 
-    # for item in Skill.objects.all().filter(
-    #     owner='kedfilms-founder'
-    # ).order_by('category').values('category').distinct():
+        skills_categories.append(item['category'])
 
-    #     skills_categories.append(item['category'])
-
-    # return render(request, "frontend/desktop/home.html",
-    # {
-    #     "skills_categories": skills_categories,
-    #     "skills": Skill.objects.all().filter(owner='kedfilms-founder')
-    # })
+    return render(request, "frontend/desktop/home.html",
+    {
+        "skills_categories": skills_categories,
+        "skills": Skill.objects.all().filter(owner='kedfilms-founder')
+    })
 
 @detect_mobile
 def articles(request):

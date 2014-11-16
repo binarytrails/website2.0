@@ -12,3 +12,15 @@ def times(number):
 @register.filter
 def in_category(objects, category):
 	return objects.filter(category = category)
+
+@register.filter
+def imageWidth(path):
+	with open(os.path.join(DIR, path), 'rb') as imagefile:
+		data = imagefile.read()
+		return utils.get_image_info(data)[1]
+
+@register.filter
+def imageHeight(path):
+	with open(os.path.join(DIR, path), 'rb') as imagefile:
+		data = imagefile.read()
+		return utils.get_image_info(data)[2]

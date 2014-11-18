@@ -4,6 +4,7 @@ Utilities powered by the magnificent me.
 
 import os, glob, re, subprocess, markdown2
 
+# get_image_info()
 import struct, StringIO
 
 def getFilenames(folderpath, byNewest):
@@ -33,9 +34,12 @@ def getMostRecentFileRecursively(rootfolder, extension=""):
     return max(files)[1]
 
 def markdownToHtml(filepath):
-    with open(filepath, "r") as mdfile:
+    try:
+        mdfile = open(filepath, "r")
         text = mdfile.read()
-
+    finally:
+        if mdfile:
+            mdfile.close()
     return markdown2.markdown(text)
 
 """

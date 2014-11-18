@@ -9,7 +9,7 @@ STATIC = "static/frontend"
 IMG_DIR = os.path.join(DIR, STATIC, "img/")
 VID_DIR = os.path.join(DIR, STATIC, "vid/")
 
-ie_useragent_tags = ["MSIE", "Trident"]
+ie_useragent_tags = ["msie", "trident"]
 
 def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
@@ -128,7 +128,7 @@ def slideshow(request, category=None):
 
 @detect_mobile
 def videos(request):
-    if any(agent in request.META['HTTP_USER_AGENT'] for agent in ie_useragent_tags):
+    if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
         return render(request, "frontend/errors/old-browser.html")
 
     elif os.path.exists(VID_DIR):

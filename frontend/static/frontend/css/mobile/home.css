@@ -1,0 +1,202 @@
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+	#main
+	{
+		position: absolute;
+		width: 100%;
+		height: auto;
+
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		z-index: -1;
+		margin-top: 12em;
+	}
+
+/*********************************************************************************/
+/* Entry                                                                        */
+/*********************************************************************************/
+	#entry
+	{
+		position: relative;
+		width: 100%;
+		height: 30em;
+
+		padding: 10em 0 5em;
+		text-align: center;
+
+		color: #0C090A;
+		background: #E5E4E2;
+	}
+
+		#entry header
+		{
+			font-size: 4em;
+		}
+
+		#entry p
+		{
+			font-size: 3em;
+		}
+
+/*********************************************************************************/
+/* About                                                                         */
+/*********************************************************************************/
+	#about
+	{
+		position: relative;
+		width: 100%;
+		height: 80em;
+
+		color: #0C090A;
+		background: #B6CDE5;
+
+		overflow: auto;
+	}
+		/* hidden slides */
+		#about div[id*="slide-"]
+		{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			font-size: 2em;
+			background: #B6CDE5;
+			text-align: center;
+
+			z-index: 0;
+			opacity: 0;
+
+			-moz-transition: all 0.7s ease-in-out;
+			-webkit-transition: all 0.7s ease-in-out;
+			transition: all 0.7s ease-in-out;
+			-o-transition: all 0.7s ease-in-out;
+			-ms-transition: all 0.7s ease-in-out;
+		}
+			/* default slide */
+			#about #slide-developper
+			{
+				opacity: 1;
+			}
+
+			/* slides on # reference */
+			#about a#articles:target + #slide-articles,
+			#about a#developper:target + #slide-developper,
+			#about a#photos:target + #slide-photos,
+			#about a#videos:target + #slide-videos
+			{
+				z-index: 1;
+				opacity: 1;
+			}
+
+			#about header,
+			#about div[id*="arrow-"]
+			{
+				margin: 1em;
+			}
+
+			#about header
+			{
+				font-size: 2em;
+				margin-bottom: 1.5em;
+			}
+
+			#about p
+			{
+				margin: 2em;
+			}
+
+				#about p a
+				{
+					color: #957E65;
+				}
+
+			#about div[id*="arrow-"]
+			{
+				position: absolute;
+				top: 0.4em;
+			}
+
+			#about div[id*="arrow-left"]
+			{
+				left: 0.5em;
+			}
+
+			#about div[id*="arrow-right"]
+			{
+				right: 0.5em;
+			}
+
+				#about div[id*="arrow-"] a img
+				{
+					width: 3.5em;
+				}
+
+/*********************************************************************************/
+/* Skills                                                                        */
+/*********************************************************************************/
+	#skills
+	{
+		position: relative;
+		width: 100%;
+		height: 50em;
+
+		margin-top: 0;
+
+		color: #0C090A;
+		background: #AEFFBE;
+		text-align: center;
+	}
+
+		#skills header
+		{
+			font-size: 4em;
+			padding-top: 2em;
+		}
+
+/*********************************************************************************/
+/* Contact                                                                       */
+/*********************************************************************************/
+	#contact
+	{
+		position: relative;
+		width: 100%;
+		height: auto;
+
+		margin-top: 0;
+
+		color: white;
+		/background: #5C595A;
+		text-align: center;
+	}
+
+		#contact header
+		{
+			font-size: 4em;
+			padding-top: 2em;
+		}
+
+		#contact p
+		{
+			padding: 1em;
+			font-size: 3em;
+		}
+
+		#contact #logos
+		{
+			padding: 4em 0em 10em;
+		}
+
+			#contact #logos img
+			{
+				width: 15%;
+			}
+
+		#contact p.foot
+		{
+			font-size: 1.5em;
+			padding-bottom: 2em; 
+		}

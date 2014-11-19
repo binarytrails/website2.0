@@ -6,6 +6,9 @@
 	<meta name="keywords" content="Kedfilms, Mobile, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
 	<meta name="author" content="Seva Ivanov">
 
+	{% load static %}
+    {% get_static_prefix as STATIC %}
+
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static "frontend/css/mobile/base.css" %}">
 
@@ -28,35 +31,34 @@
 				<div id="sections">
 					<table>
 						<td>
-							<a href="#home">
+							<a href="">
 								<img src="{% static "frontend/img/logo/512x512/symbol/house-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="#articles">
+							<a href="">
 								<img src="{% static "frontend/img/logo/512x512/symbol/book-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="#photos">
+							<a href="">
 								<img src="{% static "frontend/img/logo/256x256/symbol/camera-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="#videos">
+							<a href="">
 								<img src="{% static "frontend/img/logo/512x512/symbol/video-camera-white.png" %}">
 							</a>
 						</td>
 					</table>
 				</div>
-
 				<a href="#">✕</a>
 			</div>
 		</div>
-
-		{% block content %}
-		{% endblock %}
-
+		<div id="main">
+			{% block content %}
+			{% endblock %}
+		</div>
 	</body>
 
 </html>

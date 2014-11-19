@@ -120,6 +120,7 @@
 			{
 				width: 100%;
 				height: auto;
+				text-align: center;
 				border-collapse: collapse;
 			}
 
@@ -129,13 +130,38 @@
 					height: 100%;
 				}
 
-					#header #submenu #sections table td a
+					#header #submenu #sections #img-wrapper
 					{
-						width: 100%;
-						height: 100%;
+						display: block;
+						margin-left: auto;
+						margin-right: auto;
 					}
 
-						#header #submenu #sections table td a img
+					@media all and (min-height: 600px) and (max-height: 1200px)
+					{
+						#header #submenu #sections #img-wrapper
+						{
+							width: 75%;
+						}
+					}
+
+					@media all and (min-height: 1200px) and (max-height: 1400px)
+					{
+						#header #submenu #sections #img-wrapper
+						{
+							width: 50%;
+						}
+					}
+
+					@media all and (min-height: 1400px)
+					{
+						#header #submenu #sections #img-wrapper
+						{
+							width: 25%;
+						}
+					}
+
+						#header #submenu #sections #img-wrapper > img
 						{
 							width: 50%;
 							height: auto;

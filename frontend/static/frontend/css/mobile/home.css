@@ -169,7 +169,41 @@
 
 		#contact #logos
 		{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			
 			padding: 4em 0em 10em;
+
+			-moz-transition: all 0.7s ease-in-out;
+			-webkit-transition: all 0.7s ease-in-out;
+			transition: all 0.7s ease-in-out;
+			-o-transition: all 0.7s ease-in-out;
+			-ms-transition: all 0.7s ease-in-out;
+		}
+
+		@media all and (min-height: 600px) and (max-height: 1200px)
+		{
+			#contact #logos
+			{
+				width: 75%;
+			}
+		}
+
+		@media all and (min-height: 1200px) and (max-height: 1400px)
+		{
+			#contact #logos
+			{
+				width: 50%;
+			}
+		}
+
+		@media all and (min-height: 1400px)
+		{
+			#contact #logos
+			{
+				width: 25%;
+			}
 		}
 
 			#contact #logos img

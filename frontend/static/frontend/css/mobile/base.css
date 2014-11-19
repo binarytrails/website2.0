@@ -1,31 +1,9 @@
 /*********************************************************************************/
-/* Fonts                                                                         */
-/*********************************************************************************/
-	@font-face {
-		font-family: 'WebFont';
-
-		/* IE9 Compat Modes */
-		src: url('../../font/fontawesome-webfont.eot');
-		
-		/* IE6-IE8 */
-		src: url('../../font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-
-		/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-		url('../../font/fontawesome-webfont.woff') format('woff'),
-
-		/* Android, iOS, Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-		url('../../font/fontawesome-webfont.ttf')  format('truetype'),
-
-		/* Legacy iOS */
-		url('../../font/fontawesome-webfont.svg#svgFontName') format('svg');
-	}
-
-/*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
 	body
 	{
-		font-family: 'WebFont', Arial, Helvetica, sans-serif;
+		font-family: Arial, Helvetica, sans-serif;
 		font-size: 1em;
 		font-weight: lighter;
 		

@@ -21,32 +21,31 @@
 			<div id="menu">
 				<header>KEDFILMS</header>
 				<!--
-					a calls the div#menu:target that
-					calls its adjacent (+) the div#submenu
-					to send the new proprieties to the div.
+					a calls the div#header:target that calls its child the div#submenu &
+					the div#menu to change their proprieties while #header is on :target.
 				-->
-				<a class="menu" href="#menu">⌘</a>
+				<a href="#header">⌘</a>
 			</div>
 			<div id="submenu">
 				<div id="sections">
 					<table>
 						<td>
-							<a href="">
+							<a href="#">
 								<img src="{% static "frontend/img/logo/512x512/symbol/house-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="">
+							<a href="#">
 								<img src="{% static "frontend/img/logo/512x512/symbol/book-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="">
+							<a href="#">
 								<img src="{% static "frontend/img/logo/256x256/symbol/camera-white.png" %}">
 							</a>
 						</td>
 						<td>
-							<a href="">
+							<a href="#">
 								<img src="{% static "frontend/img/logo/512x512/symbol/video-camera-white.png" %}">
 							</a>
 						</td>

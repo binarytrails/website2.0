@@ -18,8 +18,13 @@
             margin: 1.5em 0em;
             overflow: hidden;
 
-            transition: height 1.8s;
             background: #CCCCCC;
+
+            -moz-transition: height 1.8s;
+            -webkit-transition: height 1.8s;
+            transition: height 1.8s;
+            -o-transition: height 1.8s;
+            -ms-transition: height 1.8s;
         }
 
             #sections-row > #left-section
@@ -124,8 +129,12 @@
                     color: #B9AFA8;
 
                     cursor: default;
+                    
+                    -moz-transition: all 0.5s;
+                    -webkit-transition: all 0.5s;
                     transition: all 0.5s;
-
+                    -o-transition: all 0.5s;
+                    -ms-transition: all 0.5s;
                 }
 
                 #left-ability
@@ -137,6 +146,11 @@
                 {
                     float: right;
                 }
+
+                    #left-ability:hover, #right-ability:hover
+                    {
+                        text-shadow: 0 0 10px white;   
+                    }
 
                     #title
                     {

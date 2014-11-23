@@ -112,7 +112,7 @@
 
                 font-size: 1.5em;
 
-                margin-left: 1.5em;
+                margin: 0 1.5em;
                 overflow: hidden; /no-sense
             }
 
@@ -131,25 +131,19 @@
                 #left-ability
                 {
                     float: left;
-                    margin-right: 5%;
                 }
                 
                 #right-ability
                 {
-                    float: left;
-                    margin-left: 5%;
-                }
-
-                    #left-ability:hover, #right-ability:hover
-                    {
-                        text-shadow: 0 0 10px white;   
-                    }
-
-                #title
-                {
-                    float: left;
-                }
-                #rating
-                {
                     float: right;
                 }
+
+                    #title
+                    {
+                        float: left;
+                    }
+
+                    #rating
+                    {
+                        float: right;
+                    }

@@ -2,6 +2,7 @@ import os
 
 from django.shortcuts import HttpResponse, render
 from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from .models import User, Skill, Photo, Video
 from kedfilms import utils
@@ -94,8 +95,9 @@ def article(request, section=None, article=None):
 @detect_mobile
 def photos(request):
     if not request.mobile:
-        # temporary: breaks the DRY principle
-        return HttpResponseRedirect("/photos/gallery/portfolio/")
+        return HttpResponseRedirect(
+            reverse("frontend.views.gallery", kwargs={"section": "portfolio"})
+        )
 
 @detect_mobile
 def gallery(request, section):

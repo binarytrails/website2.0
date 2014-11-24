@@ -1,5 +1,8 @@
 import os
+
 from django.shortcuts import HttpResponse, render
+from django.http import HttpResponseRedirect
+
 from .models import User, Skill, Photo, Video
 from kedfilms import utils
 
@@ -14,9 +17,38 @@ ie_useragent_tags = ["msie", "trident"]
 def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile:
-            return render(request, "frontend/errors/unsupported-mobile.html")
+            calling_template = initial_view.func_name
+
+            not_available_mobile_templates = ["articles", "photos", "videos"]
+
+            if any(template in calling_template for template in not_available_mobile_templates):
+                return render(request, "frontend/errors/generic-simple-text.html",
+                {
+                    "header": "Under Construction",
+                    "image_src": "frontend/img/errors/beaver-ludge-with-leak.png",
+                    "subtitle": """
+                        The beavers are doing their best to build their lodge.
+                    """,
+                    "body": """
+                        The mobile version of this page is under construction.
+                        Don't worry, there is an easy fix!
+                        Go on the desktop version which is fully functionnal.
+
+                    """
+                })
+
+            return render(request, "frontend/errors/generic-simple-text.html",
+            {
+                "header": "The mobile version is not available.",
+                "body": """
+                    Don't worry, there is an easy fix.
+                    All you have to do is to consult our website using 
+                    your favorite computer to enjoy the experience to its fullest.
+                """
+            })
 
         return initial_view(request, *args, **kwargs)
+
     return wrapped_view
 
 def home(request):
@@ -32,7 +64,7 @@ def home(request):
         template = "frontend/desktop/home.html"
 
     return render(request, template,
-    {
+    { 
         "skills_categories": skills_categories,
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
     })
@@ -58,13 +90,16 @@ def article(request, section=None, article=None):
             "html": html
         })
 
-    else:
-        raise Http404
+    raise Http404
+
+@detect_mobile
+def photos(request):
+    if not request.mobile:
+        return HttpResponseRedirect("/photos/gallery/portfolio/")
 
 @detect_mobile
 def gallery(request, section):
     if section and os.path.exists(IMG_DIR):
-
         if section == "portfolio":
             title = "Portfolio"
             category = Photo.PF
@@ -92,8 +127,8 @@ def gallery(request, section):
             "previous": previous,
             "next": next
         })
-    else:
-        raise Http404
+    
+    raise Http404
 
 @detect_mobile
 def slideshow(request, category=None):
@@ -124,8 +159,8 @@ def slideshow(request, category=None):
             "category": category,
             "previous_location": previous_location,
         })
-    else:
-        raise Http404
+    
+    raise Http404
 
 @detect_mobile
 def videos(request):
@@ -157,8 +192,8 @@ def videos(request):
                 category = Video.DN).order_by('-date_created'),
             "dancer_videos_src": "vid/dancer/"
         })
-    else:
-        raise Http404
+    
+    raise Http404
 
 def error404(request):
     return render(request, "frontend/errors/generic-bg-image.html",

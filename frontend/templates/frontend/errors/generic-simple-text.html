@@ -2,14 +2,25 @@
 
 {% block content %}
 
+	{% load static %}
+	{% get_static_prefix as STATIC %}
+
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static "frontend/css/errors/generic-simple-text.css" %}">
 
 	<div id="main">
 		<div id="container">
-			<header>The mobile version is not available.</header>
+			{% if image_src %}
+				<img src="{{ STATIC }}{{ image_src }}"></img>
+			{% endif %}
+			<header>
+				{{ header }}
+			</header>
+			<p class="subtitle">
+				{{ subtitle }}
+			</p>
 			<p>
-				Don't worry, there is an easy fix. All you have to do is to consult our website using your favorite computer to enjoy the experience to its fullest.
+				{{ body }}
 			</p>
 		</div>
 	</div>

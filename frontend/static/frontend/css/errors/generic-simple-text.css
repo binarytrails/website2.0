@@ -16,6 +16,7 @@
 		#container
 		{
 			padding: 2em;
+			background: #E5E4E2;
 		}
 
 			#container header, #container, p
@@ -28,9 +29,14 @@
 				font-size: 5em;
 			}
 
+			#container p.subtitle
+			{
+				font-size: 3em;
+			}
+
 			#container p
 			{
-				font-size: 2em;
+				font-size: 2.5em;
 				margin-bottom: 1.5em;
 			}
 

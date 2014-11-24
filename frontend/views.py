@@ -32,7 +32,6 @@ def detect_mobile(initial_view):
                         The mobile version of this page is under construction.
                         Don't worry, there is an easy fix!
                         Go on the desktop version which is fully functionnal.
-
                     """
                 })
 
@@ -45,9 +44,10 @@ def detect_mobile(initial_view):
                     your favorite computer to enjoy the experience to its fullest.
                 """
             })
-
+        # not mobile
         return initial_view(request, *args, **kwargs)
 
+    # return what is returned from the wrapped_view()
     return wrapped_view
 
 def home(request):
@@ -94,6 +94,7 @@ def article(request, section=None, article=None):
 @detect_mobile
 def photos(request):
     if not request.mobile:
+        # temporary: breaks the DRY principle
         return HttpResponseRedirect("/photos/gallery/portfolio/")
 
 @detect_mobile

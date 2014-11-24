@@ -135,8 +135,42 @@
 		</div>
 	</div>
 
-	<div id="skills">
+	<div id="abilities">
 		<header>Abilities</header>
+		{% for category in skills_categories %}
+			<div id="category">
+				<header>
+					{{ category }}
+				</header>
+				<div id="abilities-row">
+					{% load filters %}
+					{% for skill in skills|in_category:category %}
+
+						{% if forloop.counter|divisibleby:2 %}
+							<div id="right-ability">
+						{% else %} <!-- first -->
+							<div id="left-ability">
+						{% endif %}
+							
+							<div id="title">
+								{{ skill.title }}
+							</div>
+							<div id="rating">
+								{% load filters %}
+								{% for i in 5|times %}
+								    {% if i < skill.rating_on_five %}
+								        ★
+								    {% else %}
+								        ☆
+								    {% endif %}
+								{% endfor %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+		</br></br></br></br></br>
 	</div>
 
 	<div id="contact">

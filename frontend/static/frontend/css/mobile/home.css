@@ -32,10 +32,7 @@
 		position: relative;
 		width: 100%;
 		height: 80em;
-
 		color: #0C090A;
-		background: #B6CDE5;
-
 		overflow: auto;
 	}
 		/* hidden slides */
@@ -46,7 +43,8 @@
 			height: 100%;
 
 			font-size: 2em;
-			background: #B6CDE5;
+			/* #B6CDE5 */
+			background: #C3CEDC;
 			text-align: center;
 
 			z-index: 0;
@@ -93,7 +91,7 @@
 
 				#about p a
 				{
-					color: #957E65;
+					color: #8C001A;
 				}
 
 			#about div[id*="arrow-"]
@@ -118,31 +116,9 @@
 				}
 
 /*********************************************************************************/
-/* Skills                                                                        */
+/* Abilities                                                                     */
 /*********************************************************************************/
-	#skills
-	{
-		position: relative;
-		width: 100%;
-		height: 50em;
-
-		margin-top: 0;
-
-		color: #0C090A;
-		background: #AEFFBE;
-		text-align: center;
-	}
-
-		#skills header
-		{
-			font-size: 4em;
-			padding-top: 2em;
-		}
-
-/*********************************************************************************/
-/* Contact                                                                       */
-/*********************************************************************************/
-	#contact
+	#abilities
 	{
 		position: relative;
 		width: 100%;
@@ -150,8 +126,108 @@
 
 		margin-top: 0;
 
+		color: #0C090A;
+		/* #E77471 #FFF380 #849FDC */
+		background: #E9F5DC;
+	}
+
+		#abilities header
+		{
+			font-size: 4em;
+			text-align: center;
+			padding-top: 2em;
+		}
+
+			#abilities #category header
+			{
+				font-size: 3em;
+				text-align: left;
+
+				cursor: default;
+				margin-left: 1em;
+				margin-bottom: 1.5em;
+			}
+
+			#abilities-row
+			{
+				height: auto;
+				width: auto;
+
+				font-size: 2em;
+
+				margin: 0 2em;
+				overflow: hidden; /no-sense
+			}
+
+				div[id*="-ability"]
+				{
+					width: 40%;
+					cursor: default;
+				}
+
+				@media all and (max-width: 800px)
+				{
+					div[id*="-ability"]
+					{
+						margin: 0 0 2em;
+					}
+
+				}
+				
+				@media all and (min-width: 800px) and (max-width: 1200px)
+				{
+					div[id*="-ability"]
+					{
+						margin: 0 1em 2em;
+					}
+				}
+
+				#left-ability
+				{
+					float: left;
+				}
+
+				#right-ability
+				{
+					float: right;
+				}
+
+					#abilities #title
+					{
+						float: left;
+					}
+
+					#abilities #rating
+					{
+						float: right;
+					}
+
+				@media all and (max-width: 1200px)
+				{
+					#right-ability
+					{
+						text-align: right;
+					}
+					
+						#abilities #title, #rating
+						{
+							width: 100%;
+						}
+				}
+
+/*********************************************************************************/
+/* Contact                                                                       */
+/*********************************************************************************/
+	#contact
+	{
+		position: absolute;
+		width: 100%;
+		height: auto;
+
+		margin-top: 0;
+
 		color: white;
-		/background: #5C595A;
+		background: #1E1E1E;
 		text-align: center;
 	}
 

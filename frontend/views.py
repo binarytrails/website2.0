@@ -18,7 +18,6 @@ def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile:
             calling_template = initial_view.func_name
-
             not_available_mobile_templates = ["articles", "photos", "videos"]
 
             if any(template in calling_template for template in not_available_mobile_templates):
@@ -53,7 +52,7 @@ def detect_mobile(initial_view):
 
 def home(request):
     skills_categories = []
-    skills = Skill.objects.all().filter(owner='kedfilms-founder');
+    skills = Skill.objects.all().filter(owner='kedfilms-founder')
 
     for skill in skills.order_by('category').values('category').distinct():
         skills_categories.append(skill['category'])

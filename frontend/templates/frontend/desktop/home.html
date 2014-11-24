@@ -21,8 +21,8 @@
 		<section>
 			<div id="sections-row">
 				<div id="left-section">
-		 			<h4>Developper</h4>
-	 				<p>
+					<h4>Developper</h4>
+					<p>
 						As I am writing this section, I am building my website to elevate my understanding of the web driving technologies.
 					</p>
 					<p>
@@ -95,7 +95,7 @@
 		</section>
 		<hr></hr>
 
-	    <section>
+		<section>
 			<hr class="head"></hr>
 			<header>
 				Abilities
@@ -103,26 +103,26 @@
 			<hr class="tail"></hr>
 		</section>
 
-	    {% for category in skills_categories %}
-	    <section>
-	    	<div id="abilities">
+		{% for category in skills_categories %}
+		<section>
+			<div id="abilities">
 				<header>
-				    {{ category }}
+					{{ category }}
 				</header>
 				<div id="abilities-row">
-				    {% load filters %}
-				    {% for skill in skills|in_category:category %}
+					{% load filters %}
+					{% for skill in skills|in_category:category %}
 
-				    	{% if forloop.counter|divisibleby:2 %}
+						{% if forloop.counter|divisibleby:2 %}
 							<div id="right-ability">
-				    	{% else %} <!-- first -->
+						{% else %} <!-- first -->
 							<div id="left-ability">
-				    	{% endif %}
+						{% endif %}
 							
-						    <div id="title">
+							<div id="title">
 								{{ skill.title }}
-						    </div>
-						    <div id="rating">
+							</div>
+							<div id="rating">
 								{% load filters %}
 								{% for i in 5|times %}
 								    {% if i < skill.rating_on_five %}
@@ -137,7 +137,7 @@
 				</div>
 			</div>
 		</section>
-	    {% endfor %}
+		{% endfor %}
 	</div>
 
 {% endblock %}

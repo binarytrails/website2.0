@@ -65,15 +65,19 @@ def get_home_args():
 def home(request):
     if request.mobile:
         return redirect(reverse('mhome') + '#header')
-    else:
-        return render(request, "frontend/desktop/home.html", get_home_args())
+
+    return render(request, "frontend/desktop/home.html", get_home_args())
 
 def mhome(request):
     return render(request, "frontend/mobile/home.html", get_home_args())
 
-@detect_mobile
 def articles(request):
-    return render(request, "frontend/desktop/article.html",
+    if request.mobile:
+        template = "frontend/mobile/articles.html"
+    else:
+        template = "frontend/desktop/article.html"
+ 
+    return render(request, template,
     {
         "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
     })

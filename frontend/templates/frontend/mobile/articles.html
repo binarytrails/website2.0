@@ -1,0 +1,92 @@
+{% extends "frontend/mobile/base.html" %}
+
+{% block content %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/mobile/articles.css" %}">
+
+    <div id="main">
+        <!-- Research -->
+        <ul>
+            <li>
+                <header style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
+                    Research
+                </header>
+            </li>
+            <li>
+                <a href="/static/frontend/pdf/freenet-fr.pdf">
+                    <div id="right">
+                       <p>PDF: Freenet (French)</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- Quests -->
+        <ul>
+            <li>
+                <header style="color: {% cycle bgcolors %};">
+                    Quests
+                </header>
+            </li>
+            <li>
+                <a href="/artcile/quests/django-website#head">
+                    <div id="right">
+                        <p>Hosting Django Website</p> 
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- Hack The Planet -->
+        <ul>
+            <li>
+                <header style="color: {% cycle bgcolors %};">
+                    Hack The Planet
+                </header>
+            </li>
+            <li>
+                <a href="artcile/hacks/chroot#head">
+                    <div id="right">
+                        <p>Chroot Escaping</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- Quick Tips -->
+        <ul>
+            <li>
+                <header style="color: {% cycle bgcolors %};">
+                    <p>Quick Tips
+                </header>
+            </li>
+            <li>
+                <a href="/artcile/quick-tips/gpg#head">
+                    <div id="right">
+                        <p>GNU Privacy Guard</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/artcile/quick-tips/terminal-lifestyle#head">
+                    <div id="right">
+                        <p>Terminal Lifestyle</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/artcile/quick-tips/server-tools#head">
+                    <div id="right">
+                        <p>Server Tools</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/artcile/quick-tips/virtualbox#head">
+                    <div id="right">
+                       <p>Virtualbox</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

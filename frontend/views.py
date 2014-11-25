@@ -1,7 +1,6 @@
 import os
 
-from django.shortcuts import HttpResponse, render
-from django.http import HttpResponseRedirect
+from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
 
 from .models import User, Skill, Photo, Video
@@ -51,23 +50,26 @@ def detect_mobile(initial_view):
     # return what is returned from the wrapped_view()
     return wrapped_view
 
-def home(request):
+def get_home_args():
     skills_categories = []
     skills = Skill.objects.all().filter(owner='kedfilms-founder')
 
     for skill in skills.order_by('category').values('category').distinct():
         skills_categories.append(skill['category'])
 
-    if request.mobile:
-        template = "frontend/mobile/home.html"
-    else:
-        template = "frontend/desktop/home.html"
-
-    return render(request, template,
-    { 
+    return {
         "skills_categories": skills_categories,
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
-    })
+    }
+
+def home(request):
+    if request.mobile:
+        return redirect(reverse('mhome') + '#header')
+    else:
+        return render(request, "frontend/desktop/home.html", get_home_args())
+
+def mhome(request):
+    return render(request, "frontend/mobile/home.html", get_home_args())
 
 @detect_mobile
 def articles(request):
@@ -95,9 +97,7 @@ def article(request, section=None, article=None):
 @detect_mobile
 def photos(request):
     if not request.mobile:
-        return HttpResponseRedirect(
-            reverse("frontend.views.gallery", kwargs={"section": "portfolio"})
-        )
+        return redirect(reverse("frontend.views.gallery", kwargs={"section": "portfolio"}))
 
 @detect_mobile
 def gallery(request, section):

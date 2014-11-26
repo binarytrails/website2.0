@@ -1,11 +1,16 @@
 {% extends "frontend/mobile/base.html" %}
 
-{% block article %}
+{% block content %}
 
-    {% autoescape off %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/mobile/article.css" %}">
 
-        {{ html }}
+    <div id="main">
+		{% autoescape off %}
 
-    {% endautoescape %}
+			{{ html }}
 
-{% endblock article %}
+		{% endautoescape %}
+	</div>
+
+{% endblock content %}

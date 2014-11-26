@@ -5,192 +5,194 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static "frontend/css/mobile/home.css" %}">
 
-	<div id="entry">
-		<header>
-			Yours truly
-		</header>
-		<p>
-			I am a human being,</br> an amazing student & a freelancer.</br>
-			Art & minutiae are transparent in my projects.</br>
-			Opensource is a reality & Linux is a choice.</br>
-		</p>
-	</div>
+	<div id="main">
+		<div id="entry">
+			<header>
+				Yours truly
+			</header>
+			<p>
+				I am a human being,</br> an amazing student & a freelancer.</br>
+				Art & minutiae are transparent in my projects.</br>
+				Opensource is a reality & Linux is a choice.</br>
+			</p>
+		</div>
 
-	<div id="about">
-		<!-- Developper Slide -->
-		<a id="developper"></a>
-		<div id="slide-developper">
-			<div id="arrow-left">
-				<a href="#videos">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
-				</a>
-			</div>
-			<header>Developper</header>
-			<p>
-				As I am writing this section, I am building my website to elevate my understanding of the web driving technologies.
-			</p>
-			<p>
-				I decided to publish all my projects with an Open Source documented code on <a class="dropdown" href="https://www.github.com/sevaivanov">GitHub</a> to profit the community.
-			</p>
-			<p>
-				I adore building projects from scratch. I have always had the perseverance to achieve my ambitions.
-				There are always after hours of mine that I invest to make my skills sharper.
-				I have built several projects for individual, educational and professional purposes.
-			</p>
-			<p>
-				I am always highly motivated to get aboard a new ship departing into the unknown!
-			</p>
-			<div id="arrow-right">
-				<a href="#articles">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
-				</a>
-			</div>
-		</div>
-		<!-- Articles Slide -->
-		<a id="articles"></a>
-		<div id="slide-articles">
-			<div id="arrow-left">
-				<a href="#developper">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
-				</a>
-			</div>
-			<header>Articles</header>
-			<p>
-				I have often faced issues that I often have resolved.
-				The search for solutions is as fascinating as playing the last Grand Theft Auto video game
-				in an Away From the Keyboard world of unlimited possibilities.
-				It can get hard, it is true, but the feeling of having succeeded is greater than all of the obstacles.
-			</p>
-			<p>
-				This will be a great place to share the papers of my researches to the world wide web.
-				I will present them to you as simple articles with a lightweight presentation.
-			</p>
-			<p>
-				Evolving as a human being is accepting to learn from mistakes.
-				This having been said, you should not hesitate to write to me to help me understand mine.
-			</p>
-			<div id="arrow-right">
-				<a href="#photos">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
-				</a>
-			</div>
-		</div>
-		<!-- Photography Slide -->
-		<a id="photos"></a>
-		<div id="slide-photos">
-			<div id="arrow-left">
-				<a href="#articles">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
-				</a>
-			</div>
-			<header>Photography</header>
-			<p>
-				It started at the same time that my passion for animated arts was making its roots.
-				I wasn't very good with Adobe Photoshop and had mastered Adobe After Effect.
-			</p>
-			<p>
-				People always get surprised when learning about my use of AE as an image editing software.
-				An advantage of its use is to be able to turn the image editing project to an animated project in a light strike.
-			</p>
-			<p>
-				After I moved to Linux, I started searching for open source alternatives.
-				I found GIMP and I loved it. It lacks a few features but it has a hudge potential in achieving as much as the Adobe suite.
-			</p>
-			<p>
-				I am using my abilities on a daily life basis to integrate artistic designing into my projects.
-			</p>
-			<div id="arrow-right">
-				<a href="#videos">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
-				</a>
-			</div>
-		</div>
-		<!-- Short Film Slide -->
-		<a id="videos"></a>
-		<div id="slide-videos">
-			<div id="arrow-left">
-				<a href="#photos">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
-				</a>
-			</div>
-			<header>Short Films</header>
-			<p>
-				Back in High School, I started searching different ways to express myself through animated arts.
-				I read a lot about Adobe After Effect and I spent a lifetime mastering it.
-				I loved taking time after school trying to create something new.
-			</p>
-			<p>
-				During the last High School year, I made my first short film with a friend of mine. I managed to create awesome special effects.
-				It was such a great experience! It gave me drive to create video montages freely for the community to encourage its growth.
-			</p>
-			<p>
-				I always love to take some of my time to sit down after work on an inspiration warm evening.
-				I try to let my feelings guide me in the creation of new short movies.
-			</p>
-			<div id="arrow-right">
-				<a href="#developper">
-					<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
-				</a>
-			</div>
-		</div>
-	</div>
-
-	<div id="abilities">
-		<header>Abilities</header>
-		{% for category in skills_categories %}
-			<div id="category">
-				<header>
-					{{ category }}
-				</header>
-				<div id="abilities-row">
-					{% load filters %}
-					{% for skill in skills|in_category:category %}
-
-						{% if forloop.counter|divisibleby:2 %}
-							<div id="right-ability">
-						{% else %} <!-- first -->
-							<div id="left-ability">
-						{% endif %}
-							
-							<div id="title">
-								{{ skill.title }}
-							</div>
-							<div id="rating">
-								{% load filters %}
-								{% for i in 5|times %}
-								    {% if i < skill.rating_on_five %}
-								        ★
-								    {% else %}
-								        ☆
-								    {% endif %}
-								{% endfor %}
-							</div>
-						</div>
-					{% endfor %}
+		<div id="about">
+			<!-- Developper Slide -->
+			<a id="developper"></a>
+			<div id="slide-developper">
+				<div id="arrow-left">
+					<a href="#videos">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
+					</a>
+				</div>
+				<header>Developper</header>
+				<p>
+					As I am writing this section, I am building my website to elevate my understanding of the web driving technologies.
+				</p>
+				<p>
+					I decided to publish all my projects with an Open Source documented code on <a class="dropdown" href="https://www.github.com/sevaivanov">GitHub</a> to profit the community.
+				</p>
+				<p>
+					I adore building projects from scratch. I have always had the perseverance to achieve my ambitions.
+					There are always after hours of mine that I invest to make my skills sharper.
+					I have built several projects for individual, educational and professional purposes.
+				</p>
+				<p>
+					I am always highly motivated to get aboard a new ship departing into the unknown!
+				</p>
+				<div id="arrow-right">
+					<a href="#articles">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
+					</a>
 				</div>
 			</div>
-		{% endfor %}
-		</br></br></br></br></br>
-	</div>
-
-	<div id="contact">
-		<header>Contact</header>
-		<p>I'll be glad to heard of yours!</p>
-		<div id="logos">
-			<a href="https://www.github.com/sevaivanov">
-				<img src="{% static "frontend/img/logo/256x256/contoured-circle/github-white-circled.png" %}" title="Follow my developing progress!"/>
-			</a>
-			<a class="logo" href="mailto:sevaivanov@kedfilms.com">
-				<img src="{% static "frontend/img/logo/512x512/contoured-circle/email-white.png" %}" title="Write to me!"/>
-			</a>
-			<a href="{% static "frontend/gpg/seva-ivanov.key" %}">
-				<img class="logo" src="{% static "frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" %}" title="Encrypt your email! Public PGP Key"/>
-			</a>
-			<a href="https://www.blockchain.info/address/14wqPuHB1wL8kvyzgsUipNHLaSWBdMCGFB">
-				<img src="{% static "frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" %}" title="Make a donation! Bitcoin wallet address">
-			</a>
+			<!-- Articles Slide -->
+			<a id="articles"></a>
+			<div id="slide-articles">
+				<div id="arrow-left">
+					<a href="#developper">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
+					</a>
+				</div>
+				<header>Articles</header>
+				<p>
+					I have often faced issues that I often have resolved.
+					The search for solutions is as fascinating as playing the last Grand Theft Auto video game
+					in an Away From the Keyboard world of unlimited possibilities.
+					It can get hard, it is true, but the feeling of having succeeded is greater than all of the obstacles.
+				</p>
+				<p>
+					This will be a great place to share the papers of my researches to the world wide web.
+					I will present them to you as simple articles with a lightweight presentation.
+				</p>
+				<p>
+					Evolving as a human being is accepting to learn from mistakes.
+					This having been said, you should not hesitate to write to me to help me understand mine.
+				</p>
+				<div id="arrow-right">
+					<a href="#photos">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
+					</a>
+				</div>
+			</div>
+			<!-- Photography Slide -->
+			<a id="photos"></a>
+			<div id="slide-photos">
+				<div id="arrow-left">
+					<a href="#articles">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
+					</a>
+				</div>
+				<header>Photography</header>
+				<p>
+					It started at the same time that my passion for animated arts was making its roots.
+					I wasn't very good with Adobe Photoshop and had mastered Adobe After Effect.
+				</p>
+				<p>
+					People always get surprised when learning about my use of AE as an image editing software.
+					An advantage of its use is to be able to turn the image editing project to an animated project in a light strike.
+				</p>
+				<p>
+					After I moved to Linux, I started searching for open source alternatives.
+					I found GIMP and I loved it. It lacks a few features but it has a hudge potential in achieving as much as the Adobe suite.
+				</p>
+				<p>
+					I am using my abilities on a daily life basis to integrate artistic designing into my projects.
+				</p>
+				<div id="arrow-right">
+					<a href="#videos">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
+					</a>
+				</div>
+			</div>
+			<!-- Short Film Slide -->
+			<a id="videos"></a>
+			<div id="slide-videos">
+				<div id="arrow-left">
+					<a href="#photos">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
+					</a>
+				</div>
+				<header>Short Films</header>
+				<p>
+					Back in High School, I started searching different ways to express myself through animated arts.
+					I read a lot about Adobe After Effect and I spent a lifetime mastering it.
+					I loved taking time after school trying to create something new.
+				</p>
+				<p>
+					During the last High School year, I made my first short film with a friend of mine. I managed to create awesome special effects.
+					It was such a great experience! It gave me drive to create video montages freely for the community to encourage its growth.
+				</p>
+				<p>
+					I always love to take some of my time to sit down after work on an inspiration warm evening.
+					I try to let my feelings guide me in the creation of new short movies.
+				</p>
+				<div id="arrow-right">
+					<a href="#developper">
+						<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
+					</a>
+				</div>
+			</div>
 		</div>
-		<p class="foot">Created by Seva Ivanov</p>
+
+		<div id="abilities">
+			<header>Abilities</header>
+			{% for category in skills_categories %}
+				<div id="category">
+					<header>
+						{{ category }}
+					</header>
+					<div id="abilities-row">
+						{% load filters %}
+						{% for skill in skills|in_category:category %}
+
+							{% if forloop.counter|divisibleby:2 %}
+								<div id="right-ability">
+							{% else %} <!-- first -->
+								<div id="left-ability">
+							{% endif %}
+								
+								<div id="title">
+									{{ skill.title }}
+								</div>
+								<div id="rating">
+									{% load filters %}
+									{% for i in 5|times %}
+									    {% if i < skill.rating_on_five %}
+									        ★
+									    {% else %}
+									        ☆
+									    {% endif %}
+									{% endfor %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+			</br></br></br></br></br>
+		</div>
+
+		<div id="contact">
+			<header>Contact</header>
+			<p>I'll be glad to heard of yours!</p>
+			<div id="logos">
+				<a href="https://www.github.com/sevaivanov">
+					<img src="{% static "frontend/img/logo/256x256/contoured-circle/github-white-circled.png" %}" title="Follow my developing progress!"/>
+				</a>
+				<a class="logo" href="mailto:sevaivanov@kedfilms.com">
+					<img src="{% static "frontend/img/logo/512x512/contoured-circle/email-white.png" %}" title="Write to me!"/>
+				</a>
+				<a href="{% static "frontend/gpg/seva-ivanov.key" %}">
+					<img class="logo" src="{% static "frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" %}" title="Encrypt your email! Public PGP Key"/>
+				</a>
+				<a href="https://www.blockchain.info/address/14wqPuHB1wL8kvyzgsUipNHLaSWBdMCGFB">
+					<img src="{% static "frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" %}" title="Make a donation! Bitcoin wallet address">
+				</a>
+			</div>
+			<p class="foot">Created by Seva Ivanov</p>
+		</div>
 	</div>
 
 {% endblock %}

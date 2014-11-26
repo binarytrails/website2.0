@@ -82,8 +82,12 @@ def articles(request):
         "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
     })
 
-@detect_mobile
 def article(request, section=None, article=None):
+    if request.mobile:
+        template = "frontend/mobile/article.html"
+    else:
+        template = "frontend/desktop/article.html"
+
     if article and section:
         article += ".md"
         if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
@@ -91,7 +95,7 @@ def article(request, section=None, article=None):
         
         html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
 
-        return render(request, "frontend/desktop/article.html",
+        return render(request, template,
         {
             "html": html
         })

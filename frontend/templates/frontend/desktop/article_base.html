@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static "frontend/css/desktop/articles.css" %}">
 
     <div class="main">
-        <section class="main">
+        <div id="content">
                 <div id="article">
                     <a name="head"></a>
                     {% block article %}
@@ -14,11 +14,11 @@
                 </div>
                 <!-- Research -->
                 <div id="side-menu">
-                    <ul class="default">
-                        <li class="default" style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
+                    <ul>
+                        <li style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
                             <header>Research</header>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/static/frontend/pdf/freenet-fr.pdf">
                                 PDF: Freenet (French)
                             </a>
@@ -27,11 +27,11 @@
                 </div>
                 <!-- Quests -->
                 <div id="side-menu">
-                    <ul class="default">
-                        <li class="default" style="color: {% cycle bgcolors %};">
+                    <ul>
+                        <li style="color: {% cycle bgcolors %};">
                             <header>Quests</header>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/quests/django-website#head">
                                 Hosting Django Website  
                             </a>
@@ -40,11 +40,11 @@
                 </div>
                 <!-- Hack The Planet -->
                 <div id="side-menu">
-                    <ul class="default">
-                        <li class="default" style="color: {% cycle bgcolors %};">
+                    <ul>
+                        <li style="color: {% cycle bgcolors %};">
                             <header>Hack The Planet</header>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/hacks/chroot#head">
                                 Chroot Escaping
                             </a>
@@ -53,26 +53,26 @@
                 </div>
                 <!-- Quick Tips -->
                 <div id="side-menu">
-                    <ul class="default">
-                        <li class="default" style="color: {% cycle bgcolors %};">
+                    <ul>
+                        <li style="color: {% cycle bgcolors %};">
                             <header>Quick Tips</header>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/quick-tips/gpg#head">
                                 GNU Privacy Guard
                             </a>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/quick-tips/terminal-lifestyle#head">
                                 Terminal Lifestyle
                             </a>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/quick-tips/server-tools#head">
                                 Server Tools
                             </a>
                         </li>
-                        <li class="default">
+                        <li>
                             <a href="/artcile/quick-tips/virtualbox#head">
                                 Virtualbox
                             </a>
@@ -80,7 +80,7 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
 {% endblock %}

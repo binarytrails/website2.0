@@ -2,17 +2,15 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
-	section.main
+	#content
 	{
 		height: auto;
 		width: auto;
-		margin: 4em;
-
-		padding: 0;
+		padding: 2em;
 		overflow: hidden;
 	}
 
-		section.main > #article, #side-menu
+		#content #article, #side-menu
 		{
 			background: #282828;
 			text-align: left;
@@ -22,54 +20,78 @@
 /* Articles                                                                      */
 /*********************************************************************************/
 
-		section.main > #article
+		#content #article
 		{
 			height: 100em;
 			width: 70%;
 
 			float: left;
-			margin: 1em 1.5% 1em 0.5%;
+			margin-top: 1em;
 
 			overflow: auto;
-			transition: box-shadow 1.5s;
+
+			-moz-transition: all 0.6s;
+			-webkit-transition: all 0.6s;
+			transition: all 0.6s;
+			-o-transition: all 0.6s;
+			-ms-transition: all 0.6s;
 		}
-			section.main > #article:hover
+			#content #article:hover
 			{
 				box-shadow: 0 0 10px white;
 			}
 
-			#article > h1.header 
+			#article h1.header 
 			{
 				font-size: 3em;
 				margin: 1em 5% 0em;
 			}
 
-			#article > p.footer
+			#article p.footer
 			{
 				margin: 6em 6% 3em; 
 			}
 
-			#article > h1, #article > h2, #article > h3,
-			#article > h4, #article > h5, #article > h6, ol
+			#article h1, #article h2, #article h3,
+			#article h4, #article h5, #article h6, ol
 			{
 				margin: 2em 5% 1em;
 			}
 
-			#article > h1 { font-size: 2.6em; }
-			#article > h2 { font-size: 2.2em; }
-			#article > h3 { font-size: 2em; }
+			#article h1 
+			{
+				font-size: 2.6em;
+			}
+			
+			#article h2 
+			{
+				font-size: 2.2em;
+			}
+
+			#article h3
+			{
+				font-size: 2em;
+			}
 
 			a
 			{
 				color: #98AFC7;
+
+				-moz-transition: text-shadow 0.3s;
+				-webkit-transition: text-shadow 0.3s;
 				transition: text-shadow 0.3s;
+				-o-transition: text-shadow 0.3s;
+				-ms-transition: text-shadow 0.3s;
 			}
 				a:hover
 				{
 					text-shadow: 0 0 10px;
 				}
 
-			strong, em { color: #E18B6B; }
+			strong, em
+			{
+				color: #E18B6B;
+			}
 
 			p 
 			{
@@ -87,13 +109,13 @@
 				margin: 0em 5%;
 			}
 
-				pre > code
+				pre code
 				{
 					margin: 0em 1em 0em;
 				}
 
-			ol li > p,
-			ol li > pre
+			ol li p,
+			ol li pre
 			{
 				margin: 1.5em 0em;
 			}
@@ -102,34 +124,53 @@
 /* side-menu                                                                     */
 /*********************************************************************************/
 
-		section.main > #side-menu
+		#content #side-menu
 		{
 			width: 25%;
+			height: auto;
 			float: right;
-			margin: 1em 0.8% 2em 0em;
+			margin: 1em;
 		}
 
-			#side-menu > ul.default
+			#side-menu ul
 			{
-				padding-bottom: 0em;
+				width: 100%;
+				height: auto;
+
+				/* Removes bullets & spacing */
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
 			}
 
-				#side-menu > ul.default > li.default
+				#side-menu ul li
 				{
-					padding: 0.5em 1.5em;
+					width: 100%;
+					height: auto;
+
+					border-top: 1px solid;
+					border-color: rgba(255,255,255,.1);
+
+					padding: 1em 0;
+
+					-moz-transition: box-shadow 1s;
+					-webkit-transition: box-shadow 1s;
 					transition: box-shadow 1s;
+					-o-transition: box-shadow 1s;
+					-ms-transition: box-shadow 1s;					
 				}
-					#side-menu > ul.default > li.default:hover
+					#side-menu ul li:hover
 					{
 						box-shadow: 0 0 10px white;
 					}
 
-				#side-menu > ul.default > li.default:first-child
+				#side-menu ul li:first-child
 				{
-					height: 1.8em;
-					padding: 1em 1.5em;
+					border-top: none;
+					margin-bottom: 1em;
+					padding: 0;
 				}
-					#side-menu > ul.default > li.default:first-child:hover
+					#side-menu ul li:first-child:hover
 					{
 						box-shadow: none;
 					}
@@ -137,6 +178,7 @@
 			#side-menu header
 			{
 				font-size: 1.4em;
+				margin: 1em 1em;
 			}
 
 			#side-menu a
@@ -148,4 +190,6 @@
 				font-size: 1em;
 				color: #B6B6B4;
 				text-shadow: none;
+				
+				margin: 0 1.5em;
 			}

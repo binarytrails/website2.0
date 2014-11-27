@@ -16,7 +16,7 @@ ie_useragent_tags = ["msie", "trident"]
 
 def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
-        if request.mobile:
+        if request.mobile or "m.kedfilms.com" in request.get_host():
             calling_template = initial_view.func_name
             not_available_mobile_templates = ["articles", "photos", "videos"]
 
@@ -63,7 +63,7 @@ def get_home_args():
     }
 
 def home(request):
-    if request.mobile:
+    if request.mobile or "m.kedfilms.com" in request.get_host():
         return redirect(reverse('mhome') + '#header')
 
     return render(request, "frontend/desktop/home.html", get_home_args())
@@ -72,7 +72,7 @@ def mhome(request):
     return render(request, "frontend/mobile/home.html", get_home_args())
 
 def articles(request):
-    if request.mobile:
+    if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/articles.html"
     else:
         template = "frontend/desktop/article.html"
@@ -83,7 +83,7 @@ def articles(request):
     })
 
 def article(request, section=None, article=None):
-    if request.mobile:
+    if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/article.html"
     else:
         template = "frontend/desktop/article.html"

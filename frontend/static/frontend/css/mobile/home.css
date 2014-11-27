@@ -197,7 +197,7 @@
 					cursor: default;
 				}
 
-				@media all and (max-width: 800px)
+				@media all and (max-width: 50em)
 				{
 					div[id*="-ability"]
 					{
@@ -206,7 +206,7 @@
 
 				}
 				
-				@media all and (min-width: 800px) and (max-width: 1200px)
+				@media all and (min-width: 50em) and (max-width: 90em)
 				{
 					div[id*="-ability"]
 					{
@@ -234,7 +234,7 @@
 						float: right;
 					}
 
-				@media all and (max-width: 1200px)
+				@media all and (max-width: 90em)
 				{
 					#right-ability
 					{
@@ -290,7 +290,7 @@
 			-ms-transition: all 0.7s ease-in-out;
 		}
 
-		@media all and (min-height: 600px) and (max-height: 1200px)
+		@media all and (max-height: 50em)
 		{
 			#contact #logos
 			{
@@ -298,7 +298,7 @@
 			}
 		}
 
-		@media all and (min-height: 1200px) and (max-height: 1400px)
+		@media all and (min-height: 50em) and (max-height: 90em)
 		{
 			#contact #logos
 			{
@@ -306,7 +306,7 @@
 			}
 		}
 
-		@media all and (min-height: 1400px)
+		@media all and (min-height: 90em)
 		{
 			#contact #logos
 			{

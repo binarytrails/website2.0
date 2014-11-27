@@ -1,7 +1,6 @@
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
-
     html, body
     {
         height: 100%;
@@ -22,62 +21,61 @@
 /*********************************************************************************/
 /* Return & Loop                                                                 */
 /*********************************************************************************/
-        #return, div[id*="loop-"]
+    #return, div[id*="loop-"]
+    {
+        position: absolute;
+
+        width: 6em;
+        height: 6em;
+        right: 0.5%;
+
+        margin: 0.4em;
+        overflow: hidden;
+    }
+
+        #return img, div[id*="loop-"] img
         {
-            position: absolute;
-
-            width: 6em;
-            height: 6em;
-            right: 0.5%;
-
-            margin: 0.4em;
-            overflow: hidden;
+            height: 100%;
+            width: 100%;
         }
 
-            #return img, div[id*="loop-"] img
-            {
-                height: 100%;
-                width: 100%;
-            }
+    #return
+    {
+        top: 1%;
+        z-index: 2;
+        opacity: 0.7;
+        border-radius: 5em;
+        box-shadow: 0 0 1px white;
+    }
 
-        #return
+        #return img
         {
-            top: 1%;
-            z-index: 2;
-            opacity: 0.7;
-            border-radius: 5em;
-            box-shadow: 0 0 1px white;
+            height: 100%;
+            width: 100%;
+            
+            border-radius: 4em;
+
+            transition: all 1s;
         }
 
-            #return img
-            {
-                height: 100%;
-                width: 100%;
-                
-                border-radius: 4em;
+    div[id*="loop-"]
+    {
+        bottom: 8%;
+        border-radius: 6px;                            
 
-                transition: all 1s;
-            }
+        opacity: 0;
+        z-index: 0;
 
-        div[id*="loop-"]
-        {
-            bottom: 8%;
-            border-radius: 6px;                            
-
-            opacity: 0;
-            z-index: 0;
-
-            -moz-transition: all 0.8s ease-in-out;
-            -webkit-transition: all 0.8s ease-in-out;
-            transition: all 0.8s ease-in-out;
-            -o-transition: all 0.8s ease-in-out;
-            -ms-transition: all 0.8s ease-in-out;
-        }
+        -moz-transition: all 0.8s ease-in-out;
+        -webkit-transition: all 0.8s ease-in-out;
+        transition: all 0.8s ease-in-out;
+        -o-transition: all 0.8s ease-in-out;
+        -ms-transition: all 0.8s ease-in-out;
+    }
 
 /*********************************************************************************/
 /* Details                                                                       */
 /*********************************************************************************/
-
     div[id*="details-"]
     {
         position: absolute;
@@ -128,7 +126,6 @@
 /*********************************************************************************/
 /* Slideshow                                                                     */
 /*********************************************************************************/
-
     #slideshow
     {
         position: absolute;
@@ -196,7 +193,6 @@
 /*********************************************************************************/
 /*  Slider                                                                       */
 /*********************************************************************************/
-
     ul.slider li.track
     {
         position: absolute;

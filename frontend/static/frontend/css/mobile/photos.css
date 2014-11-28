@@ -1,0 +1,129 @@
+/*********************************************************************************/
+/*	Header                                                                       */
+/*********************************************************************************/
+	#header:target ~ #main
+	{
+		margin-top: 26em;
+	}
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+	#main
+	{
+		position: relative;
+		color: white;
+		margin-top: 14em;
+
+		-moz-transition: all 0.6s ease-in-out;
+		-webkit-transition: all 0.6s ease-in-out;
+		transition: all 0.6s ease-in-out;
+		-o-transition: all 0.6s ease-in-out;
+		-ms-transition: all 0.6s ease-in-out;
+	}
+
+		#main ul
+		{
+			width: auto;
+			height: auto;
+
+			margin: 2em 2em;
+			padding: 2em;
+
+			background: #282828;
+		}
+
+			#main > ul > li
+			{
+				display: inline-block;
+				width: 100%;
+				height: auto;
+
+				text-align: right;
+				line-height: 3em;
+				font-size: 2em;
+
+				border-top: 1px solid;
+				border-color: rgba(255,255,255,.1);
+			}
+				
+				#main > ul > li:first-child
+				{
+					font-size: 2.5em;
+					text-align: left;
+					border-top: none;
+				}
+
+				#main > ul > li header
+				{
+					margin: 0 1em;
+				}
+
+				#main > ul > li a
+				{
+					color: white;
+					text-decoration: none;
+					text-shadow: 0 0 30px black;
+				}
+
+					#main > ul a:target + li > #right
+					{
+						height: 12em;
+					}
+
+				#main > ul > li a #left
+				{
+					width: 10%;
+					float: left;
+					font-size: 2em;
+					text-align: center;
+					background: rgba(255,255,255,.03);
+				}
+
+				#main > ul > li #right
+				{
+					width: 90%;
+					height: 3em;
+					float: right;
+					overflow: hidden;
+					background: rgba(255,255,255,.07);
+
+					-moz-transition: all 1.2s;
+					-webkit-transition: all 1.2s;
+					transition: all 1.2s;
+					-o-transition: all 1.2s;
+					-ms-transition: all 1.2s;
+				}
+
+					#main > ul > li #right #content
+					{
+						position: relative;
+						height: 10em;
+						margin: 0 2em;
+					}
+
+						#main > ul > li #right #content ul
+						{
+							/* Removes bullets & spacing */
+							list-style-type: none;
+							padding: 0;
+							margin: 0;
+						}
+
+							#main > ul > li #right #content ul li
+							{
+								display: inline-block;
+								width: 100%;
+								text-align: left;
+
+								border-top: 1px solid;
+								border-color: rgba(255,255,255,.1);
+								background: rgba(255,255,255,.07);
+							}
+
+							#main > ul > li #right #content ul li:first-child
+							{
+								text-align: right;
+								border-top: none;
+								border-color: none;
+							}

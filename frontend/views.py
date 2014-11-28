@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 
 from .models import User, Skill, Photo, Video
 from kedfilms import utils
+import json
 
 DIR = os.path.abspath(os.path.dirname(__file__))
 STATIC = "static/frontend"
@@ -102,10 +103,19 @@ def article(request, section=None, article=None):
 
     raise Http404
 
-@detect_mobile
 def photos(request):
-    if not request.mobile:
-        return redirect(reverse("frontend.views.gallery", kwargs={"section": "portfolio"}))
+    if request.mobile or "m.kedfilms.com" in request.get_host():
+        categories = []
+        for category in Photo.objects.all().values('category').distinct():
+            categories.append(category['category'])
+
+        return render(request, "frontend/mobile/photos.html",
+        {
+            'categories': categories,
+            'photos': Photo.objects.all()
+         })
+
+    return redirect(reverse("frontend.views.gallery", kwargs={"section": "portfolio"}))
 
 @detect_mobile
 def gallery(request, section):

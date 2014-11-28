@@ -1,0 +1,57 @@
+{% extends "frontend/mobile/base.html" %}
+
+{% block content %}
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "frontend/css/mobile/photos.css" %}">
+
+	<div id="main">
+		{% for category in categories %}
+			<ul>
+				<li>
+					<header>
+						{{ category }}
+					</header>
+				</li>
+				{% load filters %}
+				{% for photo in photos|in_category:category %}
+					<a id="{{ photo.fragment_identifier }}"></a>
+					<li>
+						<a href="#{{ photo.fragment_identifier }}">
+							<div id="left">
+								+
+							</div>
+						</a>
+						<div id="right">
+							<div id="content">
+								<ul>
+									<li>
+										{{ photo.title }}
+									</li>
+									<li>
+										{{ photo.author }}
+									</li>
+									<li>
+										{{ photo.date_created }}
+									</li>
+									<li>
+										{% if photo.hardware and photo.application %}
+											With {{ photo.hardware }} in {{ photo.application }}
+										{% elif photo.hardware and not photo.application %}
+											With {{ photo.hardware }}
+										{% elif not photo.hardware and photo.application %}
+											In {{ photo.application }}
+										{% else %}
+											Not specified
+										{% endif %}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

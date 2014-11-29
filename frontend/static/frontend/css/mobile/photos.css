@@ -33,7 +33,8 @@
 			background: #282828;
 		}
 
-			#main > ul > li
+			#main > ul > li,
+			#main > ul.menu li
 			{
 				display: inline-block;
 				width: 100%;
@@ -46,13 +47,25 @@
 				border-top: 1px solid;
 				border-color: rgba(255,255,255,.1);
 			}
-				
-				#main > ul > li:first-child
+
+			#main ul.menu a
+			{
+				width: 100%;
+				height: 100%;
+			}
+
+				#main ul.menu a li,
+				#main ul.menu li header
 				{
-					font-size: 2.5em;
-					text-align: left;
-					border-top: none;
+					text-align: center;
 				}
+				
+			#main > ul > li:first-child
+			{
+				font-size: 2.5em;
+				text-align: left;
+				border-top: none;
+			}
 
 				#main > ul > li header
 				{
@@ -65,110 +78,109 @@
 					text-decoration: none;
 					text-shadow: 0 0 30px black;
 				}
-
 					#main > ul a:target + li > #right
 					{
 						height: 9em;
 						background: #413839;
 					}
 
-				#main > ul > li a #left
-				{
-					width: 10%;
-					float: left;
-					font-size: 2em;
-					text-align: center;
-					background: rgba(255,255,255,.03);
-				}
-
-				#main > ul > li #right
-				{
-					width: 90%;
-					height: 3em;
-					float: right;
-					
-					overflow: hidden;
-					background: rgba(255,255,255,.07);
-
-					-moz-transition: all 1s;
-					-webkit-transition: all 1s;
-					transition: all 1s;
-					-o-transition: all 1s;
-					-ms-transition: all 1s;
-				}
-
-					#main > ul > li #right #content
+					#main > ul > li a #left
 					{
-						position: relative;
-						height: 10em;
-						margin: 0 2em;
+						width: 10%;
+						float: left;
+						font-size: 2em;
+						text-align: center;
+						background: rgba(255,255,255,.03);
 					}
 
-						#main > ul > li #right #content ul
+					#main > ul > li #right
+					{
+						width: 90%;
+						height: 3em;
+						float: right;
+
+						overflow: hidden;
+						background: rgba(255,255,255,.07);
+
+						-moz-transition: all 1s;
+						-webkit-transition: all 1s;
+						transition: all 1s;
+						-o-transition: all 1s;
+						-ms-transition: all 1s;
+					}
+
+						#main > ul > li #right #content
 						{
-							/* Removes bullets & spacing */
-							list-style-type: none;
-							padding: 0;
-							margin: 0;
-							background: rgba(255,255,255,.0);
+							position: relative;
+							height: 10em;
+							margin: 0 2em;
 						}
 
-							#main > ul > li #right #content ul li:first-child
+							#main > ul > li #right #content ul
 							{
-								width: 100%;
-								text-align: right;
-								border-top: none;
-
-								border-bottom: 1px solid;
-								border-color: rgba(255,255,255,.1);
+								/* Removes bullets & spacing */
+								list-style-type: none;
+								padding: 0;
+								margin: 0;
+								background: rgba(255,255,255,.0);
 							}
 
-							#main > ul > li #right #content ul li:nth-child(1)
-							{
-								border-top: none;
-							}
-
-							#main > ul > li #right #content ul #left-rows
-							{
-								width: 50%;
-								height: 6em;
-								float: left;
-							}
-
-								#main > ul > li #right #content ul #left-rows li
+								#main > ul > li #right #content ul li:first-child
 								{
-									display: inline-block;
 									width: 100%;
-									text-align: left;
+									text-align: right;
+									border-top: none;
 
 									border-bottom: 1px solid;
 									border-color: rgba(255,255,255,.1);
 								}
 
-							#main > ul > li #right #content ul #right-thumb
-							{
-								position: relative;
-								width: 50%;
-								height: 6em;
-								float: right;
-							}
-
-								#main > ul > li #right #content ul #right-thumb li
+								#main > ul > li #right #content ul li:nth-child(1)
 								{
 									border-top: none;
-									border-bottom: none;
 								}
 
-								#right-thumb img
+								#main > ul > li #right #content ul #left-rows
 								{
-									max-height: 5em;
-									max-width: 90%;
-
-									/* align in center of relative div */
-									position: absolute;
-									top: 0;
-									right: 0;
-									bottom:0;
-									left: 0;
-									margin: auto;
+									width: 50%;
+									height: 6em;
+									float: left;
 								}
+
+									#main > ul > li #right #content ul #left-rows li
+									{
+										display: inline-block;
+										width: 100%;
+										text-align: left;
+
+										border-bottom: 1px solid;
+										border-color: rgba(255,255,255,.1);
+									}
+
+								#main > ul > li #right #content ul #right-thumb
+								{
+									position: relative;
+									width: 50%;
+									height: 6em;
+									float: right;
+								}
+
+									#main > ul > li #right #content ul #right-thumb li
+									{
+										border-top: none;
+										border-bottom: none;
+									}
+
+									#right-thumb img
+									{
+										max-height: 5em;
+										max-width: 90%;
+
+										/* align in center of relative div */
+										position: absolute;
+										top: 0;
+										right: 0;
+										bottom:0;
+										left: 0;
+										margin: auto;
+									}

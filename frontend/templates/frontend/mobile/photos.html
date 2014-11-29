@@ -2,8 +2,11 @@
 
 {% block content %}
 
+	{% load static %}
+	{% get_static_prefix as STATIC %}
+
 	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static "frontend/css/mobile/photos.css" %}">
+	<link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/photos.css">
 
 	<div id="main">
 		{% for category in categories %}
@@ -28,23 +31,21 @@
 									<li>
 										{{ photo.title }}
 									</li>
-									<li>
-										{{ photo.author }}
-									</li>
-									<li>
-										{{ photo.date_created }}
-									</li>
-									<li>
-										{% if photo.hardware and photo.application %}
-											With {{ photo.hardware }} in {{ photo.application }}
-										{% elif photo.hardware and not photo.application %}
-											With {{ photo.hardware }}
-										{% elif not photo.hardware and photo.application %}
-											In {{ photo.application }}
-										{% else %}
-											Not specified
-										{% endif %}
-									</li>
+									<div id="left-rows">
+										<li>
+											{{ photo.author }}
+										</li>
+										<li>
+											{{ photo.date_created }}
+										</li>
+									</div>
+									<div id="right-thumb">
+										<li>
+											<a href="{{ STATIC }}frontend/img/{{ photo.category|lower }}/original/{{ photo.filename }}">
+												<img src="{{ STATIC }}frontend/img/{{ photo.category|lower }}/x200/{{ photo.filename }}" alt=""/>
+											</a>
+										</li>
+									</div>
 								</ul>
 							</div>
 						</div>

@@ -290,7 +290,15 @@
 			-ms-transition: all 0.7s ease-in-out;
 		}
 
-		@media all and (max-height: 50em)
+		@media all and (min-height: 30em)
+		{
+			#contact #logos
+			{
+				width: 100%;
+			}
+		}
+
+		@media all and (min-height: 30em) and (max-height: 70em)
 		{
 			#contact #logos
 			{
@@ -298,7 +306,7 @@
 			}
 		}
 
-		@media all and (min-height: 50em) and (max-height: 90em)
+		@media all and (min-height: 70em) and (max-height: 90em)
 		{
 			#contact #logos
 			{

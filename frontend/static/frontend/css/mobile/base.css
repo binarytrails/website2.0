@@ -133,15 +133,23 @@
 						margin-right: auto;
 					}
 
-					@media all and (max-height: 50em)
+					@media all and (min-height: 30em)
 					{
 						#header #submenu #sections #img-wrapper
 						{
-							width: 75%;
+							width: 100%;
 						}
 					}
 
-					@media all and (min-height: 50em) and (max-height: 90em)
+					@media all and (min-height: 30em) and (max-height: 70em)
+					{
+						#header #submenu #sections #img-wrapper
+						{
+							width: 74%;
+						}
+					}
+
+					@media all and (min-height: 70em) and (max-height: 90em)
 					{
 						#header #submenu #sections #img-wrapper
 						{

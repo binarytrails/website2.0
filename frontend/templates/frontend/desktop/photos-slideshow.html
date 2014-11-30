@@ -10,7 +10,7 @@
 		{% get_static_prefix as STATIC %}
 
 		{% load staticfiles %}	
-		<link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/slideshow.css"/>
+		<link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/photos-slideshow.css"/>
 
 		<style type="text/css">
 			{% for photo in photos %}
@@ -87,7 +87,7 @@
 	<body>
 		<div id="return">
 			<a href="/photos/gallery/{{ category }}/#head">
-				<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white.png"/>
+				<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white-left.png"/>
 			</a>
 		</div>
 

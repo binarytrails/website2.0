@@ -125,7 +125,7 @@ def gallery(request, category):
         raise Http404
 
     if request.mobile or "m.kedfilms.com" in request.get_host():
-        return render(request, "frontend/mobile/gallery.html",
+        return render(request, "frontend/mobile/photos-gallery.html",
         {
             "category": category,
             "photos": Photo.objects.all().filter(
@@ -143,7 +143,7 @@ def gallery(request, category):
         else:
             raise Http404
 
-        return render(request, "frontend/desktop/gallery.html",
+        return render(request, "frontend/desktop/photos-gallery.html",
         {
             "category": category,
             "images": Photo.objects.all().filter(
@@ -159,7 +159,7 @@ def slideshow(request, category=None):
     ):
         raise Http404
 
-    return render(request, "frontend/desktop/slideshow.html",
+    return render(request, "frontend/desktop/photos-slideshow.html",
     {
         "category": category,
         "photos": Photo.objects.all().filter(

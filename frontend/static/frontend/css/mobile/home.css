@@ -20,6 +20,8 @@
 		bottom: 0;
 		left: 0;
 
+		color: #E5E4E2;
+
 		z-index: -1;
 		margin-top: 12em;
 
@@ -42,8 +44,9 @@
 		padding: 10em 0 5em;
 		text-align: center;
 
-		color: #0C090A;
-		background: #E5E4E2;
+		/* color: #0C090A; */
+		/* #E5E4E2 */
+		background: #1F1C1C;
 	}
 
 		#entry header
@@ -64,7 +67,9 @@
 		position: relative;
 		width: 100%;
 		height: 80em;
-		color: #0C090A;
+		
+		/* color: #0C090A; */
+		background: #1A1717;
 		overflow: auto;
 	}
 		/* hidden slides */
@@ -75,8 +80,8 @@
 			height: 100%;
 
 			font-size: 2em;
-			/* #B6CDE5 */
-			background: #C3CEDC;
+			/* #C3CEDC #B6CDE5 */
+			background: #1A1717;
 			text-align: center;
 
 			z-index: 0;
@@ -123,7 +128,7 @@
 
 				#about p a
 				{
-					color: #8C001A;
+					color: #99001D;
 				}
 
 			#about div[id*="arrow-"]
@@ -158,9 +163,9 @@
 
 		margin-top: 0;
 
-		color: #0C090A;
-		/* #E77471 #FFF380 #849FDC */
-		background: #E9F5DC;
+		/* color: #0C090A; */
+		/* #E9F5DC #E77471 #FFF380 #849FDC */
+		background: #141212;
 	}
 
 		#abilities header
@@ -258,8 +263,8 @@
 
 		margin-top: 0;
 
-		color: white;
-		background: #1E1E1E;
+		/* #1E1E1E */
+		background: #0F0F0F;
 		text-align: center;
 	}
 

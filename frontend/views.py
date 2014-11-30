@@ -166,6 +166,21 @@ def slideshow(request, category=None):
             category = category).order_by('-date_created')
     })
 
+def mslideshow(request, category=None, image=None):
+    if not request.mobile and not "m.kedfilms.com" in request.get_host():
+        return Http404
+
+    path_to_image = os.path.join(STATIC, "img/", category, "original", image)
+    abspath_to_image = os.path.join(DIR, path_to_image)
+
+    if os.path.isfile(abspath_to_image) == False:
+        raise Http404
+
+    return render(request, "frontend/mobile/photos-slideshow.html",
+    {
+        "image_url": os.path.join("/", path_to_image)
+    })
+
 @detect_mobile
 def videos(request):
     if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):

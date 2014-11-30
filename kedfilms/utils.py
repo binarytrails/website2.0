@@ -1,5 +1,5 @@
 """
-Utilities powered by the magnificent me.
+    Utilities powered by the magnificent me.
 """
 
 import os, glob, re, subprocess, markdown2
@@ -43,9 +43,41 @@ def markdownToHtml(filepath):
     return markdown2.markdown(text)
 
 """
-Returns (content_type, width, height) for a given img file content
-without using external libraries. GIF, PNG, JPEG are supported.
-http://markasread.net/post/17551554979/get-image-size-info-using-pure-python-code
+    Make two dimentional dict from list with last & next as sub-dict.
+"""
+def get_list_next_previous_as_two_dimentional_dict(alist=None):
+    if not alist:
+        return None
+
+    adict = {}
+
+    for index in range(len(alist)):
+        item = alist[index][0]
+
+        if len(alist) == 1:
+            last = ""
+            next = ""
+        else:
+            if index == 0:
+                last = alist[len(alist) - 1][0]
+                next = alist[index + 1][0]
+
+            elif index == len(alist) - 1:
+                last =  alist[index - 1][0]
+                next = alist[0][0]
+
+            else:
+                last = alist[index - 1][0]
+                next = alist[index + 1][0]
+
+        adict[item] = {'last': last, 'next': next}
+
+    return adict
+
+"""
+    Returns (content_type, width, height) for a given img file content
+    without using external libraries. GIF, PNG, JPEG are supported.
+    http://markasread.net/post/17551554979/get-image-size-info-using-pure-python-code
 """
 def get_image_info(data):
     data = str(data)

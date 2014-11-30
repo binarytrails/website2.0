@@ -119,9 +119,12 @@ def gallery(request, category):
     if not os.path.exists(IMG_DIR):
         return Http404
 
-    if not any(unique_category['category'] == category 
-        for unique_category in Photo.objects.all().values('category').distinct()
-    ):
+    unique_categories = Photo.objects.all().values_list('category').distinct()
+
+    if not unique_categories:
+        raise Http404
+
+    if not any(unique_category[0] == category for unique_category in unique_categories):
         raise Http404
 
     if request.mobile or "m.kedfilms.com" in request.get_host():
@@ -132,24 +135,16 @@ def gallery(request, category):
                 category = category).order_by('-date_created')
         })
     else:
-        if category == Photo.PF:
-            previous = "portfolio/#head"
-            next = "general/#head"
-
-        elif category == Photo.GN:
-            previous = "portfolio/#head"
-            next = "general/#head"
-
-        else:
-            raise Http404
+        # {'category': {'last': 'category', 'previous': 'category'}, ... }1
+        pages = utils.get_list_next_previous_as_two_dimentional_dict(unique_categories)
 
         return render(request, "frontend/desktop/photos-gallery.html",
         {
             "category": category,
             "images": Photo.objects.all().filter(
                 category = category).order_by('-date_created'),
-            "previous": previous,
-            "next": next
+            "last": pages[category].get('last') + "/#head",
+            "next": pages[category].get('next') + "/#head"
         })
 
 @detect_mobile

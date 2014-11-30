@@ -55,8 +55,8 @@ def get_home_args():
     skills_categories = []
     skills = Skill.objects.all().filter(owner='kedfilms-founder')
 
-    for skill in skills.order_by('category').values('category').distinct():
-        skills_categories.append(skill['category'])
+    for unique_category in skills.order_by('category').values('category').distinct():
+        skills_categories.append(unique_category['category'])
 
     return {
         "skills_categories": skills_categories,
@@ -75,62 +75,68 @@ def mhome(request):
 def articles(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/articles.html"
+        return render(request, template)
     else:
         template = "frontend/desktop/article.html"
  
-    return render(request, template,
-    {
-        "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
-    })
+        return render(request, template,
+        {
+            "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
+        })
 
-def article(request, section=None, article=None):
+def article(request, category=None, article=None):
+    if not article or not category:
+        raise Http404
+
+    article += ".md"
+    if os.path.isfile(os.path.join(DIR, STATIC, "md/", category, article)) == False:
+        raise Http404
+
+    html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", category, article))
+
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/article.html"
     else:
         template = "frontend/desktop/article.html"
 
-    if article and section:
-        article += ".md"
-        if os.path.isfile(os.path.join(DIR, STATIC, "md/", section, article)) == False:
-            raise Http404
-        
-        html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", section, article))
-
-        return render(request, template,
-        {
-            "html": html
-        })
-
-    raise Http404
+    return render(request, template, { "html": html })
 
 def photos(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         categories = []
-        for category in Photo.objects.all().values('category').distinct():
-            categories.append(category['category'])
+        for unique_category in Photo.objects.all().values('category').distinct():
+            categories.append(unique_category['category'])
 
         return render(request, "frontend/mobile/photos.html",
         {
             'categories': categories,
             'photos': Photo.objects.all()
          })
+    else:
+        return redirect(reverse("frontend.views.gallery", kwargs={"category": "portfolio"}))
 
-    return redirect(reverse("frontend.views.gallery", kwargs={"section": "portfolio"}))
+def gallery(request, category):
+    if not os.path.exists(IMG_DIR):
+        return Http404
 
-@detect_mobile
-def gallery(request, section):
-    if section and os.path.exists(IMG_DIR):
-        if section == "portfolio":
-            title = "Portfolio"
-            category = Photo.PF
-            thumbs_src = "img/portfolio/x200/"
+    if not any(unique_category['category'] == category 
+        for unique_category in Photo.objects.all().values('category').distinct()
+    ):
+        raise Http404
+
+    if request.mobile or "m.kedfilms.com" in request.get_host():
+        return render(request, "frontend/mobile/gallery.html",
+        {
+            "category": category,
+            "photos": Photo.objects.all().filter(
+                category = category).order_by('-date_created')
+        })
+    else:
+        if category == Photo.PF:
             previous = "portfolio/#head"
             next = "general/#head"
 
-        elif section == "general":
-            title = "General"
-            category = Photo.GN
-            thumbs_src = "img/general/x200/"
+        elif category == Photo.GN:
             previous = "portfolio/#head"
             next = "general/#head"
 
@@ -139,81 +145,59 @@ def gallery(request, section):
 
         return render(request, "frontend/desktop/gallery.html",
         {
-            "section": section,
-            "title": title,
+            "category": category,
             "images": Photo.objects.all().filter(
                 category = category).order_by('-date_created'),
-            "thumbs_src": thumbs_src,
             "previous": previous,
             "next": next
         })
-    
-    raise Http404
 
 @detect_mobile
 def slideshow(request, category=None):
-    photos = None
-    previous_location = "/photos/gallery/"
-
-    if category == "portfolio":
-        category_key = Photo.PF
-        source = "img/portfolio/"
-        previous_location += "portfolio/#head"
-
-    elif category == "general":
-        category_key = Photo.GN
-        source = "img/general/"
-        previous_location += "general/#head"
-
-    else:
+    if not any(unique_category['category'] == category 
+        for unique_category in Photo.objects.all().values('category').distinct()
+    ):
         raise Http404
 
-    photos = Photo.objects.all().filter(
-        category = category_key).order_by('-date_created')
-
-    if photos:
-        return render(request, "frontend/desktop/slideshow.html",
-        {
-            "photos": photos,
-            "source": source,
-            "category": category,
-            "previous_location": previous_location,
-        })
-    
-    raise Http404
+    return render(request, "frontend/desktop/slideshow.html",
+    {
+        "category": category,
+        "photos": Photo.objects.all().filter(
+            category = category).order_by('-date_created')
+    })
 
 @detect_mobile
 def videos(request):
     if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
         return render(request, "frontend/errors/old-browser.html")
 
-    elif os.path.exists(VID_DIR):
-        return render(request, "frontend/desktop/videos.html",
-        {
-            "posters_src": "img/video-poster/",
+    if not os.path.exists(VID_DIR):
+        raise Http404
 
-            "intro_title": "Brief introductory passage",
-            "intro_videos": Video.objects.all().filter(
-                category = Video.IN).order_by('-date_created'),
-            "intro_videos_src": "vid/intro/",
+    return render(request, "frontend/desktop/videos.html",
+    {
+        "posters_src": "img/video-poster/",
 
-            "favorite_title": "Personal Favorites",
-            "favorite_videos": Video.objects.all().filter(
-                category = Video.FV).order_by('-date_created'),
-            "favorite_videos_src": "vid/favorite/",
+        "intro_title": "Brief introductory passage",
+        "intro_videos": Video.objects.all().filter(
+            category = Video.IN).order_by('-date_created'),
+        "intro_videos_src": "vid/intro/",
 
-            "event_title": "A Gathering Of People",
-            "event_videos": Video.objects.all().filter(
-                category = Video.EV).order_by('-date_created'),
-            "event_videos_src": "vid/event/",
+        "favorite_title": "Personal Favorites",
+        "favorite_videos": Video.objects.all().filter(
+            category = Video.FV).order_by('-date_created'),
+        "favorite_videos_src": "vid/favorite/",
 
-            "dancer_title": "Physical Expression",
-            "dancer_videos": Video.objects.all().filter(
-                category = Video.DN).order_by('-date_created'),
-            "dancer_videos_src": "vid/dancer/"
-        })
-    
-    raise Http404
+        "event_title": "A Gathering Of People",
+        "event_videos": Video.objects.all().filter(
+            category = Video.EV).order_by('-date_created'),
+        "event_videos_src": "vid/event/",
+
+        "dancer_title": "Physical Expression",
+        "dancer_videos": Video.objects.all().filter(
+            category = Video.DN).order_by('-date_created'),
+        "dancer_videos_src": "vid/dancer/"
+    })
 
 def error404(request):
     return render(request, "frontend/errors/generic-bg-image.html",

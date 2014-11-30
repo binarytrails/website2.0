@@ -1,0 +1,58 @@
+{% extends "frontend/mobile/base.html" %}
+
+{% block content %}
+
+	{% load static %}
+	{% get_static_prefix as STATIC %}
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/photos.css">
+	<link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/photos-gallery.css">
+
+	<div id="main">
+		<ul>
+			<li>
+				<header>
+					{{ category|title }}
+				</header>
+				<a class="back" href="/photos/">BACK</a>
+			</li>
+			{% load filters %}
+			{% for photo in photos|in_category:category %}
+				<a id="{{ photo.fragment_identifier }}"></a>
+				<li>
+					<a href="#{{ photo.fragment_identifier }}">
+						<div id="left">
+							+
+						</div>
+					</a>
+					<div id="right">
+						<div id="content">
+							<ul>
+								<li>
+									{{ photo.title }}
+								</li>
+								<div id="left-rows">
+									<li>
+										{{ photo.author }}
+									</li>
+									<li>
+										{{ photo.date_created }}
+									</li>
+								</div>
+								<div id="right-thumb">
+									<li>
+										<a href="{{ STATIC }}frontend/img/{{ photo.category|lower }}/original/{{ photo.filename }}">
+											<img src="{{ STATIC }}frontend/img/{{ photo.category|lower }}/x200/{{ photo.filename }}" alt=""/>
+										</a>
+									</li>
+								</div>
+							</ul>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+{% endblock content %}

@@ -16,7 +16,7 @@
 				</header>
 			</li>
 			{% for category in categories %}
-				<a href="#{{ category }}">
+				<a href="/photos/gallery/{{ category|lower }}/">
 					{% if forloop.counter == 1 %}
 						<li style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
 					{% else %}
@@ -27,55 +27,6 @@
 				</a>
 			{% endfor %}
 		</ul>
-
-		{% for category in categories %}
-			<ul id="{{ category }}">
-				{% if forloop.counter == 1 %}
-					<li style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
-				{% else %}
-					<li style="color: {% cycle bgcolors %};">
-				{% endif %}
-					<header>
-						{{ category }}
-					</header>
-				</li>
-				{% load filters %}
-				{% for photo in photos|in_category:category %}
-					<a id="{{ photo.fragment_identifier }}"></a>
-					<li>
-						<a href="#{{ photo.fragment_identifier }}">
-							<div id="left">
-								+
-							</div>
-						</a>
-						<div id="right">
-							<div id="content">
-								<ul>
-									<li>
-										{{ photo.title }}
-									</li>
-									<div id="left-rows">
-										<li>
-											{{ photo.author }}
-										</li>
-										<li>
-											{{ photo.date_created }}
-										</li>
-									</div>
-									<div id="right-thumb">
-										<li>
-											<a href="{{ STATIC }}frontend/img/{{ photo.category|lower }}/original/{{ photo.filename }}">
-												<img src="{{ STATIC }}frontend/img/{{ photo.category|lower }}/x200/{{ photo.filename }}" alt=""/>
-											</a>
-										</li>
-									</div>
-								</ul>
-							</div>
-						</div>
-					</li>
-				{% endfor %}
-			</ul>
-		{% endfor %}
 	</div>
 
 {% endblock content %}

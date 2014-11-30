@@ -86,7 +86,7 @@
 
 	<body>
 		<div id="return">
-			<a href="{{ previous_location }}">
+			<a href="/photos/gallery/{{ category }}/#head">
 				<img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white.png"/>
 			</a>
 		</div>
@@ -98,7 +98,7 @@
 						<a id="{{ photo.fragment_identifier }}"></a>
 
 						<div id="slide-{{ photo.fragment_identifier }}">
-							<img src="{{ STATIC }}frontend/{{ source }}x800/{{ photo.filename }}" alt=""/>
+							<img src="{{ STATIC }}frontend/img/{{ category }}/x800/{{ photo.filename }}" alt=""/>
 						</div>
 
 						<div id="details-{{ photo.fragment_identifier }}">
@@ -129,7 +129,7 @@
 						</div>
 
 						<div id="loop-{{ photo.fragment_identifier }}">
-							<a href="{{ STATIC }}frontend/{{ source }}original/{{ photo.filename }}">
+							<a href="{{ STATIC }}frontend/img/{{ category }}/original/{{ photo.filename }}">
 								<img  src="{{ STATIC }}frontend/img/logo/256x256/symbol/magnifying-glass-white.png"/>
 							</a>
 						</div>

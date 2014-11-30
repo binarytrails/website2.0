@@ -24,8 +24,8 @@ class User(models.Model):
     )
 
 class Photo(models.Model):
-    GN = 'General'
-    PF = 'Portfolio'
+    GN = 'general'
+    PF = 'portfolio'
  
     filename = models.CharField(
         primary_key = True,
@@ -68,10 +68,10 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    IN = 'Introduction'
-    FV = 'Favorite'
-    EV = 'Event'
-    DN = 'Dancer'
+    IN = 'introduction'
+    FV = 'favorite'
+    EV = 'event'
+    DN = 'dancer'
 
     filename = models.CharField(
         primary_key = True,
@@ -115,18 +115,18 @@ class Video(models.Model):
         )
 
 class Skill(models.Model):
-    GN = "General"
-    MD = 'Methods of development'
-    OS = 'Operative system'
-    FR = 'Framework'
-    RC = 'Revision control'
-    PR = 'Programming'
-    ML = 'Markup language'
-    DB = 'Database'
-    SR = 'Server'
-    SW = 'Sofrware'
-    HW = 'Hardware'
-    VA = 'Visual art'
+    GN = "general"
+    MD = 'methods of development'
+    OS = 'operative system'
+    FR = 'framework'
+    RC = 'revision control'
+    PR = 'programming'
+    ML = 'markup language'
+    DB = 'database'
+    SR = 'server'
+    SW = 'sofrware'
+    HW = 'hardware'
+    VA = 'visual art'
 
     title = models.CharField(
         max_length = 10,

@@ -28,7 +28,7 @@
             <section>
                 <hr></hr>
                 <header>
-                    {{ title }}
+                    {{ category|title }}
                 </header>
                 <hr></hr>
             </section>
@@ -39,8 +39,8 @@
                     <li class="box">
                         <div class="img-container">
                             <div class="img-container-shadow">
-                                <a class="swipebox" rel="" href="/photos/slideshow/{{ section }}/#{{ image.fragment_identifier }}">
-                                    <img src="{{ STATIC }}frontend/{{ thumbs_src }}{{ image.filename }}"/>
+                                <a class="swipebox" rel="" href="/photos/slideshow/{{ category }}/#{{ image.fragment_identifier }}">
+                                    <img src="{{ STATIC }}frontend/img/{{ category }}/x200/{{ image.filename }}"/>
                                 </a>
                             </div>
                         </div>

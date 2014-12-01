@@ -63,14 +63,17 @@ def get_home_args():
         "skills": Skill.objects.all().filter(owner='kedfilms-founder')
     }
 
+def entry(request):
+    if request.mobile or "m.kedfilms.com" in request.get_host():
+        return redirect(reverse('home') + '#header')
+    else:
+        return render(request, "frontend/desktop/entry.html")
+
 def home(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
-        return redirect(reverse('mhome') + '#header')
+        return render(request, "frontend/mobile/home.html", get_home_args())
 
     return render(request, "frontend/desktop/home.html", get_home_args())
-
-def mhome(request):
-    return render(request, "frontend/mobile/home.html", get_home_args())
 
 def articles(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():

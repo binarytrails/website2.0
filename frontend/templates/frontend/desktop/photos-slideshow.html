@@ -104,22 +104,22 @@
 						<div id="details-{{ photo.fragment_identifier }}">
 							<ul>
 								<li>
-									Title: {{ photo.title }}
+									Title: {{ photo.title|title }}
 								</li>
 								<li>
-									Author: {{ photo.author }}
+									Author: {{ photo.author|title }}
 								</li>
 								<li>
-									Category: {{ photo.category }}
+									Category: {{ photo.category|title }}
 								</li>
 								{% if photo.hardware %}
 									<li>
-										Hardware:</br>{{ photo.hardware }}
+										Hardware:</br>{{ photo.hardware|title }}
 									</li>
 								{% endif %}
 								{% if photo.application %}
 									<li>
-										Software:</br>{{ photo.application }}
+										Software:</br>{{ photo.application|title }}
 									</li>
 								{% endif %}
 								<li>

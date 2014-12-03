@@ -213,9 +213,10 @@ def videos(request):
     })
 
 def error404(request):
-    return render(request, "frontend/errors/generic-bg-image.html",
+    return render(request, "frontend/errors/generic-simple-text.html",
     {
-        "return_to": "/",
-        "status": "404 NOT FOUND",
-        "image_path": "frontend/img/gif/cats-night-ride.gif"
+        "header": "404 NOT FOUND",
+        "subtitle": """
+            Sorry, the page you requested was not found.
+        """
     })

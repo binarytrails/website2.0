@@ -45,16 +45,16 @@ how to efficiently destroy your history file or the file. Do not use [rm], use [
 In this case you don't have to worry about file destruction (it is encrypted).
 
 		echo "-----BEGIN PGP MESSAGE-----
-		  Version: GnuPG v1.4.12 (GNU/Linux)
+		Version: GnuPG v1.4.12 (GNU/Linux)
 
-		  hQIMA8LsxNwWC0LgARAAhZgg+SyNc2SW2GHIclRNbl6534wnWmdrMkBK5LZXvirP
-		  y1jbCMjSCcGY8kzkuQZ07KfFYv7uwCDcs7RFxgYUwV1O71egLnslG+FYAAA/EY0f
-		  z4wJBJBtToIN/Ii83pvOvxchwKgynMyQ5/5mT8CFhuRsLrYrS/zxI7bnbAhETDep
-		  jh3WTVTpg6Bz/rRGqyHVADSXJdrALNzd0fZG5yP+rksgB01SljjhIIAn9vvEzpTS
-		  QAE26eH2Uz99e2xoRONU4Whs/+Jul9r3v8XLuGlyTIq5thLyCFqdaPQyNp7rFgPM
-		  tsfiPEo94XJ4z+TFqanNjG8=
-		  =L9Js
-		  -----END PGP MESSAGE-----" | gpg --decrypt
+		hQIMA8LsxNwWC0LgARAAhZgg+SyNc2SW2GHIclRNbl6534wnWmdrMkBK5LZXvirP
+		y1jbCMjSCcGY8kzkuQZ07KfFYv7uwCDcs7RFxgYUwV1O71egLnslG+FYAAA/EY0f
+		z4wJBJBtToIN/Ii83pvOvxchwKgynMyQ5/5mT8CFhuRsLrYrS/zxI7bnbAhETDep
+		jh3WTVTpg6Bz/rRGqyHVADSXJdrALNzd0fZG5yP+rksgB01SljjhIIAn9vvEzpTS
+		QAE26eH2Uz99e2xoRONU4Whs/+Jul9r3v8XLuGlyTIq5thLyCFqdaPQyNp7rFgPM
+		tsfiPEo94XJ4z+TFqanNjG8=
+		=L9Js
+		-----END PGP MESSAGE-----" | gpg --decrypt
 
 
 
@@ -66,19 +66,19 @@ You can always export it to file by adding [> output]
 ## Exporting
 
 		gpg --export -a "Roger" > public.key
-		  gpg --export-secret-key -a "Roger" > private.key
+		gpg --export-secret-key -a "Roger" > private.key
 
 
 ## Importing
 
 		gpg --import public.key
-		  gpg --allow-secret-key-import --import private.key
+		gpg --allow-secret-key-import --import private.key
 
 
 ## Deletion
 
 		gpg --delete-key "Name"
-		  gpg --delete-secret-key "Name"
+		gpg --delete-secret-key "Name"
 
 
 ## Compress & Encrypt

@@ -40,13 +40,13 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 	It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default [vhost] folder seen earlier.
 
 		mkdir -p gandi/roger/default
-		  cd gandi/roger/default
-		  git init
-		  git remote add origin ssh+git://12345@git.alien.gpaas.net/default.git
-		  echo "hi" > test
-		  git add test
-		  git commit -m "test" test
-		  git push origin master
+		cd gandi/roger/default
+		git init
+		git remote add origin ssh+git://12345@git.alien.gpaas.net/default.git
+		echo "hi" > test
+		git add test
+		git commit -m "test" test
+		git push origin master
 
 
 	One important thing to understand is that right now Gandi does not support Git submodules. It means that you can't create a repository for your simple hosting instance and put your github external repository with the [.git/] folder inside. Otherwise, it will commit an empty folder to your Gandi repository. I know, it means it is a sync party! You will have to sync your external Github repository to your local Gandi one by hand. You can achieve that with [rsync].
@@ -84,12 +84,12 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 
 		import os, sys
 
-		  django_project = os.path.abspath(os.path.join(os.path.dirname(__file__), 'myproject'))
-		  sys.path.append(django_project)
+		django_project = os.path.abspath(os.path.join(os.path.dirname(__file__), 'myproject'))
+		sys.path.append(django_project)
 
-		  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
-		  from django.core.wsgi import get_wsgi_application
-		  application = get_wsgi_application()
+		os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+		from django.core.wsgi import get_wsgi_application
+		application = get_wsgi_application()
 
 	To avoid messing with your project structure and let the Gandi Apache collect your static files, add a symbolic link in your *default/* to your static folder.
 
@@ -111,9 +111,9 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 	Websites Section example:
 
 		Address (vhost) (2/2)
-		  ---------------------
-		  webiste.com
-		  www.website.com
+		---------------------
+		webiste.com
+		www.website.com
 
 	You have to insert into *myproject/settings.py*
 

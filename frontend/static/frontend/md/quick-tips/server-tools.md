@@ -30,7 +30,7 @@ Estimate directories space usage in [h]uman & [s]ummarized
 ## Ip information
 
 		traceroute www.google.com
-		  whois www.google.com | less
+		whois www.google.com | less
 
 
 ## Network statistics

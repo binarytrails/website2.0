@@ -6,29 +6,44 @@
 
  I am assuming you know what are the magnificent [sudo] powers.
 
-## Install Guest Additions via terminal
+## Guest Additions would not work !!!
 
-1. Devices menu > Install Guest Additions CD Image
+Install the dependencies
 
-2. In the server
+        apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
 
-		mount /dev/cdrom /media/cdrom
-		  cd /media/cdrom && ls -l
+*Unable to run them or they are nowhere to be found?*
 
-3. Install
+Sadly, they never worked for me out of the box.
 
-		./VBoxLinuxAdditions.run
+        Devices menu > Install Guest Additions CD Image
 
-4. If you got missing build tools or dependencies
+If it throws an error it means that in most of the cases that they are already inserted.
 
-		apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
+In the vbox machine, open a terminal and locate them. They should be at [sr0].
 
+        lsblk
+
+If they are mounted at [/dev/cdrom]
+
+        umount /dev/cdrom
+
+Afterwards, whenever they were mounted or not
+
+        mkdir /dev/vboxguests
+          mount /dev/sr0 /dev/vboxguests
+          ls -l /dev/vboxguests
+
+They should be mounted as [read-only] and you should only be able to execute them as a normal user with sudoer powers.
+
+        sudo ./VBoxLinuxAdditions.run
+          reboot
 
 ## Boot from usb
 
-You must boot virtualbox as root to have access to sdX or play with privileges.
+You must boot virtualbox as root to have access to [sdX] or play with privileges.
 
-		VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
+	VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
 
 
 ## Debian Guess Additions image location

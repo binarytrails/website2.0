@@ -6,7 +6,15 @@ Ascii, wine & a keyboard
 
 ## Music on Console
 
-		apt-get install moc && mocp -T green_theme
+		apt-get install moc
+        
+Copy and edit the configuration
+
+        cd ~/.moc && cp /usr/share/doc/moc/examples/config.example.gz ./ && gunzip config.example.gz && mv config.example config
+
+Start it
+
+        mocp -T transparent-background
 
 
 ## Command line dictionnary

@@ -100,7 +100,7 @@
 
 		pre
 		{
-			padding: 1em;
+			padding: 2em;
 			overflow: auto;
 			background: #565051;
 			box-shadow: 0 0 4px white;
@@ -109,7 +109,6 @@
 
 			pre code
 			{
-				margin: 0em 1em 0em;
 			}
 
 		ol li p,

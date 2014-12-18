@@ -80,29 +80,38 @@
 			height: 100%;
 
 			font-size: 2em;
+			text-align: center;
+
 			/* #C3CEDC #B6CDE5 */
 			background: #1A1717;
-			text-align: center;
 
 			opacity: 0;
 
-			-moz-transition: all 0.7s ease-in-out;
-			-webkit-transition: all 0.7s ease-in-out;
-			transition: all 0.7s ease-in-out;
-			-o-transition: all 0.7s ease-in-out;
-			-ms-transition: all 0.7s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-webkit-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
 		}
-			/* default slide */
+			/* default slide initial state */
 			#about #slide-developper
 			{
 				opacity: 1;
 			}
 
+			/* default slide on # references of other slides */
+			#about a#articles:target ~ #slide-developper,
+			#about a#photos:target ~ #slide-developper,
+			#about a#videos:target ~ #slide-developper
+			{
+				opacity: 0;
+			}
+
 			/* slides on # reference */
-			#about a#articles:target + #slide-articles,
-			#about a#developper:target + #slide-developper,
-			#about a#photos:target + #slide-photos,
-			#about a#videos:target + #slide-videos
+			#about a#articles:target ~ #slide-articles,
+			#about a#developper:target ~ #slide-developper,
+			#about a#photos:target ~ #slide-photos,
+			#about a#videos:target ~ #slide-videos
 			{
 				z-index: 1;
 				opacity: 1;

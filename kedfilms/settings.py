@@ -1,3 +1,7 @@
+"""
+    This is an example file for local use only.
+"""
+
 import os, sys
 
 DIR = os.path.abspath(os.path.dirname(__file__))
@@ -9,7 +13,7 @@ minidetector = os.path.join(os.path.abspath(os.pardir), 'minidetector')
 sys.path.append(minidetector)
 
 ADMINS = (
-    ('Seva Ivanov', 'founder@kedfilms.com'),
+    ('Vsevolod Ivanov', 'sevaivanov@kedfilms.com'),
 )
 
 MANAGERS = ADMINS

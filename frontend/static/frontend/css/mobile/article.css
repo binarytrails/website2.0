@@ -94,3 +94,22 @@
 		#main ol li > pre
 		{
 		}
+
+		table
+		{
+			border: 1px solid white;
+			margin: 1.5em 0;
+		}
+
+			table th, table td
+			{
+				padding: 1em;
+			}
+
+		blockquote
+		{
+			font-style: italic;
+			margin: 1em 0em;
+			border-left: 10px solid white;
+			padding: 0.5em 1em;
+		}

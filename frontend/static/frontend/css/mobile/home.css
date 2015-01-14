@@ -60,107 +60,6 @@
 		}
 
 /*********************************************************************************/
-/* About                                                                         */
-/*********************************************************************************/
-	#about
-	{
-		position: relative;
-		width: 100%;
-		height: 80em;
-		
-		/* color: #0C090A; */
-		background: #1A1717;
-		overflow: auto;
-	}
-		/* hidden slides */
-		#about div[id*="slide-"]
-		{
-			position: absolute;
-			width: 100%;
-			height: 100%;
-
-			font-size: 2em;
-			text-align: center;
-
-			/* #C3CEDC #B6CDE5 */
-			background: #1A1717;
-
-			opacity: 0;
-
-			-moz-transition: all 0.5s ease-in-out;
-			-webkit-transition: all 0.5s ease-in-out;
-			transition: all 0.5s ease-in-out;
-			-o-transition: all 0.5s ease-in-out;
-			-ms-transition: all 0.5s ease-in-out;
-		}
-			/* default slide initial state */
-			#about #slide-developper
-			{
-				opacity: 1;
-			}
-
-			/* default slide on # references of other slides */
-			#about a#articles:target ~ #slide-developper,
-			#about a#photos:target ~ #slide-developper,
-			#about a#videos:target ~ #slide-developper
-			{
-				opacity: 0;
-			}
-
-			/* slides on # reference */
-			#about a#articles:target ~ #slide-articles,
-			#about a#developper:target ~ #slide-developper,
-			#about a#photos:target ~ #slide-photos,
-			#about a#videos:target ~ #slide-videos
-			{
-				z-index: 1;
-				opacity: 1;
-			}
-
-			#about header,
-			#about div[id*="arrow-"]
-			{
-				margin: 1em;
-			}
-
-			#about header
-			{
-				font-size: 2em;
-				margin-bottom: 1.5em;
-			}
-
-			#about p
-			{
-				margin: 2em;
-			}
-
-				#about p a
-				{
-					color: #99001D;
-				}
-
-			#about div[id*="arrow-"]
-			{
-				position: absolute;
-				top: 0.4em;
-			}
-
-			#about div[id*="arrow-left"]
-			{
-				left: 0.5em;
-			}
-
-			#about div[id*="arrow-right"]
-			{
-				right: 0.5em;
-			}
-
-				#about div[id*="arrow-"] a img
-				{
-					width: 3.5em;
-				}
-
-/*********************************************************************************/
 /* Abilities                                                                     */
 /*********************************************************************************/
 	#abilities
@@ -173,7 +72,7 @@
 
 		/* color: #0C090A; */
 		/* #E9F5DC #E77471 #FFF380 #849FDC */
-		background: #141212;
+		background: #1A1717;
 	}
 
 		#abilities header

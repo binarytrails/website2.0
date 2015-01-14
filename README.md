@@ -6,7 +6,7 @@ Avoiding scripts by implementing CSS stylish functionalities.
 ### Create your virtual environment
 Create a local virtual environment with all the tools inside
 
-        virtualenv DJANGO
+        virtualenv -p python2.7 DJANGO
 
 Activate virtualenv
 

@@ -16,20 +16,20 @@
 
 # Results
 
-> TODO
+![img](/static/frontend/img/articles/Arch Linux On Macbook.jpg)
 
 
 # Guide Flow
 
-I know that you are aware of what you are doing and that you have read or are reading the ArchLinux wiki. Hence, there is no one to blame but yourself for the destruction of your system.
+I am assuming that you are aware of what you are doing. Hence, there is no one to blame but yourself for the destruction of your system.
+
+You should have had read or have the [ArchLinux MacBook wiki page](https://wiki.archlinux.org/index.php/MacBook) open in a separate tab.
 
 Take this as an example and a proof of concept.
 
-The ArchLinux wiki is tremendous and the community on freenode servers is great. 
+The ArchLinux wiki is tremendous and the community on freenode servers is great. But remember...
 
-[ArchLinux Mentality](steps.svg)
-
-You should have had read or have the [ArchLinux MacBook wiki page](https://wiki.archlinux.org/index.php/MacBook) open in a separate tab.
+> [The ArchLinux Mentality](/static/frontend/img/svg/Arch Linux Help Guide.svg)
 
 
 # Table of content
@@ -114,7 +114,7 @@ We will use the GPT - UEFI model.
 
 2. Erase all of your partitions using cgdisk.
 
-	X is the letter of your device. I will use this to define your letter, but don’t assume your drive is sdx. It isn’t, most likely. To find your device, write this command and use your logic.
+	X is the letter of your device. I will use this to define your letter, but don’t assume your drive is sdx. It isn’t, most likely. To find your device, write the last command and use your logic.
 
 		cgdisk /dev/sdx
 
@@ -197,7 +197,7 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
 	There is also a more bare-metal called ‘base-devel’ but you will be missing, nano, mkinitcpio and other useful commands.
 
-	*DO NOT mount your system elsewhere than at /mnt. Pacstrap works with /mnt folder. Otherwise you will get something really weird -> [What Went Wrong? : Pacstrap](#www-pacstrap).
+	**DO NOT** mount your system elsewhere than at /mnt. Pacstrap works with /mnt folder. Otherwise you will get something really weird.
 
 2. Identifying partitions
 
@@ -213,9 +213,7 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
 	Arch-chroot is a wrapper of chroot and by default the command without /bin/bash will point to /bin/sh which, in many Linux systems like Arch, will be pointing back to /bin/bash. Still, it’s a bad habit because in the modern systems it won’t always be the case.
 
-	> One doesn’t need to restart from the beginning if something goes wrong from this point. Take some time to think, to read, ask some questions on IRC freenode channels and think again.
-
-	*It’s time to make the first basic configurations on the system. I will present you mine.*
+	> One doesn’t need to restart from the beginning if something goes wrong from this point. Take some time to **think**, to **read**, **ask some questions** on IRC freenode channels and think again.
 
 4. Localtime
 

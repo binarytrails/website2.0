@@ -86,6 +86,11 @@
 				text-shadow: 0 0 10px;
 			}
 
+		img
+		{
+			width: 100%;
+		}
+
 		strong, em
 		{
 			color: #E18B6B;

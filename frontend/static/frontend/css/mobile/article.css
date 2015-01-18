@@ -78,6 +78,11 @@
 			margin: 1.5em 0;
 		}
 
+		#main img
+		{
+			width: 100%;
+		}
+
 		#main pre
 		{
 			padding: 1em;

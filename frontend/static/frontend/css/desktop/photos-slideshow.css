@@ -196,15 +196,14 @@
     ul.slider li.track
     {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-
         height: auto;
         width: 100%;
-        left: 1px;
+
         bottom: 0;
         z-index: 20;
 
         text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
         ul.slider li.track a

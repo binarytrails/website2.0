@@ -20,10 +20,11 @@
 				#preview-{{ photo.fragment_identifier }}
 				{
 					position: absolute;
+					height: 200px;
 					
-                    left: 0;
-                    right: 0;
-                    bottom: 3em;
+					left: 0;
+					right: 0;
+                    bottom: 110%;
                     margin: auto;
 
 					z-index: 3;
@@ -31,8 +32,6 @@
 
 					background-image: url({{ STATIC }}frontend/img/{{ category }}/x200/{{ photo.filename }});
 					box-shadow: 0 0 5px white;
-
-					height: 200px;
 
 					/* Get image width from file on page load */
 					{% load filters %}

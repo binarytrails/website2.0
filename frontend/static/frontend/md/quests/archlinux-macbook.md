@@ -88,6 +88,9 @@ The ArchLinux wiki is tremendous and the community on freenode servers is great.
 
 	* eog: Can't open jpeg photos
 
+	* modprobe: FATAL: Module wl not found.
+
+
 5. [Learn More](#learnmore)
 
 	* MBR VS GPT
@@ -518,6 +521,23 @@ Solution:
 Get the codecs
 
 		pacman -S imlib libjpeg-turbo jasper mjpegtools openjpeg
+
+### modprobe: FATAL: Module wl not found.
+
+**After update to kernel: 3.18.2-2**
+
+1. Download the [patch](https://gist.githubusercontent.com/hobarrera/ac0e6225210ac5bb13f6/raw/763797294307fe1cc754edd9e81b6174dc0535d4/broadcom-sta-6.30.223.248-linux-3.18-null-pointer-crash.patch) in your PKGBUILD directory.
+
+2. Edit your PKGBUILD file for add the new patch:
+
+	1. Line 15: add the new patch you just download in the "source" list: 'null-pointer-crash.patch'
+	2. Line 34: add the new patch in prepare function: "patch -p1 -i null-pointer-crash.patch"
+
+3. Make package
+
+		makepkg -f -A --skipinteg
+
+Solution from the broadcom-wl AUR [page](https://aur.archlinux.org/packages/broadcom-wl/) by acssilva.
 
 
 <a name="learnmore"></a>

@@ -253,10 +253,18 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
 	You can use ethernet cable and enable dhcp.
 
-		dhcpcp &
+		systemctl start dhcpcd.service
 		ping 8.8.8.8
 
-	Otherwise
+	If you want to mainly use the ethernet, you should enable the service.
+
+		systemctl enable dhcpcd.service
+
+	Otherwise, stop the dhcpcd.service if running.
+
+		systemctl stop dhcpcd.service
+
+	And, use the old fashion **wifi-menu** for example.
 
 		wifi-menu
 
@@ -463,6 +471,11 @@ In this section, I will help you get started with a basic **G**raphical **U**ser
 	Load the wl module.
 
 		modprobe wl
+		systemctl enable NetworkManager.service
+
+	Make sure to have the **networkmanager** package installed & to enable **N**etwork**M**anager.service. It is case sensitive!
+
+	If you have **dhcpcd.service** running it will cause a disconnection after association with an access point on wifi.
 
 	[Read More](https://wiki.archlinux.org/index.php/Broadcom_BCM4312#Loading_the_wl_kernel_module)
 

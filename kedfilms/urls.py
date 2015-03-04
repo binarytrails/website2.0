@@ -15,9 +15,17 @@
 
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+admin.autodiscover()
 
 urlpatterns = patterns('',
     
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+
     url(r'^$', 'frontend.views.entry', name='entry'),
 
     url(r'^home/$', 'frontend.views.home', name='home'),
@@ -31,6 +39,8 @@ urlpatterns = patterns('',
     url(r'^photos/mslideshow/(?P<category>[\w]{1,10})/(?P<image>[\w\-._]{1,30})/$', 'frontend.views.mslideshow', name='mslideshow'),
 
     url(r'^videos/$', 'frontend.views.videos', name='videos'),
-)
+    
+    # only for localhost not in production
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'frontend.views.error404'

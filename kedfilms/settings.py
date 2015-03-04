@@ -1,14 +1,16 @@
 """
-    This is an example file for local use only.
+    This is an example file.
+    Development use only.
 """
 
 import os, sys
 
-DIR = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
-# Plugin
+# Plugin to detect a user agent
 minidetector = os.path.join(os.path.abspath(os.pardir), 'minidetector')
 sys.path.append(minidetector)
 
@@ -58,12 +60,13 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'frontend/media')
+#MEDIA_ROOT = '/home/rrt/Workspace/Media/kedfilms.com/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -129,7 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.admin',
+    'django.contrib.admin',
     #'django.contrib.admindocs',
     #'debug_toolbar',
     'frontend',

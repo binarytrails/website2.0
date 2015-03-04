@@ -17,9 +17,8 @@ import os, pyexiv2
 from datetime import date
 
 from django.test import TestCase
-from django.contrib.admin.sites import AdminSite
-
 from django.core.files import File
+from django.contrib.admin.sites import AdminSite
 
 from frontend.models import Photo
 from frontend.admin import PhotoAdmin
@@ -75,18 +74,28 @@ class PhotoAdminTests(TestCase):
         for thumbnail in self.thumbnails:
             self.assertTrue(os.path.exists(thumbnail))
 
-    def test_add_image_xmp_metadata(self):
+    def test_xmp_metadata_was_added_correctly_to_the_imagefile_on_creation(self):
         # Acts
         metadata = pyexiv2.ImageMetadata(self.photo.cached_image_path)
         metadata.read()
 
         # Assert
-        self.assertEqual(metadata["Xmp.xmp.title"].value, self.photo.title)
-        self.assertEqual(metadata["Xmp.xmp.fragment_identifier"].value, self.photo.fragment_identifier)
-        self.assertEqual(metadata["Xmp.xmp.author"].value, self.photo.author)
-        self.assertEqual(metadata["Xmp.xmp.date_created"].value, str(self.photo.date_created))
-        self.assertEqual(metadata["Xmp.xmp.application"].value, self.photo.application)
-        self.assertEqual(metadata["Xmp.xmp.hardware"].value, self.photo.hardware)
+        for key in self.photo.get_image_xmp_metadata_available_keys():
+            attribute = key.replace('Xmp.xmp.', '')
+            
+            # comparing metadata values with associated photo attributes values
+            self.assertEqual(metadata[key].value, str(self.photo.__dict__.get(attribute)))
+
+    def test_get_xmp_metadata_from_model(self):
+        # Acts
+        metadata = self.photo.get_image_xmp_metadata()
+
+        # Assert
+        for key in self.photo.get_image_xmp_metadata_available_keys():
+            attribute = key.replace('Xmp.xmp.', '')
+
+            # comparing metadata values with associated photo attributes values
+            self.assertEqual(metadata.get(key), str(self.photo.__dict__.get(attribute)))
 
     def test_change_category_of_image_with_available_filename_at_destination(self):
         # Arrange
@@ -122,3 +131,13 @@ class PhotoAdminTests(TestCase):
         self.assertFalse(os.path.exists(self.photo.image.path))
         for thumbnail in self.thumbnails:
             self.assertFalse(os.path.exists(thumbnail))
+
+
+
+    # def test_photo_default_fields_return(self):
+    #     modelAdmin = ModelAdmin(Photo, self.site)
+
+    #     self.assertEqual(list(modelAdmin.get_form(request).base_fields),
+    #         ['category', 'cached_category', 'image', 'cached_image_path',
+    #             'fragment_identifier', 'title', 'author', 'hardware', 
+    #             'application', 'date_created'])

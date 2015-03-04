@@ -110,6 +110,25 @@ class Photo(models.Model):
 
         return thumbnails_abspaths
 
+    # each metadata key is associated with a photo attribute
+    def get_image_xmp_metadata_available_keys(self):
+        return ["Xmp.xmp.title", "Xmp.xmp.fragment_identifier",
+            "Xmp.xmp.author", "Xmp.xmp.date_created", "Xmp.xmp.application",
+            "Xmp.xmp.hardware"
+        ]
+
+    def get_image_xmp_metadata(self):
+        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
+        metadata.read()
+
+        available_metadata = {}
+        available_keys = self.get_image_xmp_metadata_available_keys()
+
+        for key in available_keys:
+            available_metadata[key] = metadata[key].value
+
+        return available_metadata
+
     def generate_thumbnails(self):
         filename = os.path.basename(self.cached_image_path)
 
@@ -125,12 +144,9 @@ class Photo(models.Model):
         metadata = pyexiv2.ImageMetadata(self.cached_image_path)
         metadata.read()
 
-        metadata["Xmp.xmp.title"] = self.title
-        metadata["Xmp.xmp.fragment_identifier"] = self.fragment_identifier
-        metadata["Xmp.xmp.author"] = self.author
-        metadata["Xmp.xmp.date_created"] = str(self.date_created)
-        metadata["Xmp.xmp.application"] = self.application
-        metadata["Xmp.xmp.hardware"] = self.hardware
+        for key in self.get_image_xmp_metadata_available_keys():
+            attribute = key.replace('Xmp.xmp.', '')
+            metadata[key] = str(self.__dict__.get(attribute))
 
         metadata.write()
 

@@ -146,7 +146,10 @@ class Photo(models.Model):
 
         for key in self.get_image_xmp_metadata_available_keys():
             attribute = key.replace('Xmp.xmp.', '')
-            metadata[key] = str(self.__dict__.get(attribute))
+            value = self.__dict__.get(attribute)
+            if type(value) == date:
+                value = str(value)
+            metadata[key] = value
 
         metadata.write()
 

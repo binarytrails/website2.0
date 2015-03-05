@@ -1,3 +1,4 @@
+# coding=utf-8
 # Copyright (C) 2015 Vsevolod Ivanov
 #
 # This program is free software: you can redistribute it and/or modify
@@ -27,7 +28,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 TEST_DIR = os.path.join(DIR, "test-data")
 
 class PhotoAdminTests(TestCase):
-    # Test cases:
+    # Main functionalities:
     #       + Create
     #       + Category Update
     #       + Image Update
@@ -62,8 +63,7 @@ class PhotoAdminTests(TestCase):
         self.thumbnails = self.photo.get_thumbnails_abspaths()
 
     def tearDown(self):
-        self.photo.delete_image()
-        self.photo.delete_thumbnails()
+        self.photo.delete()
 
     def test_create_and_upload(self):
         # Asserts
@@ -74,6 +74,17 @@ class PhotoAdminTests(TestCase):
         for thumbnail in self.thumbnails:
             self.assertTrue(os.path.exists(thumbnail))
 
+    def test_create_with_unicode_title_containing_an_accent(self):
+        # Arrange
+        title = u"Béate"
+        self.photo.title = title
+
+        # Acts
+        self.photoAdmin.save_model(None, self.photo, None, True)
+
+        # Asserts
+        self.assertEqual(title, self.photo.title)
+
     def test_xmp_metadata_was_added_correctly_to_the_imagefile_on_creation(self):
         # Acts
         metadata = pyexiv2.ImageMetadata(self.photo.cached_image_path)
@@ -82,9 +93,11 @@ class PhotoAdminTests(TestCase):
         # Assert
         for key in self.photo.get_image_xmp_metadata_available_keys():
             attribute = key.replace('Xmp.xmp.', '')
-            
+            value = self.photo.__dict__.get(attribute)
+            if type(value) == date:
+                value = str(value)
             # comparing metadata values with associated photo attributes values
-            self.assertEqual(metadata[key].value, str(self.photo.__dict__.get(attribute)))
+            self.assertEqual(metadata[key].value, value)
 
     def test_get_xmp_metadata_from_model(self):
         # Acts
@@ -93,9 +106,11 @@ class PhotoAdminTests(TestCase):
         # Assert
         for key in self.photo.get_image_xmp_metadata_available_keys():
             attribute = key.replace('Xmp.xmp.', '')
-
+            value = self.photo.__dict__.get(attribute)
+            if type(value) == date:
+                value = str(value)
             # comparing metadata values with associated photo attributes values
-            self.assertEqual(metadata.get(key), str(self.photo.__dict__.get(attribute)))
+            self.assertEqual(metadata.get(key), value)
 
     def test_change_category_of_image_with_available_filename_at_destination(self):
         # Arrange
@@ -131,13 +146,3 @@ class PhotoAdminTests(TestCase):
         self.assertFalse(os.path.exists(self.photo.image.path))
         for thumbnail in self.thumbnails:
             self.assertFalse(os.path.exists(thumbnail))
-
-
-
-    # def test_photo_default_fields_return(self):
-    #     modelAdmin = ModelAdmin(Photo, self.site)
-
-    #     self.assertEqual(list(modelAdmin.get_form(request).base_fields),
-    #         ['category', 'cached_category', 'image', 'cached_image_path',
-    #             'fragment_identifier', 'title', 'author', 'hardware', 
-    #             'application', 'date_created'])

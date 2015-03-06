@@ -8,6 +8,7 @@
 
 		{% load static %}
 		{% get_static_prefix as STATIC %}
+		{% get_media_prefix as MEDIA_ROOT %}
 
 		{% load staticfiles %}	
 		<link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/photos-slideshow.css"/>
@@ -30,16 +31,12 @@
 					z-index: 3;
 					opacity: 0;
 
-					background-image: url({{ STATIC }}frontend/img/{{ category }}/x200/{{ photo.filename }});
+					background-image: url({{ photo.get_image_thumbnails_urls.x200 }});
 					box-shadow: 0 0 5px white;
 
 					/* Get image width from file on page load */
 					{% load filters %}
-					{% with image_path="static/frontend/img/"|add:category|add:"/x200/"|add:photo.filename %}
-					{% with width=image_path|imageWidth height=image_path|imageHeight %}
-					width: {{ width }}px;
-					{% endwith %}
-					{% endwith %}
+					width: {{ photo.get_image_thumbnails_abspaths.x200|imageWidth }}px;
 
 					-moz-transition: all 0.5s ease-in-out;
 					-webkit-transition: all 0.5s ease-in-out;
@@ -97,7 +94,7 @@
 						<a id="{{ photo.fragment_identifier }}"></a>
 
 						<div id="slide-{{ photo.fragment_identifier }}">
-							<img src="{{ STATIC }}frontend/img/{{ category }}/x800/{{ photo.filename }}" alt=""/>
+							<img src="{{ photo.get_image_thumbnails_urls.x800 }}" alt=""/>
 						</div>
 
 						<div id="details-{{ photo.fragment_identifier }}">
@@ -128,7 +125,7 @@
 						</div>
 
 						<div id="loop-{{ photo.fragment_identifier }}">
-							<a href="{{ STATIC }}frontend/img/{{ category }}/original/{{ photo.filename }}">
+							<a href="{{ photo.get_image_url }}">
 								<img  src="{{ STATIC }}frontend/img/logo/256x256/symbol/magnifying-glass-white.png"/>
 							</a>
 						</div>

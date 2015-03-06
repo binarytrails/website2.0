@@ -42,8 +42,8 @@
 								</div>
 								<div id="right-thumb">
 									<li>
-										<a href="/photos/mslideshow/{{ photo.category|lower }}/{{ photo.filename }}/">
-											<img src="{{ STATIC }}frontend/img/{{ photo.category|lower }}/x200/{{ photo.filename }}" alt=""/>
+										<a href="/photos/mslideshow/{{ photo.category|lower }}/{{ photo.fragment_identifier }}/">
+											<img src="{{ photo.get_image_thumbnails_urls.x200 }}" alt=""/>
 										</a>
 									</li>
 								</div>

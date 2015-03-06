@@ -40,7 +40,7 @@
                         <div class="img-container">
                             <div class="img-container-shadow">
                                 <a class="swipebox" rel="" href="/photos/slideshow/{{ category }}/#{{ image.fragment_identifier }}">
-                                    <img src="{{ STATIC }}frontend/img/{{ category }}/x200/{{ image.filename }}"/>
+                                    <img src="{{ image.get_image_thumbnails_urls.x200 }}"/>
                                 </a>
                             </div>
                         </div>

@@ -18,15 +18,18 @@ import os
 from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
 
-from .models import User, Skill, Photo, Video
+from .models import Skill, Photo, Video
 from kedfilms import utils
 import json
 
-DIR = os.path.abspath(os.path.dirname(__file__))
-STATIC = "static/frontend"
+from django.conf import settings
 
-IMG_DIR = os.path.join(DIR, STATIC, "img/")
-VID_DIR = os.path.join(DIR, STATIC, "vid/")
+MEDIA_URL = settings.MEDIA_URL
+STATIC_ROOT = settings.STATIC_ROOT
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
+VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
 
 ie_useragent_tags = ["msie", "trident"]
 
@@ -68,14 +71,14 @@ def detect_mobile(initial_view):
 
 def get_home_args():
     skills_categories = []
-    skills = Skill.objects.all().filter(owner='kedfilms-founder')
+    skills = Skill.objects.all()
 
     for unique_category in skills.order_by('category').values('category').distinct():
         skills_categories.append(unique_category['category'])
 
     return {
         "skills_categories": skills_categories,
-        "skills": Skill.objects.all().filter(owner='kedfilms-founder')
+        "skills": Skill.objects.all()
     }
 
 def entry(request):
@@ -99,7 +102,7 @@ def articles(request):
  
         return render(request, template,
         {
-            "html": utils.markdownToHtml(os.path.join(DIR, STATIC, "md/quick-tips/gpg.md"))
+            "html": utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/quick-tips/gpg.md"))
         })
 
 def article(request, category=None, article=None):
@@ -107,10 +110,10 @@ def article(request, category=None, article=None):
         raise Http404
 
     article += ".md"
-    if os.path.isfile(os.path.join(DIR, STATIC, "md/", category, article)) == False:
+    if os.path.isfile(os.path.join(STATIC_ROOT, "md/", category, article)) == False:
         raise Http404
 
-    html = utils.markdownToHtml(os.path.join(DIR, STATIC, "md/", category, article))
+    html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
 
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/article.html"
@@ -134,7 +137,7 @@ def photos(request):
         return redirect(reverse("frontend.views.gallery", kwargs={"category": "portfolio"}))
 
 def gallery(request, category):
-    if not os.path.exists(IMG_DIR):
+    if not os.path.exists(IMAGES_ROOT):
         return Http404
 
     unique_categories = Photo.objects.all().values_list('category').distinct()
@@ -179,19 +182,18 @@ def slideshow(request, category=None):
             category = category).order_by('-date_created')
     })
 
-def mslideshow(request, category=None, image=None):
+def mslideshow(request, category=None, fragment_id=None):
     if not request.mobile and not "m.kedfilms.com" in request.get_host():
         return Http404
 
-    path_to_image = os.path.join(STATIC, "img/", category, "original", image)
-    abspath_to_image = os.path.join(DIR, path_to_image)
+    image = Photo.objects.get(fragment_identifier = fragment_id)
 
-    if os.path.isfile(abspath_to_image) == False:
+    if os.path.isfile(image.get_image_abspath()) == False:
         raise Http404
 
     return render(request, "frontend/mobile/photos-slideshow.html",
     {
-        "image_url": os.path.join("/", path_to_image)
+        "image_url": image.get_image_url()
     })
 
 @detect_mobile
@@ -199,7 +201,7 @@ def videos(request):
     if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
         return render(request, "frontend/errors/old-browser.html")
 
-    if not os.path.exists(VID_DIR):
+    if not os.path.exists(VIDEOS_ROOT):
         raise Http404
 
     return render(request, "frontend/desktop/videos.html",

@@ -20,6 +20,8 @@
 import os, shutil, pyexiv2
 from datetime import date
 
+from kedfilms import utils
+
 from django.db import models
 from django.contrib import admin
 from django.conf import settings
@@ -29,7 +31,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_URL = settings.MEDIA_URL
 IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
 IMAGES_DIRNAME = "original"
-THUMBS_DIRNAMES = ['x200', 'x800']
+THUMBNAILS_DIRNAMES = ['x200', 'x800']
 
 # offline uploads only, hence, no media/ used.
 def get_photo_upload_to_by_category(instance, filename):
@@ -67,7 +69,8 @@ class Photo(models.Model):
         blank = True
     )
     fragment_identifier = models.CharField(
-        max_length = 20
+        max_length = 20,
+        unique = True
     )
     title = models.CharField(
         max_length = 50,
@@ -95,17 +98,33 @@ class Photo(models.Model):
             os.path.basename(str(self.image))
         )
 
+    def get_image_thumbnails_urls(self):
+        urls = {}
+        for dirname in THUMBNAILS_DIRNAMES:
+            urls[dirname] = os.path.join(MEDIA_URL, "images", self.category, 
+                dirname, os.path.basename(str(self.image))
+            )
+        return urls
+
     def get_image_abspath(self):
         return os.path.join(IMAGES_ROOT, self.category, IMAGES_DIRNAME, 
             os.path.basename(str(self.image))
         )
 
+    def get_image_thumbnails_abspaths(self):
+        abspaths = {}
+        for dirname in THUMBNAILS_DIRNAMES:
+            abspaths[dirname] = os.path.join(IMAGES_ROOT, self.category,
+                dirname, os.path.basename(str(self.image))
+            )
+        return abspaths
+
     def get_thumbnails_abspaths(self):
         filename = os.path.basename(self.cached_image_path)
         thumbnails_abspaths = []
 
-        for thumb_dirname in THUMBS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, thumb_dirname, filename)
+        for dirname in THUMBNAILS_DIRNAMES:
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
             thumbnails_abspaths.append(thumbnail_path)
 
         return thumbnails_abspaths
@@ -132,12 +151,12 @@ class Photo(models.Model):
     def generate_thumbnails(self):
         filename = os.path.basename(self.cached_image_path)
 
-        for thumb_dirname in THUMBS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, thumb_dirname, filename)
+        for dirname in THUMBNAILS_DIRNAMES:
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
 
             # ImageMagick; New thumb size is also its directory name
             os.system("convert " + self.cached_image_path + " -resize " + 
-                thumb_dirname + " " + thumbnail_path
+                dirname + " " + thumbnail_path
             )
 
     def generate_image_xmp_metadata(self):
@@ -155,7 +174,7 @@ class Photo(models.Model):
 
     def move_image_to_updated_category(self):
         filename = os.path.basename(self.cached_image_path)
-        subdirectories = THUMBS_DIRNAMES + [IMAGES_DIRNAME]
+        subdirectories = THUMBNAILS_DIRNAMES + [IMAGES_DIRNAME]
 
         for subdirectory in subdirectories:
             current_image_path = os.path.join(IMAGES_ROOT, self.cached_category, subdirectory, filename)
@@ -174,8 +193,8 @@ class Photo(models.Model):
     def delete_thumbnails(self):
         filename = os.path.basename(self.cached_image_path)
 
-        for thumb_dirname in THUMBS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, thumb_dirname, filename)
+        for dirname in THUMBNAILS_DIRNAMES:
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
 
             if os.path.exists(thumbnail_path):
                 os.remove(thumbnail_path)

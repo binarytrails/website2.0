@@ -17,6 +17,8 @@
 import os, pyexiv2
 from datetime import date
 
+from kedfilms import utils
+
 from django.test import TestCase
 from django.core.files import File
 from django.contrib.admin.sites import AdminSite
@@ -112,6 +114,20 @@ class PhotoAdminTests(TestCase):
             # comparing metadata values with associated photo attributes values
             self.assertEqual(metadata.get(key), value)
 
+    def test_correct_image_width_and_height(self):
+        # Arrange
+        width = 0
+        height = 0
+        with open(self.photo.cached_image_path, 'rb') as imagefile:
+            data = imagefile.read()
+            image_info = utils.get_image_info(data)
+            width = image_info[1]
+            height = image_info[2]
+
+        # Asserts
+        self.assertEqual(self.photo.image.width, width)
+        self.assertEqual(self.photo.image.height, height)
+
     def test_change_category_of_image_with_available_filename_at_destination(self):
         # Arrange
         self.photo.category = Photo.PORTFOLIO
@@ -131,7 +147,7 @@ class PhotoAdminTests(TestCase):
 
     def test_change_category_of_image_with_non_available_filename_at_destination(self):
         # Arrange
-
+        
         # Acts
 
         # Asserts

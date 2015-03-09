@@ -17,8 +17,58 @@
 	The admin panel is for developing only.
 """
 
+import pyexiv2
+from datetime import date
+
 from django.contrib import admin
+from django.contrib import messages
+from django.db import IntegrityError
+
+from django.shortcuts import render_to_response
+
+from django.conf.urls import patterns, url
+from django.http import HttpResponseRedirect
+from django.contrib.admin.sites import AdminSite
+from django.contrib.admin.views.decorators import staff_member_required
+
 from frontend.models import Photo
+
+@staff_member_required
+def import_photos(request):
+	if request.method == 'POST':
+		# load images to upload in memory
+		photos_files = request.FILES.getlist('photos')
+		photoAdmin = PhotoAdmin(Photo, AdminSite())
+
+		for photo_file in photos_files:
+			photo = Photo()
+			photo.category = request.POST['category']
+
+			# read uploaded image metadata
+			metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
+			metadata.read()
+
+			# verify xmp metadata
+			for key in photo.get_image_xmp_metadata_available_keys():
+				# save image metadata into created photo matching attributes
+				attribute = key.replace('Xmp.xmp.', '')
+				try:
+					photo.__dict__[attribute] = metadata[key].value
+				except KeyError as error:
+					messages.error(request, "Xmp metadata key '%s' not found!" % key)
+					break
+
+			# save image to the photo object
+			try:
+				photo.image.save(photo_file.name, photo_file, True)
+			except IntegrityError as error:
+				messages.error(request, error.args)
+				break
+
+			# run the save_model used for creating/modifing a photo object
+			photoAdmin.save_model(None, photo, None, True)
+
+	return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 class PhotoAdmin(admin.ModelAdmin):
 	# Select Form
@@ -39,6 +89,20 @@ class PhotoAdmin(admin.ModelAdmin):
 	]
 
 	readonly_fields = ['cached_image_path']
+
+	def get_urls(self):
+		urls = super(PhotoAdmin, self).get_urls()
+		my_urls = patterns("",
+			url(r"^import_photos/$", import_photos)
+		)
+		return my_urls + urls
+
+	def changelist_view(self, request, extra_context=None):
+		extra_context = extra_context or {}
+		extra_context['categories'] = Photo.CATEGORIES
+		return super(PhotoAdmin, self).changelist_view(request,
+			extra_context = extra_context
+		)
 
 	def save_model(self, request, object, form, change):
 		make_thumbnails = False

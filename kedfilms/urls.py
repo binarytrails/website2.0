@@ -35,8 +35,7 @@ urlpatterns = patterns('',
 
     url(r'^photos/$', 'frontend.views.photos', name='photos'),
     url(r'^photos/gallery/(?P<category>[\w]{1,10})/$', 'frontend.views.gallery', name='gallery'),
-    url(r'^photos/slideshow/(?P<category>[\w]{1,10})/$', 'frontend.views.slideshow', name='slideshow'),
-    url(r'^photos/mslideshow/(?P<category>[\w]{1,10})/(?P<fragment_id>[\w\-._]{1,30})/$', 'frontend.views.mslideshow', name='mslideshow'),
+    url(r'^photos/slideshow/(?P<category>[\w]{1,10})/(?P<fragment_id>[\w\-._]{1,30})/$', 'frontend.views.slideshow', name='slideshow'),
 
     url(r'^videos/$', 'frontend.views.videos', name='videos'),
     

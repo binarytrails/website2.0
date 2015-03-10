@@ -37,7 +37,7 @@ def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile or "m.kedfilms.com" in request.get_host():
             calling_template = initial_view.func_name
-            not_available_mobile_templates = ["articles", "photos", "videos"]
+            not_available_mobile_templates = ["videos"]
 
             if any(template in calling_template for template in not_available_mobile_templates):
                 return render(request, "frontend/errors/generic-simple-text.html",
@@ -168,33 +168,30 @@ def gallery(request, category):
             "next": pages[category].get('next') + "/#head"
         })
 
-@detect_mobile
-def slideshow(request, category=None):
+def slideshow(request, category=None, fragment_id=None):
     if not any(unique_category['category'] == category 
         for unique_category in Photo.objects.all().values('category').distinct()
     ):
         raise Http404
 
-    return render(request, "frontend/desktop/photos-slideshow.html",
-    {
-        "category": category,
-        "photos": Photo.objects.all().filter(
-            category = category).order_by('-date_created')
-    })
+    if request.mobile or "m.kedfilms.com" in request.get_host():
+        image = Photo.objects.get(fragment_identifier = fragment_id)
 
-def mslideshow(request, category=None, fragment_id=None):
-    if not request.mobile and not "m.kedfilms.com" in request.get_host():
-        return Http404
+        if os.path.isfile(image.get_image_abspath()) == False:
+            raise Http404
 
-    image = Photo.objects.get(fragment_identifier = fragment_id)
+        return render(request, "frontend/mobile/photos-slideshow.html",
+        {
+            "image_url": image.get_image_url()
+        })
 
-    if os.path.isfile(image.get_image_abspath()) == False:
-        raise Http404
-
-    return render(request, "frontend/mobile/photos-slideshow.html",
-    {
-        "image_url": image.get_image_url()
-    })
+    else:
+        return render(request, "frontend/desktop/photos-slideshow.html",
+        {
+            "category": category,
+            "photos": Photo.objects.all().filter(
+                category = category).order_by('-date_created')
+        })
 
 @detect_mobile
 def videos(request):

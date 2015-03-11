@@ -41,7 +41,7 @@ class PhotoAdminTests(TestCase):
 
     def setUp(self):
         self.photo = Photo.objects.create(
-            category = Photo.GENERAL,
+            category = Photo.CATEGORIES[0][0],
             cached_category = "",
             image = "",
             cached_image_path = "",
@@ -69,7 +69,7 @@ class PhotoAdminTests(TestCase):
 
     def test_create_and_upload(self):
         # Asserts
-        self.assertEqual(self.photo.category, Photo.GENERAL)
+        self.assertEqual(self.photo.category, Photo.CATEGORIES[0][0])
         self.assertEqual(self.photo.category, self.photo.cached_category)
 
         self.assertTrue(os.path.exists(self.photo.cached_image_path))
@@ -114,6 +114,51 @@ class PhotoAdminTests(TestCase):
             # comparing metadata values with associated photo attributes values
             self.assertEqual(metadata.get(key), value)
 
+    def test_get_next_category_before_last_index_returns_next(self):
+        # Arrange
+        category_tuple = self.photo.get_category_tuple()
+        next_index = self.photo.CATEGORIES.index(category_tuple) + 1
+
+        # Acts
+        next_category = self.photo.get_next_category(self.photo.category)
+
+        # Asserts
+        self.assertEqual(next_category, self.photo.CATEGORIES[next_index])
+
+    def test_get_next_category_at_last_index_returns_first(self):
+        # Arrange
+        last_index = len(self.photo.CATEGORIES) - 1
+        category = self.photo.CATEGORIES[last_index][0]
+
+        # Acts
+        next_category = self.photo.get_next_category(category)
+
+        # Asserts
+        self.assertEqual(next_category, self.photo.CATEGORIES[0])
+
+    def test_get_previous_category_before_first_index_returns_previous(self):
+        # Arrange
+        second_category = self.photo.CATEGORIES[1][0]
+
+        # Acts
+        previous_category = self.photo.get_previous_category(second_category)
+
+        # Asserts
+        self.assertEqual(previous_category, self.photo.CATEGORIES[0])
+
+    def test_get_previous_category_at_first_index_returns_last(self):
+        # Arrange
+        first_category = self.photo.CATEGORIES[0][0]
+
+        last_index = len(self.photo.CATEGORIES) - 1
+        last_category = self.photo.CATEGORIES[last_index]
+
+        # Acts
+        previous_category = self.photo.get_previous_category(first_category)
+
+        # Asserts
+        self.assertEqual(previous_category, last_category)
+
     def test_correct_image_width_and_height(self):
         # Arrange
         width = 0
@@ -130,14 +175,14 @@ class PhotoAdminTests(TestCase):
 
     def test_change_category_of_image_with_available_filename_at_destination(self):
         # Arrange
-        self.photo.category = Photo.PORTFOLIO
+        self.photo.category = Photo.CATEGORIES[1][0]
 
         # Acts
         self.photoAdmin.save_model(None, self.photo, None, True)
         self.thumbnails = self.photo.get_thumbnails_abspaths()
 
         # Asserts
-        self.assertEqual(self.photo.category, Photo.PORTFOLIO)
+        self.assertEqual(self.photo.category, Photo.CATEGORIES[1][0])
         self.assertEqual(self.photo.category, self.photo.cached_category)
 
         self.assertTrue(os.path.exists(self.photo.cached_image_path))

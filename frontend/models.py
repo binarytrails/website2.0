@@ -42,18 +42,20 @@ class Photo(models.Model):
         return self.title
 
     # Add new categories here
-    GENERAL = 'general'
     PORTFOLIO = 'portfolio'
+    DAYTIME = 'daytime'
+    NIGHTTIME = 'nighttime'
     CATEGORIES = (
-        (GENERAL, 'General'),
         (PORTFOLIO, 'Portfolio'),
+        (DAYTIME, 'Daytime'),
+        (NIGHTTIME, 'Nighttime'),
     )
 
     category = models.CharField(
         max_length = 10,
         blank = False,
         choices = CATEGORIES,
-        default = GENERAL
+        default = PORTFOLIO
     )
     cached_category = models.CharField(
         max_length = 200,
@@ -92,6 +94,35 @@ class Photo(models.Model):
         default = date.today,
         blank = False
     )
+
+    def get_category_tuple(self):
+        for key, value in self.CATEGORIES:
+            if key == self.category:
+                return (key, value)
+
+    def get_next_category(self, category):
+        length = len(self.CATEGORIES) - 1
+
+        for key, value in self.CATEGORIES:
+            if key == category:
+                index = self.CATEGORIES.index((key, value))
+
+                if index < length:
+                    return self.CATEGORIES[index + 1]
+                else:
+                    return self.CATEGORIES[0]
+
+    def get_previous_category(self, category):
+        length = len(self.CATEGORIES) - 1
+
+        for key, value in self.CATEGORIES:
+            if key == category:
+                index = self.CATEGORIES.index((key, value))
+
+                if index > 0:
+                    return self.CATEGORIES[index - 1]
+                else:
+                    return self.CATEGORIES[length]  
 
     def get_image_url(self):
         return os.path.join(MEDIA_URL, "images", self.category, IMAGES_DIRNAME, 

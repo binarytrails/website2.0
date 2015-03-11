@@ -125,8 +125,8 @@ def article(request, category=None, article=None):
 def photos(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         categories = []
-        for unique_category in Photo.objects.all().values('category').distinct():
-            categories.append(unique_category['category'])
+        for key, value in Photo.CATEGORIES:
+            categories.append(value)
 
         return render(request, "frontend/mobile/photos.html",
         {
@@ -134,7 +134,8 @@ def photos(request):
             'photos': Photo.objects.all()
          })
     else:
-        return redirect(reverse("frontend.views.gallery", kwargs={"category": "portfolio"}))
+        first_category = Photo.CATEGORIES[0][0]
+        return redirect(reverse("frontend.views.gallery", kwargs={"category": first_category}))
 
 def gallery(request, category):
     if not os.path.exists(IMAGES_ROOT):
@@ -156,16 +157,14 @@ def gallery(request, category):
                 category = category).order_by('-date_created')
         })
     else:
-        # {'category': {'last': 'category', 'previous': 'category'}, ... }1
-        pages = utils.get_list_next_previous_as_two_dimentional_dict(unique_categories)
-
+        photo = Photo()
         return render(request, "frontend/desktop/photos-gallery.html",
         {
             "category": category,
             "images": Photo.objects.all().filter(
                 category = category).order_by('-date_created'),
-            "last": pages[category].get('last') + "/#head",
-            "next": pages[category].get('next') + "/#head"
+            "last": photo.get_previous_category(category),
+            "next": photo.get_next_category(category)
         })
 
 def slideshow(request, category=None, fragment_id=None):

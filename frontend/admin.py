@@ -72,7 +72,7 @@ def import_photos(request):
 
 class PhotoAdmin(admin.ModelAdmin):
 	# Select Form
-	list_display = ['title', 'category']
+	list_display = ['title', 'category', 'date_created', 'author']
 	search_fields = ['title']
 
 	# Edit form

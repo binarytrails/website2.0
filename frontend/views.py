@@ -124,13 +124,9 @@ def article(request, category=None, article=None):
 
 def photos(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
-        categories = []
-        for key, value in Photo.CATEGORIES:
-            categories.append(value)
-
         return render(request, "frontend/mobile/photos.html",
         {
-            'categories': categories,
+            'categories': Photo.CATEGORIES,
             'photos': Photo.objects.all()
          })
     else:

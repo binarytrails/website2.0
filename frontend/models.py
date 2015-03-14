@@ -45,10 +45,42 @@ class Photo(models.Model):
     PORTFOLIO = 'portfolio'
     DAYTIME = 'daytime'
     NIGHTTIME = 'nighttime'
+    MULTIVERSE = 'multiverse'
     CATEGORIES = (
         (PORTFOLIO, 'Portfolio'),
         (DAYTIME, 'Daytime'),
         (NIGHTTIME, 'Nighttime'),
+        (MULTIVERSE, 'Multiverse'),
+    )
+
+    # Add new authors here
+    SEVA = 'Vsevolod Ivanov'
+    MELO = 'Melodie Verroeulst'
+    ANDREI = 'Andrei Savin'
+    SAND = 'Sandrine Allen'
+    GUIDES = 'Guillaume Deshaies'
+    AUTHORS = (
+        (SEVA, 'Vsevolod Ivanov'),
+        (MELO, 'Melodie Verroeulst'),
+        (ANDREI, 'Andrei Savin'),
+        (SAND, 'Sandrine Allen'),
+        (GUIDES, 'Guillaume Deshaies'),
+    )
+
+    # Add new hardware here
+    CANON = 'Canon EOS REBEL T3i'
+    IPHONE = 'Iphone'
+    HARDWARES = (
+        (CANON, 'Canon EOS REBEL T3i'),
+        (IPHONE, 'Iphone')
+    )
+
+    # Add new software here
+    AE = 'Adobe After Effect'
+    GIMP28 = 'Gimp 2.8'
+    APPLICATIONS = (
+        (AE, 'Adobe After Effect'),
+        (GIMP28, 'Gimp 2.8')
     )
 
     category = models.CharField(
@@ -80,24 +112,31 @@ class Photo(models.Model):
     )
     author = models.CharField(
         max_length = 50,
-        blank = False
+        blank = False,
+        choices = AUTHORS,
+        default = SEVA
     )
     hardware = models.CharField(
         max_length = 50,
-        blank = True
+        blank = True,
+        choices = HARDWARES
     )
     application = models.CharField(
         max_length = 50,
-        blank = True
+        blank = True,
+        choices = APPLICATIONS
     )
     date_created = models.DateField(
         default = date.today,
         blank = False
     )
 
-    def get_category_tuple(self):
+    def get_category_tuple(self, category = None):
+        if category == None:
+            category = self.category
+
         for key, value in self.CATEGORIES:
-            if key == self.category:
+            if key == category:
                 return (key, value)
 
     def get_next_category(self, category):

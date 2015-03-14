@@ -37,11 +37,7 @@ Install django and its dependecies
 
 Then you can remove locally left PackageName.egg
 
-* Create the database while drinking a coffee
-
-        ./reset-database.sh
-
-* Populate it by hand
+* Populate database from script.py
 
         ./manage shell < script.py
 

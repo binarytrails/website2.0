@@ -70,7 +70,7 @@
 				background: white;
 			}
 
-				#wrapper > video
+				#wrapper > video, #wrapper > iframe
 				{
 					height: 100%;
 					width: 100%;

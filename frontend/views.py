@@ -199,26 +199,9 @@ def videos(request):
     return render(request, "frontend/desktop/videos.html",
     {
         "posters_src": "img/video-poster/",
-
-        "intro_title": "Brief introductory passage",
-        "intro_videos": Video.objects.all().filter(
-            category = Video.IN).order_by('-date_created'),
-        "intro_videos_src": "vid/intro/",
-
-        "favorite_title": "Personal Favorites",
-        "favorite_videos": Video.objects.all().filter(
-            category = Video.FV).order_by('-date_created'),
-        "favorite_videos_src": "vid/favorite/",
-
-        "event_title": "A Gathering Of People",
-        "event_videos": Video.objects.all().filter(
-            category = Video.EV).order_by('-date_created'),
-        "event_videos_src": "vid/event/",
-
-        "dancer_title": "Physical Expression",
-        "dancer_videos": Video.objects.all().filter(
-            category = Video.DN).order_by('-date_created'),
-        "dancer_videos_src": "vid/dancer/"
+        "videos_src": "vid/",
+        "categories": Video.CATEGORIES,
+        "videos": Video.objects.all().filter().order_by('-date_created')
     })
 
 def error404(request):

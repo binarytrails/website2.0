@@ -281,42 +281,53 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    IN = 'introduction'
-    FV = 'favorite'
-    EV = 'event'
-    DN = 'dancer'
+    INTRO = 'intro'
+    FAVORITE = 'favorite'
+    EVENT = 'event'
+    DANCER = 'dancer'
 
+    CATEGORIES = (
+        (INTRO, 'Brief introductory passage'),
+        (FAVORITE, 'Personal Favorites'),
+        (EVENT, 'A Gathering Of People'),
+        (DANCER, 'Physical Expression'),
+    )
+
+    category = models.CharField(
+        max_length = 2,
+        blank = False,
+        choices = CATEGORIES
+    )
+    date_created = models.DateField(
+        default = date.today,
+        blank = False
+    )
+    # blank = video locally hosted
+    iframe_src = models.CharField(
+        max_length = 250,
+        blank = True
+    )
+    # locally hosted video information
     filename = models.CharField(
-        primary_key = True,
-        max_length = 250 
+        max_length = 250
     )
     posterfile = models.CharField(
         max_length = 250 
     )
     title = models.CharField(
-        max_length = 50,
-        blank = False 
+        max_length = 50
     )
-    director = models.CharField(
-        max_length = 50, 
-        blank = False
+    author = models.CharField(
+        max_length = 50
     )
     description = models.CharField(
         max_length = 50 
-    )
-    category = models.CharField(
-        max_length = 2,
-        blank = False
     )
     hardware = models.CharField(
         max_length = 50
     )
     application = models.CharField(
         max_length = 50
-    )
-    date_created = models.DateField(
-        default = date.today,
-        blank = False
     )
 
     class Meta:

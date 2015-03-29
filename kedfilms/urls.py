@@ -26,9 +26,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'frontend.views.entry', name='entry'),
-
-    url(r'^home/$', 'frontend.views.home', name='home'),
+    url(r'^$', 'frontend.views.home', name='home'),
 
     url(r'^articles/$', 'frontend.views.articles', name='articles'),
     url(r'^artcile/(?P<category>[\w\-]{1,10})/(?P<article>[\w\-]{1,30})$', 'frontend.views.article', name='article'),

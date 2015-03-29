@@ -81,12 +81,6 @@ def get_home_args():
         "skills": Skill.objects.all()
     }
 
-def entry(request):
-    if request.mobile or "m.kedfilms.com" in request.get_host():
-        return redirect(reverse('home') + '#header')
-    else:
-        return render(request, "frontend/desktop/entry.html")
-
 def home(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         return render(request, "frontend/mobile/home.html", get_home_args())

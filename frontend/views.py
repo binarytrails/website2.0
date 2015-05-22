@@ -37,7 +37,9 @@ def detect_mobile(initial_view):
     def wrapped_view(request, *args, **kwargs):
         if request.mobile or "m.kedfilms.com" in request.get_host():
             calling_template = initial_view.func_name
-            not_available_mobile_templates = ["videos"]
+
+            # add "@detect_mobile" on top of a controller & add their controller "name" here.
+            not_available_mobile_templates = [""]
 
             if any(template in calling_template for template in not_available_mobile_templates):
                 return render(request, "frontend/errors/generic-simple-text.html",
@@ -182,7 +184,6 @@ def slideshow(request, category=None, fragment_id=None):
                 category = category).order_by('-date_created')
         })
 
-@detect_mobile
 def videos(request):
     if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
         return render(request, "frontend/errors/old-browser.html")

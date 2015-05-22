@@ -305,8 +305,7 @@ class Video(models.Model):
     # blank = video locally hosted
     iframe_src = models.CharField(
         max_length = 250,
-        # add after complete migration to vimeo
-        #unique = True,
+        unique = True,
         blank = True
     )
     # locally hosted video information

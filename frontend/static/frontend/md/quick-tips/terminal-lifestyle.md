@@ -19,7 +19,7 @@ Start it
 
 ## Command line dictionnary
 
-Download dictionnaries at [www.abloz.com](http://abloz.com/huzheng/stardict-dic/dict.org/)
+Download dictionnaries at [web.archive.org](https://web.archive.org/web/20140917131745/http://abloz.com/huzheng/stardict-dic/dict.org/)
 
 		mkdir -p /usr/share/stardict/dic/
 		tar -xvjf downloaded_dictionnary.tar.bz2 -C /usr/share/stardict/dic

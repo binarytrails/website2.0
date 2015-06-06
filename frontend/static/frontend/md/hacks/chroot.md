@@ -1,6 +1,6 @@
 <h1 class="header">Chroot Escaping</h1>
 </br>
-*09 November 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/chroot.md)
+*09 November 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/hacks/chroot.md#chroot-escaping) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/chroot.md)
 
 FD:
 

@@ -2,7 +2,7 @@
 
 Basic utilities for monitoring
 
-*27 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/server-tools.md)
+*27 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quick-tips/server-tools.md#server-tools) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/server-tools.md)
 
 ## Run-level a.k.a. boot manager
 

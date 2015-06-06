@@ -1,6 +1,6 @@
 <h1 class="header">OWASP Security Shepherd</h1>
 
-*17 december 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/owaspshepherd.md)
+*17 december 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/hacks/owaspshepherd.md#owasp-security-shepherd) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/owaspshepherd.md)
 
 </br>
 

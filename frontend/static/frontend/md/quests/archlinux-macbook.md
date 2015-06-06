@@ -1,6 +1,6 @@
 <h1 class="header">Archlinux on MacBook</h1>
 </br>
-*29 December 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/archlinux-macbook.md)
+*29 December 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quests/archlinux-macbook.md#archlinux-on-macbook) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/archlinux-macbook.md)
 
 > What MacBook? MacBook Pro mid-2011 with Intel CPU & Graphics.
 
@@ -16,7 +16,7 @@
 
 # Results
 
-![img](/static/frontend/img/articles/Arch Linux On Macbook.jpg)
+![img](http://kedfilms.com/static/frontend/img/articles/Arch Linux On Macbook.jpg)
 
 
 # Guide Flow
@@ -29,7 +29,7 @@ Take this as an example and a proof of concept.
 
 The ArchLinux wiki is tremendous and the community on freenode servers is great. But remember...
 
-> [The ArchLinux Mentality](/static/frontend/img/svg/Arch Linux Help Guide.svg)
+> [The ArchLinux Mentality](http://kedfilms.com/static/frontend/img/svg/Arch Linux Help Guide.svg)
 
 
 # Table of content

@@ -2,7 +2,7 @@
 
 Ascii, wine & a keyboard
 
-*27 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/terminal-lifestyle.md)
+*27 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quick-tips/terminal-lifestyle.md#terminal-lifestyle) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/terminal-lifestyle.md)
 
 ## Music on Console
 

@@ -2,7 +2,7 @@
 
 [www.virtualbox.org](https://www.virtualbox.org/)
 
-*27 October 2014* | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/virtualbox.md)
+*27 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quick-tips/virtualbox.md#virtualbox) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quick-tips/virtualbox.md)
 
  I am assuming you know what are the magnificent [sudo] powers.
 

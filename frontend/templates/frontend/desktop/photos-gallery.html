@@ -42,7 +42,7 @@
                             <div class="img-container-shadow">
                                 {% if image.get_image_type == 'gif' %}
                                     <a class="swipebox" rel="" href="{{ image.get_image_url }}">
-                                        <img style="height:200px;" src="{{ image.get_image_thumbnails_urls.x200 }}"/>
+                                        <img src="{{ image.get_image_thumbnails_urls.x200 }}"/>
                                     </a>
                                 {% else %}
                                     <a class="swipebox" rel="" href="/photos/slideshow/{{ category }}/{{ image.fragment_identifier }}/#{{ image.fragment_identifier }}">

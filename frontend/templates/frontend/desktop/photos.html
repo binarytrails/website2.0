@@ -1,0 +1,28 @@
+{% extends "frontend/desktop/base.html" %}
+
+{% block content %}
+
+    {% load static %}
+    {% get_static_prefix as STATIC %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/photos.css">
+
+    <div id="main">
+        <div id="categories">
+            
+            {% for category in categories %}
+            <a href="/photos/gallery/{{ category.0 }}/#head">
+                <section>
+                    <hr></hr>
+                    <header>
+                        {{ category.1 }}
+                    </header>
+                    <hr></hr>
+                </section>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

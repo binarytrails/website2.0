@@ -120,14 +120,14 @@ def article(request, category=None, article=None):
 
 def photos(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
-        return render(request, "frontend/mobile/photos.html",
-        {
-            'categories': Photo.CATEGORIES,
-            'photos': Photo.objects.all()
-         })
+        template = "frontend/mobile/photos.html"
     else:
-        first_category = Photo.CATEGORIES[0][0]
-        return redirect(reverse("frontend.views.gallery", kwargs={"category": first_category}))
+        template = "frontend/desktop/photos.html"
+    
+    return render(request, template,
+    {
+        'categories': Photo.CATEGORIES
+    })
 
 def gallery(request, category):
     if not os.path.exists(IMAGES_ROOT):

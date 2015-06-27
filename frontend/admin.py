@@ -17,7 +17,7 @@
 	The admin panel is for developing only.
 """
 
-import pyexiv2, imghdr
+import pyexiv2, imghdr, uuid
 from datetime import date
 
 from django.contrib import admin
@@ -42,25 +42,35 @@ def import_photos(request):
 
 		for photo_file in photos_files:
 			photo = Photo()
+			filename = photo_file.name
 			photo.category = request.POST['category']
 
-			# read uploaded image metadata
-			metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
-			metadata.read()
+			if imghdr.what(photo_file.name, photo_file.read()) == "gif":
+				photo_uuid = str(uuid.uuid1())
+				filename = photo_uuid + ".gif"
 
-			# verify xmp metadata
-			for key in photo.get_image_xmp_metadata_available_keys():
-				# save image metadata into created photo matching attributes
-				attribute = key.replace('Xmp.xmp.', '')
-				try:
-					photo.__dict__[attribute] = metadata[key].value
-				except KeyError as error:
-					messages.error(request, "Xmp metadata key '%s' not found!" % key)
-					break
+				photo.title = filename
+				photo.fragment_identifier = photo_uuid
+				photo.author = Photo.INTERNET
+
+			else:
+				# read uploaded image metadata
+				metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
+				metadata.read()
+
+				# verify xmp metadata
+				for key in photo.get_image_xmp_metadata_available_keys():
+					# save image metadata into created photo matching attributes
+					attribute = key.replace('Xmp.xmp.', '')
+					try:
+						photo.__dict__[attribute] = metadata[key].value
+					except KeyError as error:
+						messages.error(request, "Xmp metadata key '%s' not found!" % key)
+						break
 
 			# save image to the photo object
 			try:
-				photo.image.save(photo_file.name, photo_file, True)
+				photo.image.save(filename, photo_file, True)
 			except IntegrityError as error:
 				messages.error(request, error.args)
 				break
@@ -70,6 +80,11 @@ def import_photos(request):
 
 	return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
+"""
+	Not implemented:
+		Updating gifs.
+		Bulk delete won't call delete() for all the items.
+"""
 class PhotoAdmin(admin.ModelAdmin):
 	# Select Form
 	list_display = ['title', 'fragment_identifier', 'category', 
@@ -132,11 +147,12 @@ class PhotoAdmin(admin.ModelAdmin):
 		# image upload & records updates
 		object.save()
 
-		if make_thumbnails:
-			object.generate_thumbnails()
-
-		# pyexiv2 does not work for gifs
+		# pyexiv2 does not work for gifs & no need for thumbs
 		if imghdr.what(object.cached_image_path) != "gif":
+			
+			if make_thumbnails:
+				object.generate_thumbnails()
+
 			object.generate_image_xmp_metadata()
 		
 admin.site.register(Photo, PhotoAdmin)

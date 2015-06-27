@@ -17,7 +17,7 @@
     unique constraints are used because multiple primary keys aren't supported.
 """
 
-import os, shutil, pyexiv2
+import os, shutil, pyexiv2, imghdr
 from datetime import date
 
 from kedfilms import utils
@@ -46,7 +46,7 @@ class Photo(models.Model):
     DAYTIME = 'daytime'
     NIGHTTIME = 'nighttime'
     MULTIVERSE = 'multiverse'
-    INTERNET_GIFS = 'internet_gifs'
+    INTERNET_GIFS = 'internet in motion'
     CATEGORIES = (
         (PORTFOLIO, 'Portfolio'),
         (DAYTIME, 'Daytime'),
@@ -88,7 +88,7 @@ class Photo(models.Model):
     )
 
     category = models.CharField(
-        max_length = 10,
+        max_length = 20,
         blank = False,
         choices = CATEGORIES,
         default = PORTFOLIO
@@ -107,7 +107,7 @@ class Photo(models.Model):
         blank = True
     )
     fragment_identifier = models.CharField(
-        max_length = 20,
+        max_length = 41,
         unique = True
     )
     title = models.CharField(
@@ -185,6 +185,10 @@ class Photo(models.Model):
             os.path.basename(str(self.image))
         )
 
+    @property
+    def get_image_type(self):
+        return imghdr.what(self.get_image_abspath())
+
     def get_image_thumbnails_abspaths(self):
         abspaths = {}
         for dirname in THUMBNAILS_DIRNAMES:
@@ -228,10 +232,11 @@ class Photo(models.Model):
         for dirname in THUMBNAILS_DIRNAMES:
             thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
 
+            command = ("convert " + self.cached_image_path + " -resize " + 
+                dirname + " " + thumbnail_path)
+
             # ImageMagick; New thumb size is also its directory name
-            os.system("convert " + self.cached_image_path + " -resize " + 
-                dirname + " " + thumbnail_path
-            )
+            os.system(command)
 
     def generate_image_xmp_metadata(self):
         metadata = pyexiv2.ImageMetadata(self.cached_image_path)

@@ -147,12 +147,15 @@ class PhotoAdmin(admin.ModelAdmin):
 		# image upload & records updates
 		object.save()
 
-		# pyexiv2 does not work for gifs & no need for thumbs
-		if imghdr.what(object.cached_image_path) != "gif":
-			
-			if make_thumbnails:
-				object.generate_thumbnails()
+		is_gif = False
+		if imghdr.what(object.cached_image_path) == "gif":
+			is_gif = True
+		
+		if make_thumbnails:
+			object.generate_thumbnails(is_gif)
 
+		# pyexiv2 doesn't work with the gif format
+		if imghdr.what(object.cached_image_path) != "gif":
 			object.generate_image_xmp_metadata()
 		
 admin.site.register(Photo, PhotoAdmin)

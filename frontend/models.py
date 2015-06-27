@@ -46,7 +46,7 @@ class Photo(models.Model):
     DAYTIME = 'daytime'
     NIGHTTIME = 'nighttime'
     MULTIVERSE = 'multiverse'
-    INTERNET_GIFS = 'internet in motion'
+    INTERNET_GIFS = 'internet_in_motion'
     CATEGORIES = (
         (PORTFOLIO, 'Portfolio'),
         (DAYTIME, 'Daytime'),
@@ -226,17 +226,27 @@ class Photo(models.Model):
 
         return available_metadata
 
-    def generate_thumbnails(self):
+    # convert is ImageMagick
+    def generate_thumbnails(self, is_gif=False):
         filename = os.path.basename(self.cached_image_path)
+        source = self.cached_image_path
 
         for dirname in THUMBNAILS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
+            if is_gif and dirname != 'x200': continue
 
-            command = ("convert " + self.cached_image_path + " -resize " + 
-                dirname + " " + thumbnail_path)
+            new_size = dirname
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname)
 
-            # ImageMagick; New thumb size is also its directory name
-            os.system(command)
+            if is_gif:
+                target = os.path.join(thumbnail_path, "temporary-" + filename)
+                os.system("convert " + source + " -coalesce " + target)
+                source = target
+            
+            target = os.path.join(thumbnail_path, filename)
+            os.system("convert " + source + " -resize " + new_size + " " + target)
+
+            if is_gif and os.path.exists(source):
+                    os.remove(source)
 
     def generate_image_xmp_metadata(self):
         metadata = pyexiv2.ImageMetadata(self.cached_image_path)

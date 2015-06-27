@@ -32,7 +32,7 @@ urlpatterns = patterns('',
     url(r'^artcile/(?P<category>[\w\-]{1,10})/(?P<article>[\w\-]{1,30})$', 'frontend.views.article', name='article'),
 
     url(r'^photos/$', 'frontend.views.photos', name='photos'),
-    url(r'^photos/gallery/(?P<category>[\w\ ]{1,20})/$', 'frontend.views.gallery', name='gallery'),
+    url(r'^photos/gallery/(?P<category>[\w\_]{1,20})/$', 'frontend.views.gallery', name='gallery'),
     url(r'^photos/slideshow/(?P<category>[\w]{1,20})/(?P<fragment_id>[\w\-._]{1,41})/$', 'frontend.views.slideshow', name='slideshow'),
 
     url(r'^videos/$', 'frontend.views.videos', name='videos'),

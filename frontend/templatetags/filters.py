@@ -38,3 +38,7 @@ def imageHeight(abspath):
 	with open(abspath, 'rb') as imagefile:
 		data = imagefile.read()
 		return utils.get_image_info(data)[2]
+
+@register.filter
+def underscores_to_spaces(text):
+	return text.replace("_", " ")

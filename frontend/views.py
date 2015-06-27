@@ -34,6 +34,7 @@ VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
 ie_useragent_tags = ["msie", "trident"]
 
 def detect_mobile(initial_view):
+
     def wrapped_view(request, *args, **kwargs):
         if request.mobile or "m.kedfilms.com" in request.get_host():
             calling_template = initial_view.func_name
@@ -71,6 +72,16 @@ def detect_mobile(initial_view):
     # return what is returned from the wrapped_view()
     return wrapped_view
 
+def detect_old_browsers(initial_view):
+
+    def wrapped_view(request, *args, **kwargs):
+        if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
+            return render(request, "frontend/errors/old-browser.html")
+
+        return initial_view(request, *args, **kwargs)
+
+    return wrapped_view
+
 def get_home_args():
     skills_categories = []
     skills = Skill.objects.all()
@@ -83,12 +94,14 @@ def get_home_args():
         "skills": Skill.objects.all()
     }
 
+@detect_old_browsers
 def home(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         return render(request, "frontend/mobile/home.html", get_home_args())
 
     return render(request, "frontend/desktop/home.html", get_home_args())
 
+@detect_old_browsers
 def articles(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/articles.html"
@@ -101,6 +114,7 @@ def articles(request):
             "html": utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/quick-tips/gpg.md"))
         })
 
+@detect_old_browsers
 def article(request, category=None, article=None):
     if not article or not category:
         raise Http404
@@ -118,6 +132,7 @@ def article(request, category=None, article=None):
 
     return render(request, template, { "html": html })
 
+@detect_old_browsers
 def photos(request):
     categories = Photo.CATEGORIES
     
@@ -137,6 +152,7 @@ def photos(request):
         'categories': categories
     })
 
+@detect_old_browsers
 def gallery(request, category):
     if not os.path.exists(IMAGES_ROOT):
         return Http404
@@ -167,6 +183,7 @@ def gallery(request, category):
             "next": photo.get_next_category(category)
         })
 
+@detect_old_browsers
 def slideshow(request, category=None, fragment_id=None):
     if not any(unique_category['category'] == category 
         for unique_category in Photo.objects.all().values('category').distinct()
@@ -192,10 +209,8 @@ def slideshow(request, category=None, fragment_id=None):
                 category = category).order_by('-date_created')
         })
 
+@detect_old_browsers
 def videos(request):
-    if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
-        return render(request, "frontend/errors/old-browser.html")
-
     if not os.path.exists(VIDEOS_ROOT):
         raise Http404
 

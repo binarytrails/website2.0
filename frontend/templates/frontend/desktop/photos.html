@@ -15,7 +15,11 @@
             <a href="/photos/gallery/{{ category.0 }}/#head">
                 <section>
                     <hr></hr>
-                    <header>
+                    {% if forloop.counter == 1 %}
+                        <header style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#E0645F' '#9250A6' as bgcolors %};">
+                    {% else %}
+                        <header style="color: {% cycle bgcolors %};">
+                    {% endif %}
                         {{ category.1 }}
                     </header>
                     <hr></hr>

@@ -119,14 +119,22 @@ def article(request, category=None, article=None):
     return render(request, template, { "html": html })
 
 def photos(request):
+    categories = Photo.CATEGORIES
+    
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/photos.html"
+
+        # omit the 'internet in motion' aka the #4 section.
+        categories = [tuple(x for x in y if x)
+            for y in categories if y != categories[4]
+        ]
+
     else:
         template = "frontend/desktop/photos.html"
     
     return render(request, template,
     {
-        'categories': Photo.CATEGORIES
+        'categories': categories
     })
 
 def gallery(request, category):

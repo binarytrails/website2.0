@@ -17,7 +17,7 @@
 	The admin panel is for developing only.
 """
 
-import pyexiv2
+import pyexiv2, imghdr
 from datetime import date
 
 from django.contrib import admin
@@ -135,6 +135,8 @@ class PhotoAdmin(admin.ModelAdmin):
 		if make_thumbnails:
 			object.generate_thumbnails()
 
-		object.generate_image_xmp_metadata()
+		# pyexiv2 does not work for gifs
+		if imghdr.what(object.cached_image_path) != "gif":
+			object.generate_image_xmp_metadata()
 		
 admin.site.register(Photo, PhotoAdmin)

@@ -46,11 +46,13 @@ class Photo(models.Model):
     DAYTIME = 'daytime'
     NIGHTTIME = 'nighttime'
     MULTIVERSE = 'multiverse'
+    INTERNET_GIFS = 'internet_gifs'
     CATEGORIES = (
         (PORTFOLIO, 'Portfolio'),
         (DAYTIME, 'Daytime'),
         (NIGHTTIME, 'Nighttime'),
         (MULTIVERSE, 'Multiverse'),
+        (INTERNET_GIFS, 'Internet In Motion'),
     )
 
     # Add new authors here
@@ -59,12 +61,14 @@ class Photo(models.Model):
     ANDREI = 'Andrei Savin'
     SAND = 'Sandrine Allen'
     GUIDES = 'Guillaume Deshaies'
+    INTERNET = 'Internet'
     AUTHORS = (
         (SEVA, 'Vsevolod Ivanov'),
         (MELO, 'Melodie Verroeulst'),
         (ANDREI, 'Andrei Savin'),
         (SAND, 'Sandrine Allen'),
         (GUIDES, 'Guillaume Deshaies'),
+        (INTERNET, 'Internet'),
     )
 
     # Add new hardware here

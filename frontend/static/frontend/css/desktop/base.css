@@ -190,7 +190,6 @@
 		#header h1
 		{
 			cursor: default;
-			transition: all 2s;
 		}
 			#header h1:hover
 			{
@@ -228,7 +227,6 @@
 			font-size: 1.1em;
 			outline: 0;
 			color: #FFFFFF;
-			transition: all 0.5s;
 		}
 			#header #menu ul li a:hover
 			{

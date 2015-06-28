@@ -189,6 +189,7 @@
         #header h1
         {
             cursor: default;
+            transition: text-shadow 0.5s;
         }
             #header h1:hover
             {

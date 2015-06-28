@@ -24,15 +24,10 @@
     {
         background: #E8E8E6;
     }
-
-        #categories section
-        {
-            margin: 4em 0em;
-        }
-        
             #categories section header
             {
-                margin: 0.5em 0em 0.8em 0em;
+                font-size: 2.5em;
+                margin: 0.4em 0em 0.8em 0em;
             }
 
             #categories section hr

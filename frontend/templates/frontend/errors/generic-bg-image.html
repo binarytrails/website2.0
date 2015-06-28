@@ -2,14 +2,14 @@
 
 {% block content %}
 
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static "frontend/css/errors/generic-bg-image.css" %}">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/errors/generic-bg-image.css" %}">
 
-	<div id="main">
-		<header>{{ status }}</header>
-		<a href="{{ return_to }}">
-			<img src="{% static image_path %}"> </img>
-		</a>
-	</div>
+    <div id="main">
+        <header>{{ status }}</header>
+        <a href="{{ return_to }}">
+            <img src="{% static image_path %}"> </img>
+        </a>
+    </div>
 
 {% endblock %}

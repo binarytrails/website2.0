@@ -1,246 +1,246 @@
 /*********************************************************************************/
-/*	Header                                                                       */
+/*    Header                                                                       */
 /*********************************************************************************/
-	#header:target ~ #main
-	{
-		margin-top: 24em;
-	}
+    #header:target ~ #main
+    {
+        margin-top: 24em;
+    }
 
 /*********************************************************************************/
 /* Main                                                                          */
 /*********************************************************************************/
-	#main
-	{
-		position: absolute;
-		width: 100%;
-		height: auto;
+    #main
+    {
+        position: absolute;
+        width: 100%;
+        height: auto;
 
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
 
-		color: #E5E4E2;
+        color: #E5E4E2;
 
-		z-index: -1;
-		margin-top: 12em;
+        z-index: -1;
+        margin-top: 12em;
 
-		-moz-transition: all 0.6s ease-in-out;
-		-webkit-transition: all 0.6s ease-in-out;
-		transition: all 0.6s ease-in-out;
-		-o-transition: all 0.6s ease-in-out;
-		-ms-transition: all 0.6s ease-in-out;
-	}
+        -moz-transition: all 0.6s ease-in-out;
+        -webkit-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+    }
 
 /*********************************************************************************/
 /* Entry                                                                        */
 /*********************************************************************************/
-	#entry
-	{
-		position: relative;
-		width: 100%;
-		height: 30em;
+    #entry
+    {
+        position: relative;
+        width: 100%;
+        height: 30em;
 
-		padding: 10em 0 5em;
-		text-align: center;
+        padding: 10em 0 5em;
+        text-align: center;
 
-		/* color: #0C090A; */
-		/* #E5E4E2 */
-		background: #1F1C1C;
-	}
+        /* color: #0C090A; */
+        /* #E5E4E2 */
+        background: #1F1C1C;
+    }
 
-		#entry header
-		{
-			font-size: 4em;
-		}
+        #entry header
+        {
+            font-size: 4em;
+        }
 
-		#entry p
-		{
-			font-size: 3em;
-		}
+        #entry p
+        {
+            font-size: 3em;
+        }
 
 /*********************************************************************************/
 /* Abilities                                                                     */
 /*********************************************************************************/
-	#abilities
-	{
-		position: relative;
-		width: 100%;
-		height: auto;
+    #abilities
+    {
+        position: relative;
+        width: 100%;
+        height: auto;
 
-		margin-top: 0;
+        margin-top: 0;
 
-		/* color: #0C090A; */
-		/* #E9F5DC #E77471 #FFF380 #849FDC */
-		background: #1A1717;
-	}
+        /* color: #0C090A; */
+        /* #E9F5DC #E77471 #FFF380 #849FDC */
+        background: #1A1717;
+    }
 
-		#abilities header
-		{
-			font-size: 4em;
-			text-align: center;
-			padding-top: 2em;
-		}
+        #abilities header
+        {
+            font-size: 4em;
+            text-align: center;
+            padding-top: 2em;
+        }
 
-			#abilities #category header
-			{
-				font-size: 3em;
-				text-align: left;
+            #abilities #category header
+            {
+                font-size: 3em;
+                text-align: left;
 
-				cursor: default;
-				margin-left: 1em;
-				margin-bottom: 1.5em;
-			}
+                cursor: default;
+                margin-left: 1em;
+                margin-bottom: 1.5em;
+            }
 
-			#abilities-row
-			{
-				height: auto;
-				width: auto;
+            #abilities-row
+            {
+                height: auto;
+                width: auto;
 
-				font-size: 2em;
+                font-size: 2em;
 
-				margin: 0 2em;
-				overflow: hidden; /no-sense
-			}
+                margin: 0 2em;
+                overflow: hidden; /no-sense
+            }
 
-				div[id*="-ability"]
-				{
-					width: 40%;
-					cursor: default;
-				}
+                div[id*="-ability"]
+                {
+                    width: 40%;
+                    cursor: default;
+                }
 
-				@media all and (max-width: 50em)
-				{
-					div[id*="-ability"]
-					{
-						margin: 0 0 2em;
-					}
+                @media all and (max-width: 50em)
+                {
+                    div[id*="-ability"]
+                    {
+                        margin: 0 0 2em;
+                    }
 
-				}
-				
-				@media all and (min-width: 50em) and (max-width: 90em)
-				{
-					div[id*="-ability"]
-					{
-						margin: 0 1em 2em;
-					}
-				}
+                }
+                
+                @media all and (min-width: 50em) and (max-width: 90em)
+                {
+                    div[id*="-ability"]
+                    {
+                        margin: 0 1em 2em;
+                    }
+                }
 
-				#left-ability
-				{
-					float: left;
-				}
+                #left-ability
+                {
+                    float: left;
+                }
 
-				#right-ability
-				{
-					float: right;
-				}
+                #right-ability
+                {
+                    float: right;
+                }
 
-					#abilities #title
-					{
-						float: left;
-					}
+                    #abilities #title
+                    {
+                        float: left;
+                    }
 
-					#abilities #rating
-					{
-						float: right;
-					}
+                    #abilities #rating
+                    {
+                        float: right;
+                    }
 
-				@media all and (max-width: 90em)
-				{
-					#right-ability
-					{
-						text-align: right;
-					}
-					
-						#abilities #title, #rating
-						{
-							width: 100%;
-						}
-				}
+                @media all and (max-width: 90em)
+                {
+                    #right-ability
+                    {
+                        text-align: right;
+                    }
+                    
+                        #abilities #title, #rating
+                        {
+                            width: 100%;
+                        }
+                }
 
 /*********************************************************************************/
 /* Contact                                                                       */
 /*********************************************************************************/
-	#contact
-	{
-		position: absolute;
-		width: 100%;
-		height: auto;
+    #contact
+    {
+        position: absolute;
+        width: 100%;
+        height: auto;
 
-		margin-top: 0;
+        margin-top: 0;
 
-		/* #1E1E1E */
-		background: #0F0F0F;
-		text-align: center;
-	}
+        /* #1E1E1E */
+        background: #0F0F0F;
+        text-align: center;
+    }
 
-		#contact header
-		{
-			font-size: 4em;
-			padding-top: 2em;
-		}
+        #contact header
+        {
+            font-size: 4em;
+            padding-top: 2em;
+        }
 
-		#contact p
-		{
-			padding: 1em;
-			font-size: 3em;
-		}
+        #contact p
+        {
+            padding: 1em;
+            font-size: 3em;
+        }
 
-		#contact #logos
-		{
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			
-			padding: 4em 0em 10em;
+        #contact #logos
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            
+            padding: 4em 0em 10em;
 
-			-moz-transition: all 0.7s ease-in-out;
-			-webkit-transition: all 0.7s ease-in-out;
-			transition: all 0.7s ease-in-out;
-			-o-transition: all 0.7s ease-in-out;
-			-ms-transition: all 0.7s ease-in-out;
-		}
+            -moz-transition: all 0.7s ease-in-out;
+            -webkit-transition: all 0.7s ease-in-out;
+            transition: all 0.7s ease-in-out;
+            -o-transition: all 0.7s ease-in-out;
+            -ms-transition: all 0.7s ease-in-out;
+        }
 
-		@media all and (min-height: 30em)
-		{
-			#contact #logos
-			{
-				width: 100%;
-			}
-		}
+        @media all and (min-height: 30em)
+        {
+            #contact #logos
+            {
+                width: 100%;
+            }
+        }
 
-		@media all and (min-height: 30em) and (max-height: 70em)
-		{
-			#contact #logos
-			{
-				width: 75%;
-			}
-		}
+        @media all and (min-height: 30em) and (max-height: 70em)
+        {
+            #contact #logos
+            {
+                width: 75%;
+            }
+        }
 
-		@media all and (min-height: 70em) and (max-height: 90em)
-		{
-			#contact #logos
-			{
-				width: 50%;
-			}
-		}
+        @media all and (min-height: 70em) and (max-height: 90em)
+        {
+            #contact #logos
+            {
+                width: 50%;
+            }
+        }
 
-		@media all and (min-height: 90em)
-		{
-			#contact #logos
-			{
-				width: 25%;
-			}
-		}
+        @media all and (min-height: 90em)
+        {
+            #contact #logos
+            {
+                width: 25%;
+            }
+        }
 
-			#contact #logos img
-			{
-				width: 15%;
-			}
+            #contact #logos img
+            {
+                width: 15%;
+            }
 
-		#contact p.foot
-		{
-			font-size: 1.5em;
-			padding-bottom: 2em; 
-		}
+        #contact p.foot
+        {
+            font-size: 1.5em;
+            padding-bottom: 2em; 
+        }

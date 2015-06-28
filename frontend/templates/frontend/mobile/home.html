@@ -2,78 +2,78 @@
 
 {% block content %}
 
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static "frontend/css/mobile/home.css" %}">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/mobile/home.css" %}">
 
-	<div id="main">
-		<div id="entry">
-			<header>
-				Yours truly
-			</header>
-			<p>
-				I am a human being,</br> an amazing student & a freelancer.</br>
-				Art & minutiae are transparent in my projects.</br>
-				Opensource is a reality & Linux is a choice.</br>
-			</p>
-		</div>
-		
-		<div id="abilities">
-			<header>Abilities</header>
-			{% for category in skills_categories %}
-				<div id="category">
-					<header>
-						{{ category|title }}
-					</header>
-					<div id="abilities-row">
-						{% load filters %}
-						{% for skill in skills|in_category:category %}
+    <div id="main">
+        <div id="entry">
+            <header>
+                Yours truly
+            </header>
+            <p>
+                I am a human being,</br> an amazing student & a freelancer.</br>
+                Art & minutiae are transparent in my projects.</br>
+                Opensource is a reality & Linux is a choice.</br>
+            </p>
+        </div>
+        
+        <div id="abilities">
+            <header>Abilities</header>
+            {% for category in skills_categories %}
+                <div id="category">
+                    <header>
+                        {{ category|title }}
+                    </header>
+                    <div id="abilities-row">
+                        {% load filters %}
+                        {% for skill in skills|in_category:category %}
 
-							{% if forloop.counter|divisibleby:2 %}
-								<div id="right-ability">
-							{% else %} <!-- first -->
-								<div id="left-ability">
-							{% endif %}
-								
-								<div id="title">
-									{{ skill.title }}
-								</div>
-								<div id="rating">
-									{% load filters %}
-									{% for i in 5|times %}
-									    {% if i < skill.rating_on_five %}
-									        ★
-									    {% else %}
-									        ☆
-									    {% endif %}
-									{% endfor %}
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-			{% endfor %}
-			</br></br></br></br></br>
-		</div>
+                            {% if forloop.counter|divisibleby:2 %}
+                                <div id="right-ability">
+                            {% else %} <!-- first -->
+                                <div id="left-ability">
+                            {% endif %}
+                                
+                                <div id="title">
+                                    {{ skill.title }}
+                                </div>
+                                <div id="rating">
+                                    {% load filters %}
+                                    {% for i in 5|times %}
+                                        {% if i < skill.rating_on_five %}
+                                            ★
+                                        {% else %}
+                                            ☆
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </br></br></br></br></br>
+        </div>
 
-		<div id="contact">
-			<header>Contact</header>
-			<p>I'll be glad to heard of yours!</p>
-			<div id="logos">
-				<a href="https://www.github.com/sevaivanov">
-					<img src="{% static "frontend/img/logo/256x256/contoured-circle/github-white-circled.png" %}" title="Follow my developing progress!"/>
-				</a>
-				<a class="logo" href="mailto:sevaivanov@kedfilms.com">
-					<img src="{% static "frontend/img/logo/512x512/contoured-circle/email-white.png" %}" title="Write to me!"/>
-				</a>
-				<a href="{% static "frontend/gpg/seva-ivanov.key" %}">
-					<img class="logo" src="{% static "frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" %}" title="Encrypt your email! Public PGP Key"/>
-				</a>
-				<a href="https://www.blockchain.info/address/14wqPuHB1wL8kvyzgsUipNHLaSWBdMCGFB">
-					<img src="{% static "frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" %}" title="Make a donation! Bitcoin wallet address">
-				</a>
-			</div>
-			<p class="foot">Created by Seva Ivanov</p>
-		</div>
-	</div>
+        <div id="contact">
+            <header>Contact</header>
+            <p>I'll be glad to heard of yours!</p>
+            <div id="logos">
+                <a href="https://www.github.com/sevaivanov">
+                    <img src="{% static "frontend/img/logo/256x256/contoured-circle/github-white-circled.png" %}" title="Follow my developing progress!"/>
+                </a>
+                <a class="logo" href="mailto:sevaivanov@kedfilms.com">
+                    <img src="{% static "frontend/img/logo/512x512/contoured-circle/email-white.png" %}" title="Write to me!"/>
+                </a>
+                <a href="{% static "frontend/gpg/seva-ivanov.key" %}">
+                    <img class="logo" src="{% static "frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" %}" title="Encrypt your email! Public PGP Key"/>
+                </a>
+                <a href="https://www.blockchain.info/address/14wqPuHB1wL8kvyzgsUipNHLaSWBdMCGFB">
+                    <img src="{% static "frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" %}" title="Make a donation! Bitcoin wallet address">
+                </a>
+            </div>
+            <p class="foot">Created by Seva Ivanov</p>
+        </div>
+    </div>
 
 {% endblock %}

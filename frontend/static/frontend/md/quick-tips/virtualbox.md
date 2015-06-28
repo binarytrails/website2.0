@@ -43,12 +43,12 @@ They should be mounted as [read-only] and you should only be able to execute the
 
 You must boot virtualbox as root to have access to [sdX] or play with privileges.
 
-	VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
+    VBoxManage internalcommands createrawvmdk -filename usb_sdc.vmdk -rawdisk /dev/sdc
 
 
 ## Debian Guess Additions image location
 
-	ls -l /usr/share/virtualbox/VboxGuestAdditions.iso
+    ls -l /usr/share/virtualbox/VboxGuestAdditions.iso
 
 
 ## Usb not detected
@@ -56,18 +56,18 @@ You must boot virtualbox as root to have access to [sdX] or play with privileges
 1. Install the extension pack
 2. Add your user to vboxusers
 
-		groups roger
-		  adduser roger vboxusers
+        groups roger
+          adduser roger vboxusers
 
 
 ## Kernel driver not installed (rc=-1908)
 
-	apt-get install dkms
-	  /etc/init.d/vboxdrv setup
+    apt-get install dkms
+      /etc/init.d/vboxdrv setup
 
 
 ## Resize screen dimentions by hand
 
-	vboxmanage setextradata "roger-vm" "CustomVideoMode1" "1366x768x32"
+    vboxmanage setextradata "roger-vm" "CustomVideoMode1" "1366x768x32"
 
 <p class="footer">The happiest ending</p>

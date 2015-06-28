@@ -6,48 +6,48 @@ Basic utilities for monitoring
 
 ## Run-level a.k.a. boot manager
 
-		sysv-rc-conf
+        sysv-rc-conf
 
 
 ## What is going on?
 
 [top] is a great tool but a little fade on colors and interactivity...
 
-		htop
+        htop
 
 
 ## Disk space
 
 Filesystems disk space usage
 
-		df -h
+        df -h
 
 Estimate directories space usage in [h]uman & [s]ummarized
 
-		du -hs
+        du -hs
 
 
 ## Ip information
 
-		traceroute www.google.com
-		whois www.google.com | less
+        traceroute www.google.com
+        whois www.google.com | less
 
 
 ## Network statistics
 
 Network statistics of upload & download rates
 
-		vnstat -i wlan0
+        vnstat -i wlan0
 
 
 ## Mount ssh directory
 
 [mount]
 
-		sshfs roger@ipaddr:/home/toto /mnt/roger/
+        sshfs roger@ipaddr:/home/toto /mnt/roger/
 
 [umount]
 
-		fusermount -u mountpoint
+        fusermount -u mountpoint
 
 <p class="footer">The happiest ending</p>

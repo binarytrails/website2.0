@@ -25,20 +25,20 @@ def times(number):
 
 @register.filter
 def in_category(objects, category):
-	return objects.filter(category = category)
+    return objects.filter(category = category)
 
 @register.filter
 def imageWidth(abspath):
-	with open(abspath, 'rb') as imagefile:
-		data = imagefile.read()
-		return utils.get_image_info(data)[1]
+    with open(abspath, 'rb') as imagefile:
+        data = imagefile.read()
+        return utils.get_image_info(data)[1]
 
 @register.filter
 def imageHeight(abspath):
-	with open(abspath, 'rb') as imagefile:
-		data = imagefile.read()
-		return utils.get_image_info(data)[2]
+    with open(abspath, 'rb') as imagefile:
+        data = imagefile.read()
+        return utils.get_image_info(data)[2]
 
 @register.filter
 def underscores_to_spaces(text):
-	return text.replace("_", " ")
+    return text.replace("_", " ")

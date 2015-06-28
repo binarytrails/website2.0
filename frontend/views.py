@@ -75,7 +75,6 @@ def detect_mobile(initial_view):
 def detect_old_browsers(initial_view):
 
     def wrapped_view(request, *args, **kwargs):
-        print request.META['HTTP_USER_AGENT'].lower()
         if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
             return render(request, "frontend/errors/old-browser.html")
 

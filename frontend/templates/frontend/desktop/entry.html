@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-	<meta charset="UTF-8">
-	<meta name="description" content="Kedfilms : Digital Arts & Programming">
-	<meta name="keywords" content="Kedfilms, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
-	<meta name="author" content="Vsevolod Ivanov">
+    <meta charset="UTF-8">
+    <meta name="description" content="Kedfilms : Digital Arts & Programming">
+    <meta name="keywords" content="Kedfilms, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
+    <meta name="author" content="Vsevolod Ivanov">
 
-	{% load static %}
+    {% load static %}
     {% get_static_prefix as STATIC %}
 
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/entry.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/entry.css">
 
-	<head>
-		<title>Kedfilms</title>
-	</head>
-	
-	<body>
-		<div id="main">
-			<div id="left">
-				<div id="container">
-					<header>Desktop Experience</header>
-					<a href="/home/">
-						<img src="{{ STATIC }}frontend/img/wallpapers/desktop.png"></img>
-					</a>
-				</div>
-			</div>
-			<div id="right">
-				<div id="container">
-					<header>Mobile Experience</header>
-					<a href="http://m.kedfilms.com">
-						<img src="{{ STATIC }}frontend/img/wallpapers/mobile.png"></img>
-					</a>
-				</div>
-			</div>
-		</div>
-	</body>
+    <head>
+        <title>Kedfilms</title>
+    </head>
+    
+    <body>
+        <div id="main">
+            <div id="left">
+                <div id="container">
+                    <header>Desktop Experience</header>
+                    <a href="/home/">
+                        <img src="{{ STATIC }}frontend/img/wallpapers/desktop.png"></img>
+                    </a>
+                </div>
+            </div>
+            <div id="right">
+                <div id="container">
+                    <header>Mobile Experience</header>
+                    <a href="http://m.kedfilms.com">
+                        <img src="{{ STATIC }}frontend/img/wallpapers/mobile.png"></img>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
 
 </html>

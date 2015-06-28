@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU GENERAL Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os, pyexiv2
+import os
+import pyexiv2
 from datetime import date
 
 from kedfilms import utils

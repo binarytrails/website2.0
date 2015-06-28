@@ -25,102 +25,102 @@ Well their documentation covers pretty much everything. I struggled in a few sec
 
 2. Take a [Simple Hosting](https://www.gandi.net/hosting/simple?language=python&db=mysql&grid=A) free testing instance for 5 days.
 
-	Afterwards, you can renew it for a year with 5$/month -> 30$/1st year = 60$ - 30$ with a first use discount.
+    Afterwards, you can renew it for a year with 5$/month -> 30$/1st year = 60$ - 30$ with a first use discount.
 
 3. Configure your instance
 
-	To enter your server via ssh, you have to activate via the web pannel.
+    To enter your server via ssh, you have to activate via the web pannel.
 
-		ls web/vhosts/default/
+        ls web/vhosts/default/
 
-	Here will be hosted your instance project. From this point you can read their [django-simple-hosting](http://wiki.gandi.net/en/simple/instance/python) documentation. It is important that you read it carefully. This part is crutial...
+    Here will be hosted your instance project. From this point you can read their [django-simple-hosting](http://wiki.gandi.net/en/simple/instance/python) documentation. It is important that you read it carefully. This part is crutial...
 
-	> You must use Git to commit and push this file to the instance for it to be used.
+    > You must use Git to commit and push this file to the instance for it to be used.
 
-	It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default [vhost] folder seen earlier.
+    It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default [vhost] folder seen earlier.
 
-		mkdir -p gandi/roger/default
-		cd gandi/roger/default
-		git init
-		git remote add origin ssh+git://12345@git.alien.gpaas.net/default.git
-		echo "hi" > test
-		git add test
-		git commit -m "test" test
-		git push origin master
-
-
-	One important thing to understand is that right now Gandi does not support Git submodules. It means that you can't create a repository for your simple hosting instance and put your github external repository with the [.git/] folder inside. Otherwise, it will commit an empty folder to your Gandi repository. I know, it means it is a sync party! You will have to sync your external Github repository to your local Gandi one by hand. You can achieve that with [rsync].
-
-		rsync -az source/ destination/
-
-	Add delete option to remove everything that is in [destination/] but not in the [source/].
-
-		rsync -az --delete source/ destination/
+        mkdir -p gandi/roger/default
+        cd gandi/roger/default
+        git init
+        git remote add origin ssh+git://12345@git.alien.gpaas.net/default.git
+        echo "hi" > test
+        git add test
+        git commit -m "test" test
+        git push origin master
 
 
-	For some reason, deploying code didn't work via the admim web pannel. Hence, to deploy your code from your Gandi Git repository to your web server, you must do it by handy hand.
+    One important thing to understand is that right now Gandi does not support Git submodules. It means that you can't create a repository for your simple hosting instance and put your github external repository with the [.git/] folder inside. Otherwise, it will commit an empty folder to your Gandi repository. I know, it means it is a sync party! You will have to sync your external Github repository to your local Gandi one by hand. You can achieve that with [rsync].
 
-		ssh 12345@git.alien.gpaas.net 'deploy default.git'
+        rsync -az source/ destination/
+
+    Add delete option to remove everything that is in [destination/] but not in the [source/].
+
+        rsync -az --delete source/ destination/
 
 
-	Assuming you /vhost/default looks like
+    For some reason, deploying code didn't work via the admim web pannel. Hence, to deploy your code from your Gandi Git repository to your web server, you must do it by handy hand.
 
-		default
-		  ├── requirements.txt
-		  ├── wsgi.py
-		  ├── static ──> myproject/myapp/static
-		  ├── myproject
-		  │   ├── myapp
-		  │   │   ├──static
-		  │   │   
-		  │   ├── manage.py
-		  │   │   
-		  │   ├── myproject
-		  │   │   ├── __init__.py
-		  │   │   ├── settings.py
-		  │   │   ├── urls.py
+        ssh 12345@git.alien.gpaas.net 'deploy default.git'
 
-	Your *wsgi.py* file should be
 
-		import os, sys
+    Assuming you /vhost/default looks like
 
-		django_project = os.path.abspath(os.path.join(os.path.dirname(__file__), 'myproject'))
-		sys.path.append(django_project)
+        default
+          ├── requirements.txt
+          ├── wsgi.py
+          ├── static ──> myproject/myapp/static
+          ├── myproject
+          │   ├── myapp
+          │   │   ├──static
+          │   │   
+          │   ├── manage.py
+          │   │   
+          │   ├── myproject
+          │   │   ├── __init__.py
+          │   │   ├── settings.py
+          │   │   ├── urls.py
 
-		os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
-		from django.core.wsgi import get_wsgi_application
-		application = get_wsgi_application()
+    Your *wsgi.py* file should be
 
-	To avoid messing with your project structure and let the Gandi Apache collect your static files, add a symbolic link in your *default/* to your static folder.
+        import os, sys
 
-			ln -s myproject/myapp/static static
+        django_project = os.path.abspath(os.path.join(os.path.dirname(__file__), 'myproject'))
+        sys.path.append(django_project)
 
-	</br>
-	[Domain-as-website](http://wiki.gandi.net/en/domains/management/domain-as-website)
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+        from django.core.wsgi import get_wsgi_application
+        application = get_wsgi_application()
 
-	It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest you the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads to the World Wide Web.
+    To avoid messing with your project structure and let the Gandi Apache collect your static files, add a symbolic link in your *default/* to your static folder.
 
-	Why should I use the Domain-as-website?
+            ln -s myproject/myapp/static static
 
-	>Gandi web forwarding server is serving a robots.txt file that you probably don't want.
+    </br>
+    [Domain-as-website](http://wiki.gandi.net/en/domains/management/domain-as-website)
 
-	Hence, my website wasn't indexed by google crawlers.
+    It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest you the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads to the World Wide Web.
 
-	Go to your gandi admin pannel under *Simple Hosting > Your Instance > Websites Section* and add your addresses to the vhosts & check the **DNS modification** box.
+    Why should I use the Domain-as-website?
 
-	Websites Section example:
+    >Gandi web forwarding server is serving a robots.txt file that you probably don't want.
 
-		Address (vhost) (2/2)
-		---------------------
-		webiste.com
-		www.website.com
+    Hence, my website wasn't indexed by google crawlers.
 
-	You have to insert into *myproject/settings.py*
+    Go to your gandi admin pannel under *Simple Hosting > Your Instance > Websites Section* and add your addresses to the vhosts & check the **DNS modification** box.
 
-		ALLOWED_HOSTS = ['website.com', 'www.website.com']
+    Websites Section example:
 
-	Otherwise you will get the **Internal Server Error**.
+        Address (vhost) (2/2)
+        ---------------------
+        webiste.com
+        www.website.com
 
-	There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea and read a book!
+    You have to insert into *myproject/settings.py*
+
+        ALLOWED_HOSTS = ['website.com', 'www.website.com']
+
+    Otherwise you will get the **Internal Server Error**.
+
+    There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea and read a book!
 
 <p class="footer">Everything else is explained very clearly in the Gandi.net documentation.</p>

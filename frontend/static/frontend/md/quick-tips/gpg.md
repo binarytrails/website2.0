@@ -23,18 +23,18 @@ Take a little breath... You will probably never get that far.
 
 I have to advise you to choose the RSA and RSA (for signing and encrypting) with a 4096 bit long key for an optimal security. Your name, email & comment can be anything you want depending on your needs. It is important to know that you won't be able to change them once your key is created.
 
-		gpg --gen-key
+        gpg --gen-key
 
 
 ## Encrypting
 
 The fastest way is to use echo directly.
 
-		echo "dear deer" | gpg --encrypt --armor --recipient "Roger"
+        echo "dear deer" | gpg --encrypt --armor --recipient "Roger"
 
 Another way is to use [more] to pass the file content to [gpg].
 
-		more message | gpg -e -a -r "Roger"
+        more message | gpg -e -a -r "Roger"
 
 In case you are using this method, it is very important that you understand 
 how to efficiently destroy your history file or the file. Do not use [rm], use [shred].
@@ -44,51 +44,51 @@ how to efficiently destroy your history file or the file. Do not use [rm], use [
 
 In this case you don't have to worry about file destruction (it is encrypted).
 
-		echo "-----BEGIN PGP MESSAGE-----
-		Version: GnuPG v1.4.12 (GNU/Linux)
+        echo "-----BEGIN PGP MESSAGE-----
+        Version: GnuPG v1.4.12 (GNU/Linux)
 
-		hQIMA8LsxNwWC0LgARAAhZgg+SyNc2SW2GHIclRNbl6534wnWmdrMkBK5LZXvirP
-		y1jbCMjSCcGY8kzkuQZ07KfFYv7uwCDcs7RFxgYUwV1O71egLnslG+FYAAA/EY0f
-		z4wJBJBtToIN/Ii83pvOvxchwKgynMyQ5/5mT8CFhuRsLrYrS/zxI7bnbAhETDep
-		jh3WTVTpg6Bz/rRGqyHVADSXJdrALNzd0fZG5yP+rksgB01SljjhIIAn9vvEzpTS
-		QAE26eH2Uz99e2xoRONU4Whs/+Jul9r3v8XLuGlyTIq5thLyCFqdaPQyNp7rFgPM
-		tsfiPEo94XJ4z+TFqanNjG8=
-		=L9Js
-		-----END PGP MESSAGE-----" | gpg --decrypt
+        hQIMA8LsxNwWC0LgARAAhZgg+SyNc2SW2GHIclRNbl6534wnWmdrMkBK5LZXvirP
+        y1jbCMjSCcGY8kzkuQZ07KfFYv7uwCDcs7RFxgYUwV1O71egLnslG+FYAAA/EY0f
+        z4wJBJBtToIN/Ii83pvOvxchwKgynMyQ5/5mT8CFhuRsLrYrS/zxI7bnbAhETDep
+        jh3WTVTpg6Bz/rRGqyHVADSXJdrALNzd0fZG5yP+rksgB01SljjhIIAn9vvEzpTS
+        QAE26eH2Uz99e2xoRONU4Whs/+Jul9r3v8XLuGlyTIq5thLyCFqdaPQyNp7rFgPM
+        tsfiPEo94XJ4z+TFqanNjG8=
+        =L9Js
+        -----END PGP MESSAGE-----" | gpg --decrypt
 
 
 
 You can always export it to file by adding [> output]
 
-		echo "encrypted message" | gpg -d > output
+        echo "encrypted message" | gpg -d > output
 
 
 ## Exporting
 
-		gpg --export -a "Roger" > public.key
-		gpg --export-secret-key -a "Roger" > private.key
+        gpg --export -a "Roger" > public.key
+        gpg --export-secret-key -a "Roger" > private.key
 
 
 ## Importing
 
-		gpg --import public.key
-		gpg --allow-secret-key-import --import private.key
+        gpg --import public.key
+        gpg --allow-secret-key-import --import private.key
 
 
 ## Deletion
 
-		gpg --delete-key "Name"
-		gpg --delete-secret-key "Name"
+        gpg --delete-key "Name"
+        gpg --delete-secret-key "Name"
 
 
 ## Compress & Encrypt
 
-		tar czvpf - dir/ | gpg --symmetric --cipher-algo aes256 -o backup.tar.gz.gpg
+        tar czvpf - dir/ | gpg --symmetric --cipher-algo aes256 -o backup.tar.gz.gpg
 
 
 ## Decrypt & Extract
 
-		gpg -d backup.tar.gz.gpg | tar xzvf -
+        gpg -d backup.tar.gz.gpg | tar xzvf -
 
 
 <p class="footer">I haven't covered the key revocation topic. </br>For more privacy, go ahead and read about Tor, I2P & Tails operative system</p>

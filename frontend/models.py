@@ -17,7 +17,8 @@
     unique constraints are used because multiple primary keys aren't supported.
 """
 
-import os, shutil, pyexiv2, imghdr
+import pyexiv2
+import os, shutil, imghdr
 from datetime import date
 
 from kedfilms import utils

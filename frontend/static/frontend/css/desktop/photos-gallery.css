@@ -1,92 +1,92 @@
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
-	body
-	{
-		height: 100%;
-		background: #E8E8E6;
-	}
+    body
+    {
+        height: 100%;
+        background: #E8E8E6;
+    }
 
-	#main
-	{
-		margin: 1.5em 0em;
-	}
+    #main
+    {
+        margin: 1.5em 0em;
+    }
 
-	#header
-	{
-		margin-bottom: 0em;
-	}
+    #header
+    {
+        margin-bottom: 0em;
+    }
 
 /*********************************************************************************/
 /* Photos                                                                        */
 /*********************************************************************************/
-	#photos
-	{
-		background: #E8E8E6;
-	}
+    #photos
+    {
+        background: #E8E8E6;
+    }
 
-		#photos section
-		{
-			margin: 4em 0em;
-		}
-		
-			#photos section > header
-			{
-				margin: 0.5em 0em 0.8em 0em;
-			}
+        #photos section
+        {
+            margin: 4em 0em;
+        }
+        
+            #photos section > header
+            {
+                margin: 0.5em 0em 0.8em 0em;
+            }
 
-			#photos section > hr
-			{
-				border-top: solid 1px #777777;
-				margin: 0em 15em;
-			}
+            #photos section > hr
+            {
+                border-top: solid 1px #777777;
+                margin: 0em 15em;
+            }
 
-		#photos ul 
-		{
-			text-align: center;
-		}
+        #photos ul 
+        {
+            text-align: center;
+        }
 
-			#photos ul > li 
-			{
-				display: inline-block;
-			}
+            #photos ul > li 
+            {
+                display: inline-block;
+            }
 
 /*********************************************************************************/
 /* Return                                                                        */
 /*********************************************************************************/
-	#return
-	{
-		position: absolute;
+    #return
+    {
+        position: absolute;
 
-		width: 8em;
-		height: 8em;
-		border-radius: 5em;
+        width: 8em;
+        height: 8em;
+        border-radius: 5em;
 
-		top: 36.5em;
-		z-index: 20;
+        top: 36.5em;
+        z-index: 20;
 
-		margin: 0.4em;
-		overflow: hidden;
+        margin: 0.4em;
+        overflow: hidden;
 
-		transition: all 1s;
-	}
+        transition: all 1s;
+    }
 
-	#return.left
-	{
-		left: 2em;
-	}
+    #return.left
+    {
+        left: 2em;
+    }
 
-	#return.right
-	{
-		right: 2em;
-	}
+    #return.right
+    {
+        right: 2em;
+    }
 
-		#return img
-		{
-			height: 100%;
-			width: 100%;
+        #return img
+        {
+            height: 100%;
+            width: 100%;
 
-			border-radius: 4em;
+            border-radius: 4em;
 
-			transition: all 1s;
-		}
+            transition: all 1s;
+        }

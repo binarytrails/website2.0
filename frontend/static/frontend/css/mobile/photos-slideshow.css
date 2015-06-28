@@ -1,28 +1,28 @@
 /*********************************************************************************/
 /* Main                                                                          */
 /*********************************************************************************/
-	#main
-	{
-		position: absolute;
+    #main
+    {
+        position: absolute;
 
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
 
-		background: #141212;
-	}
+        background: #141212;
+    }
 
-		#main img
-		{
-			position: absolute;
-			max-width: 95%;
-			max-height: 95%;
+        #main img
+        {
+            position: absolute;
+            max-width: 95%;
+            max-height: 95%;
 
-			top: 2.5%;
-			right: 2.5%;
-			bottom: 2.5%;
-			left: 2.5%;
+            top: 2.5%;
+            right: 2.5%;
+            bottom: 2.5%;
+            left: 2.5%;
 
-			margin: auto;
-		}
+            margin: auto;
+        }

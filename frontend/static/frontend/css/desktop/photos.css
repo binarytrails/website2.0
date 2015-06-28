@@ -1,42 +1,42 @@
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
-	body
-	{
-		height: 100%;
-		background: #E8E8E6;
-	}
+    body
+    {
+        height: 100%;
+        background: #E8E8E6;
+    }
 
-	#main
-	{
-		margin: 1.5em 0em;
-	}
+    #main
+    {
+        margin: 1.5em 0em;
+    }
 
-	#header
-	{
-		margin-bottom: 0em;
-	}
+    #header
+    {
+        margin-bottom: 0em;
+    }
 
 /*********************************************************************************/
 /* Photos                                                                        */
 /*********************************************************************************/
-	#categories
-	{
-		background: #E8E8E6;
-	}
+    #categories
+    {
+        background: #E8E8E6;
+    }
 
-		#categories section
-		{
-			margin: 4em 0em;
-		}
-		
-			#categories section header
-			{
-				margin: 0.5em 0em 0.8em 0em;
-			}
+        #categories section
+        {
+            margin: 4em 0em;
+        }
+        
+            #categories section header
+            {
+                margin: 0.5em 0em 0.8em 0em;
+            }
 
-			#categories section hr
-			{
-				border-top: solid 1px #777777;
-				margin: 0em 15em;
-			}
+            #categories section hr
+            {
+                border-top: solid 1px #777777;
+                margin: 0em 15em;
+            }

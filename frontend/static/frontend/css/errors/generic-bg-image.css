@@ -1,33 +1,33 @@
-	#main
-	{
-		position: absolute;
-		overflow: hidden;
-		width: 100%;
-		height: 100%;
+    #main
+    {
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
 
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 
-		#main header
-		{
-			position: absolute;
-			text-align: center;
+        #main header
+        {
+            position: absolute;
+            text-align: center;
 
-			font-size: 5em;
-			color: #1E1E1E;
-			text-shadow: 0 0 15px white;
+            font-size: 5em;
+            color: #1E1E1E;
+            text-shadow: 0 0 15px white;
 
-			left:0;
-			right:0;
-			margin-left:auto;
-			margin-right:auto;
-		}
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+        }
 
-		#main a > img
-		{
-			width: 100%;
-			height: 100%;
-		}
+        #main a > img
+        {
+            width: 100%;
+            height: 100%;
+        }

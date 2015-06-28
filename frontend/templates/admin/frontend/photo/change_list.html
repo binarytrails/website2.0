@@ -1,13 +1,13 @@
 {% extends "admin/change_list.html" %}
 {% block object-tools-items %}
-	<form style="margin-top: -1em;" action="import_photos/" method="post" enctype="multipart/form-data">
-    	{% csrf_token %}
-		<input type="submit" value="Import">
-		<select name="category">
-		{% for key, value in categories %}
-			<option value="{{ key }}">{{ value }}</option>
-		{% endfor %}
-		</select>
-		<input name="photos" type="file" multiple />
-	</form>
+    <form style="margin-top: -1em;" action="import_photos/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" value="Import">
+        <select name="category">
+        {% for key, value in categories %}
+            <option value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+        </select>
+        <input name="photos" type="file" multiple />
+    </form>
 {% endblock %}

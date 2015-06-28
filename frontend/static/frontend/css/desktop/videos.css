@@ -1,121 +1,121 @@
 /*********************************************************************************/
 /* Basic                                                                         */
 /*********************************************************************************/
-	body
-	{
-		height: 100%;
-		background: #E8E8E6;
-	}
+    body
+    {
+        height: 100%;
+        background: #E8E8E6;
+    }
 
-	#header, #tweet, #main
-	{
-		margin: 0em;
-	}
+    #header, #tweet, #main
+    {
+        margin: 0em;
+    }
 
-	#main
-	{
-		width: auto;
-		background: white;
-	}
+    #main
+    {
+        width: auto;
+        background: white;
+    }
 
 /*********************************************************************************/
 /* Videos                                                                        */
 /*********************************************************************************/
 
-	#videos
-	{
-		height: auto;
-		width: auto;
-	}
+    #videos
+    {
+        height: auto;
+        width: auto;
+    }
 
-		#videos section
-		{
-			height: auto;
-			width: 100%;
+        #videos section
+        {
+            height: auto;
+            width: 100%;
 
-			background: #282828;
-			border-top: solid 1px #ddd;
-			text-align: left;
+            background: #282828;
+            border-top: solid 1px #ddd;
+            text-align: left;
 
-			margin: 0em;
-			padding: 3em 0em;
-		}
+            margin: 0em;
+            padding: 3em 0em;
+        }
 
-			#videos section > header
-			{
-				margin-top: 1em;
-				width: 75%;
-				margin-left: 12.5%;
-			}
+            #videos section > header
+            {
+                margin-top: 1em;
+                width: 75%;
+                margin-left: 12.5%;
+            }
 
-			#videos section > hr
-			{
-				border-top: solid 1px #777777;
-				width: 70%;
-				margin-left: 15%;
-			}
+            #videos section > hr
+            {
+                border-top: solid 1px #777777;
+                width: 70%;
+                margin-left: 15%;
+            }
 
-			#container
-			{
-				text-align: center;
-				margin: 4em auto;
-			}
+            #container
+            {
+                text-align: center;
+                margin: 4em auto;
+            }
 
-			#wrapper
-			{
-				display: inline-block;
-				height: 20em;
-				width: 30%;
-				margin: 1.4%;
-				background: white;
-			}
+            #wrapper
+            {
+                display: inline-block;
+                height: 20em;
+                width: 30%;
+                margin: 1.4%;
+                background: white;
+            }
 
-				#wrapper > video, #wrapper > iframe
-				{
-					height: 100%;
-					width: 100%;
-					z-index: 1;
-				}
+                #wrapper > video, #wrapper > iframe
+                {
+                    height: 100%;
+                    width: 100%;
+                    z-index: 1;
+                }
 
 /*********************************************************************************/
 /* Details                                                                       */
 /*********************************************************************************/
-	#details
-	{
-		position: absolute;
-		height: 1.8em;
-		width: 30%;
-		z-index: 2;
+    #details
+    {
+        position: absolute;
+        height: 1.8em;
+        width: 30%;
+        z-index: 2;
 
-		opacity: 0.5;
-		overflow: hidden;
+        opacity: 0.5;
+        overflow: hidden;
 
-		background: black;
-		box-shadow: 0 0 10px black;
+        background: black;
+        box-shadow: 0 0 10px black;
 
-		transition: all 1.5s;
-	}
-		#details:hover
-		{
-			height: 20em;
-			opacity: 0.93;
-		}
+        transition: all 1.5s;
+    }
+        #details:hover
+        {
+            height: 20em;
+            opacity: 0.93;
+        }
 
-		#details > header
-		{
-			text-shadow: 0 0 0.3px white;
-		}
+        #details > header
+        {
+            text-shadow: 0 0 0.3px white;
+        }
 
-		#details ul
-		{
-			text-align: left;
-		}
+        #details ul
+        {
+            text-align: left;
+        }
 
-			#details ul > li
-			{
-				transition: text-shadow 0.5s;
-			}
-				#details ul > li:hover
-				{
-					text-shadow: 0 0 8px white;
-				}
+            #details ul > li
+            {
+                transition: text-shadow 0.5s;
+            }
+                #details ul > li:hover
+                {
+                    text-shadow: 0 0 8px white;
+                }

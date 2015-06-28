@@ -1,0 +1,103 @@
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+	#main
+	{
+		position: relative;
+		margin: 2em;
+		font-size: 1.1em;
+
+		padding: 2em;
+
+		color: #E5E4E2;
+		background: #282828;
+	}
+
+		#main h1.header
+		{
+			margin: 1em 0;
+			font-size: 3em;
+		}
+
+		#main p.footer
+		{
+			font-style: italic;
+			margin: 6em 0 3em; 
+		}
+
+		#main h1, #main h2, #main h3,
+		#main h4, #main h5, #main h6, ol
+		{
+			margin: 2em 0 1em;
+		}
+
+		#main h1 
+		{
+			font-size: 2.6em;
+		}
+		#main h2 
+		{
+			font-size: 2.2em;
+		}
+
+		#main h3 
+		{
+			font-size: 2em;
+		}
+
+		#main a
+		{
+			color: #98AFC7;
+		}
+
+		#main strong, #main em
+		{
+			color: #E18B6B;
+		}
+
+		#main p
+		{
+			font-size: 1em;
+			text-align: justify;
+			margin: 1.5em 0;
+		}
+
+		#main img
+		{
+			width: 50%;
+		}
+
+		#main pre
+		{
+			padding: 1em;
+			overflow: auto;
+			background: #565051;
+			box-shadow: 0 0 4px white;
+		}
+
+			#main pre > code
+			{
+			}
+
+		#main ol li > p,
+		#main ol li > pre
+		{
+		}
+
+		table
+		{
+			margin: 1.5em 0;
+		}
+
+			table th, table td
+			{
+				padding: 1em;
+			}
+
+		blockquote
+		{
+			font-style: italic;
+			margin: 1em 0em;
+			border-left: 10px solid white;
+			padding: 0.5em 1em;
+		}

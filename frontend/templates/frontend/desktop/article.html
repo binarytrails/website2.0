@@ -1,11 +1,17 @@
-{% extends "frontend/desktop/article_base.html" %}
+{% extends "frontend/desktop/base.html" %}
 
-{% block article %}
+{% block content %}
 
-    {% autoescape off %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "frontend/css/desktop/article.css" %}">
 
-        {{ html }}
+    <div id="main">
+    	<a id="head"></a>
+		{% autoescape off %}
 
-    {% endautoescape %}
+			{{ html }}
 
-{% endblock article %}
+		{% endautoescape %}
+	</div>
+
+{% endblock content %}

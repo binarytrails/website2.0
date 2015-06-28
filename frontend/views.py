@@ -75,6 +75,7 @@ def detect_mobile(initial_view):
 def detect_old_browsers(initial_view):
 
     def wrapped_view(request, *args, **kwargs):
+        print request.META['HTTP_USER_AGENT'].lower()
         if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
             return render(request, "frontend/errors/old-browser.html")
 
@@ -105,14 +106,10 @@ def home(request):
 def articles(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/articles.html"
-        return render(request, template)
     else:
-        template = "frontend/desktop/article.html"
+        template = "frontend/desktop/articles.html"
  
-        return render(request, template,
-        {
-            "html": utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/quick-tips/gpg.md"))
-        })
+    return render(request, template)
 
 @detect_old_browsers
 def article(request, category=None, article=None):

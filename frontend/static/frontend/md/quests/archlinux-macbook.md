@@ -344,6 +344,14 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
         # <name>       <device>                                     <password>              <options>
         crypthome      UUID=00000a00-a0a0-0000-aa00-0aaa0a00aaaa    none                    luks,timeout=60
 
+    Finally, update the fstab to mount it automatically during the boot as follows:
+
+        > cat /etc/fstab
+        # <file system>			<mount point>   <type>  	<options>       	<dump>  <pass>
+        ...
+        /dev/mapper/crypthome		/home		ext4		defaults		    0       2
+        ...
+
 13. Last notes
 
     If you're planning to use **wifi-menu** instead of the ethernet cable for further installations after booting into your system, you should install its dependencies right away.

@@ -58,7 +58,7 @@ Filesystem Type: FAT
 
 ## Partitionning
 
-We will use the **GPT-UEFI** model that is opposed to MBR-BIOS one. 
+We will use the **GPT-UEFI** model that is opposed to the MBR-BIOS one. 
 
 *If you are not running a computer with EFI this partitionning model is not relevent to you.*
 
@@ -115,13 +115,13 @@ We will use the **GPT-UEFI** model that is opposed to MBR-BIOS one.
         </tr>
     </table>
 
-    If you are worrying about the root partition size, you must understand that your heavy personal files will be located at your /home partition. Hence, they won't be directly on your root. It is a good idea to use a separate home partition in order to protect your files during the maintenance of your system or in a scenario of a migration to a different distribution. That, I might say, is a very plausible scenario.
+    If you are worrying about the root partition size, you must understand that your heavy personal files will be located at your /home partition. Thus, they won't be directly on your root. It is a good idea to use a separate home partition in order to protect your files during the maintenance of your system or in a scenario of migration to a different distribution. That, I might say, is a very plausible scenario.
 
         > df -h
         Filesystem             Size  Used Avail Use% Mounted on
         /dev/mapper/cryptroot   50G   15G   32G  32% /
 
-    After 7 months on Arch Linux and a whole bunch on installs only 15G were used.
+    After 7 months on Arch Linux and a whole bunch on installs, only 15G were used.
 
         # cgdisk example
         First sector (2048, default = ...): [Enter]
@@ -338,7 +338,7 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
         /dev/mapper/crypthome: UUID="..." TYPE="ext4"
         ...
 
-    Copy the /dev/sdx4 UUID **not the /dev/mapper one** and past it to the /etc/crypttab file.
+    Copy the /dev/sdx4 UUID **not the /dev/mapper one** and paste it to the /etc/crypttab file.
 
         > cat /etc/crypttab
         # <name>       <device>                                     <password>              <options>

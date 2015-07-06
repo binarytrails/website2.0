@@ -36,64 +36,13 @@ The ArchLinux wiki is tremendous and the community on freenode servers is great.
 
 1. [Preparations](#preparations)
 
-    2.1 Determine the device.
-
-    2.2 Erase all of your partitions using cgdisk.
-
-    2.3 Follow the simple partitions model below and adapt it to your needs.
-
-    2.4 Format the partitions.
-
 2. [Installing the base system](#installing)
-
-    2.1 Installing the base system
-
-    2.2 Identifying partitions
-
-    2.3 Connecting to the system
-
-    2.4 Localtime
-
-    2.5 Language
-
-    2.6 Keyboard
-
-    2.7 Hostname
-
-    2.8 Getting a network connection
-
-    2.9 Pacman Time! No gaming allowed.
-
-    2.10 Configuring the early user space enviroment a.k.a. ramdisk
-
-    2.11 Configuring GRUB bootloader
-
-    2.12 Last notes
 
 3. [Configuring with finess using Gnome 3](#configuring)
 
-    3.1 Get your MacBook Arch drivers.
-    
-    3.2 Get Gnome 3.
-
-    3.3 Create & Configure a New User.
-
-    3.4 Configure the WIFI using AUR & package build.
-
-    3.5 Add transparency to windows.
-
 4. [Problem Solving](#problem-solving)
 
-    * Tweak Tool: Error on Global Dark Theme
-
-    * eog: Can't open jpeg photos
-
-    * modprobe: FATAL: Module wl not found.
-
-
 5. [Learn More](#learnmore)
-
-    * MBR VS GPT
 
 
 <a name="preparations"></a>
@@ -109,7 +58,11 @@ Filesystem Type: FAT
 
 ## Partitionning
 
-We will use the GPT - UEFI model.
+We will use the **GPT-UEFI** model that is opposed to MBR-BIOS one. 
+
+*If you are not running a computer with EFI this partitionning model is not relevent to you.*
+
+[Read More](https://wiki.archlinux.org/index.php/Arch_boot_process#Firmware_types)
 
 1. Determine the device.
 
@@ -127,7 +80,7 @@ We will use the GPT - UEFI model.
 
     [Read more](http://www.ibm.com/developerworks/library/l-linux-on-4kb-sector-disks/index.html)
 
-    We will encrypt our third root partition sdx3 and we won't use swap space for the hibernation.
+    We will encrypt our root and home partitions. We won't use swap space for the hibernation.
 
     <table>
         <tr>
@@ -150,12 +103,27 @@ We will use the GPT - UEFI model.
         </tr>
         <tr>
             <td>sdx3</td>
-            <td>The Rest</td>
+            <td>50G</td>
             <td>8300</td>
             <td>root</td>
         </tr>
+        <tr>
+            <td>sdx4</td>
+            <td>Rest</td>
+            <td>8300</td>
+            <td>home</td>
+        </tr>
     </table>
 
+    If you are worrying about the root partition size, you must understand that your heavy personal files will be located at your /home partition. Hence, they won't be directly on your root. It is a good idea to use a separate home partition in order to protect your files during the maintenance of your system or in a scenario of a migration to a different distribution. That, I might say, is a very plausible scenario.
+
+        > df -h
+        Filesystem             Size  Used Avail Use% Mounted on
+        /dev/mapper/cryptroot   50G   15G   32G  32% /
+
+    After 7 months on Arch Linux and a whole bunch on installs only 15G were used.
+
+        # cgdisk example
         First sector (2048, default = ...): [Enter]
         Size in sectors or {KMGTP} (default = ...): [Size]
         Current type is 8300 (Linux filesystem)
@@ -172,6 +140,7 @@ We will use the GPT - UEFI model.
         mkfs.vfat /dev/sdx1
         mkfs.ext2 /dev/sdx2
         mkfs.ext4 /dev/sdx3
+        mkfs.ext4 /dev/sdx4
 
     [Read more](https://help.ubuntu.com/community/LinuxFilesystemsExplained)
 
@@ -182,7 +151,9 @@ We will use the GPT - UEFI model.
         mkfs.ext4 /dev/mapper/cryptroot
         mount /dev/mapper/cryptroot /mnt
 
-    *The boot flag is not required with a GPT-UEFI model.*
+    Do the same with your home partition but mount it to /home.
+
+    > The boot flag is not required with a GPT-UEFI model.
 
 
 <a name="installing"></a>
@@ -316,7 +287,7 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
     [Read more](https://wiki.archlinux.org/index.php/Mkinitcpio)
 
-11. Configure GRUB bootloader
+11. Configure GRUB bootloader with encrypted root
 
         vim /etc/default/grub
 
@@ -355,7 +326,25 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
         
         vim -R grub.cnf
 
-12. Last notes
+12. Configure encrypted home with crypttab
+
+    > The /etc/crypttab (or, encrypted device table) file contains a list of encrypted devices that are to be unlocked when the system boots, similar to fstab. This file can be used for automatically mounting encrypted swap devices or secondary filesystems. It is read before fstab, so that dm-crypt containers can be unlocked before the filesystem inside is mounted. Note that crypttab is read after the system has booted, so it is not a replacement for unlocking via mkinitcpio hooks and boot loader options in the case of an encrypted root scenario. - [ArchWiki](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#crypttab).
+
+    Find the encrypted home partition UUID.
+
+        > blkid
+        ...
+        /dev/sda4: UUID="00000a00-a0a0-0000-aa00-0aaa0a00aaaa" TYPE="crypto_LUKS" PARTLABEL="life" PARTUUID="..."
+        /dev/mapper/crypthome: UUID="..." TYPE="ext4"
+        ...
+
+    Copy the /dev/sdx4 UUID **not the /dev/mapper one** and past it to the /etc/crypttab file.
+
+        > cat /etc/crypttab
+        # <name>       <device>                                     <password>              <options>
+        crypthome      UUID=00000a00-a0a0-0000-aa00-0aaa0a00aaaa    none                    luks,timeout=60
+
+13. Last notes
 
     If you're planning to use **wifi-menu** instead of the ethernet cable for further installations after booting into your system, you should install its dependencies right away.
 

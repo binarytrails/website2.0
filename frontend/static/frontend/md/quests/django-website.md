@@ -2,7 +2,7 @@
 </br>
 *31 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quests/django-website.md#host-django-website) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/django-website.md)
 
-# Gandi
+# [Gandi](https://www.gandi.net)
 
 ## Why choose it? 
 
@@ -10,7 +10,7 @@
 
 2. They do not store your credit card information.
 
-## [Simple Hosting Instance](https://www.gandi.net)
+## [Simple Hosting Instance](https://www.gandi.net/hosting/simple?language=python)
 
 ### How do I get started ?
 

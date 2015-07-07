@@ -1,25 +1,20 @@
-<h1 class="header">Host Django Website</h1>
+<h1 class="header">Django Cloud Hosting</h1>
 </br>
 *31 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quests/django-website.md#host-django-website) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/django-website.md)
 
-# Cloud hosting
+# Gandi
 
-## [Gandi](https://www.gandi.net)
-
-### Why choose it? 
+## Why choose it? 
 
 1. They have a great history of supporting freedoom and privacy on the internet. They [support](https://www.gandi.net/supports/) many projects, either financially, technically, administratively, or morally. 
 
-2. The documentation is almost perfect.
+2. They do not store your credit card information.
 
-3. The prices and discounts are just amazing.
-
-4. They do not store your credit card information.
-
+## [Simple Hosting Instance](https://www.gandi.net)
 
 ### How do I get started ?
 
-Well their documentation covers pretty much everything. I struggled in a few sections. This Quick Tip should help you get going after painful hours of misunderstanding!
+Well their documentation covers a good part. I struggled in a few sections. This section should help you get going after painful hours of misunderstanding!
 
 1. Buy a domain name
 
@@ -122,5 +117,11 @@ Well their documentation covers pretty much everything. I struggled in a few sec
     Otherwise you will get the **Internal Server Error**.
 
     There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea and read a book!
+    
+### Counterparts
+
+1. You can't add packages that are elsewhere than in Python Package Index (pip) repositories even if they are present in common distributions like pyexiv2. Thus, it is a headache to avoid certain libraries just because they're relying on external C ones.
+
+2. It seems that the instance has difficulties to deliver the appropriate webpage even after a reasonable delay when switching user agents in your browser.
 
 <p class="footer">Everything else is explained very clearly in the Gandi.net documentation.</p>

@@ -50,10 +50,15 @@ WARNING: If you move your project after creating your virtualenv it won't work a
         vim DJANGO/bin/activate
         # find VIRTUAL_ENV='old/path/DJANGO' and change the old path
 
+## Test it with mutiple devices 
 
-## Apache2 + mod_wsgi (testing only)
+When the server is listening on *0.0.0.0*, it is waiting for the requests on all available network interfaces. In other words, you're opening a port that can be accessed by external devices using your ip and the below port.
 
-Run apache2 + mod_wsgi server on your local network to test it with mutiple devices. Apache2 is on Debian. It is very similar to the normal apache layout.
+        ./manage runserver 0.0.0.0:8000
+
+## Debian Basic Server: Apache2 + mod_wsgi
+
+Apache2 is on Debian. It is very similar to the normal apache layout.
 
         apt-get install apache2 libapache2-mod-wsgi
 

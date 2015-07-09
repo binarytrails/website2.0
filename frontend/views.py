@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os, urllib2, markdown2
+import os
 
 from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
@@ -27,11 +27,6 @@ from django.conf import settings
 MEDIA_URL = settings.MEDIA_URL
 STATIC_ROOT = settings.STATIC_ROOT
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/"
-GITHUB_STATIC_URL = os.path.join(GITHUB_RAW_URL,
-    "sevaivanov/kedfilms/master/frontend/static/frontend/"
-)
 
 IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
 VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
@@ -121,19 +116,10 @@ def article(request, category=None, article=None):
         raise Http404
 
     article += ".md"
-    markdown_file_url = os.path.join(GITHUB_STATIC_URL, "md/", category, article)
-
-    try:
-        urllib2.urlopen(markdown_file_url)
-
-    except urllib2.HTTPError, e:
+    if os.path.isfile(os.path.join(STATIC_ROOT, "md/", category, article)) == False:
         raise Http404
 
-    except urllib2.URLError, e:
-        raise Http404
-
-    markdown_file = urllib2.urlopen(markdown_file_url)
-    html = markdown2.markdown(markdown_file.read())
+    html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
 
     if request.mobile or "m.kedfilms.com" in request.get_host():
         template = "frontend/mobile/article.html"

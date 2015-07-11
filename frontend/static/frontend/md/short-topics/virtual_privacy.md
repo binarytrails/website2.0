@@ -4,12 +4,12 @@
 
 Driving your car is a privilege not your privacy.
 
-Almost every email client i.e. Icedove & Thunderbird supports [gpg].
-This can make it very transparent in a daily based routine with some per-recipient rules.
-
 ## GNU Privacy Guard
 
 [Public-key cryptography](http://en.wikipedia.org/wiki/Public-key_cryptography)
+
+Almost every email client i.e. Icedove & Thunderbird supports [gpg].
+This can make it very transparent in a daily based routine with some per-recipient rules.
 
 ### How secure?
 

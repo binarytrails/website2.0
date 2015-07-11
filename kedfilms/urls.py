@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^$', 'frontend.views.home', name='home'),
 
     url(r'^articles/$', 'frontend.views.articles', name='articles'),
-    url(r'^artcile/(?P<category>[\w\-]{1,10})/(?P<article>[\w\-]{1,30})$', 'frontend.views.article', name='article'),
+    url(r'^artcile/(?P<category>[\w\-]{1,15})/(?P<article>[\w\-_]{1,30})$', 'frontend.views.article', name='article'),
 
     url(r'^photos/$', 'frontend.views.photos', name='photos'),
     url(r'^photos/gallery/(?P<category>[\w\_]{1,20})/$', 'frontend.views.gallery', name='gallery'),

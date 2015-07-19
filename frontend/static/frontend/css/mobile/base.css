@@ -169,3 +169,89 @@
                             width: 50%;
                             height: auto;
                         }
+
+/*********************************************************************************/
+/* Contact                                                                       */
+/*********************************************************************************/
+    #contact
+    {
+        position: absolute;
+        height: auto;
+        right: 0;
+        left: 0;
+
+        color: white;
+        background: #0F0F0F; /* #1E1E1E */
+        text-align: center;
+    }
+
+        #contact header
+        {
+            font-size: 4em;
+            padding-top: 2em;
+        }
+
+        #contact p
+        {
+            padding: 1em;
+            font-size: 3em;
+        }
+
+        #contact #logos
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            
+            padding: 4em 0em 10em;
+
+            -moz-transition: all 0.7s ease-in-out;
+            -webkit-transition: all 0.7s ease-in-out;
+            transition: all 0.7s ease-in-out;
+            -o-transition: all 0.7s ease-in-out;
+            -ms-transition: all 0.7s ease-in-out;
+        }
+
+        @media all and (min-height: 30em)
+        {
+            #contact #logos
+            {
+                width: 100%;
+            }
+        }
+
+        @media all and (min-height: 30em) and (max-height: 70em)
+        {
+            #contact #logos
+            {
+                width: 75%;
+            }
+        }
+
+        @media all and (min-height: 70em) and (max-height: 90em)
+        {
+            #contact #logos
+            {
+                width: 50%;
+            }
+        }
+
+        @media all and (min-height: 90em)
+        {
+            #contact #logos
+            {
+                width: 25%;
+            }
+        }
+
+            #contact #logos img
+            {
+                width: 15%;
+            }
+
+        #contact p.foot
+        {
+            font-size: 1.5em;
+            padding-bottom: 2em; 
+        }
+

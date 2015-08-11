@@ -17,6 +17,7 @@ import os
 
 from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
+from django.views.decorators.cache import never_cache
 
 from .models import Skill, Photo, Video
 from kedfilms import utils
@@ -94,6 +95,7 @@ def get_home_args():
         "skills": Skill.objects.all()
     }
 
+@never_cache
 @detect_old_browsers
 def home(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
@@ -101,6 +103,7 @@ def home(request):
 
     return render(request, "frontend/desktop/home.html", get_home_args())
 
+@never_cache
 @detect_old_browsers
 def articles(request):
     if request.mobile or "m.kedfilms.com" in request.get_host():
@@ -110,6 +113,7 @@ def articles(request):
  
     return render(request, template)
 
+@never_cache
 @detect_old_browsers
 def article(request, category=None, article=None):
     if not article or not category:
@@ -128,6 +132,7 @@ def article(request, category=None, article=None):
 
     return render(request, template, { "html": html })
 
+@never_cache
 @detect_old_browsers
 def photos(request):
     categories = Photo.CATEGORIES
@@ -148,6 +153,7 @@ def photos(request):
         'categories': categories
     })
 
+@never_cache
 @detect_old_browsers
 def gallery(request, category):
     if not os.path.exists(IMAGES_ROOT):
@@ -179,6 +185,7 @@ def gallery(request, category):
             "next": photo.get_next_category(category)
         })
 
+@never_cache
 @detect_old_browsers
 def slideshow(request, category=None, fragment_id=None):
     if not any(unique_category['category'] == category 
@@ -205,6 +212,7 @@ def slideshow(request, category=None, fragment_id=None):
                 category = category).order_by('-date_created')
         })
 
+@never_cache
 @detect_old_browsers
 def videos(request):
     if not os.path.exists(VIDEOS_ROOT):
@@ -226,3 +234,4 @@ def error404(request):
             Sorry, the page you requested was not found.
         """
     })
+

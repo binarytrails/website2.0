@@ -44,8 +44,7 @@
             #videos section > header
             {
                 margin-top: 1em;
-                width: 75%;
-                margin-left: 12.5%;
+                text-align: center;
             }
 
             #videos section > hr

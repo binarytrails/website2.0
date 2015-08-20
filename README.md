@@ -1,5 +1,18 @@
 # Kedfilms
-Avoiding scripts by implementing CSS stylish functionalities.
+
+*Avoiding scripts by implementing CSS stylish functionalities.*
+
+This is my personal website using the Django Python Web framework that I built to centralize my realizations and gain web development experience. I challenged myself to only use CSS3 & HTML5 and leave JavaScript aside. I wanted to gain deep understanding of the trivial web technologies as well as demonstrate that JavaScript is not always necessary for a modern website.
+
+*Why Kedfilms?* Once upon a time, I had to decide what brand name I would put my projects under and this name came out. I kept it considering that it is easier to remember and simpler than putting my complete name everywhere.
+
+There are two different layouts of this website. The first is for the desktop experience and the second is for mobile users.
+
+There is a detection of a mobile device, but if you're on a laptop browsing the desktop version and you're wishing to see the mobile version you can navigate to the *m* subdomain as in *m.kedfilms.com*.
+
+This website is completely Open-Source under GPLv3 license. Although I encourage folks to inspire themselves from it, I would appreciate it if you do not copy completely its looks so that it stays a unique representation of my work in which I put numerous hours of mine.
+
+
 
 
 ## Dependecies

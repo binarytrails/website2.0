@@ -145,6 +145,18 @@
 
 
 /*********************************************************************************/
+/* Cover                                                                         */
+/*********************************************************************************/
+    #header, #tweet
+    {
+        background-image: url('/static/frontend/img/wallpapers/head-banner.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+/*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
     #header
@@ -380,3 +392,4 @@
         {
             color: white;
         }
+

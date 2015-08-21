@@ -1,4 +1,72 @@
 /*********************************************************************************/
+/* Featured                                                                      */
+/*********************************************************************************/
+    #featured
+    {
+        position: relative;
+        background: #1E1E1E;
+        text-align: center;
+        line-height: 3em;
+        margin: 8em 15em;
+    }
+
+/*********************************************************************************/
+/* Coding                                                                        */
+/*********************************************************************************/
+    section#coding
+    {
+        margin-bottom: 4em;
+    }
+    
+    section#coding p
+    {
+        font-size: 2em;
+        text-align: center;
+        color: #C8C8C8 ;
+        margin: 2em 0 4em;
+    }
+
+    section#coding a
+    {
+        transition: text-shadow 1s;
+        -moz-transition: text-shadow 1s;
+        -webkit-transition: text-shadow 1s;
+        -o-transition: text-shadow 1s;
+        -ms-transition: text-shadow 1s;
+    }
+        section#coding a:hover
+        {
+            text-shadow: 0 0 10px white;
+        }
+
+    #circle-background
+    {
+        width: 30em;
+        height: 30em; 
+        border-radius: 15em;
+        -webkit-border-radius: 15em;
+        -moz-border-radius: 15em;
+
+        background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+
+        overflow: hidden;
+        margin: 0 auto;
+
+        transition: box-shadow 1s;
+        -moz-transition: box-shadow 1s;
+        -webkit-transition: box-shadow 1s;
+        -o-transition: box-shadow 1s;
+        -ms-transition: box-shadow 1s;
+    }
+        #circle-background:hover
+        {
+            box-shadow: 0 0 20px white;
+        }
+
+/*********************************************************************************/
 /* Abilities                                                                     */
 /*********************************************************************************/
     #abilities
@@ -16,7 +84,6 @@
 
         #main section > hr.head
         {
-            margin-top: 15em;
             padding-top: 0em;
         }
 
@@ -53,10 +120,10 @@
                 {
                     font-size: 0.7em;
 
-                    width: 40%;
+                    width: 43%;
                     color: #B9AFA8;
-
                     cursor: default;
+                    margin: 0 0.3em;
                     
                     -moz-transition: all 0.5s;
                     -webkit-transition: all 0.5s;
@@ -89,3 +156,4 @@
                     {
                         float: right;
                     }
+

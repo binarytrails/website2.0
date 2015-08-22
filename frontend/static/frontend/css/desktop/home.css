@@ -17,29 +17,8 @@
     {
         margin-bottom: 4em;
     }
-    
-    section#coding p
-    {
-        font-size: 2em;
-        text-align: center;
-        color: #C8C8C8 ;
-        margin: 2em 0 4em;
-    }
 
-    section#coding a
-    {
-        transition: text-shadow 1s;
-        -moz-transition: text-shadow 1s;
-        -webkit-transition: text-shadow 1s;
-        -o-transition: text-shadow 1s;
-        -ms-transition: text-shadow 1s;
-    }
-        section#coding a:hover
-        {
-            text-shadow: 0 0 10px white;
-        }
-
-    #circle-background
+    section#coding #circle-background
     {
         width: 30em;
         height: 30em; 
@@ -61,10 +40,31 @@
         -o-transition: box-shadow 1s;
         -ms-transition: box-shadow 1s;
     }
-        #circle-background:hover
+        section#coding #circle-background:hover
         {
             box-shadow: 0 0 20px white;
         }
+    
+    section#coding a
+    {
+        transition: text-shadow 1s;
+        -moz-transition: text-shadow 1s;
+        -webkit-transition: text-shadow 1s;
+        -o-transition: text-shadow 1s;
+        -ms-transition: text-shadow 1s;
+    }
+        section#coding a:hover
+        {
+            text-shadow: 0 0 10px white;
+        }
+
+    section#coding p
+    {
+        font-size: 2em;
+        text-align: center;
+        color: #C8C8C8 ;
+        margin: 2em 0 4em;
+    }
 
 /*********************************************************************************/
 /* Abilities                                                                     */

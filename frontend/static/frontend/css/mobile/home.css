@@ -32,6 +32,12 @@
         -ms-transition: all 0.6s ease-in-out;
     }
 
+        #main header
+        {
+            font-size: 4em;
+            text-align: center;
+        }
+
 /*********************************************************************************/
 /* Entry                                                                        */
 /*********************************************************************************/
@@ -43,10 +49,7 @@
 
         padding: 10em 0 5em;
         text-align: center;
-
-        /* color: #0C090A; */
-        /* #E5E4E2 */
-        background: #1F1C1C;
+        background: #242121;
     }
 
         #entry header
@@ -60,6 +63,40 @@
         }
 
 /*********************************************************************************/
+/* Coding                                                                        */
+/*********************************************************************************/
+    #coding
+    {
+        padding-bottom: 4em;
+        background: #1F1C1C;
+    }
+    
+    #coding #circle-background
+    {
+        width: 30em;
+        height: 30em; 
+        border-radius: 15em;
+        -webkit-border-radius: 15em;
+        -moz-border-radius: 15em;
+
+        background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        overflow: hidden;
+        margin: 1em auto;
+    }
+
+    #coding p
+    {
+        font-size: 3em;
+        text-align: center;
+        color: #C8C8C8 ;
+        margin: 2em 0 4em;
+    }
+
+/*********************************************************************************/
 /* Abilities                                                                     */
 /*********************************************************************************/
     #abilities
@@ -67,19 +104,13 @@
         position: relative;
         width: 100%;
         height: auto;
-
         margin-top: 0;
-
-        /* color: #0C090A; */
-        /* #E9F5DC #E77471 #FFF380 #849FDC */
         background: #1A1717;
     }
 
-        #abilities header
+        #abilities header, #coding header
         {
-            font-size: 4em;
-            text-align: center;
-            padding-top: 2em;
+            padding: 1em 0;
         }
 
             #abilities #category header

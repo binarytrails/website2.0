@@ -10,7 +10,19 @@
 
 2. They do not store your credit card information.
 
+3. Their customer support is very fast.
+
 ## [Simple Hosting Instance](https://www.gandi.net/hosting/simple?language=python)
+
+### Advantages
+
+1. All the server side is handled for you.
+2. You have more time to develop your project.
+3. The costs are fewer comparing to Virtual Private Server.
+
+### Counterparts
+
+1. You can't add packages that are elsewhere than in the Python Package Index (pip) repositories even if they are present in common distributions like *pyexiv2*, in my case. Thus, it is a headache to avoid certain libraries just because they're relying on external C ones.
 
 ### How do I get started ?
 
@@ -24,13 +36,13 @@ Well their documentation covers a good part. I struggled in a few sections. This
 
 3. Configure your instance
 
-    To enter your server via ssh, you have to activate via the web pannel.
+    To enter your server via ssh, you have to activate it via the web pannel.
 
         ls web/vhosts/default/
 
-    Here will be hosted your instance project. From this point you can read their [django-simple-hosting](http://wiki.gandi.net/en/simple/instance/python) documentation. It is important that you read it carefully. This part is crutial...
+    Here will be hosted your instance project. From this point you can read their [django-simple-hosting](http://wiki.gandi.net/en/simple/instance/python) documentation. It is important that you read it carefully. This part is crucial...
 
-    > You must use Git to commit and push this file to the instance for it to be used.
+    > You must use Git to commit and push this file to the instance so it can be used.
 
     It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default [vhost] folder seen earlier.
 
@@ -93,15 +105,15 @@ Well their documentation covers a good part. I struggled in a few sections. This
     </br>
     [Domain-as-website](http://wiki.gandi.net/en/domains/management/domain-as-website)
 
-    It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest you the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads to the World Wide Web.
+    It is important that you understand how to connect your domain name to your website. There are three ways to do it. I suggest the third one: *Configuring your zone file at Gandi*. It can take up to a few hours before it spreads to the World Wide Web.
 
     Why should I use the Domain-as-website?
 
-    >Gandi web forwarding server is serving a robots.txt file that you probably don't want.
+    > The Gandi web forwarding server is serving a robots.txt file that you probably don't want.
 
     Hence, my website wasn't indexed by google crawlers.
 
-    Go to your gandi admin pannel under *Simple Hosting > Your Instance > Websites Section* and add your addresses to the vhosts & check the **DNS modification** box.
+    Go to your Gandi admin pannel under *Simple Hosting > Your Instance > Websites Section* and add your addresses to the vhosts & check the **DNS modification** box.
 
     Websites Section example:
 
@@ -114,14 +126,33 @@ Well their documentation covers a good part. I struggled in a few sections. This
 
         ALLOWED_HOSTS = ['website.com', 'www.website.com']
 
-    Otherwise you will get the **Internal Server Error**.
+    Otherwise you will get an **Internal Server Error**.
 
-    There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea and read a book!
-    
-### Counterparts
+    There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea!
 
-1. You can't add packages that are elsewhere than in Python Package Index (pip) repositories even if they are present in common distributions like pyexiv2. Thus, it is a headache to avoid certain libraries just because they're relying on external C ones.
+4. By default, the instance has difficulties delivering the appropriate webpage even after a reasonable delay when switching user agents or browsers.
 
-2. It seems that the instance has difficulties to deliver the appropriate webpage even after a reasonable delay when switching user agents in your browser.
+    Don't worry, there is an easy fix! I discovered with *curl* that this is due to Varnish Caching system.
+
+        > curl -I yourwebsite.com
+        ...
+        Via: 1.1 varnish
+        Age: 30
+
+    *Why should I disable it?*
+
+    You probably don't have a high-traffic website and want your users to view the right version of your website depending on their browser/device without any possible delay. Remember that web browsers have their caching, which means that once the page has been loaded, it probably stays in the user cache during all of his navigation. Hence, if you have a second mobile version or you're detecting dinosaur browsers, you might (under the same external IP) either get through with non-supported browsers or get a delay between a mobile and a desktop version accessibility.
+
+    In order to stop caching, you have to add headers to the response that will stop the caching. The *Django* framework has a [add_never_cache_headers](https://github.com/django/django/blob/master/django/utils/cache.py) function that is called from [never_cache](https://github.com/django/django/blob/master/django/views/decorators/cache.py) decorator that you just need to import:
+
+        from django.views.decorators.cache import never_cache
+
+    And then add **@never_cache** decorator above all of the controllers in your *views.py* where you don't want to cache. Then you should have something like:
+        
+        > curl -I yourwebsite.com
+        ...
+        Cache-Control: max-age=0
+        Via: 1.1 varnish
+        Age: 0
 
 <p class="footer">Everything else is explained very clearly in the Gandi.net documentation.</p>

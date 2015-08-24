@@ -44,7 +44,7 @@ Well their documentation covers a good part. I struggled in a few sections. This
 
     > You must use Git to commit and push this file to the instance so it can be used.
 
-    It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default [vhost] folder seen earlier.
+    It means that you have to create a repository with Git [git-simple-hosting](http://wiki.gandi.net/en/simple/git) that will push the code to a Git repository **associated by name** to your default *vhost* folder seen earlier.
 
         mkdir -p gandi/roger/default
         cd gandi/roger/default
@@ -56,11 +56,11 @@ Well their documentation covers a good part. I struggled in a few sections. This
         git push origin master
 
 
-    One important thing to understand is that right now Gandi does not support Git submodules. It means that you can't create a repository for your simple hosting instance and put your github external repository with the [.git/] folder inside. Otherwise, it will commit an empty folder to your Gandi repository. I know, it means it is a sync party! You will have to sync your external Github repository to your local Gandi one by hand. You can achieve that with [rsync].
+    One important thing to understand is that right now Gandi does not support Git submodules. It means that you can't create a repository for your simple hosting instance and put your github external repository with the [.git/] folder inside. Otherwise, it will commit an empty folder to your Gandi repository. I know, it means it is a sync party! You will have to sync your external Github repository to your local Gandi one by hand. You can achieve that with *rsync*.
 
         rsync -az source/ destination/
 
-    Add delete option to remove everything that is in [destination/] but not in the [source/].
+    Add delete option to remove everything that is in *destination/* but not in the *source/*.
 
         rsync -az --delete source/ destination/
 
@@ -130,9 +130,9 @@ Well their documentation covers a good part. I struggled in a few sections. This
 
     There will be a certain amount of time to allow the propagation of the DNS zone file. It's a great occasion to take a cup of tea!
 
-4. By default, the instance has difficulties delivering the appropriate webpage even after a reasonable delay when switching user agents or browsers.
+4. Due to the Varnish cahing system, the instance has difficulties delivering the appropriate webpage even after a reasonable delay when switching user agents or browsers.
 
-    Don't worry, there is an easy fix! I discovered with *curl* that this is due to Varnish Caching system.
+    Although you can't completely disable it using Gandi, there is an easy way to do it with Django. First let's see what is happenning:
 
         > curl -I yourwebsite.com
         ...
@@ -143,7 +143,7 @@ Well their documentation covers a good part. I struggled in a few sections. This
 
     You probably don't have a high-traffic website and want your users to view the right version of your website depending on their browser/device without any possible delay. Remember that web browsers have their caching, which means that once the page has been loaded, it probably stays in the user cache during all of his navigation. Hence, if you have a second mobile version or you're detecting dinosaur browsers, you might (under the same external IP) either get through with non-supported browsers or get a delay between a mobile and a desktop version accessibility.
 
-    In order to stop caching, you have to add headers to the response that will stop the caching. The *Django* framework has a [add_never_cache_headers](https://github.com/django/django/blob/master/django/utils/cache.py) function that is called from [never_cache](https://github.com/django/django/blob/master/django/views/decorators/cache.py) decorator that you just need to import:
+    In order to stop caching, you have to add headers to the response that will stop the caching. The *Django* framework has a *add_never_cache_headers* function [here](https://github.com/django/django/blob/master/django/utils/cache.py), that is called from *never_cache* decorator [here](https://github.com/django/django/blob/master/django/views/decorators/cache.py), that you just need to import:
 
         from django.views.decorators.cache import never_cache
 

@@ -12,16 +12,12 @@ There is a detection of a mobile device, but if you're on a laptop browsing the 
 
 This website is completely Open-Source under GPLv3 license. Although I encourage folks to inspire themselves from it, I would appreciate it if you do not copy completely its looks so that it stays a unique representation of my work in which I put numerous hours of mine.
 
-
-
-
 ## Dependecies
 
 * Markdown2 : Convert articles markdown text -> Html
 * ImageMagick : Thumbnails creation
 * Pillow: Images handling
 * pyexiv2: Images xmp metadata
-
 
 ## Getting started
 
@@ -36,7 +32,6 @@ Activate virtualenv
 Install django and its dependecies
 
         easy_install django==1.7 markdown2==2.3.0 
-
 
 ## General
 

@@ -15,18 +15,18 @@
 
         #container
         {
-            padding: 2em;
+            padding: 0 2em;
             background: #E5E4E2;
         }
 
-            #container header, #container, p
+            #container p#header, #container, p
             {
                 text-align: left;
             }
 
-            #container header
+            #container p#header
             {
-                font-size: 5em;
+                font-size: 3.5em;
             }
 
             #container p.subtitle
@@ -40,9 +40,16 @@
                 margin-bottom: 1.5em;
             }
 
-            #container a > img
+            #container a, img
             {
-                width: 10em;
-                height: 10em;
-                margin-right: 2em;
+                border: none;
+                outline: none;
             }
+
+                #container a > img
+                {
+                    width: 10em;
+                    height: 10em;
+                    margin-right: 2em;
+                }
+

@@ -232,6 +232,35 @@
         z-index: 1;
     }
 
+        #logo #circle
+        {
+            width: 15em;
+            height: 15em;
+            border-radius: 10em;
+            -webkit-border-radius: 10em;
+            -moz-border-radius: 10em;
+            
+            background: #949EA4; /* fallback */
+            background: rgba(188, 198, 204, 0.4);
+            background-image: url('/static/frontend/img/avatar/8bit-classy-bw.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            overflow: hidden;
+            margin: 0 auto;
+
+            transition: box-shadow 1s;
+            -moz-transition: box-shadow 1s;
+            -webkit-transition: box-shadow 1s;
+            -o-transition: box-shadow 1s;
+            -ms-transition: box-shadow 1s;
+        }
+            #logo #circle:hover
+            {
+                box-shadow: 0 0 20px white;
+            }
+
         #logo a
         {
             display: block;

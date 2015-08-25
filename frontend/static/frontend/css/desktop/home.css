@@ -18,10 +18,10 @@
         margin-bottom: 4em;
     }
 
-    section#coding #circle-background
+    section#coding #circle
     {
-        width: 30em;
-        height: 30em; 
+        width: 25em;
+        height: 25em;
         border-radius: 15em;
         -webkit-border-radius: 15em;
         -moz-border-radius: 15em;
@@ -40,7 +40,7 @@
         -o-transition: box-shadow 1s;
         -ms-transition: box-shadow 1s;
     }
-        section#coding #circle-background:hover
+        section#coding #circle:hover
         {
             box-shadow: 0 0 20px white;
         }

@@ -33,7 +33,8 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['127.0.0.1', 'kedfilms.com', 'www.kedfilms.com', 'm.kedfilms.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'kedfilms.com', 'www.kedfilms.com', 'm.kedfilms.com',
+    'sevaivanov.com', 'www.sevaivanov.com', 'm.sevaivanov.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

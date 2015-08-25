@@ -32,12 +32,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
 VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
 
-ie_useragent_tags = ["msie", "trident"]
+MOBILE_HOSTS = ['m.kedfilms.com', 'm.sevaivanov.com']
+IE_USERAGENT_TAGS = ["msie", "trident"]
 
 def detect_mobile(initial_view):
 
     def wrapped_view(request, *args, **kwargs):
-        if request.mobile or "m.kedfilms.com" in request.get_host():
+        if request.mobile or request.get_host() in MOBILE_HOSTS:
             calling_template = initial_view.func_name
 
             # add "@detect_mobile" on top of a controller & add their controller "name" here.
@@ -76,7 +77,7 @@ def detect_mobile(initial_view):
 def detect_old_browsers(initial_view):
 
     def wrapped_view(request, *args, **kwargs):
-        if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in ie_useragent_tags):
+        if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in IE_USERAGENT_TAGS):
             return render(request, "frontend/errors/old-browser.html")
 
         return initial_view(request, *args, **kwargs)
@@ -98,7 +99,7 @@ def get_home_args():
 @never_cache
 @detect_old_browsers
 def home(request):
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         return render(request, "frontend/mobile/home.html", get_home_args())
 
     return render(request, "frontend/desktop/home.html", get_home_args())
@@ -106,7 +107,7 @@ def home(request):
 @never_cache
 @detect_old_browsers
 def articles(request):
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         template = "frontend/mobile/articles.html"
     else:
         template = "frontend/desktop/articles.html"
@@ -125,7 +126,7 @@ def article(request, category=None, article=None):
 
     html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
 
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         template = "frontend/mobile/article.html"
     else:
         template = "frontend/desktop/article.html"
@@ -137,7 +138,7 @@ def article(request, category=None, article=None):
 def photos(request):
     categories = Photo.CATEGORIES
     
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         template = "frontend/mobile/photos.html"
 
         # omit the 'internet in motion' aka the #4 section.
@@ -167,7 +168,7 @@ def gallery(request, category):
     if not any(unique_category[0] == category for unique_category in unique_categories):
         raise Http404
 
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         return render(request, "frontend/mobile/photos-gallery.html",
         {
             "category": category,
@@ -193,7 +194,7 @@ def slideshow(request, category=None, fragment_id=None):
     ):
         raise Http404
 
-    if request.mobile or "m.kedfilms.com" in request.get_host():
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
         image = Photo.objects.get(fragment_identifier = fragment_id)
 
         if os.path.isfile(image.get_image_abspath()) == False:

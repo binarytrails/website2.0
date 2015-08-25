@@ -1,6 +1,6 @@
 <h1 class="header">Archlinux on MacBook</h1>
 </br>
-*29 December 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quests/archlinux-macbook.md#archlinux-on-macbook) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/archlinux-macbook.md)
+*29 December 2014* | [View On Github](https://github.com/sevaivanov/personal-website/blob/master/frontend/static/frontend/md/quests/archlinux-macbook.md#archlinux-on-macbook) | [Revision History](https://github.com/sevaivanov/personal-website/commits/master/frontend/static/frontend/md/quests/archlinux-macbook.md)
 
 > What MacBook? MacBook Pro mid-2011 with Intel CPU & Graphics.
 

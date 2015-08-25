@@ -2,7 +2,7 @@
     Utilities powered by the magnificent me.
 """
 
-# Copyright (C) 2014 Vsevolod Ivanov
+# Copyright (C) 2016 Seva Ivanov
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

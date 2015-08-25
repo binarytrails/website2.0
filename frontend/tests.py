@@ -1,5 +1,5 @@
 # coding=utf-8
-# Copyright (C) 2015 Vsevolod Ivanov
+# Copyright (C) 2016 Seva Ivanov
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU GENERAL Public License as published by

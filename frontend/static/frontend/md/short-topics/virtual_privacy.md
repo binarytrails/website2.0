@@ -1,6 +1,6 @@
 <h1 class="header">Virtual Privacy</h1>
 
-*27 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/short-topics/virtual_privacy.md#gnu-privacy-guard) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/short-topics/virtual_privacy.md)
+*27 October 2014* | [View On Github](https://github.com/sevaivanov/personal-website/blob/master/frontend/static/frontend/md/short-topics/virtual_privacy.md#gnu-privacy-guard) | [Revision History](https://github.com/sevaivanov/personal-website/commits/master/frontend/static/frontend/md/short-topics/virtual_privacy.md)
 
 Driving your car is a privilege not your privacy.
 

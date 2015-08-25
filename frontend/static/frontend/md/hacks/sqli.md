@@ -1,6 +1,6 @@
 <h1 class="header">SQL Injection</h1>
 </br>
-*02 November 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/hacks/sqli.md#variations) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/hacks/sqli.md)
+*02 November 2014* | [View On Github](https://github.com/sevaivanov/personal-website/blob/master/frontend/static/frontend/md/hacks/sqli.md#variations) | [Revision History](https://github.com/sevaivanov/personal-website/commits/master/frontend/static/frontend/md/hacks/sqli.md)
 
 *Source: SQL Injection Attacks and Defense, 2nd Ed by Justin Clarke*
 

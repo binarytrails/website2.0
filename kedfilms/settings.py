@@ -15,7 +15,7 @@ minidetector = os.path.join(os.path.abspath(os.pardir), 'minidetector')
 sys.path.append(minidetector)
 
 ADMINS = (
-    ('Vsevolod Ivanov', 'sevaivanov@kedfilms.com'),
+    ('Seva Ivanov', 'sevaivanov@kedfilms.com'),
 )
 
 MANAGERS = ADMINS

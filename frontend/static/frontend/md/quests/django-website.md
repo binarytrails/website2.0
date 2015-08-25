@@ -1,6 +1,6 @@
 <h1 class="header">Django Cloud Hosting</h1>
 </br>
-*31 October 2014* | [View On Github](https://github.com/sevaivanov/kedfilms/blob/master/frontend/static/frontend/md/quests/django-website.md#host-django-website) | [Revision History](https://github.com/sevaivanov/kedfilms/commits/master/frontend/static/frontend/md/quests/django-website.md)
+*31 October 2014* | [View On Github](https://github.com/sevaivanov/personal-website/blob/master/frontend/static/frontend/md/quests/django-website.md#host-django-website) | [Revision History](https://github.com/sevaivanov/personal-website/commits/master/frontend/static/frontend/md/quests/django-website.md)
 
 # [Gandi](https://www.gandi.net)
 

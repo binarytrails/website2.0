@@ -3,6 +3,9 @@
 /*********************************************************************************/
     body
     {
+        min-width: 900px;
+        min-height: 600px;
+        
         font-family: 'Roboto Slab', 'Courier New', sans-serif;
         color: white;
         font-size: 1em;

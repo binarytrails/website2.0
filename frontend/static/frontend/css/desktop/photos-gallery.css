@@ -57,18 +57,11 @@
     #return
     {
         position: absolute;
-
         width: 8em;
         height: 8em;
         border-radius: 5em;
-
-        top: 36.5em;
-        z-index: 20;
-
-        margin: 0.4em;
+        margin: 4em 0.4em 0;
         overflow: hidden;
-
-        transition: all 1s;
     }
 
     #return.left

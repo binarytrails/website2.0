@@ -156,36 +156,8 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        background-position: center;
     }
-
-        @media all and (min-width: 0em) and (max-width: 70em)
-        {
-            #header, #tweet
-            {
-                background-position: 0 -6em;
-            }
-        }
-        @media all and (min-width: 60em) and (max-width: 70em)
-        {
-            #header, #tweet
-            {
-                background-position: 0 -8em;
-            }
-        }
-        @media all and (min-width: 70em) and (max-width: 80em)
-        {
-            #header, #tweet
-            {
-                background-position: 0 -12em;
-            }
-        }
-        @media all and (min-width: 80em)
-        {
-            #header, #tweet
-            {
-                background-position: 0 -14em;
-            }
-        }
 
 /*********************************************************************************/
 /* Header                                                                        */

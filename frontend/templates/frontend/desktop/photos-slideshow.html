@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="Kedfilms slideshow" content="Pure css photos and videos slideshow" />
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Pure CSS Photography Slideshow">
+    <meta name="keywords" content="Kedfilms, Mobile, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
+    <meta name="author" content="Seva Ivanov">
 
     <head>
         <title>Kedfilms slideshow</title>
 
-        {% load static %}
-        {% get_static_prefix as STATIC %}
-        {% get_media_prefix as MEDIA_ROOT %}
-
         {% load staticfiles %}    
-        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/photos-slideshow.css"/>
+        <link rel="stylesheet" href="/static/frontend/css/desktop/photos-slideshow.css"/>
+        
+        <script type="text/javascript" src="/static/frontend/js/google-analytics.js"></script>
 
         <style type="text/css">
             {% for photo in photos %}
@@ -83,7 +84,7 @@
     <body>
         <div id="return">
             <a href="/photos/gallery/{{ category }}/#head">
-                <img  src="{{ STATIC }}frontend/img/logo/512x512/filled-circle/back-arrow-white-left.png"/>
+                <img  src="/static/frontend/img/logo/512x512/filled-circle/back-arrow-white-left.png"/>
             </a>
         </div>
 
@@ -126,7 +127,7 @@
 
                         <div id="loop-{{ photo.fragment_identifier }}">
                             <a href="{{ photo.get_image_url }}">
-                                <img  src="{{ STATIC }}frontend/img/logo/256x256/symbol/magnifying-glass-white.png"/>
+                                <img  src="/static/frontend/img/logo/256x256/symbol/magnifying-glass-white.png"/>
                             </a>
                         </div>
 

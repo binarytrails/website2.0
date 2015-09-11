@@ -107,12 +107,16 @@ def home(request):
 @never_cache
 @detect_old_browsers
 def articles(request):
+    template = "frontend/generic/articles.html"
+
+    parent = "frontend/"
     if request.mobile or request.get_host() in MOBILE_HOSTS:
-        template = "frontend/mobile/articles.html"
+        parent += "mobile"
     else:
-        template = "frontend/desktop/articles.html"
+        parent += "desktop"
+    parent += "/base.html"
  
-    return render(request, template)
+    return render(request, template, { "parent": parent })
 
 @never_cache
 @detect_old_browsers
@@ -125,13 +129,16 @@ def article(request, category=None, article=None):
         raise Http404
 
     html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
+    template = "frontend/generic/article.html"
 
+    parent = "frontend/"
     if request.mobile or request.get_host() in MOBILE_HOSTS:
-        template = "frontend/mobile/article.html"
+        parent += "mobile"
     else:
-        template = "frontend/desktop/article.html"
-
-    return render(request, template, { "html": html })
+        parent += "desktop"
+    parent += "/base.html"
+ 
+    return render(request, template, { "parent": parent, "html": html })
 
 @never_cache
 @detect_old_browsers

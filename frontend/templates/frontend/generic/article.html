@@ -1,0 +1,22 @@
+{% extends parent %}
+
+{% block content %}
+
+    {% load staticfiles %}
+
+    {% if "desktop" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/desktop/article.css">
+    {% elif "mobile" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/mobile/article.css">
+    {% endif %}
+
+    <div id="main">
+        <a id="head"></a>
+        {% autoescape off %}
+
+            {{ html }}
+
+        {% endautoescape %}
+    </div>
+
+{% endblock content %}

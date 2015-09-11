@@ -1,9 +1,14 @@
-{% extends "frontend/mobile/base.html" %}
+{% extends parent %}
 
 {% block content %}
 
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static "frontend/css/mobile/articles.css" %}">
+
+    {% if "desktop" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/desktop/articles.css">
+    {% elif "mobile" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/mobile/articles.css">
+    {% endif %}
 
     <div id="main">
         <ul>
@@ -13,7 +18,7 @@
             </li>
             <li>
                 <a href="https://gist.github.com/sevaivanov">
-                    <div id="right" style="text-align:center;">
+                    <div id="right" style="text-align: center;">
                         <p>Code Snippets & Notes</p>
                     </div>
                 </a>
@@ -51,7 +56,9 @@
         </ul>
         <ul>
             <li>
-                <header style="color: {% cycle bgcolors %};">Hack The Planet</header>
+                <header style="color: {% cycle bgcolors %};">
+                    Hack The Planet
+                </header>
             </li>
             <li>
                 <a href="/artcile/hacks/chroot#head">

@@ -54,6 +54,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        background-position: center;
 
         overflow: hidden;
         margin: 0 auto;
@@ -68,7 +69,15 @@
         {
             box-shadow: 0 0 20px white;
         }
-    
+
+    @media all and (max-width: 920px)
+    {
+        section#coding #circle
+        {
+            background-attachment: initial;
+        }
+    }
+
     section#coding a
     {
         transition: text-shadow 1s;

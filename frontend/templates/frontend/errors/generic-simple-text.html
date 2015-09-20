@@ -13,15 +13,9 @@
             {% if image_src %}
                 <img src="{{ STATIC }}{{ image_src }}"></img>
             {% endif %}
-            <header>
-                {{ header }}
-            </header>
-            <p class="subtitle">
-                {{ subtitle }}
-            </p>
-            <p>
-                {{ body }}
-            </p>
+            <p id="header">{{ header }}</p>
+            <p class="subtitle">{{ subtitle }}</p>
+            <p>{{ body }}</p>
         </div>
     </div>
 

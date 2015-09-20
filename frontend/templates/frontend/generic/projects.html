@@ -1,0 +1,59 @@
+{% extends parent %}
+
+{% block content %}
+
+    {% load filters %}
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="/static/frontend/css/generic/projects.css">
+
+    {% if "desktop" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/desktop/projects.css">
+    {% elif "mobile" in parent %}
+        <link rel="stylesheet" href="/static/frontend/css/mobile/projects.css">
+    {% endif %}
+
+    <header>
+        <h3>Projects</h3>
+        <h5><i>Roll your mouse over one of the projects circles</i></h5>
+    </header>
+
+    <div id="container">
+        {% for year in passed_years %}
+            {% for month in months %}
+
+                {% with years_to_substract=year|inverse_sign %}
+                {% with current_year=start_year|add:years_to_substract %}
+
+                    {% if month == 12 %}
+                        <div class="year"><h4>{{ current_year }}</h4></div>
+                    {% endif %}
+
+                    <div class="month"></div>
+
+                    {% with project_id=current_year|combine_with_hyphen:month %}
+                    {% with project=projects|get_dict_value:project_id %}
+
+                        {% if project %}
+                            <div class="line">
+                                <div class="month">{{ month|get_month_name }}</div>
+                                <div class="point with_content" style="background:white;"></div>
+                                <div class="text title">{{ project.title }}</div>
+                                <div class="text description">{{ project.description }}</div>
+                            </div>
+                        {% else %}
+                            <div class="point"></div>
+                        {% endif %}
+
+                    {% endwith %}
+                    {% endwith %}
+
+                {% endwith %}
+                {% endwith %}
+
+                {% endfor %}
+        {% endfor %}
+
+    </div>
+
+    {% endblock content %}

@@ -1,0 +1,96 @@
+header
+{
+    width: 100%;
+    margin: 4em 0;
+    overflow: hidden;
+}
+    h3, h4, h5
+    {
+        text-align: center;
+    }
+
+#container
+{
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+
+div.text
+{
+    position: absolute;
+    overflow: hidden;
+}
+
+    div.title
+    {
+        right: 20%;
+        font-style: italic;
+        margin-top: -1em;
+    }
+
+    div.description
+    {
+        width: 30%;
+        height: 12em;
+
+        left: 6%;
+
+        opacity: 0;
+    }
+
+div.point
+{
+    width: 1em;
+    height: 1em;
+    border-radius: .5em;
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+
+    margin: 0.2em auto;
+    background: purple;
+}
+
+div.text, div.point
+{
+    transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+}
+
+    div.with_content:hover
+    {
+        width: 15em;
+        height: 15em;
+        border-radius: 10em;
+        -webkit-border-radius: 10em;
+        -moz-border-radius: 10em;
+    }
+
+    div.with_content:hover + div.title
+    {
+        margin-top: -10em;
+    }
+
+    div.with_content:hover ~ div.description
+    {
+        opacity: 1;
+        margin-top: -14em;
+    }
+
+div.year
+{
+
+}
+
+div.line
+{
+    width: 100%;
+}
+
+    div.month
+    {
+        /float: right;
+    }

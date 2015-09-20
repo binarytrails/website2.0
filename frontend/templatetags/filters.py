@@ -42,3 +42,22 @@ def imageHeight(abspath):
 @register.filter
 def underscores_to_spaces(text):
     return text.replace("_", " ")
+
+# /projects/ methods
+@register.filter
+def combine_with_hyphen(first, second):
+    return str(first) + "-" + str(second)
+
+@register.filter
+def inverse_sign(value):
+    return 0 - value
+
+@register.filter
+def get_dict_value(dictionary, key):
+    return dictionary.get(key)
+
+import calendar
+@register.filter
+def get_month_name(number):
+    return calendar.month_name[number]
+

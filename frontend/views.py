@@ -42,7 +42,7 @@ def detect_mobile(initial_view):
             calling_template = initial_view.func_name
 
             # add "@detect_mobile" on top of a controller & add their controller "name" here.
-            not_available_mobile_templates = [""]
+            not_available_mobile_templates = ["projects"]
 
             if any(template in calling_template for template in not_available_mobile_templates):
                 return render(request, "frontend/errors/generic-simple-text.html",
@@ -110,6 +110,35 @@ def home(request):
     if request.mobile or request.get_host() in MOBILE_HOSTS:
         return render(request, "frontend/mobile/home.html", get_home_args())
     return render(request, "frontend/desktop/home.html", get_home_args())
+
+@never_cache
+@detect_mobile
+@detect_old_browsers
+def projects(request):
+    template = "frontend/generic/projects.html"
+    parent = os.path.join("frontend", get_app_version(request), "base.html")
+
+    # Example; move to database.
+    projects = {
+        "2014-2":{
+            "title": "The Koala",
+            "description": "The koala is an arboreal herbivorous marsupial native to Australia. It is the only extant representative of the family Phascolarctidae, and its closest living relatives are the wombats.[3] The koala is found in coastal areas of the mainland's eastern and southern regions, inhabiting Queensland, New South Wales, Victoria, and South Australia.",
+            "preview-url": "/media/images/portfolio/x200/_MG_5499_final2.jpg"
+        },
+        "2012-4":{
+            "title": "The Tiger",
+            "description": "The tiger (Panthera tigris) is the largest cat species, reaching a total body length of up to 3.38 m (11.1 ft) over curves and exceptionally weighing up to 388.7 kg (857 lb) in the wild. Its most recognisable feature is a pattern of dark vertical stripes on reddish-orange fur with a lighter underside.",
+            "preview-url": "/media/images/portfolio/x200/_MG_5499_final2.jpg"
+        }
+    }
+
+    return render(request, template, {
+        "parent": parent,
+        "start_year": 2016,
+        "passed_years": range(8),
+        "months": range(12, 0, -1),
+        "projects": projects
+    })
 
 @never_cache
 @detect_old_browsers

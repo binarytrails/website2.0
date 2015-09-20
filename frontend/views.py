@@ -96,26 +96,26 @@ def get_home_args():
         "skills": Skill.objects.all()
     }
 
+def get_app_version(request):
+    parent = ""
+    if request.mobile or request.get_host() in MOBILE_HOSTS:
+        parent = "mobile"
+    else:
+        parent = "desktop"
+    return parent
+
 @never_cache
 @detect_old_browsers
 def home(request):
     if request.mobile or request.get_host() in MOBILE_HOSTS:
         return render(request, "frontend/mobile/home.html", get_home_args())
-
     return render(request, "frontend/desktop/home.html", get_home_args())
 
 @never_cache
 @detect_old_browsers
 def articles(request):
     template = "frontend/generic/articles.html"
-
-    parent = "frontend/"
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
-        parent += "mobile"
-    else:
-        parent += "desktop"
-    parent += "/base.html"
- 
+    parent = os.path.join("frontend", get_app_version(request), "base.html")
     return render(request, template, { "parent": parent })
 
 @never_cache
@@ -128,15 +128,9 @@ def article(request, category=None, article=None):
     if os.path.isfile(os.path.join(STATIC_ROOT, "md/", category, article)) == False:
         raise Http404
 
-    html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
     template = "frontend/generic/article.html"
-
-    parent = "frontend/"
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
-        parent += "mobile"
-    else:
-        parent += "desktop"
-    parent += "/base.html"
+    parent = os.path.join("frontend", get_app_version(request), "base.html")
+    html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
  
     return render(request, template, { "parent": parent, "html": html })
 

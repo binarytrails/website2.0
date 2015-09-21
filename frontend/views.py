@@ -165,13 +165,10 @@ def photos(request):
 @never_cache
 @detect_old_browsers
 def gallery(request, category):
-    print MEDIA_IMAGES
     if not os.path.exists(MEDIA_IMAGES): return Http404
 
     unique_categories = Photo.objects.all().values_list('category').distinct()
-
-    if not unique_categories:
-        raise Http404
+    if not unique_categories: raise Http404
 
     if not any(unique_category[0] == category for unique_category in unique_categories):
         raise Http404

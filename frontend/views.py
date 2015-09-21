@@ -27,7 +27,7 @@ from django.conf import settings
 
 MEDIA_URL = settings.MEDIA_URL
 STATIC_ROOT = settings.STATIC_ROOT
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
 IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
 VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
@@ -35,53 +35,29 @@ VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
 MOBILE_HOSTS = ['m.kedfilms.com', 'm.sevaivanov.com']
 IE_USERAGENT_TAGS = ["msie", "trident"]
 
-def detect_mobile(initial_view):
+def is_mobile(request): return request.mobile or request.get_host() in MOBILE_HOSTS
 
-    def wrapped_view(request, *args, **kwargs):
-        if request.mobile or request.get_host() in MOBILE_HOSTS:
-            calling_template = initial_view.func_name
+def get_app_version(request):
+    if is_mobile(request): return "mobile"
+    else: return "desktop"
 
-            # add "@detect_mobile" on top of a controller & add their controller "name" here.
-            not_available_mobile_templates = ["projects"]
-
-            if any(template in calling_template for template in not_available_mobile_templates):
-                return render(request, "frontend/errors/generic-simple-text.html",
-                {
-                    "header": "Under Construction",
-                    "image_src": "frontend/img/errors/beaver-ludge-with-leak.png",
-                    "subtitle": """
-                        The beavers are doing their best to build their lodge.
-                    """,
-                    "body": """
-                        The mobile version of this page is under construction.
-                        Don't worry, there is an easy fix!
-                        Go on the desktop version which is fully functionnal.
-                    """
-                })
-
-            return render(request, "frontend/errors/generic-simple-text.html",
-            {
-                "header": "The mobile version is not available.",
-                "body": """
-                    Don't worry, there is an easy fix.
-                    All you have to do is to consult our website using 
-                    your favorite computer to enjoy the experience to its fullest.
-                """
-            })
-        # not mobile
-        return initial_view(request, *args, **kwargs)
-
-    # return what is returned from the wrapped_view()
-    return wrapped_view
+def render_no_mobile_version(request):
+    return render(request, "frontend/errors/generic-simple-text.html",
+    {
+        "header": "The mobile version is not available.",
+        "body": """
+            Don't worry, there is an easy fix.
+            All you have to do is to consult our website using 
+            your favorite computer to enjoy the experience to its fullest.
+        """
+    })
 
 def detect_old_browsers(initial_view):
-
     def wrapped_view(request, *args, **kwargs):
         if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in IE_USERAGENT_TAGS):
             return render(request, "frontend/errors/old-browser.html")
 
         return initial_view(request, *args, **kwargs)
-
     return wrapped_view
 
 def get_home_args():
@@ -96,25 +72,18 @@ def get_home_args():
         "skills": Skill.objects.all()
     }
 
-def get_app_version(request):
-    parent = ""
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
-        parent = "mobile"
-    else:
-        parent = "desktop"
-    return parent
-
 @never_cache
 @detect_old_browsers
 def home(request):
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
+    if is_mobile(request):
         return render(request, "frontend/mobile/home.html", get_home_args())
     return render(request, "frontend/desktop/home.html", get_home_args())
 
 @never_cache
-@detect_mobile
 @detect_old_browsers
 def projects(request):
+    if is_mobile(request): return render_no_mobile_version(request)
+    
     template = "frontend/generic/projects.html"
     parent = os.path.join("frontend", get_app_version(request), "base.html")
 
@@ -139,6 +108,18 @@ def projects(request):
         "months": range(12, 0, -1),
         "projects": projects
     })
+
+@never_cache
+@detect_old_browsers
+def project(request, category, title):
+    if is_mobile(request): return render_no_mobile_version(request)
+
+    template = os.path.join(get_app_version(request), category, title, "index.html")
+    template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
+
+    if os.path.isfile(template_abspath) == False: raise Http404
+    
+    return render(request, template)
 
 @never_cache
 @detect_old_browsers
@@ -168,7 +149,7 @@ def article(request, category=None, article=None):
 def photos(request):
     categories = Photo.CATEGORIES
     
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
+    if is_mobile(request):
         template = "frontend/mobile/photos.html"
 
         # omit the 'internet in motion' aka the #4 section.
@@ -198,7 +179,7 @@ def gallery(request, category):
     if not any(unique_category[0] == category for unique_category in unique_categories):
         raise Http404
 
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
+    if is_mobile(request):
         return render(request, "frontend/mobile/photos-gallery.html",
         {
             "category": category,
@@ -224,7 +205,7 @@ def slideshow(request, category=None, fragment_id=None):
     ):
         raise Http404
 
-    if request.mobile or request.get_host() in MOBILE_HOSTS:
+    if is_mobile(request):
         image = Photo.objects.get(fragment_identifier = fragment_id)
 
         if os.path.isfile(image.get_image_abspath()) == False:

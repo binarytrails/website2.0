@@ -112,13 +112,10 @@ def projects(request):
 @never_cache
 @detect_old_browsers
 def project(request, category, title):
-    if is_mobile(request): return render_no_mobile_version(request)
-
     template = os.path.join(get_app_version(request), category, title, "index.html")
     template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
 
     if os.path.isfile(template_abspath) == False: raise Http404
-    
     return render(request, template)
 
 @never_cache

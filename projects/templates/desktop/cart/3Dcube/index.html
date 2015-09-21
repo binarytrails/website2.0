@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="3D CSS Cube">
+        <meta name="keywords" content="3D CSS Cube Animation Computation Arts">
+        <meta name="author" content="Seva Ivanov">
+
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/3Dcube/3Dcube.css">
+        <script type="text/javascript" src="{{ STATIC }}projects/cart/3Dcube/3Dcube.js"></script>
+        
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet' type='text/css'>
+        
+        <!-- https://github.com/sevaivanov/short/tree/master/js/meow -->
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}projects/cart/3Dcube/meow.css" />
+        <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
+        <script src="{{ STATIC }}projects/libs/showdown-1.2.3.min.js"></script>
+    </head>
+    <base>
+        <div id="container">
+            <img id="info" src="{{ STATIC }}projects/cart/3Dcube/images/logos/cirlced-question-300x300-white.png"
+                onclick="meow('INFO', 'Source Code at *[Github](http://github.com/sevaivanov/school/tree/master/cart/3Dcube)*</br></br>Created by Seva Ivanov');"/>
+            <div id="cube">
+                <figure class="top"></figure>
+                <figure class="right"></figure>
+                <figure class="bottom"></figure>
+                <figure class="left"></figure>
+                <figure class="front with-content" onclick="meow('PLEASE', 'Be patient.');">
+                    <p>CART 211:<br/>Creative Computation & Network Culture</p>
+                </figure>
+                <figure class="back with-content" onclick="meow('WAIT', 'It is not ready yet..');">
+                    <p>CART 214:<br/>Visual Form & Communication</p>
+                </figure>
+            </div>
+            <div id="buttons">
+                <a href="javascript:changeCubeClass('show-left');"><p>Left</p></a>
+                <a href="javascript:changeCubeClass('show-top');"><p>Top</p></a>
+                <a href="javascript:changeCubeClass('show-front');"><p>Front</p></a>
+                <a href="javascript:changeCubeClass('show-back');"><p>Back</p></a>
+                <a href="javascript:changeCubeClass('show-bottom');"><p>Bottom</p></a>
+                <a href="javascript:changeCubeClass('show-right');"><p>Right</p></a>
+            </div>
+        </div>
+        <!-- https://github.com/sevaivanov/short/tree/master/js/meow -->
+        <div id="meow-background">
+            <div id="meow-container">
+                <div id="meow-head"><p>MEOW </p><div id="meow-close-button"></div></div>
+                <div id="meow-body"><p></p></div>
+                <div id="ok-button">OK</div>
+            </div>
+        </div>
+    </base>
+</html>

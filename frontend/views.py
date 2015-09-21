@@ -25,12 +25,12 @@ import json
 
 from django.conf import settings
 
-MEDIA_URL = settings.MEDIA_URL
-STATIC_ROOT = settings.STATIC_ROOT
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+STATIC_ROOT = settings.STATIC_ROOT
+MEDIA_URL = settings.MEDIA_URL
 
-IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
-VIDEOS_ROOT = os.path.join(STATIC_ROOT, "vid/")
+STATIC_FRONTEND = os.path.join(STATIC_ROOT, "frontend")
+MEDIA_IMAGES = os.path.join(settings.MEDIA_ROOT, "images")
 
 MOBILE_HOSTS = ['m.kedfilms.com', 'm.sevaivanov.com']
 IE_USERAGENT_TAGS = ["msie", "trident"]
@@ -132,12 +132,12 @@ def article(request, category=None, article=None):
         raise Http404
 
     article += ".md"
-    if os.path.isfile(os.path.join(STATIC_ROOT, "md/", category, article)) == False:
+    if os.path.isfile(os.path.join(STATIC_FRONTEND, "md/", category, article)) == False:
         raise Http404
 
     template = "frontend/generic/article.html"
     parent = os.path.join("frontend", get_app_version(request), "base.html")
-    html = utils.markdownToHtml(os.path.join(STATIC_ROOT, "md/", category, article))
+    html = utils.markdownToHtml(os.path.join(STATIC_FRONTEND, "md/", category, article))
  
     return render(request, template, { "parent": parent, "html": html })
 
@@ -165,8 +165,8 @@ def photos(request):
 @never_cache
 @detect_old_browsers
 def gallery(request, category):
-    if not os.path.exists(IMAGES_ROOT):
-        return Http404
+    print MEDIA_IMAGES
+    if not os.path.exists(MEDIA_IMAGES): return Http404
 
     unique_categories = Photo.objects.all().values_list('category').distinct()
 
@@ -224,9 +224,6 @@ def slideshow(request, category=None, fragment_id=None):
 @never_cache
 @detect_old_browsers
 def videos(request):
-    if not os.path.exists(VIDEOS_ROOT):
-        raise Http404
-
     return render(request, "frontend/desktop/videos.html",
     {
         "posters_src": "img/video-poster/",

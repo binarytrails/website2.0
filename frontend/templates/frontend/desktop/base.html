@@ -9,11 +9,15 @@
         <title>Personal Website by Seva Ivanov</title>
         
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:100' rel='stylesheet' type='text/css'>
-        {% load staticfiles %}    
-        <link rel="stylesheet" href="/static/frontend/css/desktop/base.css"/>
-        <link rel="shortcut icon" href="/static/frontend/img/icons/16x16/open-canvas.ico" />
 
-        <script type="text/javascript" src="/static/frontend/js/google-analytics.js"></script>
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+        
+        {% load staticfiles %}    
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/base.css"/>
+        <link rel="shortcut icon" href="{{ STATIC }}frontend/img/icons/16x16/open-canvas.ico" />
+
+        <script type="text/javascript" src="{{ STATIC }}frontend/js/google-analytics.js"></script>
     </head>
     <body>    
         <div id="header">
@@ -51,16 +55,16 @@
             </section>
             <section>
                 <a class="logo" href="https://github.com/sevaivanov">
-                    <img class="logo" src="/static/frontend/img/logo/256x256/contoured-circle/github-white-circled.png" title="Follow my developing progress!"/>
+                    <img class="logo" src="{{ STATIC }}frontend/img/logo/256x256/contoured-circle/github-white-circled.png" title="Follow my developing progress!"/>
                 </a>
                 <a class="logo" href="mailto:mail@sevaivanov.com">
-                    <img class="logo" src="/static/frontend/img/logo/512x512/contoured-circle/email-white.png" title="Write to me!"/>
+                    <img class="logo" src="{{ STATIC }}frontend/img/logo/512x512/contoured-circle/email-white.png" title="Write to me!"/>
                 </a>
-                <a class="logo" href="/static/frontend/gpg/seva-ivanov.key">
-                    <img class="logo" src="/static/frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" title="Encrypt your email! Public PGP Key"/>
+                <a class="logo" href="{{ STATIC }}frontend/gpg/seva-ivanov.key">
+                    <img class="logo" src="{{ STATIC }}frontend/img/logo/512x512/contoured-circle/old-key-white-right.png" title="Encrypt your email! Public PGP Key"/>
                 </a>
                 <a class="logo" href="https://www.blockchain.info/address/14wqPuHB1wL8kvyzgsUipNHLaSWBdMCGFB">
-                    <img class="logo" src="/static/frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" title="Make a donation! Bitcoin wallet address">
+                    <img class="logo" src="{{ STATIC }}frontend/img/logo/512x512/contoured-circle/bitcoin-white.png" title="Make a donation! Bitcoin wallet address">
                 </a>
             </section>
     

@@ -9,10 +9,13 @@
     <head>
         <title>Personal Website by Seva Ivanov</title>
 
-        {% load staticfiles %}
-        <link rel="shortcut icon" href="/static/frontend/img/icons/16x16/open-canvas.ico" />
+        {% load static %}
+        {% get_static_prefix as STATIC %}
         
-        <script type="text/javascript" src="/static/frontend/js/google-analytics.js"></script>
+        {% load staticfiles %}
+        <link rel="shortcut icon" href="{{ STATIC }}frontend/img/icons/16x16/open-canvas.ico" />
+        
+        <script type="text/javascript" src="{{ STATIC }}frontend/js/google-analytics.js"></script>
     </head>
     
     <body>

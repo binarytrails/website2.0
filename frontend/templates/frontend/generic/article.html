@@ -5,9 +5,9 @@
     {% load staticfiles %}
 
     {% if "desktop" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/desktop/article.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/article.css">
     {% elif "mobile" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/mobile/article.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/article.css">
     {% endif %}
 
     <div id="main">

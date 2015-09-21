@@ -3,12 +3,12 @@
 {% block content %}
 
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static "frontend/css/errors/generic-bg-image.css" %}">
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/errors/generic-bg-image.css">
 
     <div id="main">
         <header>{{ status }}</header>
         <a href="{{ return_to }}">
-            <img src="{% static image_path %}"> </img>
+            <img src="{% static image_path> </img>
         </a>
     </div>
 

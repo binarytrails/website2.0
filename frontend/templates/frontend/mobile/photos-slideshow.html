@@ -9,10 +9,13 @@
     <head>
         <title>Personal Website by Seva Ivanov</title>
         
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+        
         {% load staticfiles %}
-        <link rel="stylesheet" href="/static/frontend/css/mobile/photos-slideshow.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/photos-slideshow.css">
 
-        <script type="text/javascript" src="/static/frontend/js/google-analytics.js"></script>
+        <script type="text/javascript" src="{{ STATIC }}frontend/js/google-analytics.js"></script>
     </head>
     
     <body>

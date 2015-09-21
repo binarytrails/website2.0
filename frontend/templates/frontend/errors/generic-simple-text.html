@@ -6,7 +6,7 @@
     {% get_static_prefix as STATIC %}
 
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static "frontend/css/errors/generic-simple-text.css" %}">
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/errors/generic-simple-text.css">
 
     <div id="main">
         <div id="container">

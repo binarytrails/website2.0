@@ -5,12 +5,12 @@
     {% load filters %}
     {% load staticfiles %}
 
-    <link rel="stylesheet" href="/static/frontend/css/generic/projects.css">
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/generic/projects.css">
 
     {% if "desktop" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/desktop/projects.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/projects.css">
     {% elif "mobile" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/mobile/projects.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/projects.css">
     {% endif %}
 
     <header>

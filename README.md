@@ -33,9 +33,13 @@ Install django and its dependecies
 
 ## General
 
+* Collect the static files
+
+        ./manage.py collectstatic
+
 * Launch the website
 
-        ./manage runserver
+        ./manage.py runserver
 
 * Remove installed dependencies
     
@@ -45,7 +49,7 @@ Then you can remove locally left PackageName.egg
 
 * Populate database from script.py
 
-        ./manage shell < script.py
+        ./manage.py shell < script.py
 
 * Quit the virtualenv
 
@@ -60,7 +64,7 @@ WARNING: If you move your project after creating your virtualenv it won't work a
 
 When the server is listening on *0.0.0.0*, it is waiting for the requests on all available network interfaces. In other words, you're opening a port that can be accessed by external devices using your ip and the below port.
 
-        ./manage runserver 0.0.0.0:8000
+        ./manage.py runserver 0.0.0.0:8000
 
 ## Debian Basic Server: Apache2 + mod_wsgi
 

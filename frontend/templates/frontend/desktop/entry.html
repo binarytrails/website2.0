@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <meta charset="UTF-8">
     <meta name="description" content="Digital Arts & Programming">
     <meta name="keywords" content="Kedfilms, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
@@ -9,10 +8,12 @@
     <head>
         <title>Personal Website by Seva Ivanov</title>
         
+        {% load static %}
+        {% get_static_prefix as STATIC %}
         {% load staticfiles %}
-        <link rel="stylesheet" href="/static/frontend/css/desktop/entry.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/entry.css">
 
-        <script type="text/javascript" src="/static/frontend/js/google-analytics.js"></script>
+        <script type="text/javascript" src="{{ STATIC }}frontend/js/google-analytics.js"></script>
     </head>
     
     <body>
@@ -21,7 +22,7 @@
                 <div id="container">
                     <header>Desktop Experience</header>
                     <a href="/home/">
-                        <img src="/static/frontend/img/wallpapers/desktop.png"></img>
+                        <img src="{{ STATIC }}frontend/img/wallpapers/desktop.png"></img>
                     </a>
                 </div>
             </div>
@@ -29,11 +30,10 @@
                 <div id="container">
                     <header>Mobile Experience</header>
                     <a href="http://m.kedfilms.com">
-                        <img src="/static/frontend/img/wallpapers/mobile.png"></img>
+                        <img src="{{ STATIC }}frontend/img/wallpapers/mobile.png"></img>
                     </a>
                 </div>
             </div>
         </div>
     </body>
-
 </html>

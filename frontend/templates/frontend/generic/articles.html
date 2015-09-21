@@ -5,9 +5,9 @@
     {% load staticfiles %}
 
     {% if "desktop" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/desktop/articles.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/articles.css">
     {% elif "mobile" in parent %}
-        <link rel="stylesheet" href="/static/frontend/css/mobile/articles.css">
+        <link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/articles.css">
     {% endif %}
 
     <div id="main">
@@ -29,7 +29,7 @@
                 <header style="color: {% cycle bgcolors %};">Research</header>
             </li>
             <li>
-                <a href="/static/frontend/pdf/freenet-fr.pdf">
+                <a href="{{ STATIC }}frontend/pdf/freenet-fr.pdf">
                     <div id="right"><p>PDF: Freenet (French)</p></div>
                 </a>
             </li>

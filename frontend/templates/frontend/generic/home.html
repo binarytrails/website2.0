@@ -15,6 +15,7 @@
     -->
 
     {% if version == "mobile" %}<div id="main">{% endif %}
+
         <div id="entry" class="section">
             <header>
                 Yours truly
@@ -26,6 +27,7 @@
             </p>
         </div>
         {% if version == "desktop" %}<div id="main">{% endif %}
+
             <div id="coding" class="section">
                 {% if version == "desktop" %}<hr></hr>{% endif %}
                 <header>Coding</header>
@@ -37,6 +39,7 @@
                     > View my projects
                 </p></a>
             </div>
+
             <div id="abilities" class="section">
                 {% if version == "desktop" %}<hr></hr>{% endif %}
                 <header>Abilities</header>
@@ -51,9 +54,9 @@
                             {% for skill in skills|in_category:category %}
 
                                 {% if forloop.counter|divisibleby:2 %}
-                                    <div id="right-ability">
+                                <div id="right-ability">
                                 {% else %} <!-- first -->
-                                    <div id="left-ability">
+                                <div id="left-ability">
                                 {% endif %}
                                     
                                     <div id="title">
@@ -74,12 +77,10 @@
                         </div>
                     </div>
                 {% endfor %}
-            <!-- /main -->
-            {% if version == "mobile" %}
-                </br></br></br></br></br>
-            {% elif version == "desktop" %}
-                </div>
-            {% endif %}
-        </div>
+            {% if version == "mobile" %}</br></br></br></br></br>{% endif %}
+            </div>
+
+        <!-- /main -->
+        {% if version == "desktop" %}</div>{% endif %}
 
 {% endblock %}

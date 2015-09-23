@@ -81,7 +81,7 @@ def home(request):
 
     return render(request, "frontend/generic/home.html", {
         "version": version,
-        "parent": os.path.join("frontend", version, "home.html"),
+        "parent": os.path.join("frontend", version, "base.html"),
         "skills_categories": skills_categories,
         "skills": Skill.objects.all()
 

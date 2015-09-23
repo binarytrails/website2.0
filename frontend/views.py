@@ -69,24 +69,23 @@ def detect_old_browsers(initial_view):
         return initial_view(request, *args, **kwargs)
     return wrapped_view
 
-def get_home_args():
-    skills_categories = []
+@never_cache
+@detect_old_browsers
+def home(request):
+    version = get_app_version(request)
     skills = Skill.objects.all()
+    skills_categories = []
 
     for unique_category in skills.order_by('category').values('category').distinct():
         skills_categories.append(unique_category['category'])
 
-    return {
+    return render(request, "frontend/generic/home.html", {
+        "version": version,
+        "parent": os.path.join("frontend", version, "home.html"),
         "skills_categories": skills_categories,
         "skills": Skill.objects.all()
-    }
 
-@never_cache
-@detect_old_browsers
-def home(request):
-    if is_mobile(request):
-        return render(request, "frontend/mobile/home.html", get_home_args())
-    return render(request, "frontend/desktop/home.html", get_home_args())
+    })
 
 @never_cache
 @detect_old_browsers

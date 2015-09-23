@@ -1,0 +1,85 @@
+{% extends parent %}
+
+{% block content %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/{{ version }}/home.css">
+
+    <!-- Cool possible feature -->
+    <!--
+    <div id="side-computer">
+        <div id="right-box">
+            <img src="{{ STATIC }}frontend/img/logo/512x512/symbol/pc-love-8bit-grey.png"></img>
+        </div>
+    </div>
+    -->
+
+    {% if version == "mobile" %}<div id="main">{% endif %}
+        <div id="entry" class="section">
+            <header>
+                Yours truly
+            </header>
+            <p>
+                I am a human being,</br>an amazing student & a freelancer.</br>
+                Art & minutiae are transparent in my projects.</br>
+                Opensource is a reality & Linux is a choice.</br>
+            </p>
+        </div>
+        {% if version == "desktop" %}<div id="main">{% endif %}
+            <div id="coding" class="section">
+                {% if version == "desktop" %}<hr></hr>{% endif %}
+                <header>Coding</header>
+                {% if version == "desktop" %}<hr></hr>{% endif %}
+                <a href="https://devpost.com/sevaivanov">
+                    <div id="circle"></div>
+                </a>
+                <a href="https://devpost.com/sevaivanov"><p>
+                    > View my projects
+                </p></a>
+            </div>
+            <div id="abilities" class="section">
+                {% if version == "desktop" %}<hr></hr>{% endif %}
+                <header>Abilities</header>
+                {% if version == "desktop" %}<hr></hr>{% endif %}
+                {% for category in skills_categories %}
+                    <div id="category">
+                        <header>
+                            {{ category|title }}
+                        </header>
+                        <div id="abilities-row">
+                            {% load filters %}
+                            {% for skill in skills|in_category:category %}
+
+                                {% if forloop.counter|divisibleby:2 %}
+                                    <div id="right-ability">
+                                {% else %} <!-- first -->
+                                    <div id="left-ability">
+                                {% endif %}
+                                    
+                                    <div id="title">
+                                        {{ skill.title }}
+                                    </div>
+                                    <div id="rating">
+                                        {% load filters %}
+                                        {% for i in 5|times %}
+                                            {% if i < skill.rating_on_five %}
+                                                ★
+                                            {% else %}
+                                                ☆
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            <!-- /main -->
+            {% if version == "mobile" %}
+                </br></br></br></br></br>
+            {% elif version == "desktop" %}
+                </div>
+            {% endif %}
+        </div>
+
+{% endblock %}

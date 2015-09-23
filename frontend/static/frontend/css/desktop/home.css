@@ -1,10 +1,26 @@
 
+.section header
+{
+    width: 100%;
+    font-size: 4em;
+    text-align: center;
+    margin: 1em 0em 1em;
+}
+
+.section hr
+{
+    padding-top: 0;
+    margin-bottom: 4em;
+}
+
+/* Cool possible feature */
+
     #side-computer
     {
         position: absolute;
         height: auto;
         width: 100%;
-        right 0;
+        right: 0;
         margin-top: -8em;
         padding: 0;
     }
@@ -23,9 +39,9 @@
             }
 
 /*********************************************************************************/
-/* Featured                                                                      */
+/* Entry                                                                         */
 /*********************************************************************************/
-    #featured
+    #entry
     {
         position: relative;
         background: #1E1E1E;
@@ -34,15 +50,25 @@
         margin: 8em 15em;
     }
 
+        #entry header
+        {
+            font-size: 4em;
+        }
+
+        #entry p
+        {
+            font-size: 1.5em;
+        }
+
 /*********************************************************************************/
 /* Coding                                                                        */
 /*********************************************************************************/
-    section#coding
+    #coding
     {
         margin-bottom: 4em;
     }
 
-    section#coding #circle
+    #coding #circle
     {
         width: 25em;
         height: 25em;
@@ -65,20 +91,20 @@
         -o-transition: box-shadow 1s;
         -ms-transition: box-shadow 1s;
     }
-        section#coding #circle:hover
+        #coding #circle:hover
         {
             box-shadow: 0 0 20px white;
         }
 
     @media all and (max-width: 1100px)
     {
-        section#coding #circle
+        #coding #circle
         {
             background-attachment: initial;
         }
     }
 
-    section#coding a
+    #coding a
     {
         transition: text-shadow 1s;
         -moz-transition: text-shadow 1s;
@@ -86,12 +112,12 @@
         -o-transition: text-shadow 1s;
         -ms-transition: text-shadow 1s;
     }
-        section#coding a:hover
+        #coding a:hover
         {
             text-shadow: 0 0 10px white;
         }
 
-    section#coding p
+    #coding p
     {
         font-size: 2em;
         text-align: center;
@@ -109,34 +135,17 @@
         margin-left: 3em;
     }
 
-        #main section > header
+        #abilities #category header
         {
             width: 100%;
-            margin: 1em 0em 1em;
+
+            font-size: 1.2em;
+            text-align: left;
+            color: #FDEEF4;
+
+            cursor: default;
+            margin-bottom: 1.5em
         }
-
-        #main section > hr.head
-        {
-            padding-top: 0em;
-        }
-
-        #main section > hr.tail
-        {
-            margin-top: 0em;
-            padding-top: 0em;
-        }
-
-            #abilities > header
-            {
-                width: 100%;
-
-                font-size: 1.2em;
-                text-align: left;
-                color: #FDEEF4;
-
-                cursor: default;
-                margin-bottom: 1.5em
-            }
 
             #abilities-row
             {

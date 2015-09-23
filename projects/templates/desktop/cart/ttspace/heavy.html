@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="CART Book Light & Heavy Stylish Pages">
+        <meta name="keywords" content="Thoughts Through Space 1942 CART Light & Heavy Stylish Pages">
+        <meta name="author" content="Seva Ivanov">
+<!--
+        /------------------------\              |~~\_____/~~\__  |
+        |   Hello, there!        |______________ \______====== )-+
+        |   Now, read the book.  |                      ~~~|/~~  |
+        \------------------------/                         ()
+-->
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/generic.css">
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/heavy.css">
+        <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript">
+
+            function randomNumberFromInterval(min, max)
+            {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            function getRandomPositionInsideDiv(parentId, childId)
+            {
+                var $parent = $("#" + parentId),
+                    parentHeight = $parent.height(),
+                    parentWidth = $parent.width(),
+                    $thought = $("#" + childId),
+                    childWidth = $thought.width(),
+                    childHeight = $thought.height(),
+                    maxWidth = parentWidth - childWidth,
+                    maxHeight = parentHeight - childHeight;
+
+                byWidth = randomNumberFromInterval(0, maxWidth);
+                byHeight = randomNumberFromInterval(0, maxHeight);
+
+                return [byWidth, byHeight]
+            }
+
+            $(document).ready(function()
+            {
+                var html = "";
+                var thoughts = ["Should I go to church?",
+                    "What should I wear tomorrow?",
+                    "Did she look at me?",
+                    "Is telepathy even possible?",
+                    "What should I eat?",
+                    "I'm going to be so late..",
+                    "What is the meaning of life?",
+                    "Should I do sports?",
+                    "Is it raining?",
+                    "Why did I choose walking?",
+                    "What time is it?",
+                    "I should have gotten to bed earlier yesterday..",
+                    "Should I find a job?",
+                    "What am I doing with my life?",
+                    "I should give my parents some news soon.. ",
+                    "I'm so tired..",
+                    "I really should get a cup of coffee.."
+                ];
+
+                for(var times = 0; times < 10; times++)
+                {
+                    for(var i = 0; i < thoughts.length; i++)
+                    {
+                        var thoughtId = "thought-" + i,
+                            color = Math.floor(Math.random() * 16777215).toString(16),
+                            position = getRandomPositionInsideDiv("thoughts", thoughtId);
+
+                        style = "background: #" + color + "; "
+                        style += "top: " + position[1] + "px;"
+                        style += "left: " + position[0] + "px; "
+
+                        html += "<div id='" + thoughtId + "' style='" + style + "'>";
+                        html += "<p>" + thoughts[i] + "</p></div>";
+                    }
+                    $("#thoughts").append(html);
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="thoughts"></div>
+            <img id="man" style="height: 13%;" src="{{ STATIC }}projects/cart/ttspace/images/logos/human-icon-panic-white.png"/>
+            <p id="book">
+                Thoughts Through Space</br>
+                by Sir Hubert Wilkins & Harold M. Sherman
+            </p>
+            <a id="switch" href="/project/cart/ttspace/light/"><p>1910</p></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+
+#meow-background
+{
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,0.8);
+}
+
+    #meow-container
+    {
+        position: absolute;
+        width: 40%;
+        height: auto;
+        max-height: 22em;
+        top: 30%;
+        right: 0;
+        left: 0;
+
+        overflow: hidden;
+        margin: auto;
+
+        background: white;
+        border-radius: 15px;
+        border: 1px solid white;
+        box-shadow: 1px 1px 5px white;
+    }
+
+    #meow-container #meow-head
+    {
+        color: white;
+        background: black;
+        padding: 0.5em;
+    }
+
+        #meow-head p
+        {
+            display: inline-block;
+            width: auto;
+            max-width: 80%;
+            margin: 0.2em;
+            margin-left: 0.6em;
+        }
+
+        #meow-head #meow-close-button
+        {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            float: right;
+            cursor: pointer;
+            background: url("images/logos/circled-close-button-white.png");
+            background-size: 100% 100%;
+        }
+
+    #meow-container #meow-body
+    {
+        height: auto;
+        color: black;
+        background: white;
+        text-align: center;
+    }
+
+        #meow-body p
+        {
+            max-height: 15em;
+            margin: 0.6em;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+            #meow-body p a
+            {
+                color: black;
+                outline: 0;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+    #meow-container #ok-button
+    {
+        width: 100px;
+        height: 35px;
+        
+        text-align: center;
+        margin: 10px auto;
+        cursor: pointer;
+
+        color: white;
+        background: black;
+        border-radius: 5px;
+        line-height: 35px;
+    }
+

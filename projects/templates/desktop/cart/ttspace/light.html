@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="CART Book Light & Heavy Stylish Pages">
+        <meta name="keywords" content="Thoughts Through Space 1942 CART Light & Heavy Stylish Pages">
+        <meta name="author" content="Seva Ivanov">
+<!--
+        /------------------------\              |~~\_____/~~\__  |
+        |   Hello, there!        |______________ \______====== )-+
+        |   Now, read the book.  |                      ~~~|/~~  |
+        \------------------------/                         ()
+-->
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/generic.css">
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/light.css">
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:100' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="container">
+            <div id="space"></div>
+            <p id="quote">Harold, do you hear me?</br>I need help...</p>
+            <img id="man" src="{{ STATIC }}projects/cart/ttspace/images/logos/human-icon-calm-white.png"/>
+            <p id="book">
+                Thoughts Through Space</br>
+                by Sir Hubert Wilkins & Harold M. Sherman
+            </p>
+            <a id="switch" href="/project/cart/ttspace/heavy/"><p>1938</p></a>
+        </div>
+    </body>
+</html>

@@ -35,6 +35,15 @@ MEDIA_IMAGES = os.path.join(settings.MEDIA_ROOT, "images")
 MOBILE_HOSTS = ['m.kedfilms.com', 'm.sevaivanov.com']
 IE_USERAGENT_TAGS = ["msie", "trident"]
 
+def error404(request):
+    return render(request, "frontend/errors/generic-simple-text.html",
+    {
+        "header": "404 NOT FOUND",
+        "subtitle": """
+            Sorry, the page you requested was not found.
+        """
+    })
+
 def is_mobile(request): return request.mobile or request.get_host() in MOBILE_HOSTS
 
 def get_app_version(request):
@@ -111,12 +120,15 @@ def projects(request):
 
 @never_cache
 @detect_old_browsers
-def project(request, category, title):
-    template = os.path.join(get_app_version(request), category, title, "index.html")
+def project(request, category, title, html_file):
+    html_file += ".html"
+    version = get_app_version(request)
+    
+    template = os.path.join(version, category, title, html_file)
     template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
 
-    if os.path.isfile(template_abspath) == False: raise Http404
-    return render(request, template)
+    if os.path.isfile(template_abspath) == False: return error404(request)
+    return render(request, template, {"version": version})
 
 @never_cache
 @detect_old_browsers
@@ -129,11 +141,11 @@ def articles(request):
 @detect_old_browsers
 def article(request, category=None, article=None):
     if not article or not category:
-        raise Http404
+        return error404(request)
 
     article += ".md"
     if os.path.isfile(os.path.join(STATIC_FRONTEND, "md/", category, article)) == False:
-        raise Http404
+        return error404(request)
 
     template = "frontend/generic/article.html"
     parent = os.path.join("frontend", get_app_version(request), "base.html")
@@ -168,10 +180,10 @@ def gallery(request, category):
     if not os.path.exists(MEDIA_IMAGES): return Http404
 
     unique_categories = Photo.objects.all().values_list('category').distinct()
-    if not unique_categories: raise Http404
+    if not unique_categories: return error404(request)
 
     if not any(unique_category[0] == category for unique_category in unique_categories):
-        raise Http404
+        return error404(request)
 
     if is_mobile(request):
         return render(request, "frontend/mobile/photos-gallery.html",
@@ -197,13 +209,13 @@ def slideshow(request, category=None, fragment_id=None):
     if not any(unique_category['category'] == category 
         for unique_category in Photo.objects.all().values('category').distinct()
     ):
-        raise Http404
+        return error404(request)
 
     if is_mobile(request):
         image = Photo.objects.get(fragment_identifier = fragment_id)
 
         if os.path.isfile(image.get_image_abspath()) == False:
-            raise Http404
+            return error404(request)
 
         return render(request, "frontend/mobile/photos-slideshow.html",
         {
@@ -227,14 +239,5 @@ def videos(request):
         "videos_src": "vid/",
         "categories": Video.CATEGORIES,
         "videos": Video.objects.all().filter().order_by('-date_created')
-    })
-
-def error404(request):
-    return render(request, "frontend/errors/generic-simple-text.html",
-    {
-        "header": "404 NOT FOUND",
-        "subtitle": """
-            Sorry, the page you requested was not found.
-        """
     })
 

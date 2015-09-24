@@ -1,18 +1,4 @@
 
-.section header
-{
-    width: 100%;
-    font-size: 4em;
-    text-align: center;
-    margin: 1em 0em 1em;
-}
-
-.section hr
-{
-    padding-top: 0;
-    margin-bottom: 4em;
-}
-
 /* Cool possible feature */
 
     #side-computer
@@ -63,67 +49,90 @@
 /*********************************************************************************/
 /* Coding                                                                        */
 /*********************************************************************************/
-    #coding
+    .section
     {
         margin-bottom: 4em;
     }
-
-    #coding #circle
-    {
-        width: 25em;
-        height: 25em;
-        border-radius: 15em;
-        -webkit-border-radius: 15em;
-        -moz-border-radius: 15em;
-
-        background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
-
-        overflow: hidden;
-        margin: 0 auto;
-
-        transition: box-shadow 1s;
-        -moz-transition: box-shadow 1s;
-        -webkit-transition: box-shadow 1s;
-        -o-transition: box-shadow 1s;
-        -ms-transition: box-shadow 1s;
-    }
-        #coding #circle:hover
+        .section header
         {
-            box-shadow: 0 0 20px white;
+            width: 100%;
+            font-size: 4em;
+            text-align: center;
+            margin: 1em 0em 1em;
         }
 
-    @media all and (max-width: 1100px)
-    {
-        #coding #circle
+        .section hr
         {
-            background-attachment: initial;
-        }
-    }
-
-    #coding a
-    {
-        transition: text-shadow 1s;
-        -moz-transition: text-shadow 1s;
-        -webkit-transition: text-shadow 1s;
-        -o-transition: text-shadow 1s;
-        -ms-transition: text-shadow 1s;
-    }
-        #coding a:hover
-        {
-            text-shadow: 0 0 10px white;
+            padding-top: 0;
+            margin-bottom: 4em;
         }
 
-    #coding p
-    {
-        font-size: 2em;
-        text-align: center;
-        color: #C8C8C8 ;
-        margin: 2em 0 4em;
-    }
+            .section .circle
+            {
+                width: 25em;
+                height: 25em;
+                border-radius: 15em;
+                -webkit-border-radius: 15em;
+                -moz-border-radius: 15em;
+
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+
+                overflow: hidden;
+                margin: 0 auto;
+
+                transition: all 1s;
+                -moz-transition: all 1s;
+                -webkit-transition: all 1s;
+                -o-transition: all 1s;
+                -ms-transition: all 1s;
+            }
+                .section .circle:hover
+                {
+                    box-shadow: 0 0 20px white;
+                }
+                #cart .circle:hover
+                {
+                    box-shadow: none;
+                }
+
+                .section .circle img
+                {
+                    width: 90%;
+                    height: 90%;
+                    z-index: 2;
+                }
+                
+            @media all and (max-width: 1100px)
+            {
+                .section .circle
+                {
+                    background-attachment: initial;
+                }
+            }
+
+            .section a
+            {
+                transition: text-shadow 1s;
+                -moz-transition: text-shadow 1s;
+                -webkit-transition: text-shadow 1s;
+                -o-transition: text-shadow 1s;
+                -ms-transition: text-shadow 1s;
+            }
+                .section a:hover
+                {
+                    text-shadow: 0 0 10px white;
+                }
+
+            .section p
+            {
+                font-size: 2em;
+                text-align: center;
+                color: #C8C8C8 ;
+                margin: 1em 0 4em;
+            }
 
 /*********************************************************************************/
 /* Abilities                                                                     */

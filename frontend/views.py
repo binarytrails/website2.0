@@ -46,6 +46,10 @@ def error404(request):
 
 def is_mobile(request): return request.mobile or request.get_host() in MOBILE_HOSTS
 
+def is_safari(request):
+    user_agent = request.META['HTTP_USER_AGENT'].lower()
+    return ("safari" in user_agent and "chrome" not in user_agent)
+
 def get_app_version(request):
     if is_mobile(request): return "mobile"
     else: return "desktop"
@@ -128,6 +132,12 @@ def project(request, category, title, html_file):
     template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
 
     if os.path.isfile(template_abspath) == False: return error404(request)
+
+    # 3Dcube incompatibility with Safari
+    if version == "desktop" and title == "home" and is_safari(request):
+        browsers_suggestion = {"firefox": True, "chrome": True}
+        return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
+
     return render(request, template, {"version": version})
 
 @never_cache

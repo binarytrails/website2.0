@@ -125,10 +125,12 @@ def projects(request):
 @never_cache
 @detect_old_browsers
 def project(request, category, title, html_file):
-    html_file += ".html"
     version = get_app_version(request)
+
+    if version == "mobile": html_file += "-" + version
+    html_file += ".html"
     
-    template = os.path.join(version, category, title, html_file)
+    template = os.path.join(category, title, html_file)
     template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
 
     if os.path.isfile(template_abspath) == False: return error404(request)

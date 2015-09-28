@@ -1,4 +1,15 @@
 
+a
+{
+    color: white;
+    outline: 0;
+    text-decoration: underline;
+}
+    a:hover
+    {
+        text-shadow: 0 0 10px white;
+    }
+
 #main
 {
     position: absolute;

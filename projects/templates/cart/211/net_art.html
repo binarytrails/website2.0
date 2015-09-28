@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="CART 214 Selfies & Self Representation">
+        <meta name="author" content="Seva Ivanov">
+
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
+    </head>
+    <body>
+        <div id="main">
+            <p class="header">Net.Art Generator</p>
+            <p>
+                <i>Find New Media Art which uses "networks".</i></br></br>
+                
+                I was wondering if there is a way to visually measure our fingerprint in the Internet. I was searching for a tool that is using keywords to relate them to their visual content. When I built the first version on my / this website, I put it under <i>Kedfilms</i> brand name at the <i>kedfilms.com</i> domain. Therefore, I marked the Internet with this unique keyword which I used on the Net.Art Generator website to create art using my own art. Basically, you write keywords, the website uses Google to find related images and then it blends them together.</br></br>
+
+                Try it: <a href="http://nag.iap.de/?ac=create&lang=en">Net.Art Generator</a> and here are the creator's <a href="http://net.art-generator.com/src/tex.html">Interesting Texts.</a></br></br>
+
+                A few visually interesting images that were produced with the <i>Kedfilms</i> keyword using my own website content:
+            </p>
+            <div style="margin-top: -2em;" class="images">
+                <img src="{{ STATIC }}projects/cart/images/net.art/2.jpg"></img>
+                <img src="{{ STATIC }}projects/cart/images/net.art/7.jpg"></img>
+                <img src="{{ STATIC }}projects/cart/images/net.art/1.jpg"></img>
+                <img src="{{ STATIC }}projects/cart/images/net.art/5.jpg"></img>
+                <img src="{{ STATIC }}projects/cart/images/net.art/4.jpg"></img>
+                <img src="{{ STATIC }}projects/cart/images/net.art/6.jpg"></img>
+            </div>
+        </div>
+    </body>
+</html>

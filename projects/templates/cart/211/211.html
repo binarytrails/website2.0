@@ -1,11 +1,6 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="description" content="CART 211 Assignments">
-        <meta name="author" content="Seva Ivanov">
-
-        {% load static %}
-        {% get_static_prefix as STATIC %}
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/listing-wo-header-{{ version }}-black.css" />
     </head>
@@ -22,7 +17,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/project/cart/ttspace/light/">
+                    <a href="/project/cart/ttspace/heavy/">
                         <div id="right"><p>Thoughts Through Space</p></div>
                     </a>
                 </li>
@@ -44,4 +39,4 @@
             </ul>
         </div>
     </body>
-</html>
+{% endblock %}

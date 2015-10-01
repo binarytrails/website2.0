@@ -61,6 +61,7 @@
     {
         height: auto;
         color: black;
+        line-height: 2em;
         background: white;
         text-align: center;
     }
@@ -80,6 +81,10 @@
                 cursor: pointer;
                 text-decoration: none;
             }
+                #meow-body p a:hover
+                {
+                    text-shadow: 0 0 5px black;
+                }
 
     #meow-container #ok-button
     {

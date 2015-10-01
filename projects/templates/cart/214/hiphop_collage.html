@@ -1,30 +1,27 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="description" content="CART 214 Hip-Hop Culture Collage">
-        <meta name="author" content="Seva Ivanov">
-
-        {% load static %}
-        {% get_static_prefix as STATIC %}
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
-
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-left-right-addon.css" />
     </head>
     <body>
         <div id="main">
-            <div class="images" style="width:40%;float:left;">
-                <a href="{{ STATIC }}projects/cart/images/hiphop_collage.jpg"><img style="width: 100%;" src="{{ STATIC }}projects/cart/images/hiphop_collage_720x720.jpg"></img></a>
-            </div>
-            <div style="width:55%;margin-right:1%;float:right;">
-                <p class="header">Collage: Hip-Hop Culture</p>
-                <p>
-                    <i>Create a digital collage using the terms "Rhythm, and Balance". In this work you will create a an image out of "found" imagery, either from the net, magazines or elsewhere.</i></br></br>
+            <div id="container">
+                <div class="left images">
+                    <a href="{{ STATIC }}projects/cart/images/hiphop_collage.jpg"><img src="{{ STATIC }}projects/cart/images/hiphop_collage_720x720.jpg"></img></a>
+                </div>
+                <div class="right">
+                    <p class="header">Hip-Hop Culture Collage</p>
+                    <p>
+                        <i>Create a digital collage using the terms "Rhythm, and Balance". In this work you will create a an image out of "found" imagery, either from the net, magazines or elsewhere.</i></br></br>
 
-                    I made this piece as a reminder of time and how it changed Hip-Hop culture. This culture came from Funk with legendary <a href="https://en.wikipedia.org/wiki/James_Brown">James Brown</a> (as seen on left side) and evolved over time by expanding all over continents. It is made of four elements: Graffiti, MC'ing, Bboying & DJ'ing. This Bboy (on the right) practicing the art of <a href="https://en.wikipedia.org/wiki/B-boying">Bboying</a> is Intact from Ruffneck Attack (Ukraine). He is the "God Father" of this type of dance in his country. In the background, we can see the <a href="https://en.wikipedia.org/wiki/5_Pointz">5 Pointz</a> murral of New York city, a patrimoine of Hip-Hop culture that was destroyed overnight in 2014, ignoring all of the petitions.</br></br>
+                        I made this piece as a reminder of time and how it changed Hip-Hop culture. This culture came from Funk with legendary <a href="https://en.wikipedia.org/wiki/James_Brown">James Brown</a> (as seen on left side) and evolved over time by expanding all over continents. It is made of four elements: Graffiti, MC'ing, Bboying & DJ'ing. This Bboy (on the right) practicing the art of <a href="https://en.wikipedia.org/wiki/B-boying">Bboying</a> is Intact from Ruffneck Attack (Ukraine). He is the "God Father" of this type of dance in his country. In the background, we can see the <a href="https://en.wikipedia.org/wiki/5_Pointz">5 Pointz</a> murral of New York city, a patrimoine of Hip-Hop culture that was destroyed overnight in 2014, ignoring all of the petitions.</br></br>
 
-                    Everything is constantly mutating, nothing is permanent. I think that this piece gathers together different stages of Hip-Hop culture to capture them in time.
-                </p>
+                        Everything is constantly mutating, nothing is permanent. I think that this piece gathers together different stages of Hip-Hop culture to capture them in time.
+                    </p>
+                </div>
             </div>
         </div>
     </body>
-</html>
+{% endblock %}

@@ -1,11 +1,6 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="description" content="CART 211 Readings">
-        <meta name="author" content="Seva Ivanov">
-
-        {% load static %}
-        {% get_static_prefix as STATIC %}
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
     </head>
@@ -40,4 +35,4 @@
             <p class="footer"><i>Written by Seva Ivanov</i></p>
         </div>
     </body>
-</html>
+{% endblock %}

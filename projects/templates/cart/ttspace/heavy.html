@@ -1,9 +1,7 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="description" content="CART Book Light & Heavy Stylish Pages">
         <meta name="keywords" content="Thoughts Through Space 1942 CART Light & Heavy Stylish Pages">
-        <meta name="author" content="Seva Ivanov">
 <!--
         /------------------------\              |~~\_____/~~\__  |
         |   Hello, there!        |______________ \______====== )-+
@@ -16,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/generic.css">
         <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/heavy.css">
         <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
+
         <script type="text/javascript">
 
             function randomNumberFromInterval(min, max)
@@ -93,4 +92,4 @@
             <a id="switch" href="/project/cart/ttspace/light/"><p>1910</p></a>
         </div>
     </body>
-</html>
+{% endblock %}

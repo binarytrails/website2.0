@@ -1,24 +1,25 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="description" content="CART 214 Selfies & Self Representation">
-        <meta name="author" content="Seva Ivanov">
-
-        {% load static %}
-        {% get_static_prefix as STATIC %}
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
-
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-left-right-addon.css" />
     </head>
     <body>
         <div id="main">
-            <div class="images">
-                <img style="width: 50%;" src="{{ STATIC }}projects/cart/images/selfie_bits.jpg"></img>
+            <div id="container">
+                <div class="left images">
+                    <a href="{{ STATIC }}projects/cart/images/selfie_bits.jpg"><img src="{{ STATIC }}projects/cart/images/selfie_bits.jpg"></img></a>
+                </div>
+                <div class="right">
+                    <p class="header">Selfies & Self Representation</p>
+                    <p>
+                        <i>Create a figurative selfie, then "deconstruct" the image and reconstruct it (physically or digitally) so as to create a second self-portrait that is not figurative.</i></br></br>
+
+                        I made this with the Fotor application on an iPod.
+                    </p>
+                </div>
             </div>
-            <p class="header">Selfies & Self Representation</p>
-            <p>
-                <i>Create a figurative selfie, then "deconstruct" the image and reconstruct it (physically or digitally) so as to create a second self-portrait that is not figurative.</i>
-            </p>
         </div>
     </body>
-</html>
+{% endblock %}

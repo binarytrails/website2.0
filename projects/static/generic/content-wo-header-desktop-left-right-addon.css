@@ -1,0 +1,25 @@
+
+    #main #container
+    {
+        position: absolute;
+        width: 100%;
+        height: auto;
+    }
+
+    #main div.left
+    {
+        width: 40%;
+        float: left;
+    }
+
+    #main div.right
+    {
+        width: 55%;
+        float: right;
+        margin-right: 1%;
+    }
+
+        #main img
+        {
+            width: 100%;
+        }

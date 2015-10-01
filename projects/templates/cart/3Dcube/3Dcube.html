@@ -1,16 +1,9 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="3D CSS Cube">
+{% extends "generic/base-head.html" %}
+{% block content %}
         <meta name="keywords" content="3D CSS Cube Animation Computation Arts">
-        <meta name="author" content="Seva Ivanov">
-
-        {% load static %}
-        {% get_static_prefix as STATIC %}
 
         <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/3Dcube/3Dcube.css">
         <script type="text/javascript" src="{{ STATIC }}projects/cart/3Dcube/3Dcube.js"></script>
-        
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet' type='text/css'>
         
         <!-- https://github.com/sevaivanov/short/tree/master/js/meow -->
@@ -21,7 +14,7 @@
     <base>
         <div id="container">
             <img id="info" src="{{ STATIC }}projects/cart/3Dcube/images/logos/cirlced-question-300x300-white.png"
-                onclick="meow('INFO', 'Source Code at *[Github](http://github.com/sevaivanov/school/tree/master/cart/3Dcube)*</br></br>Created by Seva Ivanov');"/>
+                onclick="meow('INFO', '1. Rotate the 3D Cube.</br>2. Click on available classes.</br></br>Source Code available at *[Github](http://github.com/sevaivanov/school/tree/master/cart/3Dcube)*!</br>Created by Seva Ivanov.');"/>
             <div id="cube">
                 <figure class="top with-content" onclick="location.href='/project/cart/211/211/'">
                     <p>CART 211:<br/>Creative Computation & Network Culture</p>
@@ -31,7 +24,7 @@
                     <p>CART 214:<br/>Visual Form & Communication</p>
                 </figure>
                 <figure class="left"></figure>
-                <figure class="front"></figure>
+                <figure class="front"><p>Hello.</br></br>Rotate Me!</p></figure>
                 <figure class="back"></figure>
             </div>
             <div id="buttons">
@@ -52,4 +45,4 @@
             </div>
         </div>
     </base>
-</html>
+{% endblock %}

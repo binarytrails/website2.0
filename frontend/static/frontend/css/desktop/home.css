@@ -44,6 +44,7 @@
         #entry p
         {
             font-size: 1.5em;
+            line-height: 2em;
         }
 
 /*********************************************************************************/
@@ -56,32 +57,35 @@
         .section header
         {
             width: 100%;
-            font-size: 4em;
+            font-size: 3em;
+            color: #899190;
             text-align: center;
-            margin: 1em 0em 1em;
+            margin: 1em 0;
         }
 
         .section hr
         {
+            color: #C0C0C0;
+            border-color: #918889;
+            background-color: #C0C0C0;
             padding-top: 0;
-            margin-bottom: 4em;
         }
 
             .section .circle
             {
-                width: 25em;
-                height: 25em;
-                border-radius: 15em;
-                -webkit-border-radius: 15em;
-                -moz-border-radius: 15em;
+                width: 20em;
+                height: 20em;
+                border-radius: 10em;
+                -webkit-border-radius: 10em;
+                -moz-border-radius: 10em;
 
                 background-repeat: no-repeat;
                 background-attachment: fixed;
-                background-size: cover;
+                background-size: 70%;
                 background-position: center;
 
                 overflow: hidden;
-                margin: 0 auto;
+                margin: 5em auto 0;
 
                 transition: all 1s;
                 -moz-transition: all 1s;
@@ -93,10 +97,46 @@
                 {
                     box-shadow: 0 0 20px white;
                 }
+
+            #cart .circle
+            {
+                background-attachment: initial;
+                background-size: 80%;
+                background-image: url('/static/frontend/img/logo/512x512/symbol/pc-love-8bit-white.png');
+                opacity: 0.7;
+            }
                 #cart .circle:hover
                 {
+                    opacity: 1;
                     box-shadow: none;
+                    background-image: url('/static/frontend/img/logo/512x512/symbol/pc-love-8bit-aqua.png');
                 }
+
+                #cart .circle img
+                {
+                    margin: 5%;
+                }
+
+            #coding .circle
+            {
+                /* static */
+                background-attachment: initial;
+                background-size: 200%;
+                background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
+                /* dynamic */
+                /*background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw-square.jpg');*/
+            }
+            /*
+            / static after width
+            @media all and (max-width: 1100px)
+            {
+                #coding .circle
+                {
+                    background-attachment: initial;
+                    background-size: 200%;
+                    background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
+                }
+            }*/
 
                 .section .circle img
                 {
@@ -107,9 +147,11 @@
                 
             @media all and (max-width: 1100px)
             {
-                .section .circle
+                #coding .circle
                 {
                     background-attachment: initial;
+                    background-size: 200%;
+                    background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
                 }
             }
 
@@ -130,7 +172,7 @@
             {
                 font-size: 2em;
                 text-align: center;
-                color: #C8C8C8 ;
+                color: #C8C8C8;
                 margin: 1em 0 4em;
             }
 

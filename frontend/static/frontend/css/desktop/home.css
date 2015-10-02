@@ -48,7 +48,7 @@
         }
 
 /*********************************************************************************/
-/* Coding                                                                        */
+/* Compution Arts & Coding                                                       */
 /*********************************************************************************/
     .section
     {
@@ -102,14 +102,13 @@
             {
                 background-attachment: initial;
                 background-size: 80%;
-                background-image: url('/static/frontend/img/logo/512x512/symbol/pc-love-8bit-white.png');
                 opacity: 0.7;
+                margin-bottom: 0;
             }
                 #cart .circle:hover
                 {
                     opacity: 1;
                     box-shadow: none;
-                    background-image: url('/static/frontend/img/logo/512x512/symbol/pc-love-8bit-aqua.png');
                 }
 
                 #cart .circle img
@@ -119,10 +118,10 @@
 
             #coding .circle
             {
+                margin-bottom: 4em;
                 /* static */
                 background-attachment: initial;
                 background-size: 200%;
-                background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
                 /* dynamic */
                 /*background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw-square.jpg');*/
             }

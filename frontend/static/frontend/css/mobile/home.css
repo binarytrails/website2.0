@@ -43,7 +43,7 @@
 
         padding: 10em 0 5em;
         text-align: center;
-        background: #242121;
+        background: #222124;
     }
 
         #entry header
@@ -57,7 +57,7 @@
         }
 
 /*********************************************************************************/
-/* Coding                                                                        */
+/* Computation Arts & Coding                                                     */
 /*********************************************************************************/
     .section
     {
@@ -65,7 +65,7 @@
     }
         #cart
         {
-            background: #242221;
+            background: #242121;
         }
 
             #cart header
@@ -73,10 +73,21 @@
                 margin-bottom: 2em;
             }
 
+            #cart .circle
+            {
+                background-size: 80%;
+                margin-bottom: 0;
+            }
+
         #coding
         {
             background: #1F1C1C;
         }
+
+            #coding .circle
+            {
+                margin-bottom: 4em;
+            }
 
         .section header
         {
@@ -98,11 +109,6 @@
 
             overflow: hidden;
             margin: 1em auto;
-        }
-
-        #pc
-        {
-
         }
 
             .section .circle img

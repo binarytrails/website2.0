@@ -77,6 +77,7 @@
             {
                 background-size: 80%;
                 margin-bottom: 0;
+                background-image: url('/static/frontend/img/logo/512x512/symbol/pc-love-8bit-white.png');
             }
 
         #coding
@@ -87,6 +88,7 @@
             #coding .circle
             {
                 margin-bottom: 4em;
+                background-image: url('/static/frontend/img/wallpapers/bits_cloud_bw.jpg');
             }
 
         .section header

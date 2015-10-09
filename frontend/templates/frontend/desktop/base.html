@@ -21,14 +21,30 @@
     </head>
     <body>    
         <div id="header">
+            <div id="menu-background"></div>
+            <!-- showing .content by css sibling -->
             <div id="menu">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/articles/">Articles</a></li>
-                    <li><a href="/photos/">Photography</a></li>
-                    <li><a href="/videos/">Short Films</a></li>
-                </ul>
-            </div>             
+                <div class="category">
+                    <a href="/"><div class="item">Home</div></a>
+                    <div class="subitem">&nbsp;</div>
+                    <div class="subitem">&nbsp;</div>
+                </div>
+                <div class="category">
+                    <a href="/articles/"><div class="item">Articles</div></a>
+                    <div class="subitem">&nbsp;</div>
+                    <div class="subitem">&nbsp;</div>
+                </div>
+                <div class="category">
+                    <div class="item">Projects</div>
+                    <a href="https://devpost.com/sevaivanov"><div class="content subitem">Programming</div></a>
+                    <a href="/project/cart/home/main/"><div class="content subitem">Computation Arts</div></a>
+                </div>
+                <div class="category">
+                    <a href=""><div class="item">Multimedia</div>
+                    <a href="/photos/"><div class="content subitem">Photography</div></a>
+                    <a href="/videos/"><div class="content subitem">Short Films</div></a>
+                </div>
+            </div>
             <div id="logo">
                 <img style="margin-bottom:2em;" src="{{ STATIC }}frontend/img/logo/si-ascii-graffiti.png"></img>
                 <!--<div id="circle"></div>-->

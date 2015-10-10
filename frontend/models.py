@@ -53,7 +53,7 @@ class Photo(models.Model):
         (DAYTIME, 'Daytime'),
         (NIGHTTIME, 'Nighttime'),
         (MULTIVERSE, 'Multiverse'),
-        (INTERNET_GIFS, 'Internet In Motion'),
+        # (INTERNET_GIFS, 'Internet In Motion'),
     )
 
     # Add new authors here

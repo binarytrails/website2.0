@@ -174,9 +174,9 @@ def photos(request):
         template = "frontend/mobile/photos.html"
 
         # omit the 'internet in motion' aka the #4 section.
-        categories = [tuple(x for x in y if x)
-            for y in categories if y != categories[4]
-        ]
+        # categories = [tuple(x for x in y if x)
+        #     for y in categories if y != categories[4]
+        # ]
 
     else:
         template = "frontend/desktop/photos.html"

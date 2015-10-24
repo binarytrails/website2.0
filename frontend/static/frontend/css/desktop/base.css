@@ -191,7 +191,7 @@
             #header #menu .category
             {
                 display: inline-block;
-                width: 13em;
+                width: 10em;
             }
 
                 #header #menu .category:hover a > .content

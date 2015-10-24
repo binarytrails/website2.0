@@ -52,7 +52,9 @@
                             {% if project %}
                                 <div class="line">
                                     <div class="month">{{ month|get_month_name }}</div>
-                                    <div class="point with_content"></div>
+                                    <div class="point with_content">
+                                        <a href="{{ project.url }}"></a>
+                                    </div>
                                     <div class="text title">
                                         <a href="{{ project.url }}">{{ project.title }}</a>
                                     </div>

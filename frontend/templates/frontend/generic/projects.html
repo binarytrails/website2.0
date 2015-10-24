@@ -5,34 +5,15 @@
     {% load filters %}
     {% load staticfiles %}
 
-    <link rel="stylesheet" href="{{ STATIC }}frontend/css/generic/projects.css">
-
-    {% if "mobile" in parent %}
-        <style type="text/css">
-            #header:target ~ #main
-            {
-                margin-top: 26em;
-            }
-            #main
-            {
-                margin-top: 14em;
-
-                -moz-transition: all 0.6s ease-in-out;
-                -webkit-transition: all 0.6s ease-in-out;
-                transition: all 0.6s ease-in-out;
-                -o-transition: all 0.6s ease-in-out;
-                -ms-transition: all 0.6s ease-in-out;
-            }
-        </style>
-    {% endif %}
+    <link rel="stylesheet" href="{{ STATIC }}frontend/css/{{ version }}/projects.css">
 
     <div id="main">
-
         <header>
             <h3>Timeline</h3>
-            <h5><i>Roll your mouse over one of the project circles.</i></h5>
+            {% if "desktop" in parent %}
+                <h5><i>Roll your mouse over one of the project circles.</i></h5>
+            {% endif %}
         </header>
-
         <div id="container">
             {% for year in passed_years %}
                 {% for month in months %}
@@ -73,10 +54,9 @@
                     {% endfor %}
             {% endfor %}
 
-        <footer>
-            <h5><i>The Beginning of Time</i></h5>
-        </footer>
-
+            <footer>
+                <h5><i>The Beginning of Time</i></h5>
+            </footer>
         </div>
     </div>
 {% endblock content %}

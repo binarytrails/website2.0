@@ -95,14 +95,13 @@ def home(request):
 @never_cache
 @detect_old_browsers
 def projects(request):
-    # find how to target div on touch
-    if is_mobile(request): return render_no_mobile_version(request)
-    
+    version = get_app_version(request)
     template = "frontend/generic/projects.html"
-    parent = os.path.join("frontend", get_app_version(request), "base.html")
+    parent = os.path.join("frontend", version, "base.html")
 
     return render(request, template, {
         "parent": parent,
+        "version": version,
         "start_year": 2016,
         "passed_years": range(4),
         "months": range(12, 0, -1),

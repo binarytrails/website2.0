@@ -1,0 +1,74 @@
+/*********************************************************************************/
+/*    Header                                                                       */
+/*********************************************************************************/
+    #header:target ~ #main
+    {
+        margin-top: 26em;
+    }
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+    #main
+    {
+        position: relative;
+        margin-top: 14em;
+        color: #EDEDED;
+
+        -moz-transition: all 0.6s ease-in-out;
+        -webkit-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+    }
+
+    #container
+    {
+        height: auto;
+        width: 100%;
+    }
+
+        h3, h4, h5, .month
+        {
+            text-align: center;
+        }
+
+        header
+        {
+            font-size: 3em;
+        }
+
+        .year, footer
+        {
+            font-size: 2em;
+        }
+        
+        .month
+        {
+            font-size: 1.5em;
+        }
+
+        footer
+        {
+            margin: 4em;
+        }
+
+        .text
+        {
+            font-size: 1.2em;
+            margin: 2em;
+        }
+
+            .title
+            {
+                font-style: italic;
+            }
+                .title a
+                {
+                    color: inherit;
+                    text-decoration: underline;
+                }
+                    .title a:hover
+                    {
+                        text-shadow: none;
+                    }

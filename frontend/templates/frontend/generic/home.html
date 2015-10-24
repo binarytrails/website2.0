@@ -5,14 +5,24 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="{{ STATIC }}frontend/css/{{ version }}/home.css">
 
-    <!-- Cool possible feature -->
-    <!--
-    <div id="side-computer">
-        <div id="right-box">
-            <img src="{{ STATIC }}frontend/img/logo/512x512/symbol/pc-love-8bit-grey.png"></img>
-        </div>
-    </div>
-    -->
+    {% if "mobile" in parent %}
+        <style type="text/css">
+            #header:target ~ #main
+            {
+                margin-top: 26em;
+            }
+            #main
+            {
+                margin-top: 14em;
+
+                -moz-transition: all 0.6s ease-in-out;
+                -webkit-transition: all 0.6s ease-in-out;
+                transition: all 0.6s ease-in-out;
+                -o-transition: all 0.6s ease-in-out;
+                -ms-transition: all 0.6s ease-in-out;
+            }
+        </style>
+    {% endif %}
 
     {% if version == "mobile" %}<div id="main">{% endif %}
 
@@ -40,13 +50,13 @@
 
             <div id="coding" class="section">
                 {% if version == "desktop" %}<hr></hr>{% endif %}
-                <header>Programming</header>
+                <header>Projects</header>
                 {% if version == "desktop" %}<hr></hr>{% endif %}
-                <a href="https://devpost.com/sevaivanov">
+                <a href="/projects/#main">
                     <div class="circle"></div>
                 </a>
-                <a href="https://devpost.com/sevaivanov"><p>
-                    > View my projects
+                <a href="/projects/#main"><p>
+                    > Run timeline
                 </p></a>
             </div>
 

@@ -386,3 +386,38 @@ class Skill(models.Model):
         unique_together = (
             ('category', 'title')
         )
+
+class Project(models.Model):
+
+    TIMELINE = {
+        "2015-7":
+        {
+            "title": "Tcp Viewer",
+            "description": """We wrap tcpflow in the backend to arrange data for 
+            dynamic visualisation for the frontend. Our goal is to raise awareness 
+            about the quantity of personal information available to everyone connected 
+            to a network.
+            """,
+            "url": "https://github.com/sevaivanov/tcpviewer#tcp-viewer"
+        },
+        "2014-12":
+        {
+            "title": "Personal Website",
+            "description": """I built it to centralize my realizations and gain 
+                web development experience. I challenged myself to only use CSS3 
+                & HTML5 and leave JavaScript aside. It is using the Django Python 
+                Web framework to build static web pages.
+            """,
+            "url": "https://github.com/sevaivanov/personal-website#personal-website"
+        },
+        "2013-12":
+        {
+            "title": "Distributed Connect4",
+            "description": """This is a distributed LipeRMI Connect4 game. 
+            It is built under the MVC design pattern. The server contains 
+            the game database and defines the rules. The clients connect 
+            to the server in order to play or watch an ongoing game.
+            """,
+            "url": "https://github.com/sevaivanov/connect4#distributed-connect4"
+        }
+    }

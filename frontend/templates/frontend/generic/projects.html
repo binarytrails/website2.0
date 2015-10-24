@@ -7,53 +7,74 @@
 
     <link rel="stylesheet" href="{{ STATIC }}frontend/css/generic/projects.css">
 
-    {% if "desktop" in parent %}
-        <link rel="stylesheet" href="{{ STATIC }}frontend/css/desktop/projects.css">
-    {% elif "mobile" in parent %}
-        <link rel="stylesheet" href="{{ STATIC }}frontend/css/mobile/projects.css">
+    {% if "mobile" in parent %}
+        <style type="text/css">
+            #header:target ~ #main
+            {
+                margin-top: 26em;
+            }
+            #main
+            {
+                margin-top: 14em;
+
+                -moz-transition: all 0.6s ease-in-out;
+                -webkit-transition: all 0.6s ease-in-out;
+                transition: all 0.6s ease-in-out;
+                -o-transition: all 0.6s ease-in-out;
+                -ms-transition: all 0.6s ease-in-out;
+            }
+        </style>
     {% endif %}
 
-    <header>
-        <h3>Projects</h3>
-        <h5><i>Roll your mouse over one of the projects circles</i></h5>
-    </header>
+    <div id="main">
 
-    <div id="container">
-        {% for year in passed_years %}
-            {% for month in months %}
+        <header>
+            <h3>Timeline</h3>
+            <h5><i>Roll your mouse over one of the project circles.</i></h5>
+        </header>
 
-                {% with years_to_substract=year|inverse_sign %}
-                {% with current_year=start_year|add:years_to_substract %}
+        <div id="container">
+            {% for year in passed_years %}
+                {% for month in months %}
 
-                    {% if month == 12 %}
-                        <div class="year"><h4>{{ current_year }}</h4></div>
-                    {% endif %}
+                    {% with years_to_substract=year|inverse_sign %}
+                    {% with current_year=start_year|add:years_to_substract %}
 
-                    <div class="month"></div>
-
-                    {% with project_id=current_year|combine_with_hyphen:month %}
-                    {% with project=projects|get_dict_value:project_id %}
-
-                        {% if project %}
-                            <div class="line">
-                                <div class="month">{{ month|get_month_name }}</div>
-                                <div class="point with_content" style="background:white;"></div>
-                                <div class="text title">{{ project.title }}</div>
-                                <div class="text description">{{ project.description }}</div>
-                            </div>
-                        {% else %}
-                            <div class="point"></div>
+                        {% if month == 12 %}
+                            <div class="year"><h4>{{ current_year }}</h4></div>
                         {% endif %}
 
+                        <div class="month"></div>
+
+                        {% with project_id=current_year|combine_with_hyphen:month %}
+                        {% with project=projects|get_dict_value:project_id %}
+
+                            {% if project %}
+                                <div class="line">
+                                    <div class="month">{{ month|get_month_name }}</div>
+                                    <div class="point with_content"></div>
+                                    <div class="text title">
+                                        <a href="{{ project.url }}">{{ project.title }}</a>
+                                    </div>
+                                    <div class="text description">{{ project.description }}</div>
+                                </div>
+                            {% else %}
+                                <div class="point"></div>
+                            {% endif %}
+
+                        {% endwith %}
+                        {% endwith %}
+
                     {% endwith %}
                     {% endwith %}
 
-                {% endwith %}
-                {% endwith %}
+                    {% endfor %}
+            {% endfor %}
 
-                {% endfor %}
-        {% endfor %}
+        <footer>
+            <h5><i>My existence wasn't relevant before this point.</i></h5>
+        </footer>
 
+        </div>
     </div>
-
-    {% endblock content %}
+{% endblock content %}

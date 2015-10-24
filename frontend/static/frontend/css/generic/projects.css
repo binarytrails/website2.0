@@ -1,96 +1,118 @@
-header
-{
-    width: 100%;
-    margin: 4em 0;
-    overflow: hidden;
-}
-    h3, h4, h5
+
+    #main
     {
+        color: #EDEDED;
+    }
+
+    header, footer
+    {
+        width: 100%;
+        margin: 4em 0;
+        overflow: hidden;
+    }
+
+        h3, h4, h5
+        {
+            text-align: center;
+        }
+
+    #container
+    {
+        height: auto;
+        width: 100%;
         text-align: center;
     }
 
-#container
-{
-    height: auto;
-    width: 100%;
-    text-align: center;
-}
-
-div.text
-{
-    position: absolute;
-    overflow: hidden;
-}
-
-    div.title
+    .text
     {
-        right: 20%;
-        font-style: italic;
-        margin-top: -1em;
+        position: absolute;
+        overflow: hidden;
+        text-align: left;
     }
 
-    div.description
+        .title
+        {
+            right: 20%;
+            font-style: italic;
+            margin-top: -1.6em;
+        }
+            .title a
+            {
+                color: inherit;
+                text-decoration: underline;
+            }
+                .title a:hover
+                {
+                    text-shadow: none;
+                }
+
+        .description
+        {
+            width: 30%;
+            height: 12em;
+
+            left: 6%;
+
+            opacity: 0;
+        }
+
+    .point
     {
-        width: 30%;
-        height: 12em;
+        width: 1em;
+        height: 1em;
+        border-radius: .5em;
+        -webkit-border-radius: .5em;
+        -moz-border-radius: .5em;
 
-        left: 6%;
-
-        opacity: 0;
+        margin: 0.2em auto;
+        background: #B2B2B2;
     }
 
-div.point
-{
-    width: 1em;
-    height: 1em;
-    border-radius: .5em;
-    -webkit-border-radius: .5em;
-    -moz-border-radius: .5em;
-
-    margin: 0.2em auto;
-    background: purple;
-}
-
-div.text, div.point
-{
-    transition: all 0.7s;
-    -moz-transition: all 0.7s;
-    -webkit-transition: all 0.7s;
-    -o-transition: all 0.7s;
-    -ms-transition: all 0.7s;
-}
-
-    div.with_content:hover
+    .text, .point
     {
-        width: 15em;
-        height: 15em;
-        border-radius: 10em;
-        -webkit-border-radius: 10em;
-        -moz-border-radius: 10em;
+        transition: all 0.7s;
+        -moz-transition: all 0.7s;
+        -webkit-transition: all 0.7s;
+        -o-transition: all 0.7s;
+        -ms-transition: all 0.7s;
     }
 
-    div.with_content:hover + div.title
+    .with_content
     {
-        margin-top: -10em;
+        background: white;
+        box-shadow: 0 0 10px white;
+    }
+        .with_content:hover
+        {
+            width: 15em;
+            height: 15em;
+            border-radius: 10em;
+            -webkit-border-radius: 10em;
+            -moz-border-radius: 10em;
+        }
+        .with_content:hover + .title
+        {
+            margin-top: -9.6em;
+        }
+        .with_content:hover ~ .description
+        {
+            opacity: 1;
+            margin-top: -14em;
+        }
+
+        $
+
+    .year
+    {
+
     }
 
-    div.with_content:hover ~ div.description
+    .line
     {
-        opacity: 1;
-        margin-top: -14em;
+        width: 100%;
     }
 
-div.year
-{
-
-}
-
-div.line
-{
-    width: 100%;
-}
-
-    div.month
-    {
-        /float: right;
-    }
+        .month
+        {
+            /float: right;
+        }

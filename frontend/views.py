@@ -19,7 +19,7 @@ from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import never_cache
 
-from .models import Skill, Photo, Video
+from .models import Skill, Photo, Video, Project
 from kedfilms import utils
 import json
 
@@ -95,31 +95,18 @@ def home(request):
 @never_cache
 @detect_old_browsers
 def projects(request):
+    # find how to target div on touch
     if is_mobile(request): return render_no_mobile_version(request)
     
     template = "frontend/generic/projects.html"
     parent = os.path.join("frontend", get_app_version(request), "base.html")
-
-    # Example; move to database.
-    projects = {
-        "2014-2":{
-            "title": "The Koala",
-            "description": "The koala is an arboreal herbivorous marsupial native to Australia. It is the only extant representative of the family Phascolarctidae, and its closest living relatives are the wombats.[3] The koala is found in coastal areas of the mainland's eastern and southern regions, inhabiting Queensland, New South Wales, Victoria, and South Australia.",
-            "preview-url": "/media/images/portfolio/x200/_MG_5499_final2.jpg"
-        },
-        "2012-4":{
-            "title": "The Tiger",
-            "description": "The tiger (Panthera tigris) is the largest cat species, reaching a total body length of up to 3.38 m (11.1 ft) over curves and exceptionally weighing up to 388.7 kg (857 lb) in the wild. Its most recognisable feature is a pattern of dark vertical stripes on reddish-orange fur with a lighter underside.",
-            "preview-url": "/media/images/portfolio/x200/_MG_5499_final2.jpg"
-        }
-    }
 
     return render(request, template, {
         "parent": parent,
         "start_year": 2016,
         "passed_years": range(8),
         "months": range(12, 0, -1),
-        "projects": projects
+        "projects": Project.TIMELINE
     })
 
 @never_cache
@@ -252,4 +239,3 @@ def videos(request):
         "categories": Video.CATEGORIES,
         "videos": Video.objects.all().filter().order_by('-date_created')
     })
-

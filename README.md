@@ -2,7 +2,7 @@
 
 *Avoiding scripts by implementing CSS stylish functionalities.*
 
-This is my personal website using the Django Python Web framework that I built to centralize my realizations and gain web development experience. I challenged myself to only use CSS3 & HTML5 and leave JavaScript aside. I wanted to gain deep understanding of the trivial web technologies as well as demonstrate that JavaScript is not always necessary for a modern website.
+I built it to centralize my realizations and gain web development experience. I challenged myself to only use CSS3 & HTML5 and leave JavaScript aside. It is using the Django Python Web framework to build static web pages. I wanted to gain deep understanding of the trivial web technologies as well as demonstrate that JavaScript is not always necessary for a modern website.
 
 There are two different layouts of this website. The first is for the desktop experience and the second is for mobile users.
 

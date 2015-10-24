@@ -5,25 +5,6 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="{{ STATIC }}frontend/css/{{ version }}/home.css">
 
-    {% if "mobile" in parent %}
-        <style type="text/css">
-            #header:target ~ #main
-            {
-                margin-top: 26em;
-            }
-            #main
-            {
-                margin-top: 14em;
-
-                -moz-transition: all 0.6s ease-in-out;
-                -webkit-transition: all 0.6s ease-in-out;
-                transition: all 0.6s ease-in-out;
-                -o-transition: all 0.6s ease-in-out;
-                -ms-transition: all 0.6s ease-in-out;
-            }
-        </style>
-    {% endif %}
-
     {% if version == "mobile" %}<div id="main">{% endif %}
 
         <div id="entry" class="section">

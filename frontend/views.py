@@ -104,7 +104,7 @@ def projects(request):
     return render(request, template, {
         "parent": parent,
         "start_year": 2016,
-        "passed_years": range(8),
+        "passed_years": range(4),
         "months": range(12, 0, -1),
         "projects": Project.TIMELINE
     })

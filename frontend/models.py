@@ -390,6 +390,15 @@ class Skill(models.Model):
 class Project(models.Model):
 
     TIMELINE = {
+        "2015-10":
+        {
+            "title": "Lindenmayer System",
+            "description": """An interactive web experience for the exploration 
+                of the L-Systems. Inspired by the book The Algorithmic Beauty of 
+                Plants written by Przemyslaw Prusinkiewicz and Aristid Lindenmayer.
+            """,
+            "url": "https://sevaivanov.github.io/lindenmayer/"
+        },
         "2015-7":
         {
             "title": "Tcp Viewer",

@@ -39,6 +39,7 @@
             .title a
             {
                 color: inherit;
+                margin: 0.2em;
                 text-decoration: underline;
             }
                 .title a:hover

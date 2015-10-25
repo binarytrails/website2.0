@@ -102,8 +102,8 @@ def projects(request):
     return render(request, template, {
         "parent": parent,
         "version": version,
-        "start_year": 2016,
-        "passed_years": range(4),
+        "start_year": 2015,
+        "passed_years": range(3),
         "months": range(12, 0, -1),
         "projects": Project.TIMELINE
     })

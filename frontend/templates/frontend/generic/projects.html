@@ -22,7 +22,7 @@
                     {% with current_year=start_year|add:years_to_substract %}
 
                         {% if month == 12 %}
-                            <div class="year"><h4>{{ current_year }}</h4></div>
+                            <div class="year"><h4>{{ current_year|add:1 }}</h4></div>
                         {% endif %}
 
                         <div class="month"></div>

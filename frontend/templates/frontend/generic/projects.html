@@ -22,7 +22,11 @@
                     {% with current_year=start_year|add:years_to_substract %}
 
                         {% if month == 12 %}
-                            <div class="year"><h4>{{ current_year|add:1 }}</h4></div>
+                            {% if "desktop" in parent %}
+                                <div class="year"><h4>{{ current_year|add:1 }}</h4></div>
+                            {% else %}
+                                <div class="year"><h4>{{ current_year }}</h4></div>
+                            {% endif %}
                         {% endif %}
 
                         <div class="month"></div>

@@ -52,6 +52,10 @@
                         {% endwith %}
                         {% endwith %}
 
+                        {% if month == 1 and year == passed_years|last and "desktop" in parent %}
+                            <div class="year"><h4>{{ current_year }}</h4></div>
+                        {% endif %}
+
                     {% endwith %}
                     {% endwith %}
 

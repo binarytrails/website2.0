@@ -12,7 +12,19 @@
         <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/cart/ttspace/heavy.css">
         <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
 
+        <!-- sweetalert -->
+        <script src="{{ STATIC }}projects/libs/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/libs/sweetalert.css">
+
         <script type="text/javascript">
+            function information()
+            {
+                swal({
+                    title: "Thoughts Through Space",
+                    text: "Click on the bottom right corner link to navigate between the maximal & minimal versions of this page.</br></br>Inspired by the book:</br><i>Thoughts Through Space</br>by Sir Hubert Wilkins & Harold M. Sherman</i>",
+                    html: true
+                });
+            }
 
             function randomNumberFromInterval(min, max)
             {
@@ -75,6 +87,7 @@
                     }
                     $("#thoughts").append(html);
                 }
+                information();
             });
         </script>
     </head>
@@ -82,11 +95,7 @@
         <div id="container">
             <div id="thoughts"></div>
             <img id="man" style="height: 13%;" src="{{ STATIC }}projects/cart/ttspace/images/logos/human-icon-panic-white.png"/>
-            <p id="book">
-                Thoughts Through Space</br>
-                by Sir Hubert Wilkins & Harold M. Sherman
-            </p>
-            <a id="switch" href="/project/cart/ttspace/light/"><p>1910</p></a>
+            <a id="switch" href="/project/cart/ttspace/light/"><p>After</p></a>
         </div>
     </body>
 {% endblock %}

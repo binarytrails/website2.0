@@ -6,15 +6,24 @@
         <script type="text/javascript" src="{{ STATIC }}projects/cart/3Dcube/3Dcube.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet' type='text/css'>
         
-        <!-- https://github.com/sevaivanov/short/tree/master/js/meow -->
-        <link type="text/css" rel="stylesheet" href="{{ STATIC }}projects/cart/3Dcube/meow.css" />
-        <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
-        <script src="{{ STATIC }}projects/libs/showdown-1.2.3.min.js"></script>
+        <!-- sweetalert -->
+        <script src="{{ STATIC }}projects/libs/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/libs/sweetalert.css">
+        <script type="text/javascript">
+            function information()
+            {
+                swal({
+                    title: "",
+                    text: "1. Rotate the 3D Cube.</br>2. Click on available classes.</br></br>Created by Seva Ivanov.</br>Source Code base available at <a href='https://github.com/sevaivanov/school/tree/master/cart/3Dcube'>Github!</a>",
+                    html: true
+                });
+            }
+        </script>
     </head>
     <base>
         <div id="container">
             <img id="info" src="{{ STATIC }}projects/cart/3Dcube/images/logos/cirlced-question-300x300-white.png"
-                onclick="meow('INFO', '1. Rotate the 3D Cube.</br>2. Click on available classes.</br></br>Source Code available at *[Github](http://github.com/sevaivanov/school/tree/master/cart/3Dcube)*!</br>Created by Seva Ivanov.');"/>
+                onclick="information();"/>
             <div id="cube">
                 <figure class="top with-content" onclick="location.href='/project/cart/211/211/'">
                     <p>CART 211:<br/>Creative Computation & Network Culture</p>

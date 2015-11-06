@@ -1,0 +1,25 @@
+{% extends "generic/base-head.html" %}
+{% block content %}
+        <meta name="description" content="CART 214 Typography">
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
+        <style type="text/css">
+            #main, #main p {text-align: center;}
+            #main .images {display: inline-block;}
+            #main .images img {width: 100%;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <p class="header">Typography</p>
+            <p>
+                <i>Choose two words and explore their meaning through the letters themselves.</br>Utilize typographic qualities such as scale, placement/layout, design, texture, and unusual letter / type design.</i>
+            </p>
+            <div style="width: 70%; margin-top: -2em;" class="images">
+                <a href="{{ STATIC }}projects/cart/images/214/dsp.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/dsn.jpg"></img>
+                </a>
+            </div>
+        </div>
+    </body>
+{% endblock %}

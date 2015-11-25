@@ -32,8 +32,10 @@ MEDIA_URL = settings.MEDIA_URL
 STATIC_FRONTEND = os.path.join(STATIC_ROOT, "frontend")
 MEDIA_IMAGES = os.path.join(settings.MEDIA_ROOT, "images")
 
-MOBILE_HOSTS = ['m.kedfilms.com', 'm.sevaivanov.com']
+MOBILE_HOSTS = ["m.kedfilms.com", "m.sevaivanov.com"]
 IE_USERAGENT_TAGS = ["msie", "trident"]
+
+BASE_TEMPLATE = "base.html"
 
 def error404(request):
     return render(request, "frontend/errors/generic-simple-text.html",
@@ -47,7 +49,7 @@ def error404(request):
 def is_mobile(request): return request.mobile or request.get_host() in MOBILE_HOSTS
 
 def is_safari(request):
-    user_agent = request.META['HTTP_USER_AGENT'].lower()
+    user_agent = request.META["HTTP_USER_AGENT"].lower()
     return ("safari" in user_agent and "chrome" not in user_agent)
 
 def get_app_version(request):
@@ -59,7 +61,7 @@ def render_no_mobile_version(request):
     {
         "header": "The mobile version is not available.",
         "body": """
-            Don't worry, there is an easy fix.
+            Don"t worry, there is an easy fix.
             All you have to do is to consult our website using 
             your favorite computer to enjoy the experience to its fullest.
         """
@@ -67,7 +69,7 @@ def render_no_mobile_version(request):
 
 def detect_old_browsers(initial_view):
     def wrapped_view(request, *args, **kwargs):
-        if any(agent in request.META['HTTP_USER_AGENT'].lower() for agent in IE_USERAGENT_TAGS):
+        if any(agent in request.META["HTTP_USER_AGENT"].lower() for agent in IE_USERAGENT_TAGS):
             browsers_suggestion = {"firefox": True, "chrome": True, "safari": True}
             return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
 
@@ -81,12 +83,12 @@ def home(request):
     skills = Skill.objects.all()
     skills_categories = []
 
-    for unique_category in skills.order_by('category').values('category').distinct():
-        skills_categories.append(unique_category['category'])
+    for unique_category in skills.order_by("category").values("category").distinct():
+        skills_categories.append(unique_category["category"])
 
     return render(request, "frontend/generic/home.html", {
         "version": version,
-        "parent": os.path.join("frontend", version, "base.html"),
+        "parent": os.path.join("frontend", version, BASE_TEMPLATE),
         "skills_categories": skills_categories,
         "skills": Skill.objects.all()
 
@@ -97,7 +99,7 @@ def home(request):
 def projects(request):
     version = get_app_version(request)
     template = "frontend/generic/projects.html"
-    parent = os.path.join("frontend", version, "base.html")
+    parent = os.path.join("frontend", version, BASE_TEMPLATE)
 
     return render(request, template, {
         "parent": parent,
@@ -132,7 +134,7 @@ def project(request, category, title, html_file):
 @detect_old_browsers
 def articles(request):
     template = "frontend/generic/articles.html"
-    parent = os.path.join("frontend", get_app_version(request), "base.html")
+    parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
     return render(request, template, { "parent": parent })
 
 @never_cache
@@ -146,7 +148,7 @@ def article(request, category=None, article=None):
         return error404(request)
 
     template = "frontend/generic/article.html"
-    parent = os.path.join("frontend", get_app_version(request), "base.html")
+    parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
     html = utils.markdownToHtml(os.path.join(STATIC_FRONTEND, "md/", category, article))
  
     return render(request, template, { "parent": parent, "html": html })
@@ -159,7 +161,7 @@ def photos(request):
     if is_mobile(request):
         template = "frontend/mobile/photos.html"
 
-        # omit the 'internet in motion' aka the #4 section.
+        # omit the "internet in motion" aka the #4 section.
         # categories = [tuple(x for x in y if x)
         #     for y in categories if y != categories[4]
         # ]
@@ -167,9 +169,12 @@ def photos(request):
     else:
         template = "frontend/desktop/photos.html"
     
+    parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
+
     return render(request, template,
     {
-        'categories': categories
+        "parent": parent,
+        "categories": categories
     })
 
 @never_cache
@@ -177,26 +182,30 @@ def photos(request):
 def gallery(request, category):
     if not os.path.exists(MEDIA_IMAGES): return Http404
 
-    unique_categories = Photo.objects.all().values_list('category').distinct()
+    unique_categories = Photo.objects.all().values_list("category").distinct()
     if not unique_categories: return error404(request)
 
     if not any(unique_category[0] == category for unique_category in unique_categories):
         return error404(request)
 
+    parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
+
     if is_mobile(request):
         return render(request, "frontend/mobile/photos-gallery.html",
         {
+            "parent": parent,
             "category": category,
             "photos": Photo.objects.all().filter(
-                category = category).order_by('-date_created')
+                category = category).order_by("-date_created")
         })
     else:
         photo = Photo()
         return render(request, "frontend/desktop/photos-gallery.html",
         {
+            "parent": parent,
             "category": category,
             "images": Photo.objects.all().filter(
-                category = category).order_by('-date_created'),
+                category = category).order_by("-date_created"),
             "last": photo.get_previous_category(category),
             "next": photo.get_next_category(category)
         })
@@ -204,8 +213,8 @@ def gallery(request, category):
 @never_cache
 @detect_old_browsers
 def slideshow(request, category=None, fragment_id=None):
-    if not any(unique_category['category'] == category 
-        for unique_category in Photo.objects.all().values('category').distinct()
+    if not any(unique_category["category"] == category
+        for unique_category in Photo.objects.all().values("category").distinct()
     ):
         return error404(request)
 
@@ -225,16 +234,19 @@ def slideshow(request, category=None, fragment_id=None):
         {
             "category": category,
             "photos": Photo.objects.all().filter(
-                category = category).order_by('-date_created')
+                category = category).order_by("-date_created")
         })
 
 @never_cache
 @detect_old_browsers
 def videos(request):
+    parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
+
     return render(request, "frontend/desktop/videos.html",
     {
+        "parent": parent,
         "posters_src": "img/video-poster/",
         "videos_src": "vid/",
         "categories": Video.CATEGORIES,
-        "videos": Video.objects.all().filter().order_by('-date_created')
+        "videos": Video.objects.all().filter().order_by("-date_created")
     })

@@ -19,7 +19,7 @@ from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import never_cache
 
-from .models import Skill, Photo, Video, Project
+from .models import Photo, Video, Project
 from kedfilms import utils
 import json
 
@@ -80,18 +80,11 @@ def detect_old_browsers(initial_view):
 @detect_old_browsers
 def home(request):
     version = get_app_version(request)
-    skills = Skill.objects.all()
-    skills_categories = []
-
-    for unique_category in skills.order_by("category").values("category").distinct():
-        skills_categories.append(unique_category["category"])
+    parent = os.path.join("frontend", version, BASE_TEMPLATE)
 
     return render(request, "frontend/generic/home.html", {
         "version": version,
-        "parent": os.path.join("frontend", version, BASE_TEMPLATE),
-        "skills_categories": skills_categories,
-        "skills": Skill.objects.all()
-
+        "parent": parent
     })
 
 @never_cache

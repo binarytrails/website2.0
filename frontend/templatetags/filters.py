@@ -19,9 +19,11 @@ from kedfilms import utils
 
 register = template.Library()
 
+@register.filter
+def times(number): return range(number)
+
 @register.filter 
-def times(number):
-    return range(number)
+def fortyfive_times(number): return number * 45
 
 @register.filter
 def in_category(objects, category):

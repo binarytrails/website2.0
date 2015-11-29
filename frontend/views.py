@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os
+import os, time
 
 from django.shortcuts import HttpResponse, render, redirect
 from django.core.urlresolvers import reverse
@@ -21,6 +21,7 @@ from django.views.decorators.cache import never_cache
 
 from .models import Photo, Video, Project
 from kedfilms import utils
+from projects import views_addons
 import json
 
 from django.conf import settings
@@ -29,6 +30,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 STATIC_ROOT = settings.STATIC_ROOT
 MEDIA_URL = settings.MEDIA_URL
 
+STATIC_PROJECTS = os.path.join(STATIC_ROOT, "projects")
 STATIC_FRONTEND = os.path.join(STATIC_ROOT, "frontend")
 MEDIA_IMAGES = os.path.join(settings.MEDIA_ROOT, "images")
 
@@ -120,6 +122,14 @@ def project(request, category, title, html_file):
     if version == "desktop" and title == "home" and is_safari(request):
         browsers_suggestion = {"firefox": True, "chrome": True}
         return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
+
+    elif html_file == "mood-board.html":
+        folder = os.path.join(STATIC_PROJECTS, "cart/images/211/mood-board")
+
+        return render(request, template, {
+            "version": version,
+            "files": views_addons.moodboard(folder)
+        })
 
     return render(request, template, {"version": version})
 

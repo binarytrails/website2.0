@@ -1,0 +1,146 @@
+{% extends "generic/base-head.html" %}
+{% block content %}
+        <meta name="description" content="CART 214 Selfies & Self Representation">
+
+        <style type="text/css">
+            body
+            {
+                overflow: hidden;
+            }
+
+            a
+            {
+                color: white;
+                outline: 0;
+                text-decoration: underline;
+            }
+                a:hover
+                {
+                    text-shadow: 0 0 10px white;
+                }
+
+            #main
+            {
+                position: absolute;
+
+                /* TODO: right arrow needs that */
+                width: {{ files|length }}00%;
+                /*width: auto;*/
+
+                height: 100%;
+                
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: 0 auto;
+                overflow: hidden;
+
+                color: white;
+                background: #1E1E1E;
+            }
+
+                #main .wrapper
+                {
+                    width: 100%;
+                    height: 80%;
+                    margin: 2em;
+                    overflow: hidden;
+                    /*background: purple;*/
+                }
+
+                #main .wrapper a
+                {
+                    /* TODO */
+                    /*background: green;*/
+                }
+
+                    #main .wrapper img, #main .wrapper video
+                    {
+                        position: absolute;
+                        height: auto;
+                        height: 50%;
+                        margin: 2em;
+
+                        -webkit-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+                        -moz-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+                        box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+                    }
+
+                #shift
+                {
+                    position: fixed;
+                    width: 5%;
+                    top: 0;
+                    height: 100%;
+                    right: 5%;
+                    animation: bounce 5s infinite;
+                }
+
+                @keyframes bounce
+                {
+                    0%{transform: translateX(0);}
+                    50%{transform: translateX(30px);}
+                    100%{transform: translateX(00px);}
+                }
+
+                    #shift img
+                    {
+                        position: absolute;
+                        top: 0;
+                        right: 5%;
+                        bottom: 0;
+                        margin: auto;
+                        width: 100%;
+                    }
+
+        </style>
+        <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
+        <script src="{{ STATIC }}projects/libs/jquery.mousewheel.min.js"></script>
+        <script>
+            $(document).ready(function()
+            {        
+                // overwriting the vertical scroll
+                $('html, body, *').mousewheel(function(e, delta){
+                    this.scrollLeft -= (delta * 40);
+                    e.preventDefault();
+                });
+
+                // right arrow
+                $('a#shift').on('click', function(event){     
+                    event.preventDefault();
+                    $('html, body, a#shift').animate({
+                        scrollLeft: $(document).scrollLeft() + 1000
+                    }, 500);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div class="wrapper">
+                {% for file in files %}
+                    {% load filters %}
+                    {% with forloop.counter|add:-1|fortyfive_times as left_shift %}
+
+                    {% with STATIC|add:"projects/cart/images/211/mood-board/"|add:file.filename as filepath %}
+
+                        {% if file.is_video %}
+                            <video controls style="left:{{ left_shift }}em;">
+                                <source src="{{ filepath }}" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            <a href="{{ filepath }}"><img src="{{ filepath }}" style="left:{{ left_shift }}em; top:{{ file.top_shift }}em;"></img></a>
+                        {% endif %}
+
+                    {% endwith%}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+            <a id="shift" href="#shift">
+                <img id="right-arrow" src="{{ STATIC }}projects/cart/images/211/right-double-arrow-sharp.png"></img>
+            </a>
+        </div>
+    </body>
+{% endblock %}

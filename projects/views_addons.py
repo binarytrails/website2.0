@@ -26,7 +26,7 @@ def moodboard(folder):
 
         if os.path.isfile(filepath):
 
-            extension = os.path.splitext(filename)[1][1:]
+            extension = os.path.splitext(filename)[1][1:].lower()
             if extension not in supported_formats: continue
 
             unordered_files.append({

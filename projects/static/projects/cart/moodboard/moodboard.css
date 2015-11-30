@@ -30,8 +30,6 @@ a
 
 #main
 {
-    /* TODO: right arrow needs that */
-    width: {{ files|length }}00%;
     /*width: auto;*/
     overflow: hidden;
     color: white;

@@ -8,6 +8,11 @@
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}projects/cart/moodboard/moodboard.css"/>
         <style type="text/css">
+            #main
+            {
+                /* TODO improve: right arrow needs that */
+                width: {{ files|length }}00%;
+            }
             #snow-cover
             {
                 background-image: url('{{ STATIC }}projects/cart/moodboard/images/content/snow1.png'),
@@ -15,7 +20,7 @@
                     url('{{ STATIC }}projects/cart/moodboard/images/content/snow3.png');
             }
         </style>
-        
+
         <script>
             $(document).ready(function()
             {
@@ -38,6 +43,13 @@
                         scrollLeft: $(document).scrollLeft() - 1000
                     }, 500);
                 });
+
+                var audioUrl = '{{ STATIC }}projects/cart/moodboard/background.mp3',
+                    audio = document.createElement('audio');
+                    audio.setAttribute('src', audioUrl);
+                    audio.setAttribute('id', 'background-music');
+                    audio.setAttribute('autoplay', 'autoplay');
+                    audio.volume = 0.1;
             });
         </script>
     </head>

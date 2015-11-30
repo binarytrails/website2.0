@@ -19,25 +19,61 @@
                     text-shadow: 0 0 10px white;
                 }
 
-            #main
+            .fullscreen
             {
                 position: absolute;
-
-                /* TODO: right arrow needs that */
-                width: {{ files|length }}00%;
-                /*width: auto;*/
-
+                width: 100%;
                 height: 100%;
-                
+
                 top: 0;
                 right: 0;
                 bottom: 0;
                 left: 0;
                 margin: 0 auto;
-                overflow: hidden;
+            }
 
+            #main
+            {
+                /* TODO: right arrow needs that */
+                width: {{ files|length }}00%;
+                /*width: auto;*/
+                overflow: hidden;
                 color: white;
                 background: #1E1E1E;
+            }
+
+            #snow-cover
+            {
+                display: none;
+                background-image: url('{{ STATIC }}projects/cart/images/211/snow1.png'),
+                    url('{{ STATIC }}projects/cart/images/211/snow1.png'),
+                    url('{{ STATIC }}projects/cart/images/211/snow3.png');
+ 
+                -webkit-animation: snow 20s linear infinite;
+                -moz-animation: snow 20s linear infinite;
+                -ms-animation: snow 20s linear infinite;
+                animation: snow 20s linear infinite;
+            }
+
+            @keyframes snow{
+                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+            }
+
+            @-moz-keyframes snow {
+                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+            }
+
+            @-webkit-keyframes snow {
+                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+                50% {background-color:#b4cfe0;}
+                100% {background-position: 500px 1000px, 400px 400px, 300px 300px; background-color:#6b92b9;}
+            }
+
+            @-ms-keyframes snow {
+                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
             }
 
                 #main .wrapper
@@ -134,7 +170,8 @@
         </script>
     </head>
     <body>
-        <div id="main">
+        <div id="main" class="fullscreen">
+            <div id="snow-cover" class="fullscreen"></div>
             <div class="wrapper">
                 {% for file in files %}
                     {% load filters %}

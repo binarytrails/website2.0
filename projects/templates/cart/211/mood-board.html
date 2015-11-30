@@ -1,6 +1,6 @@
 {% extends "generic/base-head.html" %}
 {% block content %}
-        <meta name="description" content="CART 214 Selfies & Self Representation">
+        <meta name="description" content="CART 211 Mood Board">
 
         <style type="text/css">
             body
@@ -62,19 +62,31 @@
                         height: 50%;
                         margin: 2em;
 
+                        /*border: 2px solid white;*/
+
                         -webkit-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
                         -moz-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
                         box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+
+                        -webkit-transition: all 1s; /* Safari */
+                        transition: all 1s;
                     }
 
-                #shift
+                        #main .wrapper img:hover, #main .wrapper video:hover
+                        {
+                            height: 70%;
+                            z-index: 1;
+                        }
+
+                .shift
                 {
                     position: fixed;
                     width: 5%;
                     top: 0;
                     height: 100%;
-                    right: 5%;
+                    z-index: 2;
                     animation: bounce 5s infinite;
+                    /*background: red;*/
                 }
 
                 @keyframes bounce
@@ -84,11 +96,10 @@
                     100%{transform: translateX(00px);}
                 }
 
-                    #shift img
+                    .shift img
                     {
                         position: absolute;
                         top: 0;
-                        right: 5%;
                         bottom: 0;
                         margin: auto;
                         width: 100%;
@@ -106,11 +117,17 @@
                     e.preventDefault();
                 });
 
-                // right arrow
-                $('a#shift').on('click', function(event){     
+                $('#right-arrow').on('click', function(event){
                     event.preventDefault();
-                    $('html, body, a#shift').animate({
+                    $('html, body, #right-arrow').animate({
                         scrollLeft: $(document).scrollLeft() + 1000
+                    }, 500);
+                });
+
+                $('#left-arrow').on('click', function(event){
+                    event.preventDefault();
+                    $('html, body, #left-arrow').animate({
+                        scrollLeft: $(document).scrollLeft() - 1000
                     }, 500);
                 });
             });
@@ -121,7 +138,7 @@
             <div class="wrapper">
                 {% for file in files %}
                     {% load filters %}
-                    {% with forloop.counter|add:-1|fortyfive_times as left_shift %}
+                    {% with forloop.counter|add:-1|forty_times as left_shift %}
 
                     {% with STATIC|add:"projects/cart/images/211/mood-board/"|add:file.filename as filepath %}
 
@@ -138,8 +155,11 @@
                     {% endwith %}
                 {% endfor %}
             </div>
-            <a id="shift" href="#shift">
-                <img id="right-arrow" src="{{ STATIC }}projects/cart/images/211/right-double-arrow-sharp.png"></img>
+            <a id="right-arrow" class="shift" href="#right" style="right:5%">
+                <img src="{{ STATIC }}projects/cart/images/211/right-double-arrow-sharp.png" style="right:5%"></img>
+            </a>
+            <a id="left-arrow" class="shift" href="#left" style="left:2%">
+                <img src="{{ STATIC }}projects/cart/images/211/left-double-arrow-sharp.png" style="left:2%"></img>
             </a>
         </div>
     </body>

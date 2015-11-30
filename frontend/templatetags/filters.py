@@ -23,7 +23,7 @@ register = template.Library()
 def times(number): return range(number)
 
 @register.filter 
-def fortyfive_times(number): return number * 45
+def forty_times(number): return number * 40
 
 @register.filter
 def in_category(objects, category):

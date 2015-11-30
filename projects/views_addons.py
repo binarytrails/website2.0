@@ -18,7 +18,7 @@ import os, random
 def moodboard(folder):
     unordered_files = []
     video_formats = ["webm"]
-    image_formats = ["jpg", "png", "gif"]
+    image_formats = ["jpg", "png", "gif", "svg"]
     supported_formats = image_formats + video_formats
 
     for filename in os.listdir(folder):
@@ -33,9 +33,10 @@ def moodboard(folder):
                 # wrap with 'time.ctime()' to make readable
                 "mtime": os.path.getmtime(filepath),
                 "is_video": extension in video_formats,
-                "top_shift": random.randint(1, 15),
+                "top_shift": random.randint(1, 10),
                 "filename": filename
             })
 
-    ordered_files = sorted(unordered_files, key=lambda item: item["mtime"])
+    ordered_files = sorted(unordered_files,
+        key=lambda item: item["mtime"], reverse=True)
     return ordered_files

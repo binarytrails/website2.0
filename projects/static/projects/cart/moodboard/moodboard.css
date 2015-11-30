@@ -1,0 +1,143 @@
+
+body
+{
+    overflow: hidden;
+}
+
+a
+{
+    color: white;
+    outline: 0;
+    text-decoration: underline;
+}
+    a:hover
+    {
+        text-shadow: 0 0 10px white;
+    }
+
+.fullscreen
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+#main
+{
+    /* TODO: right arrow needs that */
+    width: {{ files|length }}00%;
+    /*width: auto;*/
+    overflow: hidden;
+    color: white;
+    background: #1E1E1E;
+}
+
+    #snow-cover
+    {
+        display: none;
+        -webkit-animation: snow 20s linear infinite;
+        -moz-animation: snow 20s linear infinite;
+        -ms-animation: snow 20s linear infinite;
+        animation: snow 20s linear infinite;
+    }
+
+    @keyframes snow{
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+    }
+
+    @-moz-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+    }
+
+    @-webkit-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        50% {background-color:#b4cfe0;}
+        100% {background-position: 500px 1000px, 400px 400px, 300px 300px; background-color:#6b92b9;}
+    }
+
+    @-ms-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+    }
+
+    #matrix-cover
+    {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    #main .wrapper
+    {
+        width: 100%;
+        height: 80%;
+        margin: 2em;
+        overflow: hidden;
+        /*background: purple;*/
+    }
+
+    #main .wrapper a
+    {
+        /* TODO */
+        /*background: green;*/
+    }
+
+        #main .wrapper img, #main .wrapper video
+        {
+            position: absolute;
+            height: auto;
+            height: 50%;
+            margin: 2em;
+            opacity: 0.7;
+
+            /*border: 2px solid white;*/
+
+            -webkit-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
+
+            -webkit-transition: all 1s; /* Safari */
+            transition: all 1s;
+        }
+
+            #main .wrapper img:hover, #main .wrapper video:hover
+            {
+                height: 70%;
+                z-index: 1;
+                opacity: 0.95;
+            }
+
+    .shift
+    {
+        position: fixed;
+        width: 5%;
+        top: 0;
+        height: 100%;
+        z-index: 2;
+        animation: bounce 5s infinite;
+        /*background: red;*/
+    }
+
+    @keyframes bounce
+    {
+        0%{transform: translateX(0);}
+        50%{transform: translateX(30px);}
+        100%{transform: translateX(00px);}
+    }
+
+        .shift img
+        {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+        }

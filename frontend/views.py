@@ -124,7 +124,7 @@ def project(request, category, title, html_file):
         return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
 
     elif html_file == "mood-board.html":
-        folder = os.path.join(STATIC_PROJECTS, "cart/images/211/mood-board")
+        folder = os.path.join(STATIC_PROJECTS, "cart/moodboard/images/data")
 
         return render(request, template, {
             "version": version,

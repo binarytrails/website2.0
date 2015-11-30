@@ -2,151 +2,23 @@
 {% block content %}
         <meta name="description" content="CART 211 Mood Board">
 
-        <style type="text/css">
-            body
-            {
-                overflow: hidden;
-            }
-
-            a
-            {
-                color: white;
-                outline: 0;
-                text-decoration: underline;
-            }
-                a:hover
-                {
-                    text-shadow: 0 0 10px white;
-                }
-
-            .fullscreen
-            {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                margin: 0 auto;
-            }
-
-            #main
-            {
-                /* TODO: right arrow needs that */
-                width: {{ files|length }}00%;
-                /*width: auto;*/
-                overflow: hidden;
-                color: white;
-                background: #1E1E1E;
-            }
-
-            #snow-cover
-            {
-                display: none;
-                background-image: url('{{ STATIC }}projects/cart/images/211/snow1.png'),
-                    url('{{ STATIC }}projects/cart/images/211/snow1.png'),
-                    url('{{ STATIC }}projects/cart/images/211/snow3.png');
- 
-                -webkit-animation: snow 20s linear infinite;
-                -moz-animation: snow 20s linear infinite;
-                -ms-animation: snow 20s linear infinite;
-                animation: snow 20s linear infinite;
-            }
-
-            @keyframes snow{
-                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
-            }
-
-            @-moz-keyframes snow {
-                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
-            }
-
-            @-webkit-keyframes snow {
-                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-                50% {background-color:#b4cfe0;}
-                100% {background-position: 500px 1000px, 400px 400px, 300px 300px; background-color:#6b92b9;}
-            }
-
-            @-ms-keyframes snow {
-                0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-                100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
-            }
-
-                #main .wrapper
-                {
-                    width: 100%;
-                    height: 80%;
-                    margin: 2em;
-                    overflow: hidden;
-                    /*background: purple;*/
-                }
-
-                #main .wrapper a
-                {
-                    /* TODO */
-                    /*background: green;*/
-                }
-
-                    #main .wrapper img, #main .wrapper video
-                    {
-                        position: absolute;
-                        height: auto;
-                        height: 50%;
-                        margin: 2em;
-
-                        /*border: 2px solid white;*/
-
-                        -webkit-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
-                        -moz-box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
-                        box-shadow: -10px -8px 5px 0px rgba(0,0,0,0.75);
-
-                        -webkit-transition: all 1s; /* Safari */
-                        transition: all 1s;
-                    }
-
-                        #main .wrapper img:hover, #main .wrapper video:hover
-                        {
-                            height: 70%;
-                            z-index: 1;
-                        }
-
-                .shift
-                {
-                    position: fixed;
-                    width: 5%;
-                    top: 0;
-                    height: 100%;
-                    z-index: 2;
-                    animation: bounce 5s infinite;
-                    /*background: red;*/
-                }
-
-                @keyframes bounce
-                {
-                    0%{transform: translateX(0);}
-                    50%{transform: translateX(30px);}
-                    100%{transform: translateX(00px);}
-                }
-
-                    .shift img
-                    {
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        margin: auto;
-                        width: 100%;
-                    }
-
-        </style>
         <script src="{{ STATIC }}projects/libs/jquery-1.9.1.min.js"></script>
         <script src="{{ STATIC }}projects/libs/jquery.mousewheel.min.js"></script>
+        <script src="{{ STATIC }}projects/cart/moodboard/matrix.js" async></script>
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}projects/cart/moodboard/moodboard.css"/>
+        <style type="text/css">
+            #snow-cover
+            {
+                background-image: url('{{ STATIC }}projects/cart/moodboard/images/content/snow1.png'),
+                    url('{{ STATIC }}projects/cart/moodboard/images/content/snow1.png'),
+                    url('{{ STATIC }}projects/cart/moodboard/images/content/snow3.png');
+            }
+        </style>
+        
         <script>
             $(document).ready(function()
-            {        
+            {
                 // overwriting the vertical scroll
                 $('html, body, *').mousewheel(function(e, delta){
                     this.scrollLeft -= (delta * 40);
@@ -172,12 +44,13 @@
     <body>
         <div id="main" class="fullscreen">
             <div id="snow-cover" class="fullscreen"></div>
+            <canvas id="matrix-cover"></canvas>
             <div class="wrapper">
                 {% for file in files %}
                     {% load filters %}
                     {% with forloop.counter|add:-1|forty_times as left_shift %}
 
-                    {% with STATIC|add:"projects/cart/images/211/mood-board/"|add:file.filename as filepath %}
+                    {% with STATIC|add:"projects/cart/moodboard/images/data/"|add:file.filename as filepath %}
 
                         {% if file.is_video %}
                             <video controls style="left:{{ left_shift }}em;">
@@ -193,10 +66,10 @@
                 {% endfor %}
             </div>
             <a id="right-arrow" class="shift" href="#right" style="right:5%">
-                <img src="{{ STATIC }}projects/cart/images/211/right-double-arrow-sharp.png" style="right:5%"></img>
+                <img src="{{ STATIC }}projects/cart/moodboard/images/content/right-double-arrow-sharp.png" style="right:5%"></img>
             </a>
             <a id="left-arrow" class="shift" href="#left" style="left:2%">
-                <img src="{{ STATIC }}projects/cart/images/211/left-double-arrow-sharp.png" style="left:2%"></img>
+                <img src="{{ STATIC }}projects/cart/moodboard/images/content/left-double-arrow-sharp.png" style="left:2%"></img>
             </a>
         </div>
     </body>

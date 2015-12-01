@@ -123,7 +123,7 @@ def project(request, category, title, html_file):
         browsers_suggestion = {"firefox": True, "chrome": True}
         return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
 
-    elif html_file == "mood-board.html":
+    elif "moodboard" in html_file:
         folder = os.path.join(STATIC_PROJECTS, "cart/moodboard/images/data")
 
         return render(request, template, {

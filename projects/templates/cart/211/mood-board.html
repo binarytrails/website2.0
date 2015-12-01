@@ -13,12 +13,6 @@
                 /* TODO improve: right arrow needs that */
                 width: {{ files|length }}00%;
             }
-            #snow-cover
-            {
-                background-image: url('{{ STATIC }}projects/cart/moodboard/images/content/snow1.png'),
-                    url('{{ STATIC }}projects/cart/moodboard/images/content/snow1.png'),
-                    url('{{ STATIC }}projects/cart/moodboard/images/content/snow3.png');
-            }
         </style>
 
         <script>
@@ -55,7 +49,6 @@
     </head>
     <body>
         <div id="main" class="fullscreen">
-            <div id="snow-cover" class="fullscreen"></div>
             <canvas id="matrix-cover"></canvas>
             <div class="wrapper">
                 {% for file in files %}

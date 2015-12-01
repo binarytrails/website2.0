@@ -66,13 +66,13 @@ Matrix.prototype.Draw = function(){
     }
     
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-    this.ctx.fillRect(0, 0, matrix.width, matrix.height);
+    this.ctx.fillRect(0, 0, this.width, this.height);
     
     this.ctx.fillStyle = '#FFFFFF';
     for(var x = 0; x < this.yPositions.length; x++){
         if(this.yTimes[x] > 1){
             var charCode = Math.random() > 0.9 ? Math.random() * 15 + 12688 :
-                                                  Math.random() * 93 + 33;
+                Math.random() * 93 + 33;
             var char = String.fromCharCode(charCode);
             this.lastChars[x] = char;
             this.ctx.fillText(char, x * 10 + 1, this.yPositions[x] * 10 + 10);
@@ -89,6 +89,3 @@ Matrix.prototype.Draw = function(){
 Matrix.prototype.Start = function(){
     this.Draw();
 };
-
-var matrix = new Matrix(document.getElementById('matrix-cover'));
-matrix.Start();

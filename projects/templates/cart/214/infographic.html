@@ -1,0 +1,26 @@
+{% extends "generic/base-head.html" %}
+{% block content %}
+        <meta name="description" content="CART 214 Infographic">
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
+        <style type="text/css">
+            #main {color: black; background: white;}
+            #main, #main p {text-align: center;}
+            #main .images {display: inline-block;}
+            #main .images img {width: 100%;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <p class="header">Infographic</p>
+            <p>
+                <i>Using your symbols from last week, create an infographic that explains your usual day.</i>
+            </p>
+            <div style="width: 95%; margin-top: -2em;" class="images">
+                <a href="{{ STATIC }}projects/cart/images/214/infographic/infographic.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/infographic/infographic.svg"></img>
+                </a>
+            </div>
+        </div>
+    </body>
+{% endblock %}

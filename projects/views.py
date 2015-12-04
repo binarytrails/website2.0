@@ -40,7 +40,7 @@ def project(request, category, title, html_file):
 
         return render(request, template, {
             "version": version,
-            "files": views_addons.moodboard(folder)
+            "files": moodboard(folder)
         })
 
     return render(request, template, {"version": version})

@@ -15,6 +15,41 @@
 
 import os, random
 
+from django.shortcuts import HttpResponse, render, redirect
+from django.core.urlresolvers import reverse
+from django.views.decorators.cache import never_cache
+
+from kedfilms.decorators import old_browsers
+from frontend import views as frontend
+
+@never_cache
+@old_browsers
+def project(request, category, title, html_file):
+    version = frontend.get_app_version(request)
+
+    if version == "mobile": html_file += "-" + version
+    html_file += ".html"
+    
+    template = os.path.join(category, title, html_file)
+    template_abspath = os.path.join(frontend.PROJECT_ROOT, "projects/templates", template)
+
+    if os.path.isfile(template_abspath) == False: return error404(request)
+
+    # unable to emulate 3DCube faces on Safari / Chrome on MacBook
+    if version == "desktop" and title == "home" and frontend.is_safari(request):
+        browsers_suggestion = {"firefox": True, "chrome": True}
+        return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
+
+    elif "moodboard" in html_file:
+        folder = os.path.join(frontend.STATIC_PROJECTS, "cart/moodboard/images/data")
+
+        return render(request, template, {
+            "version": version,
+            "files": views_addons.moodboard(folder)
+        })
+
+    return render(request, template, {"version": version})
+
 def moodboard(folder):
     unordered_files = []
     video_formats = ["webm"]
@@ -39,4 +74,5 @@ def moodboard(folder):
 
     ordered_files = sorted(unordered_files,
         key=lambda item: item["mtime"], reverse=True)
+
     return ordered_files

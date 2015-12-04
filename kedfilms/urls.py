@@ -29,14 +29,18 @@ urlpatterns = patterns('',
     url(r'^$', 'frontend.views.home', name='home'),
 
     url(r'^projects/$', 'frontend.views.projects', name='projects'),
-    url(r'^project/(?P<category>[\w\-_]{1,15})/(?P<title>[\w\-_]{1,15})/(?P<html_file>[\w\-_]{1,15})/$', 'frontend.views.project', name='project'),
+    url(r'^project/(?P<category>[\w\-_]{1,15})/(?P<title>[\w\-_]{1,15})/(?P<html_file>[\w\-_]{1,15})/$',
+        'projects.views.project', name='project'),
 
     url(r'^articles/$', 'frontend.views.articles', name='articles'),
-    url(r'^artcile/(?P<category>[\w\-]{1,15})/(?P<article>[\w\-_]{1,30})$', 'frontend.views.article', name='article'),
+    url(r'^artcile/(?P<category>[\w\-]{1,15})/(?P<article>[\w\-_]{1,30})$',
+        'frontend.views.article', name='article'),
 
     url(r'^photos/$', 'frontend.views.photos', name='photos'),
-    url(r'^photos/gallery/(?P<category>[\w\_]{1,20})/$', 'frontend.views.gallery', name='gallery'),
-    url(r'^photos/slideshow/(?P<category>[\w]{1,20})/(?P<fragment_id>[\w\-._]{1,41})/$', 'frontend.views.slideshow', name='slideshow'),
+    url(r'^photos/gallery/(?P<category>[\w\_]{1,20})/$', 'frontend.views.gallery',
+        name='gallery'),
+    url(r'^photos/slideshow/(?P<category>[\w]{1,20})/(?P<fragment_id>[\w\-._]{1,41})/$',
+        'frontend.views.slideshow', name='slideshow'),
 
     url(r'^videos/$', 'frontend.views.videos', name='videos'),
     

@@ -21,7 +21,7 @@ from django.views.decorators.cache import never_cache
 
 from .models import Photo, Video, Project
 from kedfilms import utils
-from projects import views_addons
+from kedfilms.decorators import old_browsers
 import json
 
 from django.conf import settings
@@ -35,7 +35,6 @@ STATIC_FRONTEND = os.path.join(STATIC_ROOT, "frontend")
 MEDIA_IMAGES = os.path.join(settings.MEDIA_ROOT, "images")
 
 MOBILE_HOSTS = ["m.kedfilms.com", "m.sevaivanov.com"]
-IE_USERAGENT_TAGS = ["msie", "trident"]
 
 BASE_TEMPLATE = "base.html"
 
@@ -48,15 +47,16 @@ def error404(request):
         """
     })
 
+# .mobile -> minidetector.Middleware
 def is_mobile(request): return request.mobile or request.get_host() in MOBILE_HOSTS
-
-def is_safari(request):
-    user_agent = request.META["HTTP_USER_AGENT"].lower()
-    return ("safari" in user_agent and "chrome" not in user_agent)
 
 def get_app_version(request):
     if is_mobile(request): return "mobile"
     else: return "desktop"
+
+def is_safari(request):
+    user_agent = request.META["HTTP_USER_AGENT"].lower()
+    return ("safari" in user_agent and "chrome" not in user_agent)
 
 def render_no_mobile_version(request):
     return render(request, "frontend/errors/generic-simple-text.html",
@@ -69,17 +69,8 @@ def render_no_mobile_version(request):
         """
     })
 
-def detect_old_browsers(initial_view):
-    def wrapped_view(request, *args, **kwargs):
-        if any(agent in request.META["HTTP_USER_AGENT"].lower() for agent in IE_USERAGENT_TAGS):
-            browsers_suggestion = {"firefox": True, "chrome": True, "safari": True}
-            return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
-
-        return initial_view(request, *args, **kwargs)
-    return wrapped_view
-
 @never_cache
-@detect_old_browsers
+@old_browsers
 def home(request):
     version = get_app_version(request)
     parent = os.path.join("frontend", version, BASE_TEMPLATE)
@@ -90,7 +81,7 @@ def home(request):
     })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def projects(request):
     version = get_app_version(request)
     template = "frontend/generic/projects.html"
@@ -106,42 +97,14 @@ def projects(request):
     })
 
 @never_cache
-@detect_old_browsers
-def project(request, category, title, html_file):
-    version = get_app_version(request)
-
-    if version == "mobile": html_file += "-" + version
-    html_file += ".html"
-    
-    template = os.path.join(category, title, html_file)
-    template_abspath = os.path.join(PROJECT_ROOT, "projects/templates", template)
-
-    if os.path.isfile(template_abspath) == False: return error404(request)
-
-    # 3Dcube incompatibility with Safari
-    if version == "desktop" and title == "home" and is_safari(request):
-        browsers_suggestion = {"firefox": True, "chrome": True}
-        return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
-
-    elif "moodboard" in html_file:
-        folder = os.path.join(STATIC_PROJECTS, "cart/moodboard/images/data")
-
-        return render(request, template, {
-            "version": version,
-            "files": views_addons.moodboard(folder)
-        })
-
-    return render(request, template, {"version": version})
-
-@never_cache
-@detect_old_browsers
+@old_browsers
 def articles(request):
     template = "frontend/generic/articles.html"
     parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
     return render(request, template, { "parent": parent })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def article(request, category=None, article=None):
     if not article or not category:
         return error404(request)
@@ -157,7 +120,7 @@ def article(request, category=None, article=None):
     return render(request, template, { "parent": parent, "html": html })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def photos(request):
     categories = Photo.CATEGORIES
     
@@ -181,7 +144,7 @@ def photos(request):
     })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def gallery(request, category):
     if not os.path.exists(MEDIA_IMAGES): return Http404
 
@@ -214,7 +177,7 @@ def gallery(request, category):
         })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def slideshow(request, category=None, fragment_id=None):
     if not any(unique_category["category"] == category
         for unique_category in Photo.objects.all().values("category").distinct()
@@ -241,7 +204,7 @@ def slideshow(request, category=None, fragment_id=None):
         })
 
 @never_cache
-@detect_old_browsers
+@old_browsers
 def videos(request):
     parent = os.path.join("frontend", get_app_version(request), BASE_TEMPLATE)
 

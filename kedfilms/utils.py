@@ -1,7 +1,3 @@
-"""
-    Utilities powered by the magnificent me.
-"""
-
 # Copyright (C) 2016 Seva Ivanov
 #
 # This program is free software: you can redistribute it and/or modify
@@ -17,10 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os, glob, re, subprocess, markdown2
-
-# get_image_info()
-import struct, StringIO
+import os, glob
 
 def getFilenames(folderpath, byNewest):
     files = filter(os.path.isfile, glob.glob(folderpath + "*"))
@@ -48,6 +41,8 @@ def getMostRecentFileRecursively(rootfolder, extension=""):
     files.sort(key=lambda files: files[0])
     return max(files)[1]
 
+import markdown2
+
 def markdownToHtml(filepath):
     try:
         mdfile = open(filepath, "r")
@@ -57,10 +52,11 @@ def markdownToHtml(filepath):
             mdfile.close()
     return markdown2.markdown(text)
 
-"""
-    Make two dimentional dict from list with last & next as sub-dict.
-"""
 def get_list_next_previous_as_two_dimentional_dict(alist=None):
+    """
+        Make two dimentional dict from list with last & next as sub-dict.
+    """
+
     if not alist:
         return None
 
@@ -89,12 +85,15 @@ def get_list_next_previous_as_two_dimentional_dict(alist=None):
 
     return adict
 
-"""
-    Returns (content_type, width, height) for a given img file content
-    without using external libraries. GIF, PNG, JPEG are supported.
-    http://markasread.net/post/17551554979/get-image-size-info-using-pure-python-code
-"""
+import struct, StringIO
+
 def get_image_info(data):
+    """
+        Returns (content_type, width, height) for a given img file content
+        without using external libraries. GIF, PNG, JPEG are supported.
+        http://markasread.net/post/17551554979/get-image-size-info-using-pure-python-code
+    """
+
     data = str(data)
     size = len(data)
     height = -1

@@ -35,11 +35,6 @@ def project(request, category, title, html_file):
 
     if os.path.isfile(template_abspath) == False: return error404(request)
 
-    # unable to emulate 3DCube faces on Safari / Chrome on MacBook
-    if version == "desktop" and title == "home" and frontend.is_safari(request):
-        browsers_suggestion = {"firefox": True, "chrome": True}
-        return render(request, "frontend/errors/old-browser.html", browsers_suggestion)
-
     elif "moodboard" in html_file:
         folder = os.path.join(frontend.STATIC_PROJECTS, "cart/moodboard/images/data")
 

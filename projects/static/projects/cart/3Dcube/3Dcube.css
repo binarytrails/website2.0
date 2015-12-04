@@ -33,6 +33,8 @@ body
         }
             img#info:hover
             {
+                -webkit-box-shadow: 0 0 2px 1px white;
+                -moz-box-shadow: 0 0 2px 1px white;
                 box-shadow: 0 0 2px 1px white;
             }
 
@@ -63,26 +65,44 @@ body
         }
             #cube.show-top
             {
+                -webkit-transform: translateZ(-125px) rotateX(-90deg);
+                -moz-transform: translateZ(-125px) rotateX(-90deg);
+                -o-transform: translateZ(-125px) rotateX(-90deg);
                 transform: translateZ(-125px) rotateX(-90deg);
             }
             #cube.show-right
             {
+                -webkit-transform: translateZ(-125px) rotateY(-90deg);
+                -moz-transform: translateZ(-125px) rotateY(-90deg);
+                -o-transform: translateZ(-125px) rotateY(-90deg);
                 transform: translateZ(-125px) rotateY(-90deg);
             }
             #cube.show-bottom
             {
+                -webkit-transform: translateZ(-125px) rotateX(90deg);
+                -moz-transform: translateZ(-125px) rotateX(90deg);
+                -o-transform: translateZ(-125px) rotateX(90deg);
                 transform: translateZ(-125px) rotateX(90deg);
             }
             #cube.show-left
             {
+                -webkit-transform: translateZ(-125px) rotateY(90deg);
+                -moz-transform: translateZ(-125px) rotateY(90deg);
+                -o-transform: translateZ(-125px) rotateY(90deg);
                 transform: translateZ(-125px) rotateY(90deg);
             }
             #cube.show-front
             {
+                -webkit-transform: translateZ(-125px) rotateY(0deg);
+                -moz-transform: translateZ(-125px) rotateY(0deg);
+                -o-transform: translateZ(-125px) rotateY(0deg);
                 transform: translateZ(-125px) rotateY(0deg);
             }
             #cube.show-back
             {
+                -webkit-transform: translateZ(-125px) rotateX(-180deg);
+                -moz-transform: translateZ(-125px) rotateX(-180deg);
+                -o-transform: translateZ(-125px) rotateX(-180deg);
                 transform: translateZ(-125px) rotateX(-180deg);
             }
 
@@ -107,32 +127,52 @@ body
                 #cube figure.with-content:hover
                 {
                     cursor: pointer;
-                    /box-shadow: 0 0 0px 3px black;
-                    /box-shadow: 0 0 10px 5px #F9F8F6;
+                    -webkit-box-shadow: 0 0 600px 10px #F9F8F6;
+                    -moz-box-shadow: 0 0 600px 10px #F9F8F6;
+                    /*box-shadow: 0 0 0px 3px black;*/
+                    /*box-shadow: 0 0 10px 5px #F9F8F6;*/
                     box-shadow: 0 0 600px 10px #F9F8F6;
                 }
                 figure.top
                 {
+                    -webkit-transform: rotateX(90deg) translateZ(125px);
+                    -moz-transform: rotateX(90deg) translateZ(125px);
+                    -o-transform: rotateX(90deg) translateZ(125px);
                     transform: rotateX(90deg) translateZ(125px);
                 }
                 figure.right
                 {
+                    -webkit-transform: rotateY(90deg) translateZ(125px);
+                    -moz-transform: rotateY(90deg) translateZ(125px);
+                    -o-transform: rotateY(90deg) translateZ(125px);
                     transform: rotateY(90deg) translateZ(125px);
                 }
                 figure.bottom
                 {
+                    -webkit-transform: rotateX(-90deg) translateZ(125px);
+                    -moz-transform: rotateX(-90deg) translateZ(125px);
+                    -o-transform: rotateX(-90deg) translateZ(125px);
                     transform: rotateX(-90deg) translateZ(125px);
                 }
                 figure.left
                 {
+                    -webkit-transform: rotateY(-90deg) translateZ(125px);
+                    -moz-transform: rotateY(-90deg) translateZ(125px);
+                    -o-transform: rotateY(-90deg) translateZ(125px);
                     transform: rotateY(-90deg) translateZ(125px);
                 }
                 figure.front 
                 {
+                    -webkit-transform: rotateY(0deg) translateZ(125px);
+                    -moz-transform: rotateY(0deg) translateZ(125px);
+                    -o-transform: rotateY(0deg) translateZ(125px);
                     transform: rotateY(0deg) translateZ(125px);
                 }
                 figure.back
                 {
+                    -webkit-transform: rotateX(180deg) translateZ(125px);
+                    -moz-transform: rotateX(180deg) translateZ(125px);
+                    -o-transform: rotateX(180deg) translateZ(125px);
                     transform: rotateX(180deg) translateZ(125px);
                 }
 

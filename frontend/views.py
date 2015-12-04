@@ -54,10 +54,6 @@ def get_app_version(request):
     if is_mobile(request): return "mobile"
     else: return "desktop"
 
-def is_safari(request):
-    user_agent = request.META["HTTP_USER_AGENT"].lower()
-    return ("safari" in user_agent and "chrome" not in user_agent)
-
 def render_no_mobile_version(request):
     return render(request, "frontend/errors/generic-simple-text.html",
     {

@@ -10,6 +10,13 @@
         <script src="{{ STATIC }}projects/libs/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ STATIC }}projects/libs/sweetalert.css">
         <script type="text/javascript">
+
+            function changeCubeClass(className)
+            {
+                cube = document.getElementById("cube");
+                cube.className = className;
+            }
+
             function information()
             {
                 swal({

@@ -1,1 +1,24 @@
-../3Dcube/3Dcube.html
+{% extends "generic/base-head.html" %}
+{% block content %}
+        <meta name="description" content="CART Computation Arts">
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/listing-wo-header-{{ version }}-black.css" />
+        <style type="text/css">
+            #main ul li{text-align: center;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <!-- Nice colors: E67451 E8A317 3B9C9C F75D59 4CC552 -->
+            <ul>
+                <li><header style="color: #E8A317">Computation Arts</header></li>
+                <li><a href="/project/cart/211/211">
+                    <div id="right"><p>Creative Computation & Network Culture (211)</p></div>
+                </a></li>
+                <li><a href="/project/cart/214/214">
+                    <div id="right"><p>Visual Form & Communication (214)</p></div>
+                </a></li>
+            </ul>
+        </div>
+    </body>
+{% endblock %}

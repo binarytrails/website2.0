@@ -399,6 +399,15 @@ class Project(models.Model):
             """,
             "url": "https://sevaivanov.github.io/lindenmayer/"
         },
+        "2015-9":
+        {
+            "title": "3D Cube",
+            "description": """A 3D Cube made of html / css  that was designed for
+                Computation Arts as the main projects entry. Unfortunately, cross-browsers
+                compatibility issues made me reconsider my choice.
+            """,
+            "url": "/project/cart/3Dcube/3Dcube/"
+        },
         "2015-7":
         {
             "title": "Tcp Viewer",

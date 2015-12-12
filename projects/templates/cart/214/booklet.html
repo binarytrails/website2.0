@@ -1,0 +1,49 @@
+{% extends "generic/base-head.html" %}
+{% block content %}
+        <meta name="description" content="CART 214: Folded Pamphlet">
+
+        <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/content-wo-header-{{ version }}-black.css" />
+        <style type="text/css">
+            #main, #main a {color: black; background: white;}
+            #main, #main p {text-align: center; line-height: 1.5;}
+            #main p.header {width: 40%; margin: 2em 20% 0;}
+            #main p {display: inline-block; width: 40%; text-align: left;}
+            #main div.images {display: inline-block; width: 100%; margin: 0;}
+            #main div.images img {display: inline-block; width: 40%; margin: 1em 20%;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <p class="header">Booklet</p>
+            <p>
+                <i>For your final project you will be making a small book or folded pamphlet which will be a catalogue of all the work you have made for this class. The assignment will make use of all of the principles of design that we have covered during the class (hierarchy, color, typography, placement, negative space etc.) and will be a chance to organize your work into an offline and archival document/object.</i>
+            </p>
+            <div class="images">
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/1.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/1.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/2.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/2.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/3.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/3.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/4.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/4.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/5.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/5.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/6.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/6.jpg"></img>
+                </a>
+                <a href="{{ STATIC }}projects/cart/images/214/booklet/7.jpg">
+                    <img src="{{ STATIC }}projects/cart/images/214/booklet/x800/7.jpg"></img>
+                </a>
+            </div>
+            <p>
+                <a href="{{ STATIC }}projects/cart/pdf/cart214-booklet.pdf">Printable Booklet</a>, flip it on the short edge.
+            </p>
+        </div>
+    </body>
+{% endblock %}

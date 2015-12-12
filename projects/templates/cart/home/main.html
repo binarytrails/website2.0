@@ -3,9 +3,11 @@
         <meta name="description" content="CART Computation Arts">
 
         <link type="text/css" rel="stylesheet" href="{{ STATIC }}generic/listing-wo-header-{{ version }}-black.css" />
-        <style type="text/css">
-            #main ul li{text-align: center;}
-        </style>
+        {% if version == "desktop" %}
+            <style type="text/css">
+                #main ul li {text-align: center;}
+            </style>
+        {% endif %}
     </head>
     <body>
         <div id="main">

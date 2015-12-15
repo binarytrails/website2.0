@@ -1,0 +1,28 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/photos-mobile.css">
+
+    <div id="main">
+        <ul class="menu">
+            <li>
+                <header>
+                    FLY TO ✈
+                </header>
+            </li>
+            {% for category in categories %}
+                <a href="/photos/gallery/{{ category.0 }}/">
+                    {% if forloop.counter == 1 %}
+                        <li style="color: {% cycle '#E8A317' '#3B9C9C' '#4CC552' '#F75D59' as bgcolors %};">
+                    {% else %}
+                        <li style="color: {% cycle bgcolors %};">
+                    {% endif %}
+                        {{ category.1 }}
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    {% load static %}
+    {% get_static_prefix as STATIC %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/simple-text.css">
+
+    <div id="main">
+        <div id="container">
+            {% if image_source %}
+                <img src="{{ STATIC }}{{ image_source }}"></img>
+            {% endif %}
+            <p id="header">{{ header }}</p>
+            <p class="subtitle">{{ subtitle }}</p>
+            <p>{{ body }}</p>
+        </div>
+    </div>
+
+{% endblock %}

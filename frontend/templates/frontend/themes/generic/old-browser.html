@@ -1,0 +1,30 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/simple-text.css">
+
+    <div id="main">
+        <div id="container">
+            <p id="header">Your browser is currently not supported.</p>
+            <p>Don't worry, there is an easy fix. All you have to do is click on one of the icons below and install a modern browser conforming to today's standards to access this page.</p>
+
+            {% if "Firefox" in SUPPORTED_BROWSERS %}
+            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                <img src="{{ STATIC }}{{ APP }}/img/logo/512x512/trademark/firefox.png"> </img>
+            </a>
+            {% endif %}
+            {% if SUPPORTED_BROWSERS %}
+            <a href="http://www.google.com/chrome/">
+                <img src="{{ STATIC }}{{ APP }}/img/logo/512x512/trademark/chrome.png"> </img>
+            </a>
+            {% endif %}
+            {% if SUPPORTED_BROWSERS %}
+            <a href="http://support.apple.com/downloads/#safari">
+                <img src="{{ STATIC }}{{ APP }}/img/logo/512x512/trademark/safari.png"> </img>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

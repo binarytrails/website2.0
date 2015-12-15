@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Personal Website by Seva Ivanov</title>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content="Digital Arts & Programming Slideshow">
+        <meta name="keywords" content="Kedfilms, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
+        <meta name="author" content="Seva Ivanov">
+        
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+        
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/photos-slideshow-mobile.css">
+        <script type="text/javascript" src="{{ STATIC }}{{ APP }}/js/google-analytics.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <img src="{{ image_url }}"></img>
+        </div>
+    </body>
+</html>

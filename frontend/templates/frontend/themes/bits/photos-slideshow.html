@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+        <title>Personal Website by Seva Ivanov</title>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content="Digital Arts & Programming Slideshow">
+        <meta name="keywords" content="Kedfilms, Django, HTML5 , Pure CSS, Stylish, Modern, Open Source">
+        <meta name="author" content="Seva Ivanov">
+        
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:100' rel='stylesheet' type='text/css'>
+
+        {% load static %}
+        {% get_static_prefix as STATIC %}
+
+        {% load staticfiles %}    
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/photos-slideshow.css"/>
+        
+        <script type="text/javascript" src="{{ STATIC }}{{ APP }}/js/google-analytics.js"></script>
+
+        <style type="text/css">
+            {% for photo in photos %}
+
+                /* image preview style */
+
+                #preview-{{ photo.fragment_identifier }}
+                {
+                    position: absolute;
+                    height: 200px;
+                    
+                    left: 0;
+                    right: 0;
+                    bottom: 110%;
+                    margin: auto;
+
+                    z-index: 3;
+                    opacity: 0;
+
+                    background-image: url({{ photo.get_image_thumbnails_urls.x200 }});
+                    box-shadow: 0 0 5px white;
+
+                    /* Get image width from file on page load */
+                    {% load filters %}
+                    width: {{ photo.get_image_thumbnails_abspaths.x200|imageWidth }}px;
+
+                    -moz-transition: all 0.5s ease-in-out;
+                    -webkit-transition: all 0.5s ease-in-out;
+                    transition: all 0.5s ease-in-out;
+                    -o-transition: all 0.5s ease-in-out;
+                    -ms-transition: all 0.5s ease-in-out;
+                }
+
+                /* on rounded image link mouse over (:hover) */
+
+                a#track-{{ photo.fragment_identifier }}:hover + 
+                div#preview-{{ photo.fragment_identifier }}
+                {
+                    opacity: 0.9;
+                    z-index: 2;
+                }
+
+                /* on rounded image link click (:target) */
+
+                a#{{ photo.fragment_identifier }}:target + 
+                div#slide-{{ photo.fragment_identifier }} img
+                {
+                    opacity: 1;
+                }
+
+                a#{{ photo.fragment_identifier }}:target ~ 
+                div#details-{{ photo.fragment_identifier }}
+                {
+                    opacity: 0.7;
+                    z-index: 3;
+                }
+
+                a#{{ photo.fragment_identifier }}:target ~ 
+                div#loop-{{ photo.fragment_identifier }}
+                {
+                    opacity: 0.7;
+                    z-index: 2;
+                }
+
+            {% endfor %}
+        </style>
+    </head>
+
+    <body>
+        <div id="return">
+            <a href="/photos/gallery/{{ category }}/#head">
+                <img  src="{{ STATIC }}{{ APP }}/img/logo/512x512/filled-circle/back-arrow-white-left.png"/>
+            </a>
+        </div>
+
+        <div id="slideshow">
+            <ul class="slider">
+                <li class="slides" >
+                    {% for photo in photos %}
+                        <a id="{{ photo.fragment_identifier }}"></a>
+
+                        <div id="slide-{{ photo.fragment_identifier }}">
+                            <img src="{{ photo.get_image_thumbnails_urls.x800 }}" alt=""/>
+                        </div>
+
+                        <div id="details-{{ photo.fragment_identifier }}">
+                            <ul>
+                                <li>
+                                    Title: {{ photo.title|title }}
+                                </li>
+                                <li>
+                                    Author: {{ photo.author|title }}
+                                </li>
+                                <li>
+                                    Category: {{ photo.category|title }}
+                                </li>
+                                {% if photo.hardware %}
+                                    <li>
+                                        Hardware:</br>{{ photo.hardware|title }}
+                                    </li>
+                                {% endif %}
+                                {% if photo.application %}
+                                    <li>
+                                        Software:</br>{{ photo.application|title }}
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    Date: {{ photo.date_created }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="loop-{{ photo.fragment_identifier }}">
+                            <a href="{{ photo.get_image_url }}">
+                                <img  src="{{ STATIC }}{{ APP }}/img/logo/256x256/symbol/magnifying-glass-white.png"/>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+                </li>
+
+                <li class="track">
+                    {% for photo in photos %}
+                        <a id="track-{{ photo.fragment_identifier }}" title="{{ photo.title }}" href="#{{ photo.fragment_identifier }}" class="tr{{ forloop.counter }}"></a>
+
+                        <div id="preview-{{ photo.fragment_identifier }}"></div>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

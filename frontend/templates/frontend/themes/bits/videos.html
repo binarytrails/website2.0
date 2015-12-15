@@ -1,0 +1,73 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/videos.css">
+
+    <a name="head"></a>
+    <div id="main">
+        <div id="videos">
+            {% for category in categories %}
+            <!-- {% load cycle from future %} -->
+            <section style="background: {% cycle '#E5E4E2' '#92C7C7' '#64E986' '#40494D' as bgcolors %};">
+                <header style="color: {% cycle '#787878' 'white' as textcolors %};">
+                    {{ category.1 }}
+                </header>
+                <hr></hr>
+                <div id="container">
+                    {% for video in videos %}
+                    {% if video.category == category.0 %}
+                        <div id="wrapper">
+                        <!-- external -->
+                        {% if video.iframe_src %}
+                            <iframe src="{{ video.iframe_src }}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <!-- local -->
+                        {% else %}
+                            <div id="details">
+                                <header>Learn more</header>
+                                <ul>
+                                    <li>
+                                        Title: {{ video.title }}
+                                    </li>
+                                    <li>
+                                        Author: {{ video.author }}
+                                    </li>
+                                    {% if video.description %}
+                                        <li>
+                                            Description: {{ video.description }}
+                                        </li>
+                                    {% endif %}
+                                    <li>
+                                        Category: {{ video.category }}
+                                    </li>
+                                    {% if video.hardware %}
+                                        <li>
+                                            Hardware: {{ video.hardware }}
+                                        </li>
+                                    {% endif %}
+                                    {% if video.application %}
+                                        <li>
+                                            Software: {{ video.application }}
+                                        </li>
+                                    {% endif %}
+                                    <li>
+                                        Date created: {{ video.date_created }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <video name="{{ video.title }}" preload="none" controls="controls"
+                                src="{{ STATIC }}{{ videos_url }}/{{ category.0 }}/{{ video.filename }}"
+                                poster="{{ STATIC }}{{ posters_url }}{{ video.posterfile }}">
+                                The browser does not support the html5 video element for ogv format.
+                            </video>
+                        {% endif %}
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

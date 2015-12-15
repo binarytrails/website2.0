@@ -1,0 +1,20 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    {% if PLATFORM == "mobile" %}
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/article-mobile.css">
+    {% elif PLATFORM == "desktop" %}
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/article.css">
+    {% endif %}
+
+    <div id="main">
+        <a id="head"></a>
+        {% autoescape off %}
+
+            {{ html }}
+
+        {% endautoescape %}
+    </div>
+
+{% endblock content %}

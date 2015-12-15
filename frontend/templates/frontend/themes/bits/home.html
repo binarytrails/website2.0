@@ -1,0 +1,84 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    <style type="text/css">
+        #cart .circle
+        {
+            background-image: url('{{ STATIC }}/{{ APP }}/img/logo/512x512/symbol/pc-love-8bit-white.png');
+        }
+    </style>
+
+    {% if PLATFORM == "desktop" %}
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/home.css">
+        <style type="text/css">
+            #coding .circle
+            {
+                background-image: url('{{ STATIC }}/{{ APP }}/img/banners/bits_cloud_bw-square.jpg');
+            }
+            @media all and (max-width: 1100px)
+            {
+                #coding .circle
+                {
+                    background-image: url('/{{ STATIC }}{{ APP }}/img/banners/bits_cloud_bw.jpg');
+                }
+            }
+        </style>
+    {% elif PLATFORM == "mobile" %}
+        <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/home-mobile.css">
+        <style type="text/css">
+            #coding .circle
+            {
+                background-image: url('{{ STATIC }}/{{ APP }}/img/banners/bits_cloud_bw.jpg');
+            }
+        </style>
+        <div id="main">
+    {% endif %}
+
+        <div id="entry" class="section">
+            {% if PLATFORM == "mobile" %}
+                <header>Yours truly</header>
+            {% endif %}
+            <p>
+                I am a human being,</br>an amazing student & a freelancer.</br>
+                Art & minutiae are transparent in my projects.</br>
+                Opensource is a reality & Linux is a choice.</br>
+            </p>
+        </div>
+        {% if PLATFORM == "desktop" %}
+            <div id="main">
+        {% endif %}
+
+            <div id="cart" class="section">
+                {% if PLATFORM == "desktop" %}
+                    <hr></hr>
+                {% endif %}
+                <header>Computation Arts</header>
+                {% if PLATFORM == "desktop" %}
+                    <hr></hr>
+                {% endif %}
+
+                <a href="/project/cart/home/main/">
+                    <div class="circle"></div>
+                </a>
+                <a href="/project/cart/home/main/"><p>
+                    > Run explore
+                </p></a>
+            </div>
+
+            <div id="coding" class="section">
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <header>Projects</header>
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <a href="/projects/#main">
+                    <div class="circle"></div>
+                </a>
+                <a href="/projects/#main"><p>
+                    > Run timeline
+                </p></a>
+            </div>
+        
+        <!-- /main -->
+        {% if PLATFORM == "desktop" %}</div>{% endif %}
+
+{% endblock %}

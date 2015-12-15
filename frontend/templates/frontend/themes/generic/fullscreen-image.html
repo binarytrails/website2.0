@@ -1,0 +1,14 @@
+{% extends PARENT %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/fullscreen-image.css">
+
+    <div id="main">
+        <header>{{ status }}</header>
+        <a href="{{ return_to }}">
+            <img src="{{ STATIC }}{{ APP }}{{ image_source }}"</img>
+        </a>
+    </div>
+
+{% endblock %}

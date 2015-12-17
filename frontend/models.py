@@ -406,7 +406,7 @@ class Project(models.Model):
                 Computation Arts as the main projects entry. Unfortunately, cross-browsers
                 compatibility issues made me reconsider my choice.
             """,
-            "url": "/project/cart/3Dcube/3Dcube/"
+            "url": "/cart/3Dcube/3Dcube/"
         },
         "2015-7":
         {

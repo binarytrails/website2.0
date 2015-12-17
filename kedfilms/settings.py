@@ -36,6 +36,9 @@ DATABASES = {
 ALLOWED_HOSTS = ['127.0.0.1', 'kedfilms.com', 'www.kedfilms.com', 'm.kedfilms.com',
     'sevaivanov.com', 'www.sevaivanov.com', 'm.sevaivanov.com']
 
+# Custom
+MOBILE_HOSTS = ["m.kedfilms.com", "m.sevaivanov.com"]
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -80,7 +83,6 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'projects/static/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -138,6 +140,7 @@ INSTALLED_APPS = (
     #'django.contrib.admindocs',
     #'debug_toolbar',
     'frontend',
+    'cart',
 )
 
 # A sample logging configuration. The only tangible logging

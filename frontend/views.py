@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os
+import os, random
 
 from django.conf import settings
 from django.shortcuts import render
@@ -23,16 +23,17 @@ from django.views.decorators.cache import never_cache
 from .models import Project, Photo, Video
 
 from kedfilms import utils
+from kedfilms.settings import MOBILE_HOSTS
 
 APP = "frontend"
 MEDIA = settings.MEDIA_URL
 STATIC = os.path.join(settings.STATIC_ROOT, APP)
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
 THEME = os.path.join(APP, "themes/bits")
 ERRORS = os.path.join(APP, "themes/generic")
 
-MOBILE_HOSTS = ["m.kedfilms.com", "m.sevaivanov.com"]
+HEAD_TITLES = ["e a I a o", "The one and only", "I'm not the one",
+    "________"]
 
 def is_mobile(request):
     # .mobile -> minidetector.Middleware
@@ -48,6 +49,7 @@ def merge_context(request, new_context=None):
     base_context = {
         "APP": APP,
         "THEME": THEME,
+        "HEAD_TITLE": HEAD_TITLES[random.randint(0, 3)],
         "PLATFORM": "mobile" if is_mobile(request) else "desktop",
         "PARENT": os.path.join(THEME, "base" + template_prefix(request))
     }

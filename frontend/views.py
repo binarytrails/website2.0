@@ -26,21 +26,21 @@ from kedfilms import utils
 from kedfilms.settings import MOBILE_HOSTS
 
 APP = "frontend"
-MEDIA = settings.MEDIA_URL
-STATIC = os.path.join(settings.STATIC_ROOT, APP)
-
 THEME = os.path.join(APP, "themes/bits")
 ERRORS = os.path.join(APP, "themes/generic")
+HEAD_TITLES = ["e a I a o", "The one and only",
+    "I'm not the one", "________"]
 
-HEAD_TITLES = ["e a I a o", "The one and only", "I'm not the one",
-    "________"]
+MEDIA = settings.MEDIA_URL
+STATIC = os.path.join(settings.STATIC_ROOT, APP)
+APP_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 def is_mobile(request):
     # .mobile -> minidetector.Middleware
     return request.mobile or request.get_host() in MOBILE_HOSTS
 
 def template_exists(template):
-    return os.path.exists(os.path.join(APP, "templates", template))
+    return os.path.exists(os.path.join(APP_ROOT, "templates", template))
 
 def template_prefix(request):
     return ("-mobile.html" if is_mobile(request) else ".html")

@@ -53,7 +53,8 @@ def merge_context(request, new_context=None):
         "PLATFORM": "mobile" if is_mobile(request) else "desktop",
         "PARENT": os.path.join(THEME, "base" + template_prefix(request))
     }
-    if new_context: return dict(base_context.items() + new_context.items())
+    if new_context:
+        return utils.merge_dicts(base_context, new_context)
     return base_context
 
 # decorators
@@ -150,10 +151,10 @@ def gallery(request, category):
     })
 
     if is_mobile(request) == False:
-        context = dict(context.items() + {
+        context = utils.merge_dicts(context, {
             "last": Photo().get_previous_category(category),
             "next": Photo().get_next_category(category)
-        }.items())
+        })
 
     template = os.path.join(THEME, "photos-gallery" + template_prefix(request))
     if template_exists(template) == False: return error404(request)

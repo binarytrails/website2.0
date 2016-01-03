@@ -49,6 +49,18 @@
             <div id="main">
         {% endif %}
 
+            <div id="coding" class="section">
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <header>Projects</header>
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <a href="/projects/#main">
+                    <div class="circle"></div>
+                </a>
+                <a href="/projects/#main"><p>
+                    > Run timeline
+                </p></a>
+            </div>
+
             <div id="cart" class="section">
                 {% if PLATFORM == "desktop" %}
                     <hr></hr>
@@ -63,18 +75,6 @@
                 </a>
                 <a href="/cart/home/welcome/"><p>
                     > Run explore
-                </p></a>
-            </div>
-
-            <div id="coding" class="section">
-                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
-                <header>Projects</header>
-                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
-                <a href="/projects/#main">
-                    <div class="circle"></div>
-                </a>
-                <a href="/projects/#main"><p>
-                    > Run timeline
                 </p></a>
             </div>
         

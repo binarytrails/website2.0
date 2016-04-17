@@ -13,10 +13,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-"""
-    The admin panel is for developing only.
-"""
-
 import pyexiv2
 import imghdr, uuid
 from datetime import date
@@ -32,7 +28,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
-from frontend.models import Photo
+from frontend.models import Author, Photo
 
 #@staff_member_required
 #def import_photos(request):
@@ -81,10 +77,20 @@ from frontend.models import Photo
 
 #    return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
+# Describes how this resource can be imported or exported
 from import_export import resources
+# django.contrib admin.ModelAdmin wrapper
+from import_export.admin import ImportExportModelAdmin
+
+class AuthorResource(resources.ModelResource):
+
+    class Meta:
+        model = Author
+
+class AuthorAdmin(ImportExportModelAdmin):
+    pass
 
 class PhotoResource(resources.ModelResource):
-
     class Meta:
         model = Photo
 
@@ -96,6 +102,7 @@ class PhotoAdmin(ImportExportModelAdmin):
         'date_created', 'application', 'hardware', 'author'
     ]
     search_fields = ['title']
+    readonly_fields = ['cached_image_path']
 
     # Edit form
     fields = [
@@ -109,6 +116,40 @@ class PhotoAdmin(ImportExportModelAdmin):
         'application',
         'date_created'
     ]
+
+    def save_model(self, request, object, form, change):
+        make_thumbnails = False
+
+        # first image upload
+        if not object.cached_image_path:
+            make_thumbnails = True
+
+        # category update
+        elif object.cached_category != object.category:
+            make_thumbnails = False
+            object.move_image_to_updated_category()
+            # can't do it on creation: 404 Bad Request
+            object.image.name = object.get_image_url()
+
+        # image update
+        elif object.cached_image_path != object.get_image_abspath():
+            make_thumbnails = True
+            object.delete_image()
+            object.delete_thumbnails()
+
+        object.cached_category = object.category
+        object.cached_image_path = object.get_image_abspath()
+
+        # image upload & records updates
+        object.save()
+
+        is_gif = False
+        if imghdr.what(object.cached_image_path) == "gif":
+            is_gif = True
+        
+        if make_thumbnails:
+            object.generate_thumbnails(is_gif)
+
 
 """
     Not implemented:
@@ -189,4 +230,5 @@ class PhotoAdmin(ImportExportModelAdmin):
 ##            object.generate_image_xmp_metadata()
 #        
 
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Photo, PhotoAdmin)

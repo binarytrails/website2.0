@@ -15,6 +15,7 @@
 
 """
     unique constraints are used because multiple primary keys aren't supported.
+    using primary_key will create KeyError: u'id' on csv import with import_export.
 """
 
 import pyexiv2
@@ -38,10 +39,18 @@ THUMBNAILS_DIRNAMES = ['x200', 'x800']
 def get_photo_upload_to_by_category(instance, filename):
     return os.path.join("images", instance.category, "original", filename)
 
-class Photo(models.Model):
-    def __unicode__(self):
-        return self.title
+class Author(models.Model):
 
+    name = models.CharField(
+        unique = True,
+        max_length = 50,
+        default = 'Unknown'
+    )
+
+    def __unicode__(self):
+        return self.name
+
+class Photo(models.Model):
     # Add new categories here
     PORTFOLIO = 'portfolio'
     DAYTIME = 'daytime'
@@ -54,22 +63,6 @@ class Photo(models.Model):
         (NIGHTTIME, 'Nighttime'),
         (MULTIVERSE, 'Multiverse'),
         # (INTERNET_GIFS, 'Internet In Motion'),
-    )
-
-    # Add new authors here
-    SEVA = 'Vsevolod Ivanov'
-    MELO = 'Melodie Verroeulst'
-    ANDREI = 'Andrei Savin'
-    SAND = 'Sandrine Allen'
-    GUIDES = 'Guillaume Deshaies'
-    INTERNET = 'Internet'
-    AUTHORS = (
-        (SEVA, 'Vsevolod Ivanov'),
-        (MELO, 'Melodie Verroeulst'),
-        (ANDREI, 'Andrei Savin'),
-        (SAND, 'Sandrine Allen'),
-        (GUIDES, 'Guillaume Deshaies'),
-        (INTERNET, 'Internet'),
     )
 
     # Add new hardware here
@@ -87,6 +80,8 @@ class Photo(models.Model):
         (AE, 'Adobe After Effect'),
         (GIMP28, 'Gimp 2.8')
     )
+
+    author = models.ForeignKey('Author')
 
     category = models.CharField(
         max_length = 20,
@@ -114,12 +109,6 @@ class Photo(models.Model):
     title = models.CharField(
         max_length = 50,
         blank = False
-    )
-    author = models.CharField(
-        max_length = 50,
-        blank = False,
-        choices = AUTHORS,
-        default = SEVA
     )
     hardware = models.CharField(
         max_length = 50,
@@ -294,6 +283,9 @@ class Photo(models.Model):
         super(Photo, self).delete(*args, **kwargs)
         self.delete_image()
         self.delete_thumbnails()
+
+    def __unicode__(self):
+        return self.title
 
     class Meta:
         unique_together = (

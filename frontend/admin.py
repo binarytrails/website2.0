@@ -34,59 +34,63 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from frontend.models import Photo
 
-@staff_member_required
-def import_photos(request):
-    if request.method == 'POST':
-        # load images to upload in memory
-        photos_files = request.FILES.getlist('photos')
-        photoAdmin = PhotoAdmin(Photo, AdminSite())
+#@staff_member_required
+#def import_photos(request):
+#    if request.method == 'POST':
+#        # load images to upload in memory
+#        photos_files = request.FILES.getlist('photos')
+#        photoAdmin = PhotoAdmin(Photo, AdminSite())
 
-        for photo_file in photos_files:
-            photo = Photo()
-            filename = photo_file.name
-            photo.category = request.POST['category']
+#        for photo_file in photos_files:
+#            photo = Photo()
+#            filename = photo_file.name
+#            photo.category = request.POST['category']
 
-            if imghdr.what(photo_file.name, photo_file.read()) == "gif":
-                photo_uuid = str(uuid.uuid1())
-                filename = photo_uuid + ".gif"
+#            if imghdr.what(photo_file.name, photo_file.read()) == "gif":
+#                photo_uuid = str(uuid.uuid1())
+#                filename = photo_uuid + ".gif"
 
-                photo.title = filename
-                photo.fragment_identifier = photo_uuid
-                photo.author = Photo.INTERNET
+#                photo.title = filename
+#                photo.fragment_identifier = photo_uuid
+#                photo.author = Photo.INTERNET
 
-            else:
-                # read uploaded image metadata
-                metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
-                metadata.read()
+#            else:
+#                # read uploaded image metadata
+#                metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
+#                metadata.read()
 
-                # verify xmp metadata
-                for key in photo.get_image_xmp_metadata_available_keys():
-                    # save image metadata into created photo matching attributes
-                    attribute = key.replace('Xmp.xmp.', '')
-                    try:
-                        photo.__dict__[attribute] = metadata[key].value
-                    except KeyError as error:
-                        messages.error(request, "Xmp metadata key '%s' not found!" % key)
-                        break
+#                # verify xmp metadata
+#                for key in photo.get_image_xmp_metadata_available_keys():
+#                    # save image metadata into created photo matching attributes
+#                    attribute = key.replace('Xmp.xmp.', '')
+#                    try:
+#                        photo.__dict__[attribute] = metadata[key].value
+#                    except KeyError as error:
+#                        messages.error(request, "Xmp metadata key '%s' not found!" % key)
+#                        break
 
-            # save image to the photo object
-            try:
-                photo.image.save(filename, photo_file, True)
-            except IntegrityError as error:
-                messages.error(request, error.args)
-                break
+#            # save image to the photo object
+#            try:
+#                photo.image.save(filename, photo_file, True)
+#            except IntegrityError as error:
+#                messages.error(request, error.args)
+#                break
 
-            # run the save_model used for creating/modifing a photo object
-            photoAdmin.save_model(None, photo, None, True)
+#            # run the save_model used for creating/modifing a photo object
+#            photoAdmin.save_model(None, photo, None, True)
 
-    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+#    return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
-"""
-    Not implemented:
-        Updating gifs.
-        Bulk delete won't call delete() for all the items.
-"""
-class PhotoAdmin(admin.ModelAdmin):
+from import_export import resources
+
+class PhotoResource(resources.ModelResource):
+
+    class Meta:
+        model = Photo
+
+from import_export.admin import ImportExportModelAdmin
+
+class PhotoAdmin(ImportExportModelAdmin):
     # Select Form
     list_display = ['title', 'fragment_identifier', 'category', 
         'date_created', 'application', 'hardware', 'author'
@@ -106,57 +110,83 @@ class PhotoAdmin(admin.ModelAdmin):
         'date_created'
     ]
 
-    readonly_fields = ['cached_image_path']
+"""
+    Not implemented:
+        Updating gifs.
+        Bulk delete won't call delete() for all the items.
+"""
+#class PhotoAdmin(admin.ModelAdmin):
+#    # Select Form
+#    list_display = ['title', 'fragment_identifier', 'category', 
+#        'date_created', 'application', 'hardware', 'author'
+#    ]
+#    search_fields = ['title']
 
-    def get_urls(self):
-        urls = super(PhotoAdmin, self).get_urls()
-        my_urls = patterns("",
-            url(r"^import_photos/$", import_photos)
-        )
-        return my_urls + urls
+#    # Edit form
+#    fields = [
+#        'category',
+#        'image',
+#        'cached_image_path',
+#        'fragment_identifier',
+#        'title', 
+#        'author',
+#        'hardware',
+#        'application',
+#        'date_created'
+#    ]
 
-    def changelist_view(self, request, extra_context=None):
-        extra_context = extra_context or {}
-        extra_context['categories'] = Photo.CATEGORIES
-        return super(PhotoAdmin, self).changelist_view(request,
-            extra_context = extra_context
-        )
+#    readonly_fields = ['cached_image_path']
 
-    def save_model(self, request, object, form, change):
-        make_thumbnails = False
+#    def get_urls(self):
+#        urls = super(PhotoAdmin, self).get_urls()
+#        my_urls = patterns("",
+#            url(r"^import_photos/$", import_photos)
+#        )
+#        return my_urls + urls
 
-        # first image upload
-        if not object.cached_image_path:
-            make_thumbnails = True
+#    def changelist_view(self, request, extra_context=None):
+#        extra_context = extra_context or {}
+#        extra_context['categories'] = Photo.CATEGORIES
+#        return super(PhotoAdmin, self).changelist_view(request,
+#            extra_context = extra_context
+#        )
 
-        # category update
-        elif object.cached_category != object.category:
-            make_thumbnails = False
-            object.move_image_to_updated_category()
-            # can't do it on creation: 404 Bad Request
-            object.image.name = object.get_image_url()
+#    def save_model(self, request, object, form, change):
+#        make_thumbnails = False
 
-        # image update
-        elif object.cached_image_path != object.get_image_abspath():
-            make_thumbnails = True
-            object.delete_image()
-            object.delete_thumbnails()
+#        # first image upload
+#        if not object.cached_image_path:
+#            make_thumbnails = True
 
-        object.cached_category = object.category
-        object.cached_image_path = object.get_image_abspath()
+#        # category update
+#        elif object.cached_category != object.category:
+#            make_thumbnails = False
+#            object.move_image_to_updated_category()
+#            # can't do it on creation: 404 Bad Request
+#            object.image.name = object.get_image_url()
 
-        # image upload & records updates
-        object.save()
+#        # image update
+#        elif object.cached_image_path != object.get_image_abspath():
+#            make_thumbnails = True
+#            object.delete_image()
+#            object.delete_thumbnails()
 
-        is_gif = False
-        if imghdr.what(object.cached_image_path) == "gif":
-            is_gif = True
-        
-        if make_thumbnails:
-            object.generate_thumbnails(is_gif)
+#        object.cached_category = object.category
+#        object.cached_image_path = object.get_image_abspath()
 
-        # pyexiv2 doesn't work with the gif format
-        if imghdr.what(object.cached_image_path) != "gif":
-            object.generate_image_xmp_metadata()
-        
+#        # image upload & records updates
+#        object.save()
+
+#        is_gif = False
+#        if imghdr.what(object.cached_image_path) == "gif":
+#            is_gif = True
+#        
+#        if make_thumbnails:
+#            object.generate_thumbnails(is_gif)
+
+##        # pyexiv2 doesn't work with the gif format
+##        if imghdr.what(object.cached_image_path) != "gif":
+##            object.generate_image_xmp_metadata()
+#        
+
 admin.site.register(Photo, PhotoAdmin)

@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     #'django.contrib.admindocs',
     #'debug_toolbar',
+    'import_export',
     'frontend',
     'cart',
 )

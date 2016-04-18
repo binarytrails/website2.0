@@ -27,7 +27,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
-from frontend.models import Author, Category, Photo
+from frontend.models import Author, Category, Photo, Video
 
 # Describes how this resource can be imported or exported
 from import_export import resources
@@ -115,6 +115,15 @@ class PhotoAdmin(ImportExportModelAdmin):
         if make_thumbnails:
             object.generate_thumbnails(is_gif)
 
+class VideoResource(resources.ModelResource):
+    class Meta:
+        model = Author
+
+class VideoAdmin(ImportExportModelAdmin):
+    # Select Form
+    list_display = ['id', 'iframe_src', 'date_created', 'category']
+
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Photo, PhotoAdmin)
+admin.site.register(Video, VideoAdmin)

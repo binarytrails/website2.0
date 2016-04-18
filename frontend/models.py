@@ -227,53 +227,17 @@ class Photo(models.Model):
         )
 
 class Video(models.Model):
-    INTRO = 'intro'
-    FAVORITE = 'favorite'
-    EVENT = 'event'
-    DANCER = 'dancer'
-
-    CATEGORIES = (
-        (INTRO, 'Brief introductory passage'),
-        (FAVORITE, 'Personal Favorites'),
-        (EVENT, 'A Gathering Of People'),
-        (DANCER, 'Physical Expression'),
-    )
-
-    category = models.CharField(
-        max_length = 2,
-        choices = CATEGORIES
+    iframe_src = models.CharField(
+        max_length = 250,
+        unique = True
     )
     date_created = models.DateField(
         default = date.today,
         blank = False
     )
-    # blank = video locally hosted
-    iframe_src = models.CharField(
-        max_length = 250,
-        unique = True,
-        blank = True
-    )
-    # locally hosted video information
-    filename = models.CharField(
-        max_length = 250
-    )
-    posterfile = models.CharField(
-        max_length = 250 
-    )
-    title = models.CharField(
-        max_length = 50
-    )
-    author = models.CharField(
-        max_length = 50
-    )
-    description = models.CharField(
-        max_length = 50 
-    )
-    hardware = models.CharField(
-        max_length = 50
-    )
-    application = models.CharField(
-        max_length = 50
+    category = models.ForeignKey(
+        "Category",
+        limit_choices_to={"context": "Video"}
     )
 
 class Skill(models.Model):

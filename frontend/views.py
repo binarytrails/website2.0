@@ -193,7 +193,8 @@ def slideshow(request, category_id, fragment_id):
         }
 
     template = os.path.join(THEME, "photos-slideshow" + template_prefix(request))
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
     return render(request, template, merge_context(request, context)) 
 
@@ -201,17 +202,15 @@ def slideshow(request, category_id, fragment_id):
 @old_browsers
 def videos(request):
     template = os.path.join(THEME, "videos" + template_prefix(request))
-    if template_exists(template) == False: return error404(request)
-
+    if not template_exists(template):
+        return error404(request)
+    
     return render(request, template, merge_context(request, {
-        "posters_url": os.path.join(STATIC, "img/video-poster/"),
-        "videos_url": os.path.join(STATIC, "vid/"),
-        "categories": Video.CATEGORIES,
+        "categories": Category.objects.all().filter(context = "Video"),
         "videos": Video.objects.all().filter().order_by("-date_created")
     }))
 
 # errors
-
 def error404(request):
     template = os.path.join(ERRORS, "simple-text.html")
     if template_exists(template) == False: return HttpResponse("404 Not Found")

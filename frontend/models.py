@@ -40,7 +40,7 @@ THUMBNAILS_DIRNAMES = ['x200', 'x800']
 
 # offline uploads only, hence, no media/ used.
 def get_photo_upload_to_by_category(instance, filename):
-    return os.path.join("images", instance.category.name, "original", filename)
+    return os.path.join("images", instance.category.folder, "original", filename)
 
 class Author(models.Model):
     name = models.CharField(
@@ -116,34 +116,45 @@ class Photo(models.Model):
         default = date.today
     )
 
+    @property
+    def get_image_type(self):
+        return imghdr.what(self.get_image_abspath())
+
     def get_image_url(self):
-        return os.path.join(MEDIA_URL, "images", self.category.name, IMAGES_DIRNAME, 
+        return os.path.join(MEDIA_URL, "images", self.category.folder, IMAGES_DIRNAME, 
             os.path.basename(str(self.image))
         )
 
     def get_image_thumbnails_urls(self):
         urls = {}
         for dirname in THUMBNAILS_DIRNAMES:
-            urls[dirname] = os.path.join(MEDIA_URL, "images", self.category.name, 
+            urls[dirname] = os.path.join(MEDIA_URL, "images", self.category.folder, 
                 dirname, os.path.basename(str(self.image))
             )
         return urls
 
     def get_image_abspath(self):
-        return os.path.join(IMAGES_ROOT, self.category.name, IMAGES_DIRNAME, 
+        return os.path.join(IMAGES_ROOT, self.category.folder, IMAGES_DIRNAME, 
             os.path.basename(str(self.image))
         )
 
-    @property
-    def get_image_type(self):
-        return imghdr.what(self.get_image_abspath())
+    def get_image_thumbnails_abspaths(self):
+        # used in views as dict, TODO: remove duplicate
+        abspaths = {}
+        for dirname in THUMBNAILS_DIRNAMES:
+            abspaths[dirname] = os.path.join(IMAGES_ROOT, self.category.folder,
+                dirname, os.path.basename(str(self.image))
+            )
+        return abspaths
 
     def get_thumbnails_abspaths(self):
         filename = os.path.basename(self.cached_image_path)
         thumbnails_abspaths = []
 
         for dirname in THUMBNAILS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname, filename)
+            thumbnail_path = os.path.join(IMAGES_ROOT, 
+                self.category.folder, dirname, filename
+            )
             thumbnails_abspaths.append(thumbnail_path)
 
         return thumbnails_abspaths
@@ -155,7 +166,7 @@ class Photo(models.Model):
 
         for dirname in THUMBNAILS_DIRNAMES:
             new_size = dirname
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname)
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.folder, dirname)
 
             if os.path.exists(thumbnail_path) == False:
                 os.makedirs(thumbnail_path)
@@ -179,10 +190,10 @@ class Photo(models.Model):
 
         for subdirectory in subdirectories:
             current_image_path = os.path.join(IMAGES_ROOT,
-                self.cached_category.name, subdirectory, filename
+                self.cached_category.folder, subdirectory, filename
             )
             new_image_path = os.path.join(IMAGES_ROOT, 
-                self.category.name, subdirectory, filename
+                self.category.folder, subdirectory, filename
             )
             # destination has this file
             if os.path.isfile(new_image_path):
@@ -198,7 +209,7 @@ class Photo(models.Model):
         filename = os.path.basename(self.cached_image_path)
 
         for dirname in THUMBNAILS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname)
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.folder, dirname)
             if os.path.exists(thumbnail_path):
                 shutil.rmtree(thumbnail_path)
 

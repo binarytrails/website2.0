@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/photos-gallery.css">
 
     <div id="return" class="left">
-        <a href="/photos/gallery/{{ last.0 }}/#head">
+        <a href="/photos/gallery/{{ last }}/#head">
             <img  src="{{ STATIC }}{{ APP }}/img/logo/512x512/filled-circle/back-arrow-black-left.png"/>
         </a>
     </div>
     <div id="return" class="right">
-        <a href="/photos/gallery/{{ next.0 }}/#head">
+        <a href="/photos/gallery/{{ next }}/#head">
             <img  src="{{ STATIC }}{{ APP }}/img/logo/512x512/filled-circle/back-arrow-black-right.png"/>
         </a>
     </div>
@@ -20,8 +20,7 @@
             <section>
                 <hr></hr>
                 <header>
-                    {% load filters %}
-                    {{ category|underscores_to_spaces|title }}
+                    {{ category.name }}
                 </header>
                 <hr></hr>
             </section>
@@ -36,7 +35,7 @@
                                         <img src="{{ photo.get_image_thumbnails_urls.x200 }}"/>
                                     </a>
                                 {% else %}
-                                    <a class="swipebox" rel="" href="/photos/slideshow/{{ category }}/{{ photo.fragment_identifier }}/#{{ photo.fragment_identifier }}">
+                                    <a class="swipebox" rel="" href="/photos/slideshow/{{ category.id }}/{{ photo.fragment_identifier }}/#{{ photo.fragment_identifier }}">
                                         <img src="{{ photo.get_image_thumbnails_urls.x200 }}"/>
                                     </a>
                                 {% endif %}

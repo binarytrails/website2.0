@@ -38,7 +38,7 @@
                                 </div>
                                 <div id="right-thumb">
                                     <li>
-                                        <a href="/photos/slideshow/{{ photo.category|lower }}/{{ photo.fragment_identifier }}/#{{ photo.fragment_identifier }}">
+                                        <a href="/photos/slideshow/{{ photo.category.id }}/{{ photo.fragment_identifier }}/#{{ photo.fragment_identifier }}">
                                             <img src="{{ photo.get_image_thumbnails_urls.x200 }}" alt=""/>
                                         </a>
                                     </li>

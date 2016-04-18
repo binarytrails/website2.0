@@ -8,7 +8,7 @@
         <div id="categories">
             
             {% for category in categories %}
-            <a href="/photos/gallery/{{ category.0 }}/#head">
+            <a href="/photos/gallery/{{ category.id }}/#head">
                 <section>
                     <hr></hr>
                     {% if forloop.counter == 1 %}
@@ -16,7 +16,7 @@
                     {% else %}
                         <header style="color: {% cycle bgcolors %};">
                     {% endif %}
-                        {{ category.1 }}
+                        {{ category.name }}
                     </header>
                     <hr></hr>
                 </section>

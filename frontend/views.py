@@ -20,7 +20,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 
-from .models import Project, Photo, Video
+from .models import Category, Photo, Video, Project
 
 from kedfilms import utils
 from kedfilms.settings import MOBILE_HOSTS
@@ -131,55 +131,65 @@ def projects(request):
 @old_browsers
 def photos(request):
     template = os.path.join(THEME, "photos" + template_prefix(request))
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
     return render(request, template, merge_context(request, {
-        "categories": Photo.CATEGORIES
+        "categories": Category.objects.all().filter(context = "Photo")
     }))
 
 @never_cache
 @old_browsers
-def gallery(request, category):
-    categories = Photo.objects.all().values_list("category").distinct()
-    has_category = any(item[0] == category for item in categories)
-    if not has_category: return error404(request)
+def gallery(request, category_id):
+    try:
+        category = Category.objects.get(id=category_id)
+    except Category.DoesNotExist:
+        return error404(request)
 
     context = merge_context(request, {
         "category": category,
         "photos": Photo.objects.all().filter(
-            category = category).order_by("-date_created")
+            category = category_id).order_by("-date_created")
     })
 
-    if is_mobile(request) == False:
+    if not is_mobile(request):
+        last = next = -1
+        categories = Category.objects.filter(context="Photo")
+        for index in range(len(categories)):
+            if categories[index].id == int(category_id):
+                last = (index - 1) % (len(categories))
+                next = (index + 1) % (len(categories))
+                break
         context = utils.merge_dicts(context, {
-            "last": Photo().get_previous_category(category),
-            "next": Photo().get_next_category(category)
+            "last": categories[last].id,
+            "next": categories[next].id
         })
 
     template = os.path.join(THEME, "photos-gallery" + template_prefix(request))
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
     return render(request, template, context)
 
 @never_cache
 @old_browsers
-def slideshow(request, category=None, fragment_id=None):
-    categories = Photo.objects.all().values_list("category").distinct()
-    has_category = any(item[0] == category for item in categories)
-    if not has_category: return error404(request)
+def slideshow(request, category_id, fragment_id):
+    try:
+        category = Category.objects.get(id=category_id)
+    except Category.DoesNotExist:
+        return error404(request)
 
     context = None
     if is_mobile(request):
         image = Photo.objects.get(fragment_identifier = fragment_id)
-        if os.path.isfile(image.get_image_abspath()) == False:
+        if not os.path.isfile(image.get_image_abspath()):
             return error404(request)
-
         context = {"image_url": image.get_image_url()}
     else:
         context = {
             "category": category,
             "photos": Photo.objects.all().filter(
-                category = category).order_by("-date_created")
+                category = category_id).order_by("-date_created")
         }
 
     template = os.path.join(THEME, "photos-slideshow" + template_prefix(request))

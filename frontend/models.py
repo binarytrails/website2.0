@@ -240,40 +240,6 @@ class Video(models.Model):
         limit_choices_to={"context": "Video"}
     )
 
-class Skill(models.Model):
-    GN = "general"
-    MD = 'methods of development'
-    OS = 'operative system'
-    FR = 'framework'
-    RC = 'revision control'
-    PR = 'programming'
-    ML = 'markup language'
-    DB = 'database'
-    SR = 'server'
-    SW = 'sofrware'
-    HW = 'hardware'
-    VA = 'visual art'
-
-    title = models.CharField(
-        max_length = 10
-    )
-    description = models.CharField(
-        max_length = 255
-    )
-    category = models.CharField(
-        max_length = 2,
-        default = GN
-    )
-    rating_on_five = models.DecimalField(
-        max_digits = 1,
-        decimal_places = 0
-    )
-    
-    class Meta:
-        unique_together = (
-            ('category', 'title')
-        )
-
 class Project(models.Model):
 
     TIMELINE = {

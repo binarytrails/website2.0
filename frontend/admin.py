@@ -13,7 +13,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import pyexiv2
 import imghdr, uuid
 from datetime import date
 
@@ -29,53 +28,6 @@ from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
 from frontend.models import Author, Category, Photo
-
-#@staff_member_required
-#def import_photos(request):
-#    if request.method == 'POST':
-#        # load images to upload in memory
-#        photos_files = request.FILES.getlist('photos')
-#        photoAdmin = PhotoAdmin(Photo, AdminSite())
-
-#        for photo_file in photos_files:
-#            photo = Photo()
-#            filename = photo_file.name
-#            photo.category = request.POST['category']
-
-#            if imghdr.what(photo_file.name, photo_file.read()) == "gif":
-#                photo_uuid = str(uuid.uuid1())
-#                filename = photo_uuid + ".gif"
-
-#                photo.title = filename
-#                photo.fragment_identifier = photo_uuid
-#                photo.author = Photo.INTERNET
-
-#            else:
-#                # read uploaded image metadata
-#                metadata = pyexiv2.ImageMetadata.from_buffer(photo_file.read())
-#                metadata.read()
-
-#                # verify xmp metadata
-#                for key in photo.get_image_xmp_metadata_available_keys():
-#                    # save image metadata into created photo matching attributes
-#                    attribute = key.replace('Xmp.xmp.', '')
-#                    try:
-#                        photo.__dict__[attribute] = metadata[key].value
-#                    except KeyError as error:
-#                        messages.error(request, "Xmp metadata key '%s' not found!" % key)
-#                        break
-
-#            # save image to the photo object
-#            try:
-#                photo.image.save(filename, photo_file, True)
-#            except IntegrityError as error:
-#                messages.error(request, error.args)
-#                break
-
-#            # run the save_model used for creating/modifing a photo object
-#            photoAdmin.save_model(None, photo, None, True)
-
-#    return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 # Describes how this resource can be imported or exported
 from import_export import resources
@@ -162,21 +114,6 @@ class PhotoAdmin(ImportExportModelAdmin):
         
         if make_thumbnails:
             object.generate_thumbnails(is_gif)
-
-
-#    def get_urls(self):
-#        urls = super(PhotoAdmin, self).get_urls()
-#        my_urls = patterns("",
-#            url(r"^import_photos/$", import_photos)
-#        )
-#        return my_urls + urls
-
-#    def changelist_view(self, request, extra_context=None):
-#        extra_context = extra_context or {}
-#        extra_context['categories'] = Photo.CATEGORIES
-#        return super(PhotoAdmin, self).changelist_view(request,
-#            extra_context = extra_context
-#        )
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)

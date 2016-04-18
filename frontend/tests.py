@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os, shutil
-import pyexiv2
 from datetime import date
 
 from kedfilms import utils

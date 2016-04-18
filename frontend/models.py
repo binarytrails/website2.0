@@ -21,7 +21,6 @@
             w/o null=True -> 'NOT NULL constraint failed' on empty fields.
 """
 
-import pyexiv2
 import os, shutil, imghdr
 from datetime import date
 

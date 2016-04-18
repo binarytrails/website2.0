@@ -1,0 +1,11 @@
+*.swp
+*.pyc
+
+ENV/
+migrations/
+
+tmp/
+static/
+media
+
+cart

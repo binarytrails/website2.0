@@ -28,7 +28,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
-from frontend.models import Author, Photo
+from frontend.models import Author, Category, Photo
 
 #@staff_member_required
 #def import_photos(request):
@@ -83,12 +83,19 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 class AuthorResource(resources.ModelResource):
-
     class Meta:
         model = Author
 
 class AuthorAdmin(ImportExportModelAdmin):
     pass
+
+class CategoryResource(resources.ModelResource):
+    class Meta:
+        model = Author
+
+class CategoryAdmin(ImportExportModelAdmin):
+    # Select Form
+    list_display = ['id', 'name', 'context']
 
 class PhotoResource(resources.ModelResource):
     class Meta:
@@ -118,6 +125,12 @@ class PhotoAdmin(ImportExportModelAdmin):
     ]
 
     def save_model(self, request, object, form, change):
+        """
+            TODO:
+                Simplify with action type
+                Bulk delete -> call delete() for all items
+                Updating gifs
+        """
         make_thumbnails = False
 
         # first image upload
@@ -151,33 +164,6 @@ class PhotoAdmin(ImportExportModelAdmin):
             object.generate_thumbnails(is_gif)
 
 
-"""
-    Not implemented:
-        Updating gifs.
-        Bulk delete won't call delete() for all the items.
-"""
-#class PhotoAdmin(admin.ModelAdmin):
-#    # Select Form
-#    list_display = ['title', 'fragment_identifier', 'category', 
-#        'date_created', 'application', 'hardware', 'author'
-#    ]
-#    search_fields = ['title']
-
-#    # Edit form
-#    fields = [
-#        'category',
-#        'image',
-#        'cached_image_path',
-#        'fragment_identifier',
-#        'title', 
-#        'author',
-#        'hardware',
-#        'application',
-#        'date_created'
-#    ]
-
-#    readonly_fields = ['cached_image_path']
-
 #    def get_urls(self):
 #        urls = super(PhotoAdmin, self).get_urls()
 #        my_urls = patterns("",
@@ -192,43 +178,6 @@ class PhotoAdmin(ImportExportModelAdmin):
 #            extra_context = extra_context
 #        )
 
-#    def save_model(self, request, object, form, change):
-#        make_thumbnails = False
-
-#        # first image upload
-#        if not object.cached_image_path:
-#            make_thumbnails = True
-
-#        # category update
-#        elif object.cached_category != object.category:
-#            make_thumbnails = False
-#            object.move_image_to_updated_category()
-#            # can't do it on creation: 404 Bad Request
-#            object.image.name = object.get_image_url()
-
-#        # image update
-#        elif object.cached_image_path != object.get_image_abspath():
-#            make_thumbnails = True
-#            object.delete_image()
-#            object.delete_thumbnails()
-
-#        object.cached_category = object.category
-#        object.cached_image_path = object.get_image_abspath()
-
-#        # image upload & records updates
-#        object.save()
-
-#        is_gif = False
-#        if imghdr.what(object.cached_image_path) == "gif":
-#            is_gif = True
-#        
-#        if make_thumbnails:
-#            object.generate_thumbnails(is_gif)
-
-##        # pyexiv2 doesn't work with the gif format
-##        if imghdr.what(object.cached_image_path) != "gif":
-##            object.generate_image_xmp_metadata()
-#        
-
 admin.site.register(Author, AuthorAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Photo, PhotoAdmin)

@@ -37,62 +37,51 @@ THUMBNAILS_DIRNAMES = ['x200', 'x800']
 
 # offline uploads only, hence, no media/ used.
 def get_photo_upload_to_by_category(instance, filename):
-    return os.path.join("images", instance.category, "original", filename)
+    return os.path.join("images", instance.category.name, "original", filename)
 
 class Author(models.Model):
-
     name = models.CharField(
         unique = True,
         max_length = 50,
-        default = 'Unknown'
+        default = "Unknown"
     )
 
     def __unicode__(self):
         return self.name
 
+class Category(models.Model):
+    name = models.CharField(
+        unique = True,
+        max_length = 50,
+    )
+    context = models.CharField(
+        max_length = 50
+    )
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
 class Photo(models.Model):
-    # Add new categories here
-    PORTFOLIO = 'portfolio'
-    DAYTIME = 'daytime'
-    NIGHTTIME = 'nighttime'
-    MULTIVERSE = 'multiverse'
-    INTERNET_GIFS = 'internet_in_motion'
-    CATEGORIES = (
-        (PORTFOLIO, 'Portfolio'),
-        (DAYTIME, 'Daytime'),
-        (NIGHTTIME, 'Nighttime'),
-        (MULTIVERSE, 'Multiverse'),
-        # (INTERNET_GIFS, 'Internet In Motion'),
-    )
-
-    # Add new hardware here
-    CANON = 'Canon EOS REBEL T3i'
-    IPHONE = 'Iphone'
-    HARDWARES = (
-        (CANON, 'Canon EOS REBEL T3i'),
-        (IPHONE, 'Iphone')
-    )
-
-    # Add new software here
-    AE = 'Adobe After Effect'
-    GIMP28 = 'Gimp 2.8'
-    APPLICATIONS = (
-        (AE, 'Adobe After Effect'),
-        (GIMP28, 'Gimp 2.8')
-    )
-
     author = models.ForeignKey('Author')
+    category = models.ForeignKey('Category')
+    cached_category = models.ForeignKey(
+        'Category',
+        related_name='cached_category'
+    )
+    hardware = models.ForeignKey(
+        'Category',
+        related_name='hardware',
+        null = True
+    )
+    application = models.ForeignKey(
+        'Category',
+        related_name='application',
+        null = True
+    )
 
-    category = models.CharField(
-        max_length = 20,
-        blank = False,
-        choices = CATEGORIES,
-        default = PORTFOLIO
-    )
-    cached_category = models.CharField(
-        max_length = 200,
-        blank = True
-    )
     image = models.ImageField(
         blank = False,
         upload_to = get_photo_upload_to_by_category
@@ -110,68 +99,58 @@ class Photo(models.Model):
         max_length = 50,
         blank = False
     )
-    hardware = models.CharField(
-        max_length = 50,
-        blank = True,
-        choices = HARDWARES
-    )
-    application = models.CharField(
-        max_length = 50,
-        blank = True,
-        choices = APPLICATIONS
-    )
     date_created = models.DateField(
         default = date.today,
         blank = False
     )
 
-    def get_category_tuple(self, category = None):
-        if category == None:
-            category = self.category
+#    def get_category_tuple(self, category=None):
+#        if category == None:
+#            category = self.category
 
-        for key, value in self.CATEGORIES:
-            if key == category:
-                return (key, value)
+#        for key, value in self.CATEGORIES:
+#            if key == category:
+#                return (key, value)
 
-    def get_next_category(self, category):
-        length = len(self.CATEGORIES) - 1
+#    def get_next_category(self, category):
+#        length = len(self.CATEGORIES) - 1
 
-        for key, value in self.CATEGORIES:
-            if key == category:
-                index = self.CATEGORIES.index((key, value))
+#        for key, value in self.CATEGORIES:
+#            if key == category:
+#                index = self.CATEGORIES.index((key, value))
 
-                if index < length:
-                    return self.CATEGORIES[index + 1]
-                else:
-                    return self.CATEGORIES[0]
+#                if index < length:
+#                    return self.CATEGORIES[index + 1]
+#                else:
+#                    return self.CATEGORIES[0]
 
-    def get_previous_category(self, category):
-        length = len(self.CATEGORIES) - 1
+#    def get_previous_category(self, category):
+#        length = len(self.CATEGORIES) - 1
 
-        for key, value in self.CATEGORIES:
-            if key == category:
-                index = self.CATEGORIES.index((key, value))
+#        for key, value in self.CATEGORIES:
+#            if key == category:
+#                index = self.CATEGORIES.index((key, value))
 
-                if index > 0:
-                    return self.CATEGORIES[index - 1]
-                else:
-                    return self.CATEGORIES[length]  
+#                if index > 0:
+#                    return self.CATEGORIES[index - 1]
+#                else:
+#                    return self.CATEGORIES[length]  
 
     def get_image_url(self):
-        return os.path.join(MEDIA_URL, "images", self.category, IMAGES_DIRNAME, 
+        return os.path.join(MEDIA_URL, "images", self.category.name, IMAGES_DIRNAME, 
             os.path.basename(str(self.image))
         )
 
     def get_image_thumbnails_urls(self):
         urls = {}
         for dirname in THUMBNAILS_DIRNAMES:
-            urls[dirname] = os.path.join(MEDIA_URL, "images", self.category, 
+            urls[dirname] = os.path.join(MEDIA_URL, "images", self.category.name, 
                 dirname, os.path.basename(str(self.image))
             )
         return urls
 
     def get_image_abspath(self):
-        return os.path.join(IMAGES_ROOT, self.category, IMAGES_DIRNAME, 
+        return os.path.join(IMAGES_ROOT, self.category.name, IMAGES_DIRNAME, 
             os.path.basename(str(self.image))
         )
 
@@ -179,55 +158,50 @@ class Photo(models.Model):
     def get_image_type(self):
         return imghdr.what(self.get_image_abspath())
 
-    def get_image_thumbnails_abspaths(self):
-        abspaths = {}
-        for dirname in THUMBNAILS_DIRNAMES:
-            abspaths[dirname] = os.path.join(IMAGES_ROOT, self.category,
-                dirname, os.path.basename(str(self.image))
-            )
-        return abspaths
-
     def get_thumbnails_abspaths(self):
         filename = os.path.basename(self.cached_image_path)
         thumbnails_abspaths = []
 
         for dirname in THUMBNAILS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname, filename)
             thumbnails_abspaths.append(thumbnail_path)
 
         return thumbnails_abspaths
 
-    # each metadata key is associated with a photo attribute
-    def get_image_xmp_metadata_available_keys(self):
-        return ["Xmp.xmp.title", "Xmp.xmp.fragment_identifier",
-            "Xmp.xmp.author", "Xmp.xmp.date_created", "Xmp.xmp.application",
-            "Xmp.xmp.hardware"
-        ]
+#    # each metadata key is associated with a photo attribute
+#    def get_image_xmp_metadata_available_keys(self):
+#        return ["Xmp.xmp.title", "Xmp.xmp.fragment_identifier",
+#            "Xmp.xmp.author", "Xmp.xmp.date_created", "Xmp.xmp.application",
+#            "Xmp.xmp.hardware"
+#        ]
 
-    def get_image_xmp_metadata(self):
-        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
-        metadata.read()
+#    def get_image_xmp_metadata(self):
+#        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
+#        metadata.read()
 
-        available_metadata = {}
-        available_keys = self.get_image_xmp_metadata_available_keys()
+#        available_metadata = {}
+#        available_keys = self.get_image_xmp_metadata_available_keys()
 
-        for key in available_keys:
-            available_metadata[key] = metadata[key].value
+#        for key in available_keys:
+#            available_metadata[key] = metadata[key].value
 
-        return available_metadata
+#        return available_metadata
 
-    # convert is ImageMagick
+    # convert is part of ImageMagick
     def generate_thumbnails(self, is_gif=False):
         filename = os.path.basename(self.cached_image_path)
         source = self.cached_image_path
 
         for dirname in THUMBNAILS_DIRNAMES:
-            if is_gif and dirname != 'x200': continue
-
             new_size = dirname
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname)
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname)
 
-            if is_gif:
+            if os.path.exists(thumbnail_path) == False:
+                os.makedirs(thumbnail_path)
+
+            if is_gif and dirname != 'x200':
+                continue
+            elif is_gif:
                 target = os.path.join(thumbnail_path, "temporary-" + filename)
                 os.system("convert " + source + " -coalesce " + target)
                 source = target
@@ -236,29 +210,32 @@ class Photo(models.Model):
             os.system("convert " + source + " -resize " + new_size + " " + target)
 
             if is_gif and os.path.exists(source):
-                    os.remove(source)
+                os.remove(source)
 
-    def generate_image_xmp_metadata(self):
-        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
-        metadata.read()
+#    def generate_image_xmp_metadata(self):
+#        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
+#        metadata.read()
 
-        for key in self.get_image_xmp_metadata_available_keys():
-            attribute = key.replace('Xmp.xmp.', '')
-            value = self.__dict__.get(attribute)
-            if type(value) == date:
-                value = str(value)
-            metadata[key] = value
+#        for key in self.get_image_xmp_metadata_available_keys():
+#            attribute = key.replace('Xmp.xmp.', '')
+#            value = self.__dict__.get(attribute)
+#            if type(value) == date:
+#                value = str(value)
+#            metadata[key] = value
 
-        metadata.write()
+#        metadata.write()
 
     def move_image_to_updated_category(self):
         filename = os.path.basename(self.cached_image_path)
         subdirectories = THUMBNAILS_DIRNAMES + [IMAGES_DIRNAME]
 
         for subdirectory in subdirectories:
-            current_image_path = os.path.join(IMAGES_ROOT, self.cached_category, subdirectory, filename)
-            new_image_path = os.path.join(IMAGES_ROOT, self.category, subdirectory, filename)
-
+            current_image_path = os.path.join(IMAGES_ROOT,
+                self.cached_category.name, subdirectory, filename
+            )
+            new_image_path = os.path.join(IMAGES_ROOT, 
+                self.category.name, subdirectory, filename
+            )
             # destination has this file
             if os.path.isfile(new_image_path):
                 raise ValidationError("Can't change the image category: Same image filename exists.")
@@ -273,10 +250,9 @@ class Photo(models.Model):
         filename = os.path.basename(self.cached_image_path)
 
         for dirname in THUMBNAILS_DIRNAMES:
-            thumbnail_path = os.path.join(IMAGES_ROOT, self.category, dirname, filename)
-
+            thumbnail_path = os.path.join(IMAGES_ROOT, self.category.name, dirname)
             if os.path.exists(thumbnail_path):
-                os.remove(thumbnail_path)
+                shutil.rmtree(thumbnail_path)
 
     # overwritten method
     def delete(self, *args, **kwargs):

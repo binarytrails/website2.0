@@ -15,7 +15,10 @@
 
 """
     unique constraints are used because multiple primary keys aren't supported.
-    using primary_key will create KeyError: u'id' on csv import with import_export.
+    import_export:
+        import:
+            using primary_key will create KeyError: u'id'.
+            w/o null=True -> 'NOT NULL constraint failed' on empty fields.
 """
 
 import pyexiv2
@@ -57,6 +60,12 @@ class Category(models.Model):
     context = models.CharField(
         max_length = 50
     )
+    folder = models.CharField(
+        max_length = 50,
+        blank = True,
+        default = None,
+        null=True
+    )
 
     def __unicode__(self):
         return self.name
@@ -65,25 +74,30 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 class Photo(models.Model):
-    author = models.ForeignKey('Author')
-    category = models.ForeignKey('Category')
+    author = models.ForeignKey("Author")
+    category = models.ForeignKey(
+        "Category",
+        limit_choices_to={"context": "Photo"}
+    )
     cached_category = models.ForeignKey(
-        'Category',
-        related_name='cached_category'
+        "Category",
+        related_name="cached_category",
+        limit_choices_to={"context": "Photo"}
     )
     hardware = models.ForeignKey(
-        'Category',
-        related_name='hardware',
+        "Category",
+        related_name="hardware",
+        limit_choices_to={"context": "Hardware"},
         null = True
     )
     application = models.ForeignKey(
-        'Category',
-        related_name='application',
+        "Category",
+        related_name="application",
+        limit_choices_to={"context": "Software"},
         null = True
     )
 
     image = models.ImageField(
-        blank = False,
         upload_to = get_photo_upload_to_by_category
     )
     cached_image_path = models.CharField(
@@ -96,45 +110,11 @@ class Photo(models.Model):
         unique = True
     )
     title = models.CharField(
-        max_length = 50,
-        blank = False
+        max_length = 50
     )
     date_created = models.DateField(
-        default = date.today,
-        blank = False
+        default = date.today
     )
-
-#    def get_category_tuple(self, category=None):
-#        if category == None:
-#            category = self.category
-
-#        for key, value in self.CATEGORIES:
-#            if key == category:
-#                return (key, value)
-
-#    def get_next_category(self, category):
-#        length = len(self.CATEGORIES) - 1
-
-#        for key, value in self.CATEGORIES:
-#            if key == category:
-#                index = self.CATEGORIES.index((key, value))
-
-#                if index < length:
-#                    return self.CATEGORIES[index + 1]
-#                else:
-#                    return self.CATEGORIES[0]
-
-#    def get_previous_category(self, category):
-#        length = len(self.CATEGORIES) - 1
-
-#        for key, value in self.CATEGORIES:
-#            if key == category:
-#                index = self.CATEGORIES.index((key, value))
-
-#                if index > 0:
-#                    return self.CATEGORIES[index - 1]
-#                else:
-#                    return self.CATEGORIES[length]  
 
     def get_image_url(self):
         return os.path.join(MEDIA_URL, "images", self.category.name, IMAGES_DIRNAME, 
@@ -168,25 +148,6 @@ class Photo(models.Model):
 
         return thumbnails_abspaths
 
-#    # each metadata key is associated with a photo attribute
-#    def get_image_xmp_metadata_available_keys(self):
-#        return ["Xmp.xmp.title", "Xmp.xmp.fragment_identifier",
-#            "Xmp.xmp.author", "Xmp.xmp.date_created", "Xmp.xmp.application",
-#            "Xmp.xmp.hardware"
-#        ]
-
-#    def get_image_xmp_metadata(self):
-#        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
-#        metadata.read()
-
-#        available_metadata = {}
-#        available_keys = self.get_image_xmp_metadata_available_keys()
-
-#        for key in available_keys:
-#            available_metadata[key] = metadata[key].value
-
-#        return available_metadata
-
     # convert is part of ImageMagick
     def generate_thumbnails(self, is_gif=False):
         filename = os.path.basename(self.cached_image_path)
@@ -211,19 +172,6 @@ class Photo(models.Model):
 
             if is_gif and os.path.exists(source):
                 os.remove(source)
-
-#    def generate_image_xmp_metadata(self):
-#        metadata = pyexiv2.ImageMetadata(self.cached_image_path)
-#        metadata.read()
-
-#        for key in self.get_image_xmp_metadata_available_keys():
-#            attribute = key.replace('Xmp.xmp.', '')
-#            value = self.__dict__.get(attribute)
-#            if type(value) == date:
-#                value = str(value)
-#            metadata[key] = value
-
-#        metadata.write()
 
     def move_image_to_updated_category(self):
         filename = os.path.basename(self.cached_image_path)
@@ -283,7 +231,6 @@ class Video(models.Model):
 
     category = models.CharField(
         max_length = 2,
-        blank = False,
         choices = CATEGORIES
     )
     date_created = models.DateField(
@@ -334,15 +281,13 @@ class Skill(models.Model):
     VA = 'visual art'
 
     title = models.CharField(
-        max_length = 10,
-        blank = False
+        max_length = 10
     )
     description = models.CharField(
         max_length = 255
     )
     category = models.CharField(
         max_length = 2,
-        blank = False,
         default = GN
     )
     rating_on_five = models.DecimalField(

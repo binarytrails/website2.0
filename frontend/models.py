@@ -232,8 +232,7 @@ class Video(models.Model):
         unique = True
     )
     date_created = models.DateField(
-        default = date.today,
-        blank = False
+        default = date.today
     )
     category = models.ForeignKey(
         "Category",
@@ -241,54 +240,18 @@ class Video(models.Model):
     )
 
 class Project(models.Model):
+    title = models.CharField(
+        unique = True,
+        max_length = 50
+    )
+    description = models.TextField(
+        max_length = 500
+    )
+    url = models.URLField(
+        unique = True,
+        max_length = 200
+    )
+    date_created = models.DateField(
+        default = date.today
+    )
 
-    TIMELINE = {
-        "2015-10":
-        {
-            "title": "Lindenmayer System",
-            "description": """An interactive web experience for the exploration 
-                of the L-Systems. Inspired by the book The Algorithmic Beauty of 
-                Plants written by Przemyslaw Prusinkiewicz and Aristid Lindenmayer.
-            """,
-            "url": "https://sevaivanov.github.io/lindenmayer/"
-        },
-        "2015-9":
-        {
-            "title": "3D Cube",
-            "description": """A 3D Cube made of html / css  that was designed for
-                Computation Arts as the main projects entry. Unfortunately, cross-browsers
-                compatibility issues made me reconsider my choice.
-            """,
-            "url": "/cart/3Dcube/3Dcube/"
-        },
-        "2015-7":
-        {
-            "title": "Tcp Viewer",
-            "description": """We wrap tcpflow in the backend to arrange data for 
-            dynamic visualisation for the frontend. Our goal is to raise awareness 
-            about the quantity of personal information available to everyone connected 
-            to a network.
-            """,
-            "url": "https://github.com/sevaivanov/tcpviewer#tcp-viewer"
-        },
-        "2014-12":
-        {
-            "title": "Personal Website",
-            "description": """I built it to centralize my realizations and gain 
-                web development experience. I challenged myself to only use CSS3 
-                & HTML5 and leave JavaScript aside. It is using the Django Python 
-                Web framework to build static web pages.
-            """,
-            "url": "https://github.com/sevaivanov/personal-website#personal-website"
-        },
-        "2013-12":
-        {
-            "title": "Distributed Connect4",
-            "description": """This is a distributed LipeRMI Connect4 game. 
-            It is built under the MVC design pattern. The server contains 
-            the game database and defines the rules. The clients connect 
-            to the server in order to play or watch an ongoing game.
-            """,
-            "url": "https://github.com/sevaivanov/connect4#distributed-connect4"
-        }
-    }

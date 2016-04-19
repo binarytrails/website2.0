@@ -27,7 +27,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
-from frontend.models import Author, Category, Photo, Video
+from frontend.models import Author, Category, Photo, Video, Project
 
 # Describes how this resource can be imported or exported
 from import_export import resources
@@ -43,7 +43,7 @@ class AuthorAdmin(ImportExportModelAdmin):
 
 class CategoryResource(resources.ModelResource):
     class Meta:
-        model = Author
+        model = Category
 
 class CategoryAdmin(ImportExportModelAdmin):
     # Select Form
@@ -117,13 +117,26 @@ class PhotoAdmin(ImportExportModelAdmin):
 
 class VideoResource(resources.ModelResource):
     class Meta:
-        model = Author
+        model = Video
 
 class VideoAdmin(ImportExportModelAdmin):
     # Select Form
     list_display = ['id', 'iframe_src', 'date_created', 'category']
 
+class ProjectResource(resources.ModelResource):
+    class Meta:
+        model = Project
+
+class ProjectAdmin(ImportExportModelAdmin):
+    # Select Form
+    list_display = ['id', 'title', 'date_created', 'url']
+
+    # Edit form
+    fields = ['title', 'date_created', 'url', 'description']
+
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Video, VideoAdmin)
+admin.site.register(Project, ProjectAdmin)
+

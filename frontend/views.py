@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os, random
+import os, random, datetime
 
 from django.conf import settings
 from django.shortcuts import render
@@ -114,17 +114,36 @@ def article(request, category=None, article=None):
         "html": utils.markdownToHtml(os.path.join(article_path))
     }))
 
+import operator
 @never_cache
 @old_browsers
 def projects(request):
     template = os.path.join(THEME, "projects.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
+    # arranging data for fancy css timeline
+    projects = list(Project.objects.values())
+    from_year = 2016
+    timeline = list()
+    for i in range(3):
+        year = from_year - i
+        months = list()
+        k = 0; l = 12
+        if i == 0:
+            k = datetime.datetime.now().month
+        for j in range(k, l):
+            month = 12 - j
+            months.append((month, None))
+            for i in range(len(projects)):
+                date = projects[i].get("date_created")
+                if date.year == year and date.month == month:
+                    months.append((month, projects[i]))
+                    del projects[i]
+                    break
+        timeline.append((year, months))
     return render(request, template, merge_context(request, {
-        "start_year": 2015,
-        "passed_years": range(3),
-        "months": range(12, 0, -1),
-        "projects": Project.TIMELINE
+        "timeline": timeline
     }))
 
 @never_cache

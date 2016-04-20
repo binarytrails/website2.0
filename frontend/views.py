@@ -58,7 +58,6 @@ def merge_context(request, new_context=None):
     return base_context
 
 # decorators
-
 IE_USERAGENT_TAGS = ["msie", "trident"]
 
 def old_browsers(initial_view):
@@ -69,7 +68,8 @@ def old_browsers(initial_view):
 
         if ie_useragent:
             template = os.path.join(ERRORS, "old-browser.html")
-            if template_exists(template) == False: return error404(request)
+            if not template_exists(template):
+                return error404(request)
 
             return render(request, template, merge_context(request, {     
                 "PARENT": os.path.join(ERRORS, "base.html"),
@@ -82,12 +82,12 @@ def old_browsers(initial_view):
     return wrapped_view
 
 # views
-
 @never_cache
 @old_browsers
 def home(request):
     template = os.path.join(THEME, "home.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
     
     return render(request, template, merge_context(request))
 
@@ -95,20 +95,24 @@ def home(request):
 @old_browsers
 def articles(request):
     template = os.path.join(THEME, "articles.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
     
     return render(request, template, merge_context(request))
 
 @never_cache
 @old_browsers
-def article(request, category=None, article=None):
-    if not article or not category: return error404(request)
+def article(request, category, article):
+    if not article or not category:
+        return error404(request)
 
     article_path = os.path.join(STATIC, "md/", category, article + ".md")
-    if os.path.isfile(article_path) == False: return error404(request)
+    if not os.path.isfile(article_path):
+        return error404(request)
 
     template = os.path.join(THEME, "article.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
     
     return render(request, template, merge_context(request, {
         "html": utils.markdownToHtml(os.path.join(article_path))
@@ -232,7 +236,8 @@ def videos(request):
 # errors
 def error404(request):
     template = os.path.join(ERRORS, "simple-text.html")
-    if template_exists(template) == False: return HttpResponse("404 Not Found")
+    if not template_exists(template):
+        return HttpResponse("404 Not Found")
 
     return render(request, template, merge_context(request, {
         "PARENT": os.path.join(ERRORS, "base.html"),
@@ -245,7 +250,8 @@ def error404(request):
 
 def no_mobile(request):
     template = os.path.join(ERRORS, "simple-text.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
     return render(request, template, merge_context(request, {
         "PARENT": os.path.join(ERRORS, "base.html"),
@@ -260,7 +266,8 @@ def no_mobile(request):
 
 def fullscreen_image(request, image_source):
     template = os.path.join(ERRORS, "fullscreen-image.html")
-    if template_exists(template) == False: return error404(request)
+    if not template_exists(template):
+        return error404(request)
 
     return render(request, template, merge_context(request, {
         "PARENT": os.path.join(ERRORS, "base.html"),

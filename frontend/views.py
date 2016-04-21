@@ -13,14 +13,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os, random, datetime
+import os, random, datetime, markdown2
 
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 
-from .models import Category, Photo, Video, Project, Update
+from .models import (Category, Article, Photo, 
+    Video, Project, Update)
 
 from kedfilms import utils
 from kedfilms.settings import MOBILE_HOSTS
@@ -100,16 +101,24 @@ def articles(request):
     if not template_exists(template):
         return error404(request)
     
-    return render(request, template, merge_context(request))
+    content = list()
+    categories = Category.objects.all().filter(context="Article")
+    for category in categories:
+        articles = Article.objects.all().filter(
+            category=category).order_by("-creation_date")
+        if articles:
+            content.append((category, articles))
+
+    return render(request, template, merge_context(request, {
+        "categories_articles": content
+    }))
 
 @never_cache
 @old_browsers
-def article(request, category, article):
-    if not article or not category:
-        return error404(request)
-
-    article_path = os.path.join(STATIC, "md/", category, article + ".md")
-    if not os.path.isfile(article_path):
+def article(request, article_id):
+    try:
+        article = Article.objects.get(id=article_id)
+    except Article.DoesNotExist:
         return error404(request)
 
     template = os.path.join(THEME, "article.html")
@@ -117,7 +126,7 @@ def article(request, category, article):
         return error404(request)
     
     return render(request, template, merge_context(request, {
-        "html": utils.markdownToHtml(os.path.join(article_path))
+        "html": markdown2.markdown(article.content)
     }))
 
 import operator

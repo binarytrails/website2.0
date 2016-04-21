@@ -33,8 +33,7 @@ urlpatterns = patterns('',
     url(r'^projects/$', 'frontend.views.projects', name='projects'),
 
     url(r'^articles/$', 'frontend.views.articles', name='articles'),
-    url(r'^artcile/(?P<category>[\w\-]{1,15})/(?P<article>[\w\-_]{1,30})$',
-        'frontend.views.article', name='article'),
+    url(r'^article/(?P<article_id>[\d]{1,4})/$', 'frontend.views.article', name='article'),
 
     url(r'^photos/$', 'frontend.views.photos', name='photos'),
     url(r'^photos/gallery/(?P<category_id>[\d]{1,4})/$', 'frontend.views.gallery',

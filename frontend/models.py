@@ -62,7 +62,6 @@ class Category(models.Model):
     folder = models.CharField(
         max_length = 50,
         blank = True,
-        default = None,
         null=True
     )
 
@@ -71,6 +70,29 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "Categories"
+
+class Article(models.Model):
+    author = models.ForeignKey("Author")
+    category = models.ForeignKey(
+        "Category",
+        limit_choices_to={"context": "Article"}
+    )
+
+    title = models.CharField(
+        unique = True,
+        max_length = 50
+    )
+    content = models.TextField(
+        max_length = 40000
+    )
+    url = models.URLField(
+        max_length = 200,
+        blank = True,
+        null = True
+    )
+    creation_date = models.DateField(
+        default = date.today
+    )
 
 class Photo(models.Model):
     author = models.ForeignKey("Author")

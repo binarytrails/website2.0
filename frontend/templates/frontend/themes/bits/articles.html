@@ -9,76 +9,22 @@
     {% endif %}
 
     <div id="main">
+        {% for category in categories_articles %}
         <ul>
+            <li><header style="color: {% cycle '#E8A317' '#3B9C9C' '#F75D59' '#4CC552' '#E67451' as bgcolors %};">{{ category.0.name }}</header></li>
+            {% for article in category.1 %}
             <li>
-                <header style="color: {% cycle '#E67451' '#E8A317' '#3B9C9C' '#F75D59' '#4CC552' as bgcolors %};">
-                </header>
-            </li>
-            <li>
-                <a href="https://gist.github.com/sevaivanov">
-                    <div id="right" style="text-align: center;">
-                        <p>Code Snippets & Notes</p>
-                    </div>
+                {% if article.url %}
+                <a href="{{ article.url }}">
+                {% else %}
+                <a href="/article/{{ article.id }}/#head">
+                {% endif %}
+                    <div id="right"><p>{{ article.title }}</p></div>
                 </a>
             </li>
+            {% endfor %}
         </ul>
-        <ul>
-            <li>
-                <header style="color: {% cycle bgcolors %};">Research</header>
-            </li>
-            <li>
-                <a href="{{ STATIC }}{{ APP }}/pdf/freenet-fr.pdf">
-                    <div id="right"><p>PDF: Freenet (French)</p></div>
-                </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <header style="color: {% cycle bgcolors %};">Quests</header>
-            </li>
-            <li>
-                <a href="/artcile/quests/archlinux-macbook#head">
-                    <div id="right"><p>ArchLinux on MacBook</p></div>
-                </a>
-            </li>
-            <li>
-                <a href="/artcile/quests/django-website#head">
-                    <div id="right"><p>Django Cloud Hosting</p></div>
-                </a>
-            </li>
-            <li>
-                <a href="https://raw.githubusercontent.com/sevaivanov/short/master/assembly/lmc/combine_two_ordered_lists.elmc">
-                    <div id="right"><p>LMC: Self-Modifying Code</p></div>
-                </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <header style="color: {% cycle bgcolors %};">
-                    Hack The Planet
-                </header>
-            </li>
-            <li>
-                <a href="/artcile/hacks/chroot#head">
-                    <div id="right"><p>Chroot Escaping</p></div>
-                </a>
-            </li>
-            <li>
-                <a href="/artcile/hacks/sqli#head">
-                    <div id="right"><p>SQL Injection</p></div>
-                </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <header style="color: {% cycle bgcolors %};">Short Topics</header>
-            </li>
-            <li>
-                <a href="/artcile/short-topics/virtual_privacy#head">
-                    <div id="right"><p>Virtual Privacy</p></div>
-                </a>
-            </li>
-        </ul>
+        {% endfor %}
     </div>
 
 {% endblock content %}

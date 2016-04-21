@@ -53,7 +53,7 @@ def getMostRecentFileRecursively(rootfolder, extension=""):
 
 import markdown2
 
-def markdownToHtml(filepath):
+def markdownFileToHtml(filepath):
     try:
         mdfile = open(filepath, "r")
         text = mdfile.read()

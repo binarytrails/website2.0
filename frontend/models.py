@@ -35,7 +35,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_URL = settings.MEDIA_URL
 IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
 IMAGES_DIRNAME = "original"
-THUMBNAILS_DIRNAMES = ['x200', 'x800']
+THUMBNAILS_DIRNAMES = ["x200", "x800"]
 
 # offline uploads only, hence, no media/ used.
 def get_photo_upload_to_by_category(instance, filename):
@@ -47,7 +47,6 @@ class Author(models.Model):
         max_length = 50,
         default = "Unknown"
     )
-
     def __unicode__(self):
         return self.name
 
@@ -77,7 +76,6 @@ class Article(models.Model):
         "Category",
         limit_choices_to={"context": "Article"}
     )
-
     title = models.CharField(
         unique = True,
         max_length = 50
@@ -117,7 +115,6 @@ class Photo(models.Model):
         limit_choices_to={"context": "Software"},
         null = True
     )
-
     image = models.ImageField(
         upload_to = get_photo_upload_to_by_category
     )
@@ -180,8 +177,8 @@ class Photo(models.Model):
 
         return thumbnails_abspaths
 
-    # convert is part of ImageMagick
     def generate_thumbnails(self, is_gif=False):
+        """convert is part of ImageMagick"""
         filename = os.path.basename(self.cached_image_path)
         source = self.cached_image_path
 
@@ -192,7 +189,7 @@ class Photo(models.Model):
             if os.path.exists(thumbnail_path) == False:
                 os.makedirs(thumbnail_path)
 
-            if is_gif and dirname != 'x200':
+            if is_gif and dirname != "x200":
                 continue
             elif is_gif:
                 target = os.path.join(thumbnail_path, "temporary-" + filename)
@@ -219,7 +216,6 @@ class Photo(models.Model):
             # destination has this file
             if os.path.isfile(new_image_path):
                 raise ValidationError("Can't change the image category: Same image filename exists.")
-
             shutil.move(current_image_path, new_image_path)
 
     def delete_image(self):
@@ -234,8 +230,8 @@ class Photo(models.Model):
             if os.path.exists(thumbnail_path):
                 shutil.rmtree(thumbnail_path)
 
-    # overwritten method
     def delete(self, *args, **kwargs):
+        """overwritten method"""
         super(Photo, self).delete(*args, **kwargs)
         self.delete_image()
         self.delete_thumbnails()
@@ -245,7 +241,7 @@ class Photo(models.Model):
 
     class Meta:
         unique_together = (
-            ('category', 'fragment_identifier')
+            ("category", "fragment_identifier")
         )
 
 class Video(models.Model):

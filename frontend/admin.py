@@ -48,7 +48,7 @@ class CategoryResource(resources.ModelResource):
 
 class CategoryAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'name', 'folder', 'context']
+    list_display = ["id", "name", "folder", "context"]
 
 class ArticleResource(resources.ModelResource):
     class Meta:
@@ -56,7 +56,7 @@ class ArticleResource(resources.ModelResource):
 
 class ArticleAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'title', 'author', 'category', 'creation_date']
+    list_display = ["id", "title", "author", "category", "creation_date"]
 
 class PhotoResource(resources.ModelResource):
     class Meta:
@@ -64,23 +64,23 @@ class PhotoResource(resources.ModelResource):
 
 class PhotoAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['title', 'fragment_identifier', 'category', 
-        'creation_date', 'application', 'hardware', 'author'
+    list_display = ["title", "fragment_identifier", "category",
+        "creation_date", "application", "hardware", "author"
     ]
-    search_fields = ['title']
-    readonly_fields = ['cached_image_path']
+    search_fields = ["title"]
+    readonly_fields = ["cached_image_path"]
 
     # Edit form
     fields = [
-        'category',
-        'image',
-        'cached_image_path',
-        'fragment_identifier',
-        'title', 
-        'author',
-        'hardware',
-        'application',
-        'creation_date'
+        "category",
+        "image",
+        "cached_image_path",
+        "fragment_identifier",
+        "title",
+        "author",
+        "hardware",
+        "application",
+        "creation_date"
     ]
 
     def save_model(self, request, object, form, change):
@@ -100,7 +100,7 @@ class PhotoAdmin(ImportExportModelAdmin):
         elif object.cached_category != object.category:
             make_thumbnails = False
             object.move_image_to_updated_category()
-            # can't do it on creation: 404 Bad Request
+            # can"t do it on creation: 404 Bad Request
             object.image.name = object.get_image_url()
 
         # image update
@@ -128,7 +128,7 @@ class VideoResource(resources.ModelResource):
 
 class VideoAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'iframe_src', 'creation_date', 'category']
+    list_display = ["id", "iframe_src", "creation_date", "category"]
 
 class ProjectResource(resources.ModelResource):
     class Meta:
@@ -136,10 +136,10 @@ class ProjectResource(resources.ModelResource):
 
 class ProjectAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'title', 'creation_date', 'url']
+    list_display = ["id", "title", "creation_date", "url"]
 
     # Edit form
-    fields = ['title', 'creation_date', 'url', 'description']
+    fields = ["title", "creation_date", "url", "description"]
 
 class UpdateResource(resources.ModelResource):
     class Meta:
@@ -147,7 +147,7 @@ class UpdateResource(resources.ModelResource):
 
 class UpdateAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'title', 'creation_date', 'url']
+    list_display = ["id", "title", "creation_date", "url"]
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)

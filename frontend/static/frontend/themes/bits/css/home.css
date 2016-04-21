@@ -48,7 +48,7 @@
         }
 
 /*********************************************************************************/
-/* Compution Arts & Coding                                                       */
+/* News, Compution Arts, Coding                                                  */
 /*********************************************************************************/
     .section
     {
@@ -159,4 +159,28 @@
                 color: #C8C8C8;
                 margin: 1em 0 4em;
             }
+
+            .section table
+            {
+                width: 100%;
+            }
+                .section table p
+                {
+                    margin: 1.4em;
+                    font-size: 1.4em;
+                }
+                .section table p.title
+                {
+                    text-align: left;
+                    margin-left: 1.4em;
+                }
+                .section table p.date
+                {
+                    text-align: right;
+                    margin-right: 1.4em;
+                }
+                    .section table a:hover
+                    {
+                        text-shadow: 0 0 20px white;
+                    }
 

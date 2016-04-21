@@ -27,7 +27,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 
-from frontend.models import Author, Category, Photo, Video, Project
+from frontend.models import Author, Category, Photo, Video, Project, Update
 
 # Describes how this resource can be imported or exported
 from import_export import resources
@@ -58,7 +58,7 @@ from import_export.admin import ImportExportModelAdmin
 class PhotoAdmin(ImportExportModelAdmin):
     # Select Form
     list_display = ['title', 'fragment_identifier', 'category', 
-        'date_created', 'application', 'hardware', 'author'
+        'creation_date', 'application', 'hardware', 'author'
     ]
     search_fields = ['title']
     readonly_fields = ['cached_image_path']
@@ -73,7 +73,7 @@ class PhotoAdmin(ImportExportModelAdmin):
         'author',
         'hardware',
         'application',
-        'date_created'
+        'creation_date'
     ]
 
     def save_model(self, request, object, form, change):
@@ -121,7 +121,7 @@ class VideoResource(resources.ModelResource):
 
 class VideoAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'iframe_src', 'date_created', 'category']
+    list_display = ['id', 'iframe_src', 'creation_date', 'category']
 
 class ProjectResource(resources.ModelResource):
     class Meta:
@@ -129,14 +129,23 @@ class ProjectResource(resources.ModelResource):
 
 class ProjectAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ['id', 'title', 'date_created', 'url']
+    list_display = ['id', 'title', 'creation_date', 'url']
 
     # Edit form
-    fields = ['title', 'date_created', 'url', 'description']
+    fields = ['title', 'creation_date', 'url', 'description']
+
+class UpdateResource(resources.ModelResource):
+    class Meta:
+        model = Update
+
+class UpdateAdmin(ImportExportModelAdmin):
+    # Select Form
+    list_display = ['id', 'title', 'creation_date', 'url']
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Update, UpdateAdmin)
 

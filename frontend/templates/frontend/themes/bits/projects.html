@@ -23,7 +23,7 @@
                 {% for month in year.1 %}
                     {% if month.1.id %}
                         <div class="line">
-                            <div class="month">{{ month.1.date_created.month|get_month_name }}</div>
+                            <div class="month">{{ month.1.creation_date.month|get_month_name }}</div>
                             <div class="point with_content">
                                 <a href="{{ month.1.url }}"></a>
                             </div>

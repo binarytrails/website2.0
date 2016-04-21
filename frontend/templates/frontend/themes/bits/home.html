@@ -35,7 +35,7 @@
         <div id="main">
     {% endif %}
 
-        <div id="entry" class="section">
+        <!--<div id="entry" class="section">
             {% if PLATFORM == "mobile" %}
                 <header>Yours truly</header>
             {% endif %}
@@ -44,10 +44,31 @@
                 Art & minutiae are transparent in my projects.</br>
                 Opensource is a reality & Linux is a choice.</br>
             </p>
-        </div>
+                <img src="{{ STATIC }}{{ APP }}/img/gif/ghost.gif">
+        </div>-->
         {% if PLATFORM == "desktop" %}
             <div id="main">
         {% endif %}
+
+            <div id="news" class="section">
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <header>News</header>
+                {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
+                <table>
+                    {% for update in updates %}
+                    <tr>
+                        <td>
+                            <a href="/photos/"">
+                                <p class="title" style="color:{% cycle '#4CC552' '#3B9C9C' '#E8A317' '#9250A6' '#E0645F' as bgcolors %};">{{ update.title }}</p>
+                            </a>
+                        </td>
+                        <td>
+                            <p class="date" style="color:{{ bgcolors }};">{{ update.creation_date }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
 
             <div id="coding" class="section">
                 {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}

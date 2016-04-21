@@ -67,7 +67,7 @@ class PhotoAdminTests(TestCase):
             author = self.author,
             hardware = self.category_hardware,
             application = self.category_software,
-            date_created = date(1965, 1, 1)
+            creation_date = date(1965, 1, 1)
         )
         image1 = File(open(os.path.join(TEST_DIR, "horse.jpg")))
         self.photo.image.save("horse.jpg", image1, True)
@@ -82,7 +82,7 @@ class PhotoAdminTests(TestCase):
 #            author = self.author,
 #            hardware = self.category_hardware,
 #            application = self.category_software,
-#            date_created = date(1956, 1, 1)
+#            creation_date = date(1956, 1, 1)
 #        )
 #        image2 = File(open(os.path.join(TEST_DIR, "hipster.jpg")))
 #        self.photo2.image.save("hipster.jpg", image2, True)

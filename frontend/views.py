@@ -20,7 +20,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 
-from .models import Category, Photo, Video, Project
+from .models import Category, Photo, Video, Project, Update
 
 from kedfilms import utils
 from kedfilms.settings import MOBILE_HOSTS
@@ -89,7 +89,9 @@ def home(request):
     if not template_exists(template):
         return error404(request)
     
-    return render(request, template, merge_context(request))
+    return render(request, template, merge_context(request, {
+        "updates": Update.objects.all().order_by("-creation_date")
+    }))
 
 @never_cache
 @old_browsers
@@ -140,7 +142,7 @@ def projects(request):
             month = 12 - j
             months.append((month, None))
             for i in range(len(projects)):
-                date = projects[i].get("date_created")
+                date = projects[i].get("creation_date")
                 if date.year == year and date.month == month:
                     months.append((month, projects[i]))
                     del projects[i]
@@ -172,7 +174,7 @@ def gallery(request, category_id):
     context = merge_context(request, {
         "category": category,
         "photos": Photo.objects.all().filter(
-            category = category_id).order_by("-date_created")
+            category = category_id).order_by("-creation_date")
     })
 
     if not is_mobile(request):
@@ -212,7 +214,7 @@ def slideshow(request, category_id, fragment_id):
         context = {
             "category": category,
             "photos": Photo.objects.all().filter(
-                category = category_id).order_by("-date_created")
+                category = category_id).order_by("-creation_date")
         }
 
     template = os.path.join(THEME, "photos-slideshow" + template_prefix(request))
@@ -230,7 +232,7 @@ def videos(request):
     
     return render(request, template, merge_context(request, {
         "categories": Category.objects.all().filter(context = "Video"),
-        "videos": Video.objects.all().filter().order_by("-date_created")
+        "videos": Video.objects.all().filter().order_by("-creation_date")
     }))
 
 # errors

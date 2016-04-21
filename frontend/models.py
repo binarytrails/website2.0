@@ -111,7 +111,7 @@ class Photo(models.Model):
     title = models.CharField(
         max_length = 50
     )
-    date_created = models.DateField(
+    creation_date = models.DateField(
         default = date.today
     )
 
@@ -231,7 +231,7 @@ class Video(models.Model):
         max_length = 250,
         unique = True
     )
-    date_created = models.DateField(
+    creation_date = models.DateField(
         default = date.today
     )
     category = models.ForeignKey(
@@ -251,7 +251,20 @@ class Project(models.Model):
         unique = True,
         max_length = 200
     )
-    date_created = models.DateField(
+    creation_date = models.DateField(
+        default = date.today
+    )
+
+class Update(models.Model):
+    title = models.CharField(
+        unique = True,
+        max_length = 50
+    )
+    url = models.URLField(
+        unique = True,
+        max_length = 200
+    )
+    creation_date = models.DateField(
         default = date.today
     )
 

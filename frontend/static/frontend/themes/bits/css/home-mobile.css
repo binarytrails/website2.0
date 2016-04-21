@@ -136,3 +136,16 @@
             margin: 2em 0 4em;
         }
 
+        .section table
+        {
+            width: 100%;
+            text-align: left;
+        }
+
+            .section table p
+            {
+                margin: 1.2em;
+                text-align: left;
+                text-shadow: 0 0 0px white;
+            }
+

@@ -56,7 +56,8 @@ class ArticleResource(resources.ModelResource):
 
 class ArticleAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ["id", "title", "author", "category", "creation_date"]
+    list_display = ["id", "title", "author", "category",
+        "creation_date", "url"]
 
 class PhotoResource(resources.ModelResource):
     class Meta:

@@ -33,13 +33,18 @@ from django.core.exceptions import ValidationError
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_URL = settings.MEDIA_URL
-IMAGES_ROOT = os.path.join(settings.MEDIA_ROOT, "images")
+MEDIA_ROOT = settings.MEDIA_ROOT
+IMAGES_ROOT = os.path.join(MEDIA_ROOT, "images")
 IMAGES_DIRNAME = "original"
 THUMBNAILS_DIRNAMES = ["x200", "x800"]
 
-# offline uploads only, hence, no media/ used.
-def get_photo_upload_to_by_category(instance, filename):
-    return os.path.join("images", instance.category.folder, "original", filename)
+def photo_upload_to(instance, filename):
+    return os.path.join(MEDIA_ROOT, "images",
+        instance.category.folder, "original", filename)
+
+def article_upload_to(instance, filename):
+    return os.path.join(MEDIA_ROOT, "articles",
+        instance.category.folder, filename)
 
 class Author(models.Model):
     name = models.CharField(
@@ -83,6 +88,11 @@ class Article(models.Model):
     content = models.TextField(
         max_length = 40000
     )
+    file = models.FileField(
+        max_length = 200,
+        upload_to = article_upload_to,
+        null = True
+    )
     url = models.URLField(
         max_length = 200,
         blank = True,
@@ -107,16 +117,19 @@ class Photo(models.Model):
         "Category",
         related_name="hardware",
         limit_choices_to={"context": "Hardware"},
+        blank = True,
         null = True
     )
     application = models.ForeignKey(
         "Category",
         related_name="application",
         limit_choices_to={"context": "Software"},
+        blank = True,
         null = True
     )
     image = models.ImageField(
-        upload_to = get_photo_upload_to_by_category
+        max_length = 200,
+        upload_to = photo_upload_to
     )
     cached_image_path = models.CharField(
         max_length = 200,
@@ -265,9 +278,9 @@ class Project(models.Model):
     description = models.TextField(
         max_length = 500
     )
-    url = models.URLField(
+    url = models.CharField(
         unique = True,
-        max_length = 200
+        max_length = 80
     )
     creation_date = models.DateField(
         default = date.today
@@ -278,9 +291,9 @@ class Update(models.Model):
         unique = True,
         max_length = 50
     )
-    url = models.URLField(
+    url = models.CharField(
         unique = True,
-        max_length = 200
+        max_length = 80
     )
     creation_date = models.DateField(
         default = date.today

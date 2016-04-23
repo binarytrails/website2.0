@@ -50,6 +50,7 @@
             <div id="main">
         {% endif %}
 
+            {% if updates %}
             <div id="news" class="section">
                 {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
                 <header>News</header>
@@ -69,7 +70,8 @@
                     {% endfor %}
                 </table>
             </div>
-
+            {% endif %}
+        
             <div id="coding" class="section">
                 {% if PLATFORM == "desktop" %}<hr></hr>{% endif %}
                 <header>Projects</header>

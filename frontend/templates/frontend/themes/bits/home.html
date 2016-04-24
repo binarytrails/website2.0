@@ -59,7 +59,7 @@
                     {% for update in updates %}
                     <tr>
                         <td>
-                            <a href="/photos/"">
+                            <a href="{{ update.url }}">
                                 <p class="title" style="color:{% cycle '#4CC552' '#3B9C9C' '#E8A317' '#9250A6' '#E0645F' as bgcolors %};">{{ update.title }}</p>
                             </a>
                         </td>

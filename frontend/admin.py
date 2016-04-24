@@ -48,7 +48,7 @@ class CategoryResource(resources.ModelResource):
 
 class CategoryAdmin(ImportExportModelAdmin):
     # Select Form
-    list_display = ["id", "name", "folder", "context"]
+    list_display = ["id", "name", "folder", "context", "priority"]
 
 class ArticleResource(resources.ModelResource):
     class Meta:

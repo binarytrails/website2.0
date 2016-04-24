@@ -65,7 +65,10 @@ class Category(models.Model):
     folder = models.CharField(
         max_length = 50,
         blank = True,
-        null=True
+        null = True
+    )
+    priority = models.IntegerField(
+        default = 0
     )
 
     def __unicode__(self):

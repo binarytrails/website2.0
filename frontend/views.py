@@ -102,7 +102,8 @@ def articles(request):
         return error404(request)
     
     content = list()
-    categories = Category.objects.all().filter(context="Article")
+    categories = Category.objects.all().filter(
+        context="Article").order_by("-priority")
     for category in categories:
         articles = Article.objects.all().filter(
             category=category).order_by("-creation_date")
@@ -169,7 +170,8 @@ def photos(request):
         return error404(request)
 
     return render(request, template, merge_context(request, {
-        "categories": Category.objects.all().filter(context = "Photo")
+        "categories": Category.objects.all().filter(
+            context = "Photo").order_by("-priority")
     }))
 
 @never_cache
@@ -240,7 +242,8 @@ def videos(request):
         return error404(request)
     
     return render(request, template, merge_context(request, {
-        "categories": Category.objects.all().filter(context = "Video"),
+        "categories": Category.objects.all().filter(
+            context = "Video").order_by("-priority"),
         "videos": Video.objects.all().filter().order_by("-creation_date")
     }))
 

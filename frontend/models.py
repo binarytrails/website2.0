@@ -57,7 +57,6 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.CharField(
-        unique = True,
         max_length = 50,
     )
     context = models.CharField(
@@ -74,6 +73,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "Categories"
+        unique_together = (
+            ("name", "context")
+        )
 
 class Article(models.Model):
     author = models.ForeignKey("Author")

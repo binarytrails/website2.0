@@ -9,12 +9,12 @@ DEBUG = True
 DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
-# Plugin to detect a user agent
+# Plugin to detect the User Agent
 minidetector = os.path.join(os.path.abspath(os.pardir), 'minidetector')
 sys.path.append(minidetector)
 
 ADMINS = (
-    ('Seva Ivanov', 'mail@sevaivanov.com'),
+    ('Seva Ivanov', 'seva@tumahn.net'),
 )
 
 MANAGERS = ADMINS
@@ -30,24 +30,22 @@ DATABASES = {
     }
 }
 
+# Https only
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['127.0.0.1', 'kedfilms.com', 'www.kedfilms.com', 'm.kedfilms.com',
-    'sevaivanov.com', 'www.sevaivanov.com', 'm.sevaivanov.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'tumahn.net']
 
-# Custom
-MOBILE_HOSTS = ["m.kedfilms.com", "m.sevaivanov.com"]
+# Add custom subdomain which will be considered as mobile
+MOBILE_HOSTS = []
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'America/Chicago'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
-
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -62,22 +60,13 @@ USE_L10N = True
 USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
@@ -104,14 +93,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'minidetector.Middleware',
 )
 
 ROOT_URLCONF = 'kedfilms.urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'kedfilms.wsgi.application'
 
 TEMPLATES = [

@@ -132,40 +132,9 @@
                     #header #submenu #sections #img-wrapper
                     {
                         display: block;
+                        width: 50%;
                         margin-left: auto;
                         margin-right: auto;
-                    }
-
-                    @media all and (min-height: 30em)
-                    {
-                        #header #submenu #sections #img-wrapper
-                        {
-                            width: 100%;
-                        }
-                    }
-
-                    @media all and (min-height: 30em) and (max-height: 70em)
-                    {
-                        #header #submenu #sections #img-wrapper
-                        {
-                            width: 74%;
-                        }
-                    }
-
-                    @media all and (min-height: 70em) and (max-height: 90em)
-                    {
-                        #header #submenu #sections #img-wrapper
-                        {
-                            width: 50%;
-                        }
-                    }
-
-                    @media all and (min-height: 90em)
-                    {
-                        #header #submenu #sections #img-wrapper
-                        {
-                            width: 25%;
-                        }
                     }
 
                         #header #submenu #sections #img-wrapper > img

@@ -7,18 +7,24 @@
         src: url(/static/frontend/fonts/gravity/Gravity-Book.otf);
     }
 
+    @font-face
+    {
+        font-family: Gravity-Light;
+        src: url(/static/frontend/fonts/gravity/Gravity-Light.otf);
+    }
+
     body
     {
         min-width: 1100px;
         min-height: 600px;
-        
+
         font-family: 'Gravity-Book', 'Courier New', sans-serif;
         color: white;
         font-size: 1em;
         font-weight: lighter;
 
         line-height: 1.75em;
-        
+
         margin: 0em;
         background: #1E1E1E;
     }
@@ -52,7 +58,7 @@
 
     p
     {
-        line-height: 1.2em;    
+        line-height: 1.2em;
     }
 
     a
@@ -61,7 +67,7 @@
         color: #777777;
     }
         a:hover
-        {   
+        {
             text-shadow: 0 0 15px white;
         }
         a:focus
@@ -76,7 +82,7 @@
         margin: 3em 0 0 0;
         padding: 1em 0 0 0;
     }
-    
+
     blockquote
     {
         border-left: solid 0.5em #ddd;
@@ -92,21 +98,21 @@
         list-style: none;
         text-align: left;
     }
-    
+
     ul.default li
     {
         padding: 0.60em 0em;
         font-size: 0.95em;
         border-top: 1px solid;
         border-color: #777777;
-    }        
+    }
 
         ul.default li:first-child
         {
             padding-top: 0;
             border-top: none;
         }
-    
+
     ul.style li
     {
         margin: 0;
@@ -114,24 +120,24 @@
         border-top: 1px solid;
         border-color: rgba(0,0,0,.1);
     }
-    
+
     ul.style li:first-child
     {
         padding-top: 0;
         border-top: none;
     }
-    
+
     ul.style img
     {
         float: left;
         margin-right: 20px;
     }
-    
+
     ul.style a
     {
         color: #434343;
     }
-    
+
     ul.style .posted
     {
         padding: 0em 0em 1em 0em;
@@ -140,7 +146,7 @@
         font-size: 8pt;
         color: #A2A2A2;
     }
-    
+
     ul.style .first
     {
         padding-top: 0px;
@@ -233,6 +239,10 @@
 
         #header h1
         {
+            font-size: 7em;
+            font-family: Gravity-Light;
+            opacity: 0.8;
+            text-shadow: 0 0 50px black;
             cursor: default;
             transition: text-shadow 0.5s;
         }
@@ -273,7 +283,7 @@
             border-radius: 10em;
             -webkit-border-radius: 10em;
             -moz-border-radius: 10em;
-            
+
             background: #949EA4; /* fallback */
             background: rgba(188, 198, 204, 0.4);
             background-repeat: no-repeat;
@@ -307,7 +317,7 @@
         {
             height: auto;
             width: auto;
-            margin: 4em 0em; 
+            margin: 4em 0em;
         }
             #main section > header
             {
@@ -374,7 +384,7 @@
         margin: 10em 0em 0em;
         padding: 6em 0em;
     }
-    
+
         #tweet:before
         {
             content: '';
@@ -385,7 +395,7 @@
             height: 100%;
             background: rgba(64,64,64,0.5);
         }
-    
+
         #tweet section
         {
             border-top: 1px solid;

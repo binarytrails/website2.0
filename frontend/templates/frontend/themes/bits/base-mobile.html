@@ -8,19 +8,19 @@
 
     <head>
         <title>{{ HEAD_TITLE }}</title>
- 
+
         {% load static %}
         {% get_static_prefix as STATIC %}
- 
+
         {% load staticfiles %}
         <link rel="stylesheet" href="{{ STATIC }}{{ THEME }}/css/base-mobile.css">
         <link rel="shortcut icon" href="{{ STATIC }}{{ APP }}/img/icons/16x16/open-canvas.ico" />
     </head>
-    
+
     <body>
         <div id="header">
             <div id="menu">
-                <header>SEVAIVANOV <small><small>MOBILE</small></small></header>
+                <header>Tumahn.net <small><small><small><small>MOBILE</small></small></small></small></header>
                 <!--
                     a calls the div#header:target that calls its child the div#submenu &
                     the div#menu to change their proprieties while #header is on :target.

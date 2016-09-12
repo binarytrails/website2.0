@@ -139,8 +139,6 @@ We will use the **GPT-UEFI** model that is opposed to the MBR-BIOS one.
 
         mkfs.vfat /dev/sdx1
         mkfs.ext2 /dev/sdx2
-        mkfs.ext4 /dev/sdx3
-        mkfs.ext4 /dev/sdx4
 
     [Read more](https://help.ubuntu.com/community/LinuxFilesystemsExplained)
 
@@ -161,13 +159,15 @@ We will use the **GPT-UEFI** model that is opposed to the MBR-BIOS one.
 
 As was previously done, the cryptroot is mounted at /mnt. Let's create directories to allow the pacstrap to populate our partitions by using the same directory names as in the /mnt.
 
-    mkdir /mnt/boot && mkdir /mnt/boot/efi
+    mkdir /mnt/boot
+    mkdir /mnt/boot/efi
+    
     mount /dev/sdx2 /mnt/boot
-    mount /dev/sdx3 /mnt/boot/efi
+    mount /dev/sdx1 /mnt/boot/efi
 
 1. Installing the base system
 
-        pacstrap /mnt base
+        pacstrap /mnt base base-devel
 
     There is also a more bare-metal called ‘base-devel’ but you will be missing, nano, mkinitcpio and other useful commands.
 
@@ -307,7 +307,8 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
     Install the bootloader
 
-        modprobe dm-mod
+        modprobe dm-mod     # not always needed if not found move along
+        
         grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck --debug
         mkdir -p /boot/grub/locale
         cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
@@ -342,7 +343,7 @@ As was previously done, the cryptroot is mounted at /mnt. Let's create directori
 
         > cat /etc/crypttab
         # <name>       <device>                                     <password>              <options>
-        crypthome      UUID=00000a00-a0a0-0000-aa00-0aaa0a00aaaa    none                    luks,timeout=60
+        crypthome      UUID=00000a00-a0a0-0000-aa00-0aaa0a00aaaa    none                    luks,timeout=120
 
     Finally, update the fstab to mount it automatically during the boot as follows:
 

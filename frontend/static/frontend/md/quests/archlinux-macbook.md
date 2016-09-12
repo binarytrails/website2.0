@@ -16,7 +16,7 @@
 
 # Results
 
-![img](http://kedfilms.com/static/frontend/img/articles/Arch Linux On Macbook.jpg)
+![img](/static/frontend/img/articles/Arch Linux On Macbook.jpg)
 
 
 # Guide Flow
@@ -29,7 +29,7 @@ Take this as an example and a proof of concept.
 
 The ArchLinux wiki is tremendous and the community on freenode servers is great. But remember...
 
-> [The ArchLinux Mentality](http://kedfilms.com/static/frontend/img/svg/Arch Linux Help Guide.svg)
+> [The ArchLinux Mentality](/static/frontend/img/svg/Arch Linux Help Guide.svg)
 
 
 # Table of content

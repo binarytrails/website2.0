@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^videos/$', frontend.videos, name='videos'),
 
     # cart
-    url(r'^cart/(?P<folder>[\w\-_]{1,15})/(?P<html_file>[\w\-_]{1,15})/$',
+    url(r'^cart/(?P<folder>[\w\-_]{1,15})/(?P<html_file>[\w\-_]{1,40})/$',
         cart.project, name='cart'),
 ]
 # only for localhost not in production
